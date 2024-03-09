@@ -23,4 +23,6 @@ public interface MFPortfolioAnalyzerService {
 
     MutualFundStockAllocationResponseDto getMutualFundStockAllocationByName(String mutualFundName);
 
+    AggregateStockAllocationResponseDto getAggregateStockAllocation(AggregateStockAllocationRequestDto aggregateStockAllocationRequestDto);
+
 }

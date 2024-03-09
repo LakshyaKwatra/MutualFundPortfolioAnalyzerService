@@ -144,7 +144,12 @@ public class MFPortfolioAnalyzerServiceImpl implements MFPortfolioAnalyzerServic
 
         if(responseEntity.getStatusCode().is2xxSuccessful() && Objects.nonNull(responseEntity.getBody())) {
             MutualFundHoldingsResultDto mutualFundHoldingsResultDto = responseEntity.getBody();
-            List<MutualFundStockAllocationUnitDto> mutualFundStockAllocation = mutualFundHoldingsResultDto.getData().getCurrentAllocation();
+            List<MutualFundStockAllocationUnitDto> mutualFundStockAllocation = mutualFundHoldingsResultDto
+                    .getData()
+                    .getCurrentAllocation()
+                    .stream()
+                    .filter(unit -> unit.getRating().equalsIgnoreCase("equity"))
+                    .toList();
             return MutualFundStockAllocationResponseDto.builder()
                     .name(mutualFund)
                     .mutualFundStockAllocation(mutualFundStockAllocation)
@@ -152,5 +157,39 @@ public class MFPortfolioAnalyzerServiceImpl implements MFPortfolioAnalyzerServic
         } else {
             return null;
         }
+    }
+
+    @Override
+    public AggregateStockAllocationResponseDto getAggregateStockAllocation(AggregateStockAllocationRequestDto aggregateStockAllocationRequestDto) {
+        List<String> mutualFundNames = aggregateStockAllocationRequestDto.getMutualFunds();
+        List<String> mutualFunds = new ArrayList<>();
+        Map<String,Double> aggregateStockAllocationMap = new HashMap<>();
+
+        for (String mutualFundName: mutualFundNames) {
+            MutualFundStockAllocationResponseDto mutualFundStockAllocationResponseDto = getMutualFundStockAllocationByName(mutualFundName);
+            mutualFunds.add(mutualFundStockAllocationResponseDto.getName());
+            List<MutualFundStockAllocationUnitDto> mutualFundStockAllocation = mutualFundStockAllocationResponseDto.getMutualFundStockAllocation();
+            for (MutualFundStockAllocationUnitDto mutualFundStockAllocationUnit: mutualFundStockAllocation) {
+                aggregateStockAllocationMap.put(mutualFundStockAllocationUnit.getName(),
+                        aggregateStockAllocationMap.getOrDefault(mutualFundStockAllocationUnit.getName(), 0.0) + mutualFundStockAllocationUnit.getPercentageAllocation());
+            }
+        }
+
+        if (!mutualFunds.isEmpty()) {
+            aggregateStockAllocationMap.forEach((k,v) -> aggregateStockAllocationMap.put(k,v/(double)mutualFunds.size()));
+        }
+
+        List<MutualFundStockAllocationResponseUnitDto> mutualFundStockAllocation = new ArrayList<>();
+        aggregateStockAllocationMap.forEach((k,v) -> mutualFundStockAllocation.add(MutualFundStockAllocationResponseUnitDto
+                .builder().name(k).percentageAllocation(v)
+                .build()));
+
+        Collections.sort(mutualFundStockAllocation, Comparator.comparing(MutualFundStockAllocationResponseUnitDto::getPercentageAllocation).reversed());
+
+        return AggregateStockAllocationResponseDto.builder()
+                .mutualFunds(mutualFunds)
+                .mutualFundStockAllocation(mutualFundStockAllocation)
+                .build();
+
     }
 }

@@ -4,12 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Getter;
-import org.springframework.lang.Nullable;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Getter
 @Builder
-public class MutualFundStockAllocationUnitDto {
+public class MutualFundStockAllocationResponseUnitDto {
 
     @JsonProperty("title")
     String name;
@@ -17,6 +16,4 @@ public class MutualFundStockAllocationUnitDto {
     @JsonProperty("latest")
     Double percentageAllocation;
 
-    @Nullable
-    String rating;
 }
