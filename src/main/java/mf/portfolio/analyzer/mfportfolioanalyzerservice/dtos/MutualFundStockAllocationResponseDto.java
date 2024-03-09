@@ -6,10 +6,12 @@ import lombok.Getter;
 
 import java.util.List;
 
-@Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class MutualFundQueryApiResultUnitDto {
+@Getter
+@Builder
+public class MutualFundStockAllocationResponseDto {
+
     String name;
-    String sector;
-    String mfId;
+
+    List<MutualFundStockAllocationUnitDto> mutualFundStockAllocation;
 }

@@ -1,15 +1,16 @@
 package mf.portfolio.analyzer.mfportfolioanalyzerservice.dtos;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Builder;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 
-import java.util.List;
-
-@Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class MutualFundQueryApiResultUnitDto {
-    String name;
+@Getter
+public class SectorHoldingDto {
+
     String sector;
-    String mfId;
+
+    @JsonProperty("value")
+    String percentage;
 }

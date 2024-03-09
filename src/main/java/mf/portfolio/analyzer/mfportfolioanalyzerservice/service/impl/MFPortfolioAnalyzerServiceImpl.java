@@ -102,4 +102,55 @@ public class MFPortfolioAnalyzerServiceImpl implements MFPortfolioAnalyzerServic
 
         return responseEntity.getBody().getData().getResult().stream().map(MutualFundQueryApiResultUnitDto::getName).toList();
     }
+
+    @Override
+    public Map<String,String> getAllMutualFundIds() {
+        String url = "https://api.tickertape.in/mf-screener/query";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        MutualFundQueryApiRequestDto requestDto = MutualFundQueryApiRequestDto.builder()
+                .match(MatchDto.builder().build())
+                .sortBy("amc")
+                .sortOrder(-1)
+                .project(Collections.singletonList("amc"))
+                .offset(0)
+                .count(10000).build();
+        HttpEntity<MutualFundQueryApiRequestDto> requestEntity = new HttpEntity<>(requestDto, headers);
+        ResponseEntity<MutualFundQueryApiResponseDto> responseEntity = restTemplate.postForEntity(url, requestEntity, MutualFundQueryApiResponseDto.class);
+
+        Map<String,String> result = new HashMap<>();
+        Objects.requireNonNull(responseEntity.getBody())
+                .getData().getResult()
+                .forEach(resultUnit -> result.put(resultUnit.getName(), resultUnit.getMfId()));
+        return result;
+    }
+
+    @Override
+    public String getMutualFundIdByName(String mutualFundName) {
+        String mutualFund = fuzzyMatchingService.getFuzzyMutualFund(mutualFundName);
+        return getAllMutualFundIds().get(mutualFund);
+
+    }
+
+    @Override
+    public MutualFundStockAllocationResponseDto getMutualFundStockAllocationByName(String mutualFundName) {
+        String mutualFund = fuzzyMatchingService.getFuzzyMutualFund(mutualFundName);
+        String mutualFundId = getAllMutualFundIds().get(mutualFund);
+
+        String url = "https://api.tickertape.in/mutualfunds/" + mutualFundId + "/holdings";
+        ResponseEntity<MutualFundHoldingsResultDto> responseEntity = restTemplate.getForEntity(url, MutualFundHoldingsResultDto.class);
+
+        if(responseEntity.getStatusCode().is2xxSuccessful() && Objects.nonNull(responseEntity.getBody())) {
+            MutualFundHoldingsResultDto mutualFundHoldingsResultDto = responseEntity.getBody();
+            List<MutualFundStockAllocationUnitDto> mutualFundStockAllocation = mutualFundHoldingsResultDto.getData().getCurrentAllocation();
+            return MutualFundStockAllocationResponseDto.builder()
+                    .name(mutualFund)
+                    .mutualFundStockAllocation(mutualFundStockAllocation)
+                    .build();
+        } else {
+            return null;
+        }
+    }
 }

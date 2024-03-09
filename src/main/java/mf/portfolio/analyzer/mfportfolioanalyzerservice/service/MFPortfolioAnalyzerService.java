@@ -1,10 +1,9 @@
 package mf.portfolio.analyzer.mfportfolioanalyzerservice.service;
 
-import mf.portfolio.analyzer.mfportfolioanalyzerservice.dtos.MutualFundHistoricalDataUnitDto;
-import mf.portfolio.analyzer.mfportfolioanalyzerservice.dtos.MutualFundMetaDataDto;
-import mf.portfolio.analyzer.mfportfolioanalyzerservice.dtos.MutualFundSchemeDto;
+import mf.portfolio.analyzer.mfportfolioanalyzerservice.dtos.*;
 
 import java.util.List;
+import java.util.Map;
 
 public interface MFPortfolioAnalyzerService {
 
@@ -17,5 +16,11 @@ public interface MFPortfolioAnalyzerService {
     List<String> getAllMutualFundSchemeCategories();
 
     List<String> getMutualFundListByAmc(String amc);
+
+    Map<String,String> getAllMutualFundIds();
+
+    String getMutualFundIdByName(String mutualFundName);
+
+    MutualFundStockAllocationResponseDto getMutualFundStockAllocationByName(String mutualFundName);
 
 }

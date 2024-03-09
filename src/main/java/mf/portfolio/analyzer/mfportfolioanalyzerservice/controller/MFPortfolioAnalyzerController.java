@@ -1,9 +1,7 @@
 package mf.portfolio.analyzer.mfportfolioanalyzerservice.controller;
 
 import lombok.NonNull;
-import mf.portfolio.analyzer.mfportfolioanalyzerservice.dtos.MutualFundHistoricalDataUnitDto;
-import mf.portfolio.analyzer.mfportfolioanalyzerservice.dtos.MutualFundMetaDataDto;
-import mf.portfolio.analyzer.mfportfolioanalyzerservice.dtos.MutualFundSchemeDto;
+import mf.portfolio.analyzer.mfportfolioanalyzerservice.dtos.*;
 import mf.portfolio.analyzer.mfportfolioanalyzerservice.service.MFPortfolioAnalyzerService;
 import mf.portfolio.analyzer.mfportfolioanalyzerservice.service.MFScraperService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class MFPortfolioAnalyzerController {
@@ -53,6 +52,21 @@ public class MFPortfolioAnalyzerController {
     @GetMapping("/getMutualFundListByAMC")
     public List<String> getMutualFundListByAMC(@NonNull @RequestParam("amc") String amc) {
         return mfPortfolioAnalyzerService.getMutualFundListByAmc(amc);
+    }
+
+    @GetMapping("/getAllMutualFundIds")
+    public Map<String,String> getAllMutualFundIds(){
+        return mfPortfolioAnalyzerService.getAllMutualFundIds();
+    }
+
+    @GetMapping("/getMutualFundIdByName")
+    public String getMutualFundIdByName(@NonNull @RequestParam("mutualFundName") String mutualFundName) {
+        return mfPortfolioAnalyzerService.getMutualFundIdByName(mutualFundName);
+    }
+
+    @GetMapping("/getMutualFundStockAllocationByName")
+    public MutualFundStockAllocationResponseDto getMutualFundStockAllocationByName(@NonNull @RequestParam("mutualFundName") String mutualFundName) {
+        return mfPortfolioAnalyzerService.getMutualFundStockAllocationByName(mutualFundName);
     }
 
 }
