@@ -12,5 +12,9 @@ public class AggregateStockAllocationResponseDto {
 
     List<String> mutualFunds;
 
+    Integer numberOfStocks;
+
+    List<Integer> numberOfStocksInQuarterlyPercentageDivision;
+
     List<MutualFundStockAllocationResponseUnitDto> mutualFundStockAllocation;
 }

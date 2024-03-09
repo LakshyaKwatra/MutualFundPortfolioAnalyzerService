@@ -33,7 +33,7 @@ public class MFPortfolioAnalyzerServiceImpl implements MFPortfolioAnalyzerServic
         String url = "https://api.mfapi.in/mf";
         ResponseEntity<MutualFundSchemeDto[]> responseEntity = restTemplate.getForEntity(url, MutualFundSchemeDto[].class);
 
-        if(responseEntity.getStatusCode().is2xxSuccessful() && Objects.nonNull(responseEntity.getBody())) {
+        if (responseEntity.getStatusCode().is2xxSuccessful() && Objects.nonNull(responseEntity.getBody())) {
             MutualFundSchemeDto[] mutualFundSchemeDtos = responseEntity.getBody();
             return Arrays.asList(mutualFundSchemeDtos);
         } else {
@@ -46,7 +46,7 @@ public class MFPortfolioAnalyzerServiceImpl implements MFPortfolioAnalyzerServic
         String url = "https://api.mfapi.in/mf/" + schemeCode;
         ResponseEntity<MutualFundHistoricalDataResponseDto> responseEntity = restTemplate.getForEntity(url, MutualFundHistoricalDataResponseDto.class);
 
-        if(responseEntity.getStatusCode().is2xxSuccessful() && Objects.nonNull(responseEntity.getBody())) {
+        if (responseEntity.getStatusCode().is2xxSuccessful() && Objects.nonNull(responseEntity.getBody())) {
             MutualFundHistoricalDataResponseDto mutualFundHistoricalDataResponseDto = responseEntity.getBody();
             return mutualFundHistoricalDataResponseDto.getHistoricalData();
         } else {
@@ -59,7 +59,7 @@ public class MFPortfolioAnalyzerServiceImpl implements MFPortfolioAnalyzerServic
         String url = "https://api.mfapi.in/mf/" + schemeCode;
         ResponseEntity<MutualFundHistoricalDataResponseDto> responseEntity = restTemplate.getForEntity(url, MutualFundHistoricalDataResponseDto.class);
 
-        if(responseEntity.getStatusCode().is2xxSuccessful() && Objects.nonNull(responseEntity.getBody())) {
+        if (responseEntity.getStatusCode().is2xxSuccessful() && Objects.nonNull(responseEntity.getBody())) {
             MutualFundHistoricalDataResponseDto mutualFundHistoricalDataResponseDto = responseEntity.getBody();
             return mutualFundHistoricalDataResponseDto.getMetaData();
         } else {
@@ -72,7 +72,7 @@ public class MFPortfolioAnalyzerServiceImpl implements MFPortfolioAnalyzerServic
     public List<String> getAllMutualFundSchemeCategories() {
         List<MutualFundSchemeDto> mutualFundSchemeDtos = getAllMutualFundSchemes();
         Set<String> schemeCategorySet = new HashSet<>();
-        for(MutualFundSchemeDto mutualFundSchemeDto: mutualFundSchemeDtos) {
+        for (MutualFundSchemeDto mutualFundSchemeDto : mutualFundSchemeDtos) {
             schemeCategorySet.add(getMutualFundDetailBySchemeCode(mutualFundSchemeDto.getSchemeCode()).getSchemeCategory());
             log.info(String.valueOf(schemeCategorySet.size()));
         }
@@ -104,7 +104,7 @@ public class MFPortfolioAnalyzerServiceImpl implements MFPortfolioAnalyzerServic
     }
 
     @Override
-    public Map<String,String> getAllMutualFundIds() {
+    public Map<String, String> getAllMutualFundIds() {
         String url = "https://api.tickertape.in/mf-screener/query";
 
         HttpHeaders headers = new HttpHeaders();
@@ -120,7 +120,7 @@ public class MFPortfolioAnalyzerServiceImpl implements MFPortfolioAnalyzerServic
         HttpEntity<MutualFundQueryApiRequestDto> requestEntity = new HttpEntity<>(requestDto, headers);
         ResponseEntity<MutualFundQueryApiResponseDto> responseEntity = restTemplate.postForEntity(url, requestEntity, MutualFundQueryApiResponseDto.class);
 
-        Map<String,String> result = new HashMap<>();
+        Map<String, String> result = new HashMap<>();
         Objects.requireNonNull(responseEntity.getBody())
                 .getData().getResult()
                 .forEach(resultUnit -> result.put(resultUnit.getName(), resultUnit.getMfId()));
@@ -142,7 +142,7 @@ public class MFPortfolioAnalyzerServiceImpl implements MFPortfolioAnalyzerServic
         String url = "https://api.tickertape.in/mutualfunds/" + mutualFundId + "/holdings";
         ResponseEntity<MutualFundHoldingsResultDto> responseEntity = restTemplate.getForEntity(url, MutualFundHoldingsResultDto.class);
 
-        if(responseEntity.getStatusCode().is2xxSuccessful() && Objects.nonNull(responseEntity.getBody())) {
+        if (responseEntity.getStatusCode().is2xxSuccessful() && Objects.nonNull(responseEntity.getBody())) {
             MutualFundHoldingsResultDto mutualFundHoldingsResultDto = responseEntity.getBody();
             List<MutualFundStockAllocationUnitDto> mutualFundStockAllocation = mutualFundHoldingsResultDto
                     .getData()
@@ -161,35 +161,75 @@ public class MFPortfolioAnalyzerServiceImpl implements MFPortfolioAnalyzerServic
 
     @Override
     public AggregateStockAllocationResponseDto getAggregateStockAllocation(AggregateStockAllocationRequestDto aggregateStockAllocationRequestDto) {
-        List<String> mutualFundNames = aggregateStockAllocationRequestDto.getMutualFunds();
         List<String> mutualFunds = new ArrayList<>();
-        Map<String,Double> aggregateStockAllocationMap = new HashMap<>();
 
-        for (String mutualFundName: mutualFundNames) {
-            MutualFundStockAllocationResponseDto mutualFundStockAllocationResponseDto = getMutualFundStockAllocationByName(mutualFundName);
-            mutualFunds.add(mutualFundStockAllocationResponseDto.getName());
-            List<MutualFundStockAllocationUnitDto> mutualFundStockAllocation = mutualFundStockAllocationResponseDto.getMutualFundStockAllocation();
-            for (MutualFundStockAllocationUnitDto mutualFundStockAllocationUnit: mutualFundStockAllocation) {
-                aggregateStockAllocationMap.put(mutualFundStockAllocationUnit.getName(),
-                        aggregateStockAllocationMap.getOrDefault(mutualFundStockAllocationUnit.getName(), 0.0) + mutualFundStockAllocationUnit.getPercentageAllocation());
-            }
-        }
-
-        if (!mutualFunds.isEmpty()) {
-            aggregateStockAllocationMap.forEach((k,v) -> aggregateStockAllocationMap.put(k,v/(double)mutualFunds.size()));
-        }
-
-        List<MutualFundStockAllocationResponseUnitDto> mutualFundStockAllocation = new ArrayList<>();
-        aggregateStockAllocationMap.forEach((k,v) -> mutualFundStockAllocation.add(MutualFundStockAllocationResponseUnitDto
-                .builder().name(k).percentageAllocation(v)
-                .build()));
+        List<MutualFundStockAllocationResponseUnitDto> mutualFundStockAllocation =  calculateWeightedStockAllocation(aggregateStockAllocationRequestDto, mutualFunds);
 
         Collections.sort(mutualFundStockAllocation, Comparator.comparing(MutualFundStockAllocationResponseUnitDto::getPercentageAllocation).reversed());
 
+        List<Integer> numberOfStocksInQuarterlyPercentageDivision = calculateNumberOfStocksInQuarterlyPercentageDivision(mutualFundStockAllocation);
+
         return AggregateStockAllocationResponseDto.builder()
                 .mutualFunds(mutualFunds)
+                .numberOfStocks(mutualFundStockAllocation.size())
+                .numberOfStocksInQuarterlyPercentageDivision(numberOfStocksInQuarterlyPercentageDivision)
                 .mutualFundStockAllocation(mutualFundStockAllocation)
                 .build();
 
+    }
+
+    private List<MutualFundStockAllocationResponseUnitDto> calculateWeightedStockAllocation
+            (AggregateStockAllocationRequestDto aggregateStockAllocationRequestDto, List<String> mutualFunds) {
+        List<String> mutualFundNames = aggregateStockAllocationRequestDto.getMutualFunds();
+        List<Double> weightageList = aggregateStockAllocationRequestDto.getWeightageList();
+        Map<String, Double> aggregateStockAllocationMap = new HashMap<>();
+        boolean isWeighted = Objects.nonNull(weightageList) && weightageList.size() == mutualFundNames.size();
+
+        Double weightage = 1.0;
+        Double weightageSum = 0.0;
+        for (String mutualFundName:mutualFundNames) {
+            if (isWeighted) {
+                weightage = weightageList.get(mutualFunds.size());
+            }
+            MutualFundStockAllocationResponseDto mutualFundStockAllocationResponseDto = getMutualFundStockAllocationByName(mutualFundName);
+            mutualFunds.add(mutualFundStockAllocationResponseDto.getName());
+            List<MutualFundStockAllocationUnitDto> mutualFundStockAllocation = mutualFundStockAllocationResponseDto.getMutualFundStockAllocation();
+            for (MutualFundStockAllocationUnitDto mutualFundStockAllocationUnit : mutualFundStockAllocation) {
+                aggregateStockAllocationMap.put(mutualFundStockAllocationUnit.getName(),
+                        aggregateStockAllocationMap.getOrDefault(mutualFundStockAllocationUnit.getName(), 0.0) + (weightage * mutualFundStockAllocationUnit.getPercentageAllocation()));
+            }
+            weightageSum += weightage;
+        }
+
+        if(!mutualFunds.isEmpty()) {
+            double finalWeightageSum = weightageSum;
+            aggregateStockAllocationMap.forEach((k, v) -> aggregateStockAllocationMap.put(k, v / finalWeightageSum));
+        }
+
+        List<MutualFundStockAllocationResponseUnitDto> mutualFundStockAllocation = new ArrayList<>();
+
+        aggregateStockAllocationMap.forEach((k,v)->mutualFundStockAllocation.add(MutualFundStockAllocationResponseUnitDto
+                .builder().name(k).percentageAllocation(v).build()));
+
+        return mutualFundStockAllocation;
+    }
+
+    private static List<Integer> calculateNumberOfStocksInQuarterlyPercentageDivision(List<MutualFundStockAllocationResponseUnitDto> mutualFundStockAllocation) {
+        List<Integer> numberOfStocksInQuarterlyPercentageDivision = new ArrayList<>();
+        Double percentage = 0.0;
+        int count = 0;
+        for (MutualFundStockAllocationResponseUnitDto mutualFundStockAllocationResponseUnitDto: mutualFundStockAllocation) {
+            percentage += mutualFundStockAllocationResponseUnitDto.getPercentageAllocation();
+            count++;
+            if (percentage >= 25.0) {
+               numberOfStocksInQuarterlyPercentageDivision.add(count);
+               percentage = 0.0;
+               count = 0;
+            }
+        }
+        if(percentage > 0.0) {
+            numberOfStocksInQuarterlyPercentageDivision.add(count);
+        }
+        return numberOfStocksInQuarterlyPercentageDivision;
     }
 }
