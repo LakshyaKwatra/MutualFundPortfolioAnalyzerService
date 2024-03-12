@@ -1,4 +1,4 @@
-package mf.portfolio.analyzer.mfportfolioanalyzerservice.dtos;
+package mf.portfolio.analyzer.mfportfolioanalyzerservice.clients.dtos.tickertape;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -9,7 +9,7 @@ import org.springframework.lang.Nullable;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Getter
 @Builder
-public class MutualFundStockAllocationUnitDto {
+public class MutualFundHoldingDto {
 
     @JsonProperty("title")
     String name;

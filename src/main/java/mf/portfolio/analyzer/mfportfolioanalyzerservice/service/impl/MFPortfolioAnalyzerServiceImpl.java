@@ -1,14 +1,18 @@
 package mf.portfolio.analyzer.mfportfolioanalyzerservice.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
+import mf.portfolio.analyzer.mfportfolioanalyzerservice.clients.MfApiClient;
+import mf.portfolio.analyzer.mfportfolioanalyzerservice.clients.TickerTapeClient;
+import mf.portfolio.analyzer.mfportfolioanalyzerservice.clients.dtos.mfapi.MutualFundHistoricalDataResponseDto;
+import mf.portfolio.analyzer.mfportfolioanalyzerservice.clients.dtos.mfapi.MutualFundHistoricalDataUnitDto;
+import mf.portfolio.analyzer.mfportfolioanalyzerservice.clients.dtos.mfapi.MutualFundMetaDataDto;
+import mf.portfolio.analyzer.mfportfolioanalyzerservice.clients.dtos.mfapi.MutualFundSchemeDto;
+import mf.portfolio.analyzer.mfportfolioanalyzerservice.clients.dtos.tickertape.*;
+import mf.portfolio.analyzer.mfportfolioanalyzerservice.clients.dtos.tickertape.MutualFundHoldingsByIdResponseDto;
 import mf.portfolio.analyzer.mfportfolioanalyzerservice.dtos.*;
 import mf.portfolio.analyzer.mfportfolioanalyzerservice.service.FuzzyMatchingService;
 import mf.portfolio.analyzer.mfportfolioanalyzerservice.service.MFPortfolioAnalyzerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -19,35 +23,32 @@ import java.util.*;
 public class MFPortfolioAnalyzerServiceImpl implements MFPortfolioAnalyzerService {
 
     private final RestTemplate restTemplate;
-
     private final FuzzyMatchingService fuzzyMatchingService;
+    private final MfApiClient mfApiClient;
+    private final TickerTapeClient tickerTapeClient;
+
 
     @Autowired
-    MFPortfolioAnalyzerServiceImpl(RestTemplate restTemplate, FuzzyMatchingService fuzzyMatchingService) {
+    MFPortfolioAnalyzerServiceImpl(RestTemplate restTemplate,
+                                   FuzzyMatchingService fuzzyMatchingService,
+                                   MfApiClient mfApiClient,
+                                   TickerTapeClient tickerTapeClient) {
         this.restTemplate = restTemplate;
         this.fuzzyMatchingService = fuzzyMatchingService;
+        this.mfApiClient = mfApiClient;
+        this.tickerTapeClient = tickerTapeClient;
     }
 
     @Override
     public List<MutualFundSchemeDto> getAllMutualFundSchemes() {
-        String url = "https://api.mfapi.in/mf";
-        ResponseEntity<MutualFundSchemeDto[]> responseEntity = restTemplate.getForEntity(url, MutualFundSchemeDto[].class);
-
-        if (responseEntity.getStatusCode().is2xxSuccessful() && Objects.nonNull(responseEntity.getBody())) {
-            MutualFundSchemeDto[] mutualFundSchemeDtos = responseEntity.getBody();
-            return Arrays.asList(mutualFundSchemeDtos);
-        } else {
-            return null;
-        }
+        return mfApiClient.getMutualFundSchemeList();
     }
 
     @Override
     public List<MutualFundHistoricalDataUnitDto> getMutualFundHistoricalDataBySchemeCode(String schemeCode) {
-        String url = "https://api.mfapi.in/mf/" + schemeCode;
-        ResponseEntity<MutualFundHistoricalDataResponseDto> responseEntity = restTemplate.getForEntity(url, MutualFundHistoricalDataResponseDto.class);
-
-        if (responseEntity.getStatusCode().is2xxSuccessful() && Objects.nonNull(responseEntity.getBody())) {
-            MutualFundHistoricalDataResponseDto mutualFundHistoricalDataResponseDto = responseEntity.getBody();
+        MutualFundHistoricalDataResponseDto mutualFundHistoricalDataResponseDto =
+                mfApiClient.getMutualFundHistoricalDataBySchemeCode(schemeCode);
+        if(Objects.nonNull(mutualFundHistoricalDataResponseDto)) {
             return mutualFundHistoricalDataResponseDto.getHistoricalData();
         } else {
             return null;
@@ -56,11 +57,9 @@ public class MFPortfolioAnalyzerServiceImpl implements MFPortfolioAnalyzerServic
 
     @Override
     public MutualFundMetaDataDto getMutualFundDetailBySchemeCode(String schemeCode) {
-        String url = "https://api.mfapi.in/mf/" + schemeCode;
-        ResponseEntity<MutualFundHistoricalDataResponseDto> responseEntity = restTemplate.getForEntity(url, MutualFundHistoricalDataResponseDto.class);
-
-        if (responseEntity.getStatusCode().is2xxSuccessful() && Objects.nonNull(responseEntity.getBody())) {
-            MutualFundHistoricalDataResponseDto mutualFundHistoricalDataResponseDto = responseEntity.getBody();
+        MutualFundHistoricalDataResponseDto mutualFundHistoricalDataResponseDto =
+                mfApiClient.getMutualFundHistoricalDataBySchemeCode(schemeCode);
+        if(Objects.nonNull(mutualFundHistoricalDataResponseDto)) {
             return mutualFundHistoricalDataResponseDto.getMetaData();
         } else {
             return null;
@@ -68,48 +67,35 @@ public class MFPortfolioAnalyzerServiceImpl implements MFPortfolioAnalyzerServic
     }
 
     @Override
-    @Deprecated
-    public List<String> getAllMutualFundSchemeCategories() {
-        List<MutualFundSchemeDto> mutualFundSchemeDtos = getAllMutualFundSchemes();
-        Set<String> schemeCategorySet = new HashSet<>();
-        for (MutualFundSchemeDto mutualFundSchemeDto : mutualFundSchemeDtos) {
-            schemeCategorySet.add(getMutualFundDetailBySchemeCode(mutualFundSchemeDto.getSchemeCode()).getSchemeCategory());
-            log.info(String.valueOf(schemeCategorySet.size()));
+    public List<String> getMutualFundListByAmc(String amc, Boolean isFuzzy) {
+        if(isFuzzy) {
+            amc = fuzzyMatchingService.getFuzzyMutualFundAMC(amc);
         }
-        return new ArrayList<>(schemeCategorySet);
-    }
-
-    @Override
-    public List<String> getMutualFundListByAmc(String amc) {
-        String url = "https://api.tickertape.in/mf-screener/query";
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-
-        String mutualFundAmc = fuzzyMatchingService.getFuzzyMutualFundAMC(amc);
-
         MutualFundQueryApiRequestDto requestDto = MutualFundQueryApiRequestDto.builder()
                 .match(MatchDto.builder()
-                        .amcList(Collections.singletonList(mutualFundAmc))
+                        .amcList(Collections.singletonList(amc))
                         .build())
                 .sortBy("amc")
                 .sortOrder(-1)
                 .project(Collections.singletonList("amc"))
                 .offset(0)
                 .count(10000).build();
-        HttpEntity<MutualFundQueryApiRequestDto> requestEntity = new HttpEntity<>(requestDto, headers);
-        ResponseEntity<MutualFundQueryApiResponseDto> responseEntity = restTemplate.postForEntity(url, requestEntity, MutualFundQueryApiResponseDto.class);
+        MutualFundQueryResponseDto mutualFundQueryApiResponse = tickerTapeClient.queryMutualFundScreener(requestDto);
 
-        return responseEntity.getBody().getData().getResult().stream().map(MutualFundQueryApiResultUnitDto::getName).toList();
+        if(Objects.nonNull(mutualFundQueryApiResponse)) {
+            return mutualFundQueryApiResponse
+                    .getData()
+                    .getResult()
+                    .stream()
+                    .map(MutualFundQueryApiResultUnitDto::getName)
+                    .toList();
+        } else {
+            return null;
+        }
     }
 
     @Override
     public Map<String, String> getAllMutualFundIds() {
-        String url = "https://api.tickertape.in/mf-screener/query";
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-
         MutualFundQueryApiRequestDto requestDto = MutualFundQueryApiRequestDto.builder()
                 .match(MatchDto.builder().build())
                 .sortBy("amc")
@@ -117,42 +103,53 @@ public class MFPortfolioAnalyzerServiceImpl implements MFPortfolioAnalyzerServic
                 .project(Collections.singletonList("amc"))
                 .offset(0)
                 .count(10000).build();
-        HttpEntity<MutualFundQueryApiRequestDto> requestEntity = new HttpEntity<>(requestDto, headers);
-        ResponseEntity<MutualFundQueryApiResponseDto> responseEntity = restTemplate.postForEntity(url, requestEntity, MutualFundQueryApiResponseDto.class);
-
+        MutualFundQueryResponseDto mutualFundQueryApiResponse = tickerTapeClient.queryMutualFundScreener(requestDto);
         Map<String, String> result = new HashMap<>();
-        Objects.requireNonNull(responseEntity.getBody())
+        Objects.requireNonNull(mutualFundQueryApiResponse)
                 .getData().getResult()
                 .forEach(resultUnit -> result.put(resultUnit.getName(), resultUnit.getMfId()));
         return result;
     }
 
     @Override
-    public String getMutualFundIdByName(String mutualFundName) {
-        String mutualFund = fuzzyMatchingService.getFuzzyMutualFund(mutualFundName);
-        return getAllMutualFundIds().get(mutualFund);
-
+    public MutualFundIdResponseDto getMutualFundIdResponseByName(String mutualFundName, Boolean isFuzzy) {
+        if(isFuzzy) {
+            mutualFundName = fuzzyMatchingService.getFuzzyMutualFund(mutualFundName);
+        }
+        Map<String, String> mutualFundIdMap = getAllMutualFundIds();
+        if(Objects.nonNull(mutualFundIdMap)) {
+            return MutualFundIdResponseDto
+                    .builder()
+                    .name(mutualFundName)
+                    .mfId(getAllMutualFundIds().get(mutualFundName))
+                    .build();
+        } else {
+            return null;
+        }
     }
 
     @Override
-    public MutualFundStockAllocationResponseDto getMutualFundStockAllocationByName(String mutualFundName) {
-        String mutualFund = fuzzyMatchingService.getFuzzyMutualFund(mutualFundName);
-        String mutualFundId = getAllMutualFundIds().get(mutualFund);
+    public MutualFundHoldingsByNameResponseDto getMutualFundStockAllocationByName(String mutualFundName, Boolean isFuzzy) {
+        if(isFuzzy) {
+            mutualFundName = fuzzyMatchingService.getFuzzyMutualFund(mutualFundName);
+        }
+        String mutualFundId = getAllMutualFundIds().get(mutualFundName);
 
-        String url = "https://api.tickertape.in/mutualfunds/" + mutualFundId + "/holdings";
-        ResponseEntity<MutualFundHoldingsResultDto> responseEntity = restTemplate.getForEntity(url, MutualFundHoldingsResultDto.class);
+        MutualFundHoldingsByIdResponseDto mutualFundHoldingsByIdResponse = tickerTapeClient.getMutualFundHoldingDetailsById(mutualFundId);
 
-        if (responseEntity.getStatusCode().is2xxSuccessful() && Objects.nonNull(responseEntity.getBody())) {
-            MutualFundHoldingsResultDto mutualFundHoldingsResultDto = responseEntity.getBody();
-            List<MutualFundStockAllocationUnitDto> mutualFundStockAllocation = mutualFundHoldingsResultDto
+        if(Objects.nonNull(mutualFundHoldingsByIdResponse)) {
+            List<MutualFundHoldingDto> mutualFundStockAllocation = mutualFundHoldingsByIdResponse
                     .getData()
                     .getCurrentAllocation()
                     .stream()
-                    .filter(unit -> unit.getRating().equalsIgnoreCase("equity"))
+                    .filter(unit -> {
+                        assert unit.getRating() != null;
+                        return unit.getRating().equalsIgnoreCase("equity");
+                    })
                     .toList();
-            return MutualFundStockAllocationResponseDto.builder()
-                    .name(mutualFund)
-                    .mutualFundStockAllocation(mutualFundStockAllocation)
+            return MutualFundHoldingsByNameResponseDto.builder()
+                    .name(mutualFundName)
+                    .mutualFundHoldings(mutualFundStockAllocation)
                     .build();
         } else {
             return null;
@@ -191,10 +188,10 @@ public class MFPortfolioAnalyzerServiceImpl implements MFPortfolioAnalyzerServic
             if (isWeighted) {
                 weightage = weightageList.get(mutualFunds.size());
             }
-            MutualFundStockAllocationResponseDto mutualFundStockAllocationResponseDto = getMutualFundStockAllocationByName(mutualFundName);
+            MutualFundHoldingsByNameResponseDto mutualFundStockAllocationResponseDto = getMutualFundStockAllocationByName(mutualFundName, null);
             mutualFunds.add(mutualFundStockAllocationResponseDto.getName());
-            List<MutualFundStockAllocationUnitDto> mutualFundStockAllocation = mutualFundStockAllocationResponseDto.getMutualFundStockAllocation();
-            for (MutualFundStockAllocationUnitDto mutualFundStockAllocationUnit : mutualFundStockAllocation) {
+            List<MutualFundHoldingDto> mutualFundStockAllocation = mutualFundStockAllocationResponseDto.getMutualFundHoldings();
+            for (MutualFundHoldingDto mutualFundStockAllocationUnit : mutualFundStockAllocation) {
                 aggregateStockAllocationMap.put(mutualFundStockAllocationUnit.getName(),
                         aggregateStockAllocationMap.getOrDefault(mutualFundStockAllocationUnit.getName(), 0.0) + (weightage * mutualFundStockAllocationUnit.getPercentageAllocation()));
             }

@@ -1,18 +1,20 @@
 package mf.portfolio.analyzer.mfportfolioanalyzerservice.repository;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Repository;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-@Getter
 @Repository
 public class DataStore {
-    private final List<String> mutualFundAMCList = Arrays.asList(
-            "Bandhan AMC Limited",
-            "Kotak Mahindra Asset Management Company Limited",
+    @Getter
+    @Setter
+    private static List<String> mutualFundAMCList = Arrays.asList(
             "Old Bridge Asset Management Private Limited",
             "Zerodha Asset Management Private Limited",
             "Taurus Asset Management Company Limited",
@@ -26,6 +28,7 @@ public class DataStore {
             "Navi AMC Limited",
             "IL&FS Infra Asset Management Limited",
             "Franklin Templeton Asset Management (India) Private Limited",
+            "Bandhan AMC Limited",
             "360 ONE Asset Management Limited",
             "PPFAS Asset Management Pvt. Ltd.",
             "Baroda BNP Paribas Asset Management India Pvt. Ltd.",
@@ -46,5323 +49,3942 @@ public class DataStore {
             "Motilal Oswal Asset Management Company Limited",
             "Edelweiss Asset Management Limited",
             "Quantum Asset Management Company Private Limited",
-            "HDFC Asset Management Company Limited",
-            "Axis Asset Management Company Ltd.",
-            "LIC Mutual Fund Asset Management Limited",
-            "Nippon Life India Asset Management Limited",
+            "Kotak Mahindra Asset Management Company Limited",
             "SBI Funds Management Limited",
             "ICICI Prudential Asset Management Company Limited",
             "DSP Investment Managers Private Limited",
             "Aditya Birla Sun Life AMC Limited",
-            "Invesco Asset Management Company Pvt Ltd.");
+            "Invesco Asset Management Company Pvt Ltd.",
+            "Nippon Life India Asset Management Limited",
+            "LIC Mutual Fund Asset Management Limited",
+            "Axis Asset Management Company Ltd.",
+            "HDFC Asset Management Company Limited");
 
 
-    private final List<String> projectList = Arrays.asList(
-            "subsector",            //sub sector
-            "option",               //option
-            "aum",                  //aum
-            "ret3y",                //3Y returns
-            "expRatio",             //expense ratio
-            "amc",                  //amc
-            "ageInMon",             //age in months
-            "benchmarkIndex",       //benchmark index
-            "fmCode",               //fund managers
-            "exitLoad",             //exit load
-            "lockInPeriod",         //lock in period
-            "minLumpInvAmt",        //minimum lumpsum investment
-            "minSipAmount",         //minimum SIP amount
-            "navClose",             //nav
-            "sipinvest",            //sip investment allowed or not
-            "alpha",                //alpha
-            "ret10y",               //10Y returns
-            "ret1y",                //1Y returns
-            "ret3m",                //3M returns
-            "ret5y",                //5Y returns
-            "ret6m",                //6M returns
-            "catStdDevAnn",         //Category Standard deviation
-            "riskClassification",   //sebi risk category
-            "stdDevAnn",            //standard deviation
-            "trackErr",             //tracking error
-            "percDebtH",            //percentage Debt Holding
-            "percEquityH",          //percentage Equity Holding
-            "percLargecap",         //percentage large cap holding
-            "percMidcap",           //percentage mid cap holding
-            "percOtherH",           //percentage others holding
-            "percSmallcap",         //percentage small cap holding
-            "sortino",              //sortino ratio
-            "sharpe",               //sharpe ratio
-            "ytm",                  //yield to maturity
-            "avgMaturity",          //average maturity
-            "catPe",                //category pe ratio
-            "catYtm",               //category yield to maturity
-            "pe");                  //category pe
+    @Getter
+    @Setter
+    private static Map<String,String> mutualFundNameToIdMap = new HashMap<>();
+    
+    public DataStore() {
+        mutualFundNameToIdMap.put("HDFC Short Term Debt Fund", "M_HDFSH");
+        mutualFundNameToIdMap.put("HSBC CRISIL IBX Gilt June 2027 Index Fund", "M_HSR7");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas NIFTY SDL Dec 2026 Index Fund(IDCW)", "M_BAA2");
+        mutualFundNameToIdMap.put("Bank of India Short Term Income Fund(Q-IDCW)", "M_BAKH");
+        mutualFundNameToIdMap.put("HSBC Credit Risk Fund", "M_LTCK");
+        mutualFundNameToIdMap.put("ICICI Pru Dividend Yield Equity Fund(IDCW-Payout)", "M_ICIVY");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Overnight Fund(W-IDCW)", "M_BARH");
+        mutualFundNameToIdMap.put("Bandhan Banking & PSU Debt Fund(A-IDCW)", "M_IDKC");
+        mutualFundNameToIdMap.put("Union Money Market Fund(M-IDCW)", "M_UNEO");
+        mutualFundNameToIdMap.put("Mirae Asset Liquid Fund(W-IDCW)", "M_MISH");
+        mutualFundNameToIdMap.put("PGIM India Ultra Short Duration Fund(M-IDCW)", "M_PGUH");
+        mutualFundNameToIdMap.put("ICICI Pru Strategic Metal and Energy Equity FoF", "M_ICPSQ");
+        mutualFundNameToIdMap.put("SBI FMP-44-1855D", "M_SBIPD");
+        mutualFundNameToIdMap.put("Navi Flexi Cap Fund", "M_ESEL");
+        mutualFundNameToIdMap.put("Franklin India Opportunities Fund(IDCW Payout)", "M_FRPW");
+        mutualFundNameToIdMap.put("Bandhan All Seasons Bond Fund(W-IDCW)", "M_IDAN");
+        mutualFundNameToIdMap.put("Motilal Oswal Flexi Cap Fund", "M_MOI3");
+        mutualFundNameToIdMap.put("HDFC Hybrid Debt Fund(Q-IDCW)", "M_HDQH");
+        mutualFundNameToIdMap.put("SBI Infrastructure Fund(IDCW)", "M_SBIIU");
+        mutualFundNameToIdMap.put("Nippon India Low Duration Fund(W-IDCW)", "M_NIPLW");
+        mutualFundNameToIdMap.put("Mahindra Manulife Flexi Cap Fund", "M_MAHX");
+        mutualFundNameToIdMap.put("LIC MF Equity Savings Fund", "M_IDVQ");
+        mutualFundNameToIdMap.put("Bajaj Finserv Banking and PSU Fund", "M_BACJ");
+        mutualFundNameToIdMap.put("Groww Banking & Financial Services Fund(IDCW)", "M_GRBB");
+        mutualFundNameToIdMap.put("HDFC Retirement Savings Fund-Hybrid-Debt Plan", "M_HDEH");
+        mutualFundNameToIdMap.put("HSBC Overnight Fund(DD-IDCW)", "M_HSCI");
+        mutualFundNameToIdMap.put("Aditya Birla SL ELSS Tax Saver Fund", "M_ADX6");
+        mutualFundNameToIdMap.put("DSP Corp Bond Fund(IDCW-Reinv)", "M_DSCR");
+        mutualFundNameToIdMap.put("HDFC FMP-Sr 46-1406D-Aug 2022(Q-IDCW)", "M_HDFFW");
+        mutualFundNameToIdMap.put("Bandhan Dynamic Bond Fund(Q-IDCW)", "M_BAYQ");
+        mutualFundNameToIdMap.put("Edelweiss Gold and Silver ETF FoF", "M_EDGD");
+        mutualFundNameToIdMap.put("Nippon India Dynamic Bond Fund(IDCW)", "M_NIPYI");
+        mutualFundNameToIdMap.put("Edelweiss Technology Fund", "M_EDTH");
+        mutualFundNameToIdMap.put("ICICI Pru Savings Fund(W-IDCW Payout)", "M_ICSW");
+        mutualFundNameToIdMap.put("LIC MF Multi Cap Fund", "M_LITI");
+        mutualFundNameToIdMap.put("UTI Money Market Fund(DD-IDCW)", "M_UTYK");
+        mutualFundNameToIdMap.put("Nippon India Overnight Fund(DD-IDCW)", "M_NIAV");
+        mutualFundNameToIdMap.put("ITI Banking & PSU Debt Fund", "M_ITIA");
+        mutualFundNameToIdMap.put("UTI Medium to Long Duration Fund(Q-IDCW)", "M_UTIBQ");
+        mutualFundNameToIdMap.put("Quant Small Cap Fund(IDCW)", "M_QUSS");
+        mutualFundNameToIdMap.put("HSBC Aggressive Hybrid Fund", "M_LTHE");
+        mutualFundNameToIdMap.put("Aditya Birla SL Flexi Cap Fund(IDCW-Reinv)", "M_ADITS");
+        mutualFundNameToIdMap.put("Axis Children's Gift Fund-Compulsory Lock in", "M_AXCY");
+        mutualFundNameToIdMap.put("Nippon India Nifty AAA CPSE Bond Plus SDL - Apr 2027 Maturity 60:40 Index Fund", "M_NIT4");
+        mutualFundNameToIdMap.put("Nippon India FHF-XLIII-5-2315D(IDCW)", "M_NI5C");
+        mutualFundNameToIdMap.put("Kotak Bond Fund", "M_KOOF");
+        mutualFundNameToIdMap.put("ICICI Pru India Opp Fund", "M_ICDR");
+        mutualFundNameToIdMap.put("Franklin India Equity Savings Fund(Q-IDCW)", "M_FRUV");
+        mutualFundNameToIdMap.put("TRUSTMF Liquid Fund(W-IDCW)", "M_TRTW");
+        mutualFundNameToIdMap.put("HSBC Midcap Fund(IDCW Payout)", "M_LTDU");
+        mutualFundNameToIdMap.put("PGIM India Ultra Short Duration Fund(W-IDCW)", "M_PGUS");
+        mutualFundNameToIdMap.put("Nippon India Arbitrage Fund(M-IDCW)", "M_NIPAP");
+        mutualFundNameToIdMap.put("ICICI Pru Commodities Fund", "M_ICPO");
+        mutualFundNameToIdMap.put("Mahindra Manulife Mid Cap Fund", "M_MANC");
+        mutualFundNameToIdMap.put("SBI Retirement Benefit Fund-Conservative Hybrid Plan", "M_SBIRY");
+        mutualFundNameToIdMap.put("DSP Overnight Fund", "M_DSOE");
+        mutualFundNameToIdMap.put("Bandhan All Seasons Bond Fund(P-IDCW Reinv)", "M_IDFLB");
+        mutualFundNameToIdMap.put("Nippon India Power & Infra Fund", "M_NIWW");
+        mutualFundNameToIdMap.put("Nippon India Ultra Short Duration Fund(Q-IDCW)", "M_NIPUN");
+        mutualFundNameToIdMap.put("HDFC Money Market Fund", "M_HDYK");
+        mutualFundNameToIdMap.put("Mahindra Manulife Dynamic Bond Fund-(Q-IDCW Payout)", "M_MAHK");
+        mutualFundNameToIdMap.put("UTI Quarterly Interval Fund-I", "M_UTGQ");
+        mutualFundNameToIdMap.put("Nippon India Low Duration Fund(M-IDCW)", "M_NIPLL");
+        mutualFundNameToIdMap.put("Canara Rob Flexi Cap Fund(IDCW)", "M_CAFL");
+        mutualFundNameToIdMap.put("Axis All Seasons Debt FOFs(IDCW)", "M_AXIAD");
+        mutualFundNameToIdMap.put("Mirae Asset Liquid Fund(M-IDCW)", "M_MICM");
+        mutualFundNameToIdMap.put("Quant Large & Mid Cap Fund", "M_QUNL");
+        mutualFundNameToIdMap.put("Sundaram Focused Fund", "M_PRLF");
+        mutualFundNameToIdMap.put("Shriram Flexi Cap Fund", "M_SHRP");
+        mutualFundNameToIdMap.put("Bandhan Arbitrage Fund", "M_IDFCB");
+        mutualFundNameToIdMap.put("DSP Overnight Fund(DD-IDCW)", "M_DSOV");
+        mutualFundNameToIdMap.put("Aditya Birla SL Income Fund(IDCW)", "M_ADIAU");
+        mutualFundNameToIdMap.put("Invesco India Low Duration Fund(W-IDCW)", "M_INVCC");
+        mutualFundNameToIdMap.put("Nippon India Inv-Mthly-I", "M_NIMO");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty50 Equal Weight Index Fund(IDCW Payout)", "M_ICC5N");
+        mutualFundNameToIdMap.put("SBI Savings Fund(W-IDCW)", "M_SBVW");
+        mutualFundNameToIdMap.put("Quantum Liquid Fund(M-IDCW)", "M_QUUF");
+        mutualFundNameToIdMap.put("Mahindra Manulife Consumption Fund(IDCW-Payout)", "M_MAIU");
+        mutualFundNameToIdMap.put("SBI Magnum Low Duration Fund(DD-IDCW)", "M_SBUR");
+        mutualFundNameToIdMap.put("Invesco India Overnight Fund", "M_INVA");
+        mutualFundNameToIdMap.put("LIC MF ULIS Regular Premium Uniform Cover Mthly 15Y(IDCW)", "M_LIFI");
+        mutualFundNameToIdMap.put("Groww Short Duration Fund(FN-IDCW)", "M_GRSS");
+        mutualFundNameToIdMap.put("Kotak Nifty Smallcap 50 Index Fund", "M_KOCX");
+        mutualFundNameToIdMap.put("Axis Corp Debt Fund(M-IDCW)", "M_AXICD");
+        mutualFundNameToIdMap.put("Franklin India Banking & PSU Debt Fund(IDCW Payout)", "M_FRBN");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas NIFTY SDL Dec 2028 Index Fund", "M_BAA8");
+        mutualFundNameToIdMap.put("HSBC Ultra Short Duration Fund", "M_HSBG");
+        mutualFundNameToIdMap.put("Axis Retirement Savings Fund-Conservative Plan(IDCW)", "M_AXIP");
+        mutualFundNameToIdMap.put("Canara Rob Emerg Equities Fund", "M_CAOP");
+        mutualFundNameToIdMap.put("Kotak ELSS Tax Saver Fund(IDCW)", "M_KOAX");
+        mutualFundNameToIdMap.put("SBI Nifty Smallcap 250 Index Fund", "M_SBY2");
+        mutualFundNameToIdMap.put("Invesco India Nifty G-sec Jul 2027 Index Fund", "M_INNJ");
+        mutualFundNameToIdMap.put("SBI Focused Equity Fund", "M_SBFQ");
+        mutualFundNameToIdMap.put("Franklin India G-Sec Fund(IDCW Payout)", "M_FRUG");
+        mutualFundNameToIdMap.put("Aditya Birla SL Savings Fund(DD-IDCW)", "M_ADTVB");
+        mutualFundNameToIdMap.put("SBI Magnum Income Fund(IDCW-Payout)", "M_SBGU");
+        mutualFundNameToIdMap.put("SBI Dividend Yield Fund(IDCW)", "M_SBIVD");
+        mutualFundNameToIdMap.put("HDFC Top 100 Fund(IDCW)", "M_HDTC");
+        mutualFundNameToIdMap.put("TRUSTMF Liquid Fund(M-IDCW)", "M_TRTL");
+        mutualFundNameToIdMap.put("SBI FMP-78-1170D", "M_SBII8");
+        mutualFundNameToIdMap.put("Invesco India Money Market Fund(IDCW)", "M_INYK");
+        mutualFundNameToIdMap.put("Tata ST Bond Fund", "M_TAOS");
+        mutualFundNameToIdMap.put("LIC MF Low Duration Fund(M-IDCW)", "M_LISC");
+        mutualFundNameToIdMap.put("Tata Floating Rate Fund", "M_TATFO");
+        mutualFundNameToIdMap.put("Axis Short Term Fund", "M_AXOU");
+        mutualFundNameToIdMap.put("Nippon India Money Market Fund", "M_NIMK");
+        mutualFundNameToIdMap.put("Tata Money Market Fund(DD-IDCW)", "M_TAOY");
+        mutualFundNameToIdMap.put("Kotak Corporate Bond Fund(M-IDCW)", "M_KOAO");
+        mutualFundNameToIdMap.put("Franklin India Corp Debt Fund-A(A-IDCW)", "M_FRRW");
+        mutualFundNameToIdMap.put("HDFC Arbitrage-WP(M-IDCW)", "M_HDFWB");
+        mutualFundNameToIdMap.put("Aditya Birla SL Gold Fund(IDCW)", "M_ADTOI");
+        mutualFundNameToIdMap.put("Edelweiss Nifty PSU Bond Plus SDL Apr 2027 50:50 Index Fund", "M_EDNT");
+        mutualFundNameToIdMap.put("Nippon India Strategic Debt Fund", "M_NISD");
+        mutualFundNameToIdMap.put("Franklin India Pension Plan(IDCW)", "M_FRWP");
+        mutualFundNameToIdMap.put("DSP Value Fund(IDCW-Reinv)", "M_DSPVL");
+        mutualFundNameToIdMap.put("Invesco India Low Duration Fund(M-IDCW)", "M_INVCS");
+        mutualFundNameToIdMap.put("SBI Magnum Low Duration Fund(M-IDCW Payout)", "M_SBAW");
+        mutualFundNameToIdMap.put("Navi Overnight Fund(DD-IDCW)", "M_NAIT");
+        mutualFundNameToIdMap.put("DSP Equity Savings Fund(IDCW)", "M_DSQE");
+        mutualFundNameToIdMap.put("SBI FMP-64-1169D", "M_SBII9");
+        mutualFundNameToIdMap.put("HSBC Focused Fund(IDCW-Payout)", "M_HSBF");
+        mutualFundNameToIdMap.put("Franklin India Overnight Fund(W-IDCW)", "M_FROV");
+        mutualFundNameToIdMap.put("TRUSTMF Liquid Fund(DD-IDCW)", "M_TRUD");
+        mutualFundNameToIdMap.put("SBI Consumption Opp Fund", "M_SBRO");
+        mutualFundNameToIdMap.put("Samco Dynamic Asset Allocation Fund(IDCW)", "M_SAMD");
+        mutualFundNameToIdMap.put("SBI Long Duration Fund", "M_SBILO");
+        mutualFundNameToIdMap.put("LIC MF Aggressive Hybrid Fund(IDCW)", "M_LIEI");
+        mutualFundNameToIdMap.put("Bajaj Finserv Liquid Fund(F-IDCW)", "M_BAJQ");
+        mutualFundNameToIdMap.put("Tata Hybrid Equity Fund(M-IDCW)", "M_TAHB");
+        mutualFundNameToIdMap.put("SBI Focused Equity Fund(IDCW-Payout)", "M_SBFO");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty Next 50 Index Fund(IDCW)", "M_ICITX");
+        mutualFundNameToIdMap.put("Union Money Market Fund", "M_UNMA");
+        mutualFundNameToIdMap.put("Edelweiss Government Securities Fund(IDCW)", "M_EDGM");
+        mutualFundNameToIdMap.put("Sundaram Large and Mid Cap Fund", "M_SUNLA");
+        mutualFundNameToIdMap.put("Bandhan Credit Risk Fund(IDCW-Reinv)", "M_IDFN");
+        mutualFundNameToIdMap.put("SBI Nifty Smallcap 250 Index Fund(IDCW)", "M_SB0Y");
+        mutualFundNameToIdMap.put("HSBC Banking and PSU Debt Fund(DD-IDCW)", "M_LTAK");
+        mutualFundNameToIdMap.put("SBI Equity Minimum Variance Fund(IDCW-Payout)", "M_SBIQ");
+        mutualFundNameToIdMap.put("Axis Equity Hybrid Fund(Q-IDCW)", "M_AXIEY");
+        mutualFundNameToIdMap.put("Sundaram Services Fund", "M_SURV");
+        mutualFundNameToIdMap.put("Bank of India Liquid Fund(W-IDCW)", "M_BOAW");
+        mutualFundNameToIdMap.put("Edelweiss Liquid Fund(IDCW)", "M_EDCQ");
+        mutualFundNameToIdMap.put("SBI Nifty Midcap 150 Index Fund", "M_SB1X");
+        mutualFundNameToIdMap.put("Nippon India Banking & Financial Services Fund", "M_NIBU");
+        mutualFundNameToIdMap.put("ICICI Pru Banking & PSU Debt Fund(Q-IDCW)", "M_ICKQ");
+        mutualFundNameToIdMap.put("Edelweiss CRISIL IBX 50:50 Gilt Plus SDL June 2027 Index Fund(IDCW)", "M_EDSJ");
+        mutualFundNameToIdMap.put("Groww Value Fund(IDCW)", "M_GRWP");
+        mutualFundNameToIdMap.put("Mirae Asset Equity Savings Fund", "M_MIAG");
+        mutualFundNameToIdMap.put("HSBC Managed Solutions India-Moderate(IDCW-Payout)", "M_HSCP");
+        mutualFundNameToIdMap.put("360 ONE Dynamic Bond Fund", "M_IILP");
+        mutualFundNameToIdMap.put("Kotak FMP-308-1125D", "M_KOT0L");
+        mutualFundNameToIdMap.put("Kotak Equity Opp Fund(IDCW-Payout)", "M_KOTA");
+        mutualFundNameToIdMap.put("Axis Overnight Fund(W-IDCW)", "M_AXVW");
+        mutualFundNameToIdMap.put("Tata Overnight Fund(DD-IDCW)", "M_TAOA");
+        mutualFundNameToIdMap.put("Canara Rob Dynamic Bond Fund", "M_CABA");
+        mutualFundNameToIdMap.put("Invesco India Focused Fund", "M_INVC");
+        mutualFundNameToIdMap.put("UTI Equity Savings Fund(IDCW)", "M_UTIWY");
+        mutualFundNameToIdMap.put("SBI FMP-50-1843D(IDCW)", "M_SBWP");
+        mutualFundNameToIdMap.put("Union Retirement Fund", "M_UNRR");
+        mutualFundNameToIdMap.put("UTI Gilt Fund", "M_UTGGL");
+        mutualFundNameToIdMap.put("Aditya Birla SL Nifty SDL Sep 2025 Index Fund(IDCW)", "M_ADIE2");
+        mutualFundNameToIdMap.put("Tata ST Bond Fund(M-IDCW)", "M_TABO");
+        mutualFundNameToIdMap.put("ICICI Pru Liquid Fund(W-IDCW Payout)", "M_ICIWD");
+        mutualFundNameToIdMap.put("Axis Money Market Fund(A-IDCW)", "M_AXMK");
+        mutualFundNameToIdMap.put("Axis All Seasons Debt FOFs", "M_AXIT");
+        mutualFundNameToIdMap.put("Aditya Birla SL Asset Allocator FoF(IDCW-Payout)", "M_ADIBE");
+        mutualFundNameToIdMap.put("PGIM India ELSS Tax Saver Fund(IDCW)", "M_PGAL");
+        mutualFundNameToIdMap.put("Quant Manufacturing Fund", "M_QUMR");
+        mutualFundNameToIdMap.put("HSBC Medium Duration Fund(IDCW-Payout)", "M_LTRN");
+        mutualFundNameToIdMap.put("HSBC CRISIL IBX Gilt June 2027 Index Fund(IDCW)", "M_HSIJ");
+        mutualFundNameToIdMap.put("Nippon India Asset Allocator FoF(IDCW)", "M_NIPDS");
+        mutualFundNameToIdMap.put("Helios Flexi Cap Fund(IDCW)", "M_HELC");
+        mutualFundNameToIdMap.put("Kotak Technology Fund", "M_KOTTN");
+        mutualFundNameToIdMap.put("LIC MF Nifty Next 50 Index Fund", "M_IDIX");
+        mutualFundNameToIdMap.put("UTI Ultra Short Duration Fund(M-IDCW)", "M_UTIHO");
+        mutualFundNameToIdMap.put("Union ELSS Tax Saver Fund", "M_UNLG");
+        mutualFundNameToIdMap.put("Canara Rob Ultra Short Term Fund", "M_CARL");
+        mutualFundNameToIdMap.put("Invesco India Corporate Bond Fund", "M_INRP");
+        mutualFundNameToIdMap.put("Bandhan Bond Fund - Short Term Plan(P-IDCW)", "M_IDFOH");
+        mutualFundNameToIdMap.put("Bandhan Money Manager Fund(P-IDCW)Exch Reinv", "M_IDMM");
+        mutualFundNameToIdMap.put("HDFC Multi-Asset Fund(IDCW-Reinv)", "M_HDUM");
+        mutualFundNameToIdMap.put("Axis Overnight Fund", "M_AXOV");
+        mutualFundNameToIdMap.put("Tata Resources & Energy Fund(IDCW)", "M_TARP");
+        mutualFundNameToIdMap.put("UTI Medium Duration Fund", "M_UTFM");
+        mutualFundNameToIdMap.put("UTI ELSS Tax Saver Fund", "M_UTUX");
+        mutualFundNameToIdMap.put("Bandhan Balanced Advantage Fund(IDCW Reinv)", "M_IDDY");
+        mutualFundNameToIdMap.put("ITI Liquid Fund", "M_ITLN");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Short Duration Fund", "M_BASO");
+        mutualFundNameToIdMap.put("Axis CRISIL IBX 70:30 CPSE Plus SDL April 2025 Index Fund", "M_AXC7");
+        mutualFundNameToIdMap.put("HSBC Infrastructure Fund", "M_LTIS");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Low Duration Fund(DD-IDCW)", "M_BNSW");
+        mutualFundNameToIdMap.put("Aditya Birla SL CRISIL IBX Gilt April 2033 Index Fund", "M_ADI02");
+        mutualFundNameToIdMap.put("Kotak India EQ Contra Fund(IDCW)", "M_KONQ");
+        mutualFundNameToIdMap.put("ICICI Pru NASDAQ 100 Index Fund(IDCW)", "M_ICIW0");
+        mutualFundNameToIdMap.put("Nippon India Money Market Fund(W-IDCW)", "M_NIME");
+        mutualFundNameToIdMap.put("Bandhan G-Sec-Invest(Q-IDCW Reinvest)", "M_IDFVS");
+        mutualFundNameToIdMap.put("Aditya Birla SL Equity Advantage Fund(IDCW)", "M_ADVE");
+        mutualFundNameToIdMap.put("JM ELSS Tax Saver Fund(IDCW)", "M_JMTX");
+        mutualFundNameToIdMap.put("HDFC Index Fund-S&P BSE Sensex", "M_HDCIN");
+        mutualFundNameToIdMap.put("Axis Flexi Cap Fund(IDCW)", "M_AXXE");
+        mutualFundNameToIdMap.put("Franklin India G-Sec Fund(IDCW)", "M_FRGD");
+        mutualFundNameToIdMap.put("Quant Large Cap Fund", "M_QULP");
+        mutualFundNameToIdMap.put("ITI Liquid Fund(M-IDCW)", "M_ITQN");
+        mutualFundNameToIdMap.put("Kotak Multicap Fund(IDCW Payout)", "M_KOWC");
+        mutualFundNameToIdMap.put("ICICI Pru Ultra Short Term Fund Fund(Q-IDCW Payout)", "M_ICILT");
+        mutualFundNameToIdMap.put("Quant PSU Fund(IDCW)", "M_QUPT");
+        mutualFundNameToIdMap.put("Kotak ESG Exclusionary Strategy Fund(IDCW-Payout)", "M_KOTEP");
+        mutualFundNameToIdMap.put("UTI Ultra Short Duration Fund(H-IDCW)", "M_UTUUT");
+        mutualFundNameToIdMap.put("SBI FMP-61-1927D", "M_SBI7I");
+        mutualFundNameToIdMap.put("DSP India T.I.G.E.R Fund(IDCW-Reinv)", "M_DSPIN");
+        mutualFundNameToIdMap.put("Bandhan CRISIL IBX 90:10 SDL Plus Gilt - April 2032 Index Fund(IDCW)", "M_BAHS");
+        mutualFundNameToIdMap.put("SBI Short Term Debt Fund(W-IDCW Payout)", "M_SBSH");
+        mutualFundNameToIdMap.put("Aditya Birla SL Nifty Midcap 150 Index Fund", "M_AD5X");
+        mutualFundNameToIdMap.put("HDFC Low Duration Fund(M-IDCW Reinv)", "M_HDFL");
+        mutualFundNameToIdMap.put("Bank of India Large & Mid Cap Equity Fund(IDCW)", "M_BALK");
+        mutualFundNameToIdMap.put("ICICI Pru Transportation and Logistics Fund", "M_ICRCO");
+        mutualFundNameToIdMap.put("Aditya Birla SL Focused Fund(IDCW-Reinv)", "M_ADTLO");
+        mutualFundNameToIdMap.put("ICICI Pru Strategic Metal and Energy Equity FoF(IDCW)", "M_ICCYW");
+        mutualFundNameToIdMap.put("Nippon India Nifty Bank Index Fund", "M_NIPFB");
+        mutualFundNameToIdMap.put("HDFC Transportation and Logistics Fund(IDCW Reinvest)", "M_HDFWT");
+        mutualFundNameToIdMap.put("Quant Consumption Fund", "M_QUCG");
+        mutualFundNameToIdMap.put("Quant Focused Fund", "M_QUTT");
+        mutualFundNameToIdMap.put("DSP Nifty Midcap 150 Quality 50 Index Fund(IDCW)", "M_DSYW");
+        mutualFundNameToIdMap.put("Sundaram LT Micro Cap Tax Adv Fund-Sr III-(IDCW)", "M_SUTF");
+        mutualFundNameToIdMap.put("DSP Midcap Fund(IDCW)", "M_DSMU");
+        mutualFundNameToIdMap.put("Bank of India Conservative Hybrid Fund", "M_BOCN");
+        mutualFundNameToIdMap.put("SBI Flexicap Fund", "M_SBUC");
+        mutualFundNameToIdMap.put("DSP World Gold FoF", "M_DSWG");
+        mutualFundNameToIdMap.put("Canara Rob Banking and PSU Debt Fund", "M_CAAK");
+        mutualFundNameToIdMap.put("HSBC Business Cycles Fund(IDCW-Payout)", "M_LTBI");
+        mutualFundNameToIdMap.put("Quant Healthcare Fund(IDCW)", "M_QUHL");
+        mutualFundNameToIdMap.put("HSBC Global Emerging Markets Fund", "M_HSGO");
+        mutualFundNameToIdMap.put("Mirae Asset Nifty Smallcap 250 Momentum Quality 100 ETF FoF", "M_MINP");
+        mutualFundNameToIdMap.put("Union Liquid Fund(FN-IDCW Reinv)", "M_UNLD");
+        mutualFundNameToIdMap.put("Bandhan Nifty100 Low Volatility 30 Index Fund(IDCW)", "M_IDW0");
+        mutualFundNameToIdMap.put("Axis CRISIL IBX 50:50 Gilt Plus SDL June 2028 Index Fund", "M_AXC8");
+        mutualFundNameToIdMap.put("Tata Gold ETF FoF(IDCW Payout)", "M_TATOG");
+        mutualFundNameToIdMap.put("Bandhan Low Duration Fund(W-IDCW)", "M_IDWC");
+        mutualFundNameToIdMap.put("Tata Ultra Short Term Fund", "M_TAUH");
+        mutualFundNameToIdMap.put("Invesco India Money Market Fund(M-IDCW)", "M_INKM");
+        mutualFundNameToIdMap.put("Tata Nifty G-Sec Dec 2029 Index Fund(IDCW Payout)", "M_TAY9");
+        mutualFundNameToIdMap.put("Nippon India Nifty G-Sec Oct 2028 Maturity Index Fund", "M_NIS8");
+        mutualFundNameToIdMap.put("Kotak Nifty 50 Index Fund(IDCW)", "M_KOYP");
+        mutualFundNameToIdMap.put("HSBC Flexi Cap Fund", "M_HSMY");
+        mutualFundNameToIdMap.put("Kotak Quant Fund(IDCW)", "M_KOWQ");
+        mutualFundNameToIdMap.put("Navi ELSS Tax Saver Fund", "M_ESEV");
+        mutualFundNameToIdMap.put("ICICI Pru Corp Bond Fund(M-IDCW)", "M_ICCBO");
+        mutualFundNameToIdMap.put("HSBC Corporate Bond Fund(Q-IDCW Payout)", "M_LTTC");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Corp Bond Fund(Q-IDCW)", "M_BAQB");
+        mutualFundNameToIdMap.put("HSBC Corporate Bond Fund(H-IDCW)", "M_LTTD");
+        mutualFundNameToIdMap.put("Bandhan Arbitrage Fund(A-IDCW)", "M_IDAB");
+        mutualFundNameToIdMap.put("LIC MF Large & Midcap Fund", "M_LIFC");
+        mutualFundNameToIdMap.put("Aditya Birla SL Financial Planning FOF Aggressive Plan(IDCW)", "M_ADNV");
+        mutualFundNameToIdMap.put("WOC Pharma and Healthcare Fund", "M_WOPP");
+        mutualFundNameToIdMap.put("ITI Liquid Fund(W-IDCW)", "M_ITLD");
+        mutualFundNameToIdMap.put("UTI Equity Savings Fund(Q-IDCW)", "M_UTIWU");
+        mutualFundNameToIdMap.put("SBI FMP-45-1840D", "M_SBIP0");
+        mutualFundNameToIdMap.put("Axis Long Duration Fund", "M_AXISL");
+        mutualFundNameToIdMap.put("DSP Equity & Bond Fund(IDCW-Reinv)", "M_DSUO");
+        mutualFundNameToIdMap.put("Aditya Birla SL Floating Rate Fund(DD-IDCW)", "M_ADTOF");
+        mutualFundNameToIdMap.put("TRUSTMF Money Market Fund", "M_TRSA");
+        mutualFundNameToIdMap.put("TRUSTMF FMP-SR-II", "M_TRSI");
+        mutualFundNameToIdMap.put("Bandhan CRISIL IBX 90:10 SDL Plus Gilt - Sep 2027 Index Fund", "M_IDXE");
+        mutualFundNameToIdMap.put("LIC MF Children's Gift Fund", "M_LIFH");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty50 Value 20 Index Fund", "M_ICC0V");
+        mutualFundNameToIdMap.put("Union Medium Duration Fund", "M_UNIO");
+        mutualFundNameToIdMap.put("Invesco India Ultra Short Duration Fund(A-IDCW)", "M_INVCU");
+        mutualFundNameToIdMap.put("Kotak FMP-305-1200D(IDCW)", "M_KOW5");
+        mutualFundNameToIdMap.put("Aditya Birla SL Nifty SDL Apr 2027 Index Fund", "M_ADX7");
+        mutualFundNameToIdMap.put("Invesco India Credit Risk Fund(M-IDCW)", "M_INRK");
+        mutualFundNameToIdMap.put("ICICI Pru Thematic Advantage Fund", "M_ICCHH");
+        mutualFundNameToIdMap.put("Quant Multi Asset Fund", "M_QUNS");
+        mutualFundNameToIdMap.put("Axis All Seasons Debt FOFs(A-IDCW)", "M_AXIAL");
+        mutualFundNameToIdMap.put("Union Gilt Fund(A-IDCW)", "M_UNGU");
+        mutualFundNameToIdMap.put("WOC Flexi Cap Fund", "M_WOCE");
+        mutualFundNameToIdMap.put("SBI Banking & Financial Services Fund(IDCW-Payout)", "M_SBIK");
+        mutualFundNameToIdMap.put("Sundaram Short Duration Fund", "M_PRLS");
+        mutualFundNameToIdMap.put("Axis Floater Fund(DD-IDCW)", "M_AXNI");
+        mutualFundNameToIdMap.put("Union Flexi Cap Fund(IDCW)", "M_UNMO");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty Auto Index Fund(IDCW)", "M_ICCOX");
+        mutualFundNameToIdMap.put("WOC Liquid Fund(M-IDCW Payout)", "M_YESQ");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Credit Risk Fund", "M_BADG");
+        mutualFundNameToIdMap.put("Aditya Birla SL Liquid Fund", "M_ADTUF");
+        mutualFundNameToIdMap.put("SBI Energy Opportunities Fund", "M_SBINY");
+        mutualFundNameToIdMap.put("Aditya Birla SL Special Opp Fund", "M_ADIS");
+        mutualFundNameToIdMap.put("SBI Retirement Benefit Fund-Conservative Hybrid Plan(IDCW)Direct Plan", "M_SBIRH");
+        mutualFundNameToIdMap.put("ICICI Pru FMCG Fund", "M_ICPIC");
+        mutualFundNameToIdMap.put("Franklin India Liquid Fund-Super Inst(W-IDCW Payout)", "M_FRQR");
+        mutualFundNameToIdMap.put("HDFC Pharma and Healthcare Fund(IDCW)", "M_HDCPW");
+        mutualFundNameToIdMap.put("ICICI Pru Credit Risk Fund", "M_ICIKT");
+        mutualFundNameToIdMap.put("HSBC Arbitrage Fund", "M_LTAG");
+        mutualFundNameToIdMap.put("Sundaram Mid Cap Fund", "M_SUNIU");
+        mutualFundNameToIdMap.put("Tata Nifty SDL Plus AAA PSU Bond Dec 2027 60:40 Index Fund(IDCW)", "M_TAY2");
+        mutualFundNameToIdMap.put("Shriram Balanced Advantage Fund(IDCW-Payout)", "M_SHRI");
+        mutualFundNameToIdMap.put("Bank of India Large & Mid Cap Equity Fund(Q-IDCW)", "M_BALY");
+        mutualFundNameToIdMap.put("SBI Focused Equity Fund(IDCW)", "M_SBFY");
+        mutualFundNameToIdMap.put("Franklin India G-Sec Fund", "M_FRGI");
+        mutualFundNameToIdMap.put("HDFC Banking and PSU Debt Fund(IDCW-Reinv)", "M_HDBC");
+        mutualFundNameToIdMap.put("Nippon India Dynamic Bond Fund(Q-IDCW)", "M_NIPYN");
+        mutualFundNameToIdMap.put("JM Large Cap Fund(H-IDCW)", "M_JMGH");
+        mutualFundNameToIdMap.put("Bandhan All Seasons Bond Fund(FN-IDCW)", "M_BAEF");
+        mutualFundNameToIdMap.put("Franklin India Liquid Fund-Super Inst(DD-IDCW)", "M_FRQN");
+        mutualFundNameToIdMap.put("Axis Ultra Short Term Fund", "M_AXUR");
+        mutualFundNameToIdMap.put("Tata Small Cap Fund(IDCW)", "M_TASL");
+        mutualFundNameToIdMap.put("Tata Balanced Adv Fund(IDCW)", "M_TABL");
+        mutualFundNameToIdMap.put("Bandhan Infrastructure Fund(IDCW-Reinv)", "M_IDFI");
+        mutualFundNameToIdMap.put("Edelweiss Focused Fund(IDCW)", "M_EDFQ");
+        mutualFundNameToIdMap.put("DSP World Mining Fund(IDCW)", "M_DSWR");
+        mutualFundNameToIdMap.put("ICICI Pru Medium Term Bond Fund(Q-IDCW Payout)", "M_ICQO");
+        mutualFundNameToIdMap.put("HSBC Equity Savings Fund", "M_LTQQ");
+        mutualFundNameToIdMap.put("Aditya Birla SL Financial Planning FOF Aggressive Plan(IDCW-Payout)", "M_ADVO");
+        mutualFundNameToIdMap.put("HDFC Gilt Fund", "M_HDCGI");
+        mutualFundNameToIdMap.put("Tata Treasury Advantage Fund(IDCW-Payout)", "M_TARD");
+        mutualFundNameToIdMap.put("ICICI Pru Banking & Fin Serv Fund(IDCW)", "M_ICVK");
+        mutualFundNameToIdMap.put("HDFC Multi-Asset Fund", "M_HDCUU");
+        mutualFundNameToIdMap.put("SBI LT Advantage Fund-III", "M_SBTA");
+        mutualFundNameToIdMap.put("SBI Multi Asset Allocation Fund(M-IDCW)", "M_SBOM");
+        mutualFundNameToIdMap.put("Quant Focused Fund(IDCW)", "M_QUFF");
+        mutualFundNameToIdMap.put("Motilal Oswal Liquid Fund(DD-IDCW)", "M_MOIA");
+        mutualFundNameToIdMap.put("Axis Dynamic Bond Fund", "M_AXDO");
+        mutualFundNameToIdMap.put("SBI PSU Fund(IDCW-Payout)", "M_SBPS");
+        mutualFundNameToIdMap.put("LIC MF Long Term Value Fund", "M_IDBO");
+        mutualFundNameToIdMap.put("Sundaram Ultra Short Duration Fund(DD-IDCW)", "M_PRLA");
+        mutualFundNameToIdMap.put("Nippon India Banking & PSU Debt Fund(M-IDCW)", "M_NIKM");
+        mutualFundNameToIdMap.put("Bandhan Bond Fund - Income Plan", "M_IDFBO");
+        mutualFundNameToIdMap.put("DSP Top 100 Equity Fund", "M_DSTO");
+        mutualFundNameToIdMap.put("HDFC Long Duration Debt Fund(IDCW Reinvest)", "M_HDFOW");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Large & Mid Cap Fund(IDCW)", "M_BASC");
+        mutualFundNameToIdMap.put("ICICI Pru Asset Allocator Fund", "M_ICCSC");
+        mutualFundNameToIdMap.put("DSP US Flexible Equity Fund(IDCW)", "M_DSUS");
+        mutualFundNameToIdMap.put("Kotak Nifty Next 50 Index Fund", "M_KOIX");
+        mutualFundNameToIdMap.put("Mirae Asset Multicap Fund(IDCW)", "M_MIML");
+        mutualFundNameToIdMap.put("Edelweiss Overnight Fund", "M_EDEH");
+        mutualFundNameToIdMap.put("SBI Magnum Midcap Fund", "M_SBIAU");
+        mutualFundNameToIdMap.put("Sundaram Diversified Equity(IDCW)", "M_SUNS");
+        mutualFundNameToIdMap.put("Aditya Birla SL Pharma & Healthcare Fund", "M_ADYM");
+        mutualFundNameToIdMap.put("Mirae Asset Arbitrage Fund", "M_MIRC");
+        mutualFundNameToIdMap.put("PGIM India Overnight Fund", "M_PGIH");
+        mutualFundNameToIdMap.put("HDFC Multi Cap Fund", "M_HDCUI");
+        mutualFundNameToIdMap.put("JM Midcap Fund(IDCW)", "M_JMCD");
+        mutualFundNameToIdMap.put("Aditya Birla SL FTP-TI-1837D", "M_AD87");
+        mutualFundNameToIdMap.put("JM Large Cap Fund(IDCW)", "M_JMPA");
+        mutualFundNameToIdMap.put("Navi Nifty 50 Index Fund", "M_NAVI");
+        mutualFundNameToIdMap.put("Franklin India Corp Debt Fund-A(M-IDCW Payout)", "M_FRRR");
+        mutualFundNameToIdMap.put("Aditya Birla SL G-Sec Fund", "M_ADTCG");
+        mutualFundNameToIdMap.put("NJ ELSS Tax Saver Scheme", "M_NJES");
+        mutualFundNameToIdMap.put("BHARAT Bond FOF - April 2030 -(IDCW)", "M_BHR3");
+        mutualFundNameToIdMap.put("LIC MF Equity Savings Fund(Q-IDCW)", "M_IDBET");
+        mutualFundNameToIdMap.put("ICICI Pru Ultra Short Term Fund Fund", "M_ICCST");
+        mutualFundNameToIdMap.put("Tata Treasury Advantage Fund(IDCW)", "M_TAEY");
+        mutualFundNameToIdMap.put("JM Aggressive Hybrid Fund(A-IDCW)", "M_JMQP");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty SDL Sep 2027 Index Fund", "M_ICIX2");
+        mutualFundNameToIdMap.put("DSP CRISIL SDL Plus G-Sec Apr 2033 50:50 Index Fund", "M_DSRX");
+        mutualFundNameToIdMap.put("UTI Corporate Bond Fund", "M_UTOR");
+        mutualFundNameToIdMap.put("Motilal Oswal Nifty Microcap 250 Index Fund", "M_MOAN");
+        mutualFundNameToIdMap.put("Aditya Birla SL Savings Fund(W-IDCW)", "M_ADVW");
+        mutualFundNameToIdMap.put("Axis Multicap Fund", "M_AXNM");
+        mutualFundNameToIdMap.put("Mahindra Manulife Short Duration Fund", "M_MARA");
+        mutualFundNameToIdMap.put("Axis Global Innovation FoF(IDCW)", "M_AXBV");
+        mutualFundNameToIdMap.put("DSP Flexi Cap Fund(IDCW-Reinv)", "M_DSYQ");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Balanced Advantage Fund", "M_BAOC");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Conservative Hybrid Fund", "M_BNCC");
+        mutualFundNameToIdMap.put("Bank of India Mid & Small Cap Equity & Debt Fund", "M_BOAS");
+        mutualFundNameToIdMap.put("Axis Long Duration Fund(Q-IDCW)", "M_AXWA");
+        mutualFundNameToIdMap.put("UTI Quarterly Interval Fund-III", "M_UTYQ");
+        mutualFundNameToIdMap.put("SBI FMP-45-1840D(IDCW)", "M_SB5W");
+        mutualFundNameToIdMap.put("Franklin India Money Market Fund(Q-IDCW)", "M_FRYT");
+        mutualFundNameToIdMap.put("SBI FMP-44-1855D(IDCW)", "M_SB1W");
+        mutualFundNameToIdMap.put("LIC MF Money Market Fund", "M_LINK");
+        mutualFundNameToIdMap.put("Nippon India Money Market Fund(M-IDCW)", "M_NIWK");
+        mutualFundNameToIdMap.put("Navi Large & Midcap Fund(A-IDCW)", "M_NALL");
+        mutualFundNameToIdMap.put("ICICI Pru All Seasons Bond Fund(IDCW-Payout)", "M_ICIAO");
+        mutualFundNameToIdMap.put("UTI Arbitrage Fund(IDCW)", "M_UTIWB");
+        mutualFundNameToIdMap.put("ITI Ultra Short Duration Fund", "M_ITUH");
+        mutualFundNameToIdMap.put("ICICI Pru FMP-88-1226D-F(Q-IDCW)", "M_ICC6Q");
+        mutualFundNameToIdMap.put("ICICI Pru FMP-88-1226D-F", "M_ICP8M");
+        mutualFundNameToIdMap.put("Invesco India Corporate Bond Fund(Q-IDCW)", "M_INVCT");
+        mutualFundNameToIdMap.put("UTI Corporate Bond Fund(Q-IDCW)", "M_UTIPW");
+        mutualFundNameToIdMap.put("SBI Banking and PSU Fund(M-IDCW Payout)", "M_SBBN");
+        mutualFundNameToIdMap.put("DSP NIFTY Next 50 Index Fund(IDCW-Reinv)", "M_DSPI");
+        mutualFundNameToIdMap.put("Invesco India ESG Equity Fund", "M_INVEY");
+        mutualFundNameToIdMap.put("Nippon India Consumption Fund", "M_NIMU");
+        mutualFundNameToIdMap.put("Aditya Birla SL Business Cycle Fund(IDCW)", "M_ADIWC");
+        mutualFundNameToIdMap.put("Kotak Liquid Fund", "M_KOQD");
+        mutualFundNameToIdMap.put("Axis Corp Debt Fund(W-IDCW)", "M_AXICR");
+        mutualFundNameToIdMap.put("Motilal Oswal S&P BSE Enhanced Value Index Fund", "M_MOAS");
+        mutualFundNameToIdMap.put("SBI FMP-80-366D", "M_SBIC8");
+        mutualFundNameToIdMap.put("LIC MF Liquid Fund", "M_LILQ");
+        mutualFundNameToIdMap.put("ICICI Pru Bond Fund(Q-IDCW)", "M_ICCBQ");
+        mutualFundNameToIdMap.put("SBI Dynamic Bond Fund(IDCW)", "M_SBYM");
+        mutualFundNameToIdMap.put("Canara Rob Flexi Cap Fund", "M_CAOQ");
+        mutualFundNameToIdMap.put("PGIM India Large and Mid Cap Fund", "M_PGPL");
+        mutualFundNameToIdMap.put("PGIM India Hybrid Equity Fund(IDCW)", "M_PGHW");
+        mutualFundNameToIdMap.put("JM Low Duration Fund(FN-IDCW)", "M_JMOW");
+        mutualFundNameToIdMap.put("Bank of India Mfg & Infra Fund(Q-IDCW)", "M_BAKQ");
+        mutualFundNameToIdMap.put("Tata Resources & Energy Fund(IDCW-Payout)", "M_TARO");
+        mutualFundNameToIdMap.put("Aditya Birla SL Financial Planning FOF Conservative Plan(IDCW-Payout)", "M_ADIVO");
+        mutualFundNameToIdMap.put("HSBC Liquid Fund(M-IDCW Payout)", "M_HSAC");
+        mutualFundNameToIdMap.put("Nippon India Liquid Fund(Q-IDCW)", "M_NIPLQ");
+        mutualFundNameToIdMap.put("SBI Equity Hybrid Fund(IDCW-Payout)", "M_SBET");
+        mutualFundNameToIdMap.put("Sundaram Fin Serv Opp Fund(IDCW)", "M_SUNVF");
+        mutualFundNameToIdMap.put("Edelweiss NIFTY Large Mid Cap 250 Index Fund(IDCW)", "M_EDTA");
+        mutualFundNameToIdMap.put("HDFC Banking & Financial Services Fund(IDCW)", "M_HDKF");
+        mutualFundNameToIdMap.put("LIC MF Low Duration Fund(W-IDCW)", "M_LISW");
+        mutualFundNameToIdMap.put("UTI Short Duration Fund(F-IDCW)", "M_UTSSW");
+        mutualFundNameToIdMap.put("UTI Dynamic Bond Fund(H-IDCW)", "M_UTIYH");
+        mutualFundNameToIdMap.put("Aditya Birla SL Nifty Next 50 Index Fund", "M_ADIX0");
+        mutualFundNameToIdMap.put("TRUSTMF Banking & PSU Fund(Q-IDCW)", "M_TRTA");
+        mutualFundNameToIdMap.put("Mirae Asset Large Cap Fund", "M_MISL");
+        mutualFundNameToIdMap.put("Aditya Birla SL Nifty 50 Equal Weight Index Fund(IDCW)", "M_ADI50");
+        mutualFundNameToIdMap.put("HDFC Non-Cyclical Consumer Fund", "M_HDCOY");
+        mutualFundNameToIdMap.put("Nippon India FHF-XLIII-1-1755D(IDCW)", "M_NI1W");
+        mutualFundNameToIdMap.put("Bandhan Nifty100 Low Volatility 30 Index Fund(IDCW Reinvest)", "M_IDO3");
+        mutualFundNameToIdMap.put("Groww Dynamic Bond Fund(FN-IDCW)", "M_GRON");
+        mutualFundNameToIdMap.put("HDFC Capital Builder Value Fund(IDCW)", "M_HDAP");
+        mutualFundNameToIdMap.put("SBI FMP-72-1239D", "M_SBICE");
+        mutualFundNameToIdMap.put("SBI Long Duration Fund(IDCW)", "M_SBILC");
+        mutualFundNameToIdMap.put("SBI Nifty Next 50 Index Fund(IDCW Payout)", "M_SBX5");
+        mutualFundNameToIdMap.put("Tata Ultra Short Term Fund(M-IDCW Payout)", "M_TAUA");
+        mutualFundNameToIdMap.put("Sundaram ELSS Tax Saver Fund(H-IDCW)", "M_PRIX");
+        mutualFundNameToIdMap.put("Aditya Birla SL FMP-UQ-92D", "M_ADI9Q");
+        mutualFundNameToIdMap.put("SBI CRISIL IBX Gilt Index - June 2036 Fund(IDCW)", "M_SBLJ");
+        mutualFundNameToIdMap.put("Mahindra Manulife Low Duration Fund(M-IDCW Payout)", "M_MAIO");
+        mutualFundNameToIdMap.put("ICICI Pru Ultra Short Term Fund Fund(Q-IDCW)", "M_ICCAH");
+        mutualFundNameToIdMap.put("SBI Floating Rate Debt Fund(M-IDCW Payout)", "M_SBIL");
+        mutualFundNameToIdMap.put("Nippon India Inv-Qrtly-III(IDCW)", "M_NIPVI");
+        mutualFundNameToIdMap.put("HDFC NIFTY G-Sec Jun 2036 Index Fund", "M_HDCTU");
+        mutualFundNameToIdMap.put("Nippon India Gilt Securities Fund", "M_NIPPI");
+        mutualFundNameToIdMap.put("Axis Children's Gift Fund-Compulsory Lock in(IDCW)", "M_AXCH");
+        mutualFundNameToIdMap.put("UTI Annual Interval Fund-I", "M_UTISA");
+        mutualFundNameToIdMap.put("Nippon India Hybrid Bond Fund", "M_NIHB");
+        mutualFundNameToIdMap.put("ICICI Pru All Seasons Bond Fund(A-IDCW Payout)", "M_ICIAS");
+        mutualFundNameToIdMap.put("Mahindra Manulife Balanced Advantage Fund", "M_MARV");
+        mutualFundNameToIdMap.put("Aditya Birla SL Multi-Cap Fund(IDCW)", "M_ADYMT");
+        mutualFundNameToIdMap.put("HDFC NIFTY 100 Index Fund", "M_HDCTN");
+        mutualFundNameToIdMap.put("HSBC Arbitrage Fund(M-IDCW Payout)", "M_LTAB");
+        mutualFundNameToIdMap.put("Aditya Birla SL Pure Value Fund", "M_ADTPV");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty Auto Index Fund(IDCW Payout)", "M_ICCXU");
+        mutualFundNameToIdMap.put("Bandhan Low Duration Fund(M-IDCW)", "M_BAWA");
+        mutualFundNameToIdMap.put("ICICI Pru Credit Risk Fund(Q-IDCW)", "M_ICISK");
+        mutualFundNameToIdMap.put("SBI Corp Bond Fund(Q-IDCW)", "M_SBCQ");
+        mutualFundNameToIdMap.put("WOC ELSS Tax Saver Fund(IDCW)", "M_WOCT");
+        mutualFundNameToIdMap.put("ICICI Pru Ultra Short Term Fund Fund(M-IDCW Payout)", "M_ICILA");
+        mutualFundNameToIdMap.put("HSBC Liquid Fund(W-IDCW)", "M_HSQC");
+        mutualFundNameToIdMap.put("Aditya Birla SL Financial Planning FOF Moderate Plan(IDCW-Payout)", "M_ADTLM");
+        mutualFundNameToIdMap.put("Aditya Birla SL FMP-US-100D", "M_ADI0M");
+        mutualFundNameToIdMap.put("Aditya Birla SL Balanced Advantage Fund(IDCW-Payout)", "M_ADNU");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas India Consumption Fund(IDCW)", "M_BACP");
+        mutualFundNameToIdMap.put("Bank of India Multi Asset Allocation Fund", "M_BANKD");
+        mutualFundNameToIdMap.put("Aditya Birla SL Overnight Fund(W-IDCW)", "M_ADLV");
+        mutualFundNameToIdMap.put("UTI Silver ETF FoF", "M_UTSSI");
+        mutualFundNameToIdMap.put("SBI Short Term Debt Fund", "M_SBHT");
+        mutualFundNameToIdMap.put("UTI FTIF-XXXV-III(1176D)(Q-IDCW)", "M_UTW6");
+        mutualFundNameToIdMap.put("Bank of India Overnight Fund", "M_BOIR");
+        mutualFundNameToIdMap.put("Sundaram Global Brand Fund(IDCW)", "M_SUDMG");
+        mutualFundNameToIdMap.put("Invesco India Corporate Bond Fund(M-IDCW)", "M_INVSB");
+        mutualFundNameToIdMap.put("SBI Magnum Constant Maturity Fund", "M_SBNY");
+        mutualFundNameToIdMap.put("Invesco India Overnight Fund(DD-IDCW)", "M_INVD");
+        mutualFundNameToIdMap.put("Kotak Consumption Fund", "M_KOTCM");
+        mutualFundNameToIdMap.put("Bandhan Nifty200 Momentum 30 Index Fund(IDCW Reinvest)", "M_ID0W");
+        mutualFundNameToIdMap.put("LIC MF Conservative Hybrid Fund(A-IDCW)", "M_LIDA");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty50 Equal Weight Index Fund", "M_ICXH");
+        mutualFundNameToIdMap.put("Edelweiss Emerging Markets Opp Eq. Offshore Fund", "M_EDSH");
+        mutualFundNameToIdMap.put("UTI Ultra Short Duration Fund(FN-IDCW)", "M_UTIWS");
+        mutualFundNameToIdMap.put("Invesco India - Invesco Global Consumer Trends FoF", "M_INVSD");
+        mutualFundNameToIdMap.put("ICICI Pru Flexicap Fund(IDCW)", "M_ICXW");
+        mutualFundNameToIdMap.put("HSBC Managed Solutions India-Moderate", "M_HSMI");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty Smallcap 250 Index Fund", "M_ICIGX");
+        mutualFundNameToIdMap.put("Tata ELSS Tax Saver Fund", "M_TAAX");
+        mutualFundNameToIdMap.put("SBI Overnight Fund(W-IDCW)", "M_SBOG");
+        mutualFundNameToIdMap.put("DSP Nifty 50 Equal Weight Index Fund(IDCW)", "M_DSEL");
+        mutualFundNameToIdMap.put("PGIM India Hybrid Equity Fund(M-IDCW)", "M_PGHF");
+        mutualFundNameToIdMap.put("Invesco India Gold ETF FoF(IDCW)", "M_INVCO");
+        mutualFundNameToIdMap.put("Tata Floating Rate Fund(Q-IDCW)", "M_TAQC");
+        mutualFundNameToIdMap.put("Kotak Global Emerging Mkt Fund", "M_KOGO");
+        mutualFundNameToIdMap.put("Bandhan Liquid Fund", "M_IDFAH");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Banking and PSU Bond Fund(M-IDCW)", "M_BAIK");
+        mutualFundNameToIdMap.put("HSBC Equity Savings Fund(M-IDCW)", "M_HSEY");
+        mutualFundNameToIdMap.put("Franklin India Money Market Fund(DD-IDCW)", "M_FRSL");
+        mutualFundNameToIdMap.put("SBI FMP-92-91D", "M_SBITG");
+        mutualFundNameToIdMap.put("Kotak S&P BSE Housing Index Fund(IDCW Payout)", "M_KOHX");
+        mutualFundNameToIdMap.put("Mirae Asset Equity Allocator FoF(IDCW)", "M_MIQA");
+        mutualFundNameToIdMap.put("Bandhan Money Manager Fund", "M_IDTY");
+        mutualFundNameToIdMap.put("Aditya Birla SL Global Excellence Equity FoF", "M_ADTGO");
+        mutualFundNameToIdMap.put("SBI Nifty50 Equal Weight Index Fund(IDCW Payout)", "M_SB0Q");
+        mutualFundNameToIdMap.put("UTI Ultra Short Duration Fund(W-IDCW)", "M_UTUW");
+        mutualFundNameToIdMap.put("TRUSTMF Banking & PSU Fund(M-IDCW)", "M_TRTK");
+        mutualFundNameToIdMap.put("DSP Regular Savings Fund", "M_DSVS");
+        mutualFundNameToIdMap.put("Aditya Birla SL Global Excellence Equity FoF(IDCW)", "M_ADOU");
+        mutualFundNameToIdMap.put("SBI Liquid Fund(DD-IDCW)", "M_SBQC");
+        mutualFundNameToIdMap.put("Aditya Birla SL CRISIL IBX SDL Jun 2032 Index Fund(IDCW)", "M_ADX3");
+        mutualFundNameToIdMap.put("Mirae Asset Nifty Smallcap 250 Momentum Quality 100 ETF FoF(IDCW)", "M_MINM");
+        mutualFundNameToIdMap.put("Bank of India Multi Cap Fund(IDCW)", "M_BAKO");
+        mutualFundNameToIdMap.put("SBI CRISIL IBX SDL Index - Sep 2027 Fund", "M_SBX7");
+        mutualFundNameToIdMap.put("HDFC Low Duration Fund", "M_HDLW");
+        mutualFundNameToIdMap.put("Taurus Infrastructure Fund(IDCW)", "M_TAURW");
+        mutualFundNameToIdMap.put("Groww Largecap Fund(M-IDCW)", "M_GROP");
+        mutualFundNameToIdMap.put("HSBC Nifty 50 Index Fund(IDCW)", "M_LTN0");
+        mutualFundNameToIdMap.put("Franklin India Bluechip Fund(IDCW Payout)", "M_FRBW");
+        mutualFundNameToIdMap.put("SBI FMP-49-1823D(IDCW)", "M_SB9W");
+        mutualFundNameToIdMap.put("DSP Equity Savings Fund(Q-IDCW Reinv)", "M_DSEQ");
+        mutualFundNameToIdMap.put("Sundaram Liquid Fund", "M_PRSC");
+        mutualFundNameToIdMap.put("Franklin India Dynamic Asset Allocation FOFs(IDCW)", "M_FRYE");
+        mutualFundNameToIdMap.put("Edelweiss Liquid Fund(M-IDCW)", "M_EDPU");
+        mutualFundNameToIdMap.put("Kotak Medium Term Fund", "M_KOIL");
+        mutualFundNameToIdMap.put("LIC MF Ultra Short Duration Fund(DD-IDCW)", "M_LICU");
+        mutualFundNameToIdMap.put("Templeton India Value Fund(IDCW)", "M_TEPO");
+        mutualFundNameToIdMap.put("HDFC NIFTY Next 50 Index Fund", "M_HDCN5");
+        mutualFundNameToIdMap.put("HSBC Liquid Fund(M-IDCW)", "M_HSAH");
+        mutualFundNameToIdMap.put("Quant ESG Equity Fund", "M_QUAE");
+        mutualFundNameToIdMap.put("SBI Dividend Yield Fund(IDCW Payout)", "M_SBWV");
+        mutualFundNameToIdMap.put("HSBC Business Cycles Fund", "M_LTBE");
+        mutualFundNameToIdMap.put("HDFC Money Market Fund(W-IDCW Reinv)", "M_HDMK");
+        mutualFundNameToIdMap.put("Mirae Asset Banking and Financial Services Fund", "M_MIBB");
+        mutualFundNameToIdMap.put("Groww Aggressive Hybrid Fund(Q-IDCW)", "M_GROB");
+        mutualFundNameToIdMap.put("Nippon India Overnight Fund(Q-IDCW)", "M_NIPAV");
+        mutualFundNameToIdMap.put("Axis Focused 25 Fund", "M_AXFO");
+        mutualFundNameToIdMap.put("SBI Magnum Comma Fund(IDCW)", "M_SBIGU");
+        mutualFundNameToIdMap.put("HSBC Tax Saver Equity Fund", "M_HSTX");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty Alpha Low - Volatility 30 ETF FOF", "M_ICIWH");
+        mutualFundNameToIdMap.put("HDFC Dynamic Debt Fund(Q-IDCW Reinv)", "M_HDYC");
+        mutualFundNameToIdMap.put("Bandhan G-Sec-Invest(IDCW-Reinv)", "M_IDFEW");
+        mutualFundNameToIdMap.put("SBI Healthcare Opp Fund(IDCW)", "M_SBHL");
+        mutualFundNameToIdMap.put("LIC MF Banking & PSU Debt Fund(W-IDCW)", "M_LINB");
+        mutualFundNameToIdMap.put("DSP World Mining Fund", "M_DSWM");
+        mutualFundNameToIdMap.put("Quant Small Cap Fund", "M_QUNF");
+        mutualFundNameToIdMap.put("Nippon India Index Fund-S&P BSE Sensex Plan", "M_NIEG");
+        mutualFundNameToIdMap.put("Invesco India Low Duration Fund(DD-IDCW)", "M_INTC");
+        mutualFundNameToIdMap.put("Canara Rob Savings Fund(DD-IDCW)", "M_CAOF");
+        mutualFundNameToIdMap.put("Nippon India Corp Bond Fund(Q-IDCW)", "M_NIPCN");
+        mutualFundNameToIdMap.put("ICICI Pru Equity Savings Fund(Q-IDCW Payout)", "M_ICIQE");
+        mutualFundNameToIdMap.put("ICICI Pru Retirement Fund-Pure Equity Plan(IDCW)", "M_ICEM");
+        mutualFundNameToIdMap.put("HDFC FMP-Sr 46-1406D-Aug 2022(IDCW)", "M_HDFPW");
+        mutualFundNameToIdMap.put("Groww Largecap Fund(H-IDCW)", "M_GRWL");
+        mutualFundNameToIdMap.put("DSP NIFTY 50 Index Fund(IDCW-Reinv)", "M_DSP5");
+        mutualFundNameToIdMap.put("Axis NASDAQ 100 FoF(IDCW)", "M_AX1O");
+        mutualFundNameToIdMap.put("DSP Equity Savings Fund(M-IDCW Reinv)", "M_DSPV");
+        mutualFundNameToIdMap.put("Edelweiss Nifty Midcap150 Momentum 50 Index Fund", "M_EDNO");
+        mutualFundNameToIdMap.put("Aditya Birla SL Corp Bond Fund(IDCW)", "M_ADICU");
+        mutualFundNameToIdMap.put("DSP Savings Fund(IDCW-Reinv)", "M_DSSA");
+        mutualFundNameToIdMap.put("ICICI Pru Infrastructure Fund", "M_ICPCS");
+        mutualFundNameToIdMap.put("Nippon India Multi Cap Fund", "M_NIMB");
+        mutualFundNameToIdMap.put("Aditya Birla SL Nifty Smallcap 50 Index Fund(IDCW)", "M_ADW5");
+        mutualFundNameToIdMap.put("Zerodha Nifty LargeMidcap 250 Index Fund", "M_ZERD");
+        mutualFundNameToIdMap.put("Kotak Flexicap Fund", "M_KOSN");
+        mutualFundNameToIdMap.put("Kotak Manufacture in India Fund(IDCW)", "M_KOTAW");
+        mutualFundNameToIdMap.put("LIC MF Liquid Fund(DD-IDCW)", "M_LIIQ");
+        mutualFundNameToIdMap.put("UTI Corporate Bond Fund(H-IDCW)", "M_UTIPH");
+        mutualFundNameToIdMap.put("Tata Flexi Cap Fund", "M_TAMC");
+        mutualFundNameToIdMap.put("SBI Nifty50 Equal Weight Index Fund(IDCW)", "M_SB5Q");
+        mutualFundNameToIdMap.put("Canara Rob Multi Cap Fund", "M_CAML");
+        mutualFundNameToIdMap.put("Nippon India Nifty G-Sec Sep 2027 Maturity Index Fund", "M_NIG7");
+        mutualFundNameToIdMap.put("ICICI Pru Equity-Arbitrage Fund(IDCW)", "M_ICCYB");
+        mutualFundNameToIdMap.put("HSBC Small Cap Fund(IDCW)", "M_LTEB");
+        mutualFundNameToIdMap.put("Mirae Asset Equity Allocator FoF", "M_MIRI");
+        mutualFundNameToIdMap.put("Invesco India Ultra Short Duration Fund(Q-IDCW)", "M_INHQ");
+        mutualFundNameToIdMap.put("HSBC Banking and PSU Debt Fund(M-IDCW)", "M_LTBT");
+        mutualFundNameToIdMap.put("HSBC CRISIL IBX 50:50 Gilt Plus SDL Apr 2028 Index Fund(IDCW Payout)", "M_HSRW");
+        mutualFundNameToIdMap.put("Shriram Flexi Cap Fund(IDCW)", "M_SHRC");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Liquid Fund", "M_BALL");
+        mutualFundNameToIdMap.put("Tata Hybrid Equity Fund(IDCW-Payout)", "M_TAAH");
+        mutualFundNameToIdMap.put("Nippon India Inv-Qrtly-I", "M_NIQP");
+        mutualFundNameToIdMap.put("Motilal Oswal Developed Market Ex US ETFs FoF", "M_MOLK");
+        mutualFundNameToIdMap.put("HSBC Brazil Fund(IDCW)", "M_HSRA");
+        mutualFundNameToIdMap.put("Mahindra Manulife Consumption Fund", "M_MAIH");
+        mutualFundNameToIdMap.put("SBI Magnum Constant Maturity Fund(IDCW-Payout)", "M_SBAY");
+        mutualFundNameToIdMap.put("DSP Value Fund", "M_DSPVE");
+        mutualFundNameToIdMap.put("LIC MF Banking & PSU Debt Fund(M-IDCW)", "M_LIKM");
+        mutualFundNameToIdMap.put("SBI LT Advantage Fund-II-(IDCW)", "M_SBTN");
+        mutualFundNameToIdMap.put("Edelweiss Nifty PSU Bond Plus SDL Apr 2026 50:50 Index Fund(IDCW)", "M_EDFB");
+        mutualFundNameToIdMap.put("Mirae Asset Flexi Cap Fund(IDCW)", "M_MIFL");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty Pharma Index Fund(IDCW Payout)", "M_ICCHX");
+        mutualFundNameToIdMap.put("SBI Overnight Fund(DD-IDCW)", "M_SBOI");
+        mutualFundNameToIdMap.put("Bandhan G-Sec-Constant Maturity Plan", "M_IDFGO");
+        mutualFundNameToIdMap.put("LIC MF ULIS Regular Premium Reducing Cover HY 15Y(IDCW)", "M_LIME");
+        mutualFundNameToIdMap.put("Kotak Pioneer Fund(IDCW)", "M_KOTE");
+        mutualFundNameToIdMap.put("ICICI Pru Equity & Debt Fund(H-IDCW)", "M_ICIEI");
+        mutualFundNameToIdMap.put("Kotak Medium Term Fund(IDCW Payout)", "M_KOAM");
+        mutualFundNameToIdMap.put("Aditya Birla SL Multi Asset Allocation Fund", "M_ADYUO");
+        mutualFundNameToIdMap.put("Axis Strategic Bond Fund(Q-IDCW)", "M_AXITS");
+        mutualFundNameToIdMap.put("Mahindra Manulife Business Cycle Fund(IDCW)", "M_MAAB");
+        mutualFundNameToIdMap.put("Nippon India Nifty Bank Index Fund(IDCW)", "M_NIXK");
+        mutualFundNameToIdMap.put("Tata Nifty Midcap 150 Momentum 50 Index Fund(IDCW)", "M_TAY5");
+        mutualFundNameToIdMap.put("Motilal Oswal Small Cap Fund(IDCW)", "M_MOOP");
+        mutualFundNameToIdMap.put("PGIM India Large and Mid Cap Fund(IDCW)", "M_PGPF");
+        mutualFundNameToIdMap.put("Canara Rob Income Fund", "M_CAON");
+        mutualFundNameToIdMap.put("360 ONE Balanced Hybrid Fund(IDCW)", "M_360H");
+        mutualFundNameToIdMap.put("ICICI Pru Pharma Healthcare & Diagnostics (P.H.D) Fund-(IDCW)", "M_ICHH");
+        mutualFundNameToIdMap.put("ICICI Pru Savings Fund(IDCW-Payout)", "M_ICISR");
+        mutualFundNameToIdMap.put("Nippon India Banking & Financial Services Fund(IDCW)", "M_NIGK");
+        mutualFundNameToIdMap.put("SBI LT Advantage Fund-IV-(IDCW)", "M_SBLF");
+        mutualFundNameToIdMap.put("UTI Short Duration Fund(Q-IDCW)", "M_UTSSQ");
+        mutualFundNameToIdMap.put("Aditya Birla SL CRISIL IBX Gilt - April 2026 Index Fund(IDCW)", "M_ADIX2");
+        mutualFundNameToIdMap.put("ITI Banking & Financial Services Fund", "M_ITBA");
+        mutualFundNameToIdMap.put("ICICI Pru Quant Fund", "M_ICPGQ");
+        mutualFundNameToIdMap.put("Aditya Birla SL Nifty 50 Equal Weight Index Fund", "M_ADWX");
+        mutualFundNameToIdMap.put("Nippon India Index Fund-S&P BSE Sensex Plan(H-IDCW)", "M_NIBX");
+        mutualFundNameToIdMap.put("LIC MF ULIS Regular Premium Uniform Cover HY 15Y(IDCW)", "M_LIFL");
+        mutualFundNameToIdMap.put("HDFC NIFTY200 Momentum 30 Index Fund", "M_HDCYT");
+        mutualFundNameToIdMap.put("Invesco India PSU Equity Fund(IDCW)", "M_INVSQ");
+        mutualFundNameToIdMap.put("Groww Aggressive Hybrid Fund(H-IDCW)", "M_GROH");
+        mutualFundNameToIdMap.put("Aditya Birla SL MNC Fund(IDCW-Reinv)", "M_ADUM");
+        mutualFundNameToIdMap.put("Aditya Birla SL Regular Savings Fund(Payment)", "M_ADTEM");
+        mutualFundNameToIdMap.put("Kotak Focused Equity Fund(IDCW)", "M_KOTT");
+        mutualFundNameToIdMap.put("Aditya Birla SL Short Term Fund(IDCW)", "M_ADTHM");
+        mutualFundNameToIdMap.put("Nippon India Flexi Cap Fund", "M_NIPIX");
+        mutualFundNameToIdMap.put("DSP World Gold FoF(IDCW-Reinv)", "M_DSWF");
+        mutualFundNameToIdMap.put("Bandhan Equity Savings Fund", "M_IDQV");
+        mutualFundNameToIdMap.put("HSBC Managed Solutions India-Conservative", "M_HSML");
+        mutualFundNameToIdMap.put("Aditya Birla SL Overnight Fund(M-IDCW)", "M_ADRH");
+        mutualFundNameToIdMap.put("Motilal Oswal Nifty 50 Index Fund", "M_MOTN");
+        mutualFundNameToIdMap.put("HSBC Overnight Fund(M-IDCW)", "M_HSCR");
+        mutualFundNameToIdMap.put("ICICI Pru Bharat Consumption Fund", "M_ICBH");
+        mutualFundNameToIdMap.put("Edelweiss CRISIL PSU Plus SDL 50:50 Oct 2025 Index Fund(IDCW)", "M_EDCO");
+        mutualFundNameToIdMap.put("Nippon India Overnight Fund(M-IDCW)", "M_NIPAE");
+        mutualFundNameToIdMap.put("DSP Credit Risk Fund(DD-IDCW)", "M_DSIK");
+        mutualFundNameToIdMap.put("Bandhan Regular Savings Fund(IDCW)", "M_BAEV");
+        mutualFundNameToIdMap.put("Axis Gold Fund", "M_AXGD");
+        mutualFundNameToIdMap.put("Tata Equity Savings Fund(M-IDCW)", "M_TAQQ");
+        mutualFundNameToIdMap.put("Aditya Birla SL PSU Equity Fund(IDCW)", "M_ADTL");
+        mutualFundNameToIdMap.put("Edelweiss CRISIL PSU Plus SDL 50:50 Oct 2025 Index Fund", "M_EDCE");
+        mutualFundNameToIdMap.put("ICICI Pru Money Market Fund(W-IDCW)", "M_ICYW");
+        mutualFundNameToIdMap.put("Franklin India Flexi Cap Fund(IDCW Payout)", "M_FRXE");
+        mutualFundNameToIdMap.put("Franklin India Multi-Asset Solution FoF", "M_FRMU");
+        mutualFundNameToIdMap.put("Nippon India Focused Equity Fund", "M_NICY");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Medium Duration Fund(M-IDCW)", "M_BAMS");
+        mutualFundNameToIdMap.put("Tata Mid Cap Growth Fund(IDCW-Payout)", "M_TAMO");
+        mutualFundNameToIdMap.put("SBI Savings Fund(DD-IDCW)", "M_SBISV");
+        mutualFundNameToIdMap.put("UTI Low Duration Fund", "M_UTITS");
+        mutualFundNameToIdMap.put("ICICI Pru LT Wealth Enhancement Fund", "M_ICLA");
+        mutualFundNameToIdMap.put("Taurus Banking & Fin Serv Fund(IDCW)", "M_TAKR");
+        mutualFundNameToIdMap.put("SBI Technology Opp Fund(IDCW)", "M_SBCH");
+        mutualFundNameToIdMap.put("Nippon India Income Fund", "M_NIMG");
+        mutualFundNameToIdMap.put("ICICI Pru Global Stable Equity Fund", "M_ICCGP");
+        mutualFundNameToIdMap.put("HDFC ELSS Tax saver", "M_HDCTA");
+        mutualFundNameToIdMap.put("DSP Corp Bond Fund(M-IDCW)", "M_DSCF");
+        mutualFundNameToIdMap.put("ICICI Pru Overnight fund-Direct Plan-Unclaimed Redemption Stable Scheme", "M_ICPOV");
+        mutualFundNameToIdMap.put("PGIM India Corp Bond Fund", "M_PGPD");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Floater Fund", "M_BASB");
+        mutualFundNameToIdMap.put("Mahindra Manulife Focused Fund", "M_MAHD");
+        mutualFundNameToIdMap.put("JM Low Duration Fund", "M_JMOD");
+        mutualFundNameToIdMap.put("SBI FMP-41-1498D(IDCW)", "M_SBIPP");
+        mutualFundNameToIdMap.put("Nippon India Arbitrage Fund", "M_NIRE");
+        mutualFundNameToIdMap.put("Invesco India - Invesco EQQQ NASDAQ-100 ETF FoF", "M_INQ1");
+        mutualFundNameToIdMap.put("HSBC Dynamic Bond Fund(M-IDCW Payout)", "M_LTFI");
+        mutualFundNameToIdMap.put("Franklin India Debt Hybrid Fund", "M_FREC");
+        mutualFundNameToIdMap.put("Sundaram Money Market Fund(DD-IDCW)", "M_SUAK");
+        mutualFundNameToIdMap.put("ITI Dynamic Bond Fund(M-IDCW)", "M_ITDW");
+        mutualFundNameToIdMap.put("Aditya Birla SL Low Duration Fund", "M_ADIWA");
+        mutualFundNameToIdMap.put("Samco Dynamic Asset Allocation Fund", "M_SAMN");
+        mutualFundNameToIdMap.put("Mirae Asset Nifty India Manufacturing ETF FoF", "M_MINT");
+        mutualFundNameToIdMap.put("HSBC Global Emerging Markets Fund(IDCW)", "M_HSGL");
+        mutualFundNameToIdMap.put("HDFC FMP-Sr 46-1359D-Sep 2022(IDCW)", "M_HDW3");
+        mutualFundNameToIdMap.put("HDFC Top 100 Fund", "M_HDCTP");
+        mutualFundNameToIdMap.put("TRUSTMF Banking & PSU Fund(W-IDCW)", "M_TRUF");
+        mutualFundNameToIdMap.put("UTI Ultra Short Duration Fund", "M_UTHN");
+        mutualFundNameToIdMap.put("HSBC Large & Mid Cap Fund(IDCW)", "M_HSLL");
+        mutualFundNameToIdMap.put("Axis Credit Risk Fund", "M_AXRD");
+        mutualFundNameToIdMap.put("Aditya Birla SL FTP-TQ-1879D", "M_AD97");
+        mutualFundNameToIdMap.put("Axis Growth Opp Fund(IDCW)", "M_AXIGR");
+        mutualFundNameToIdMap.put("Aditya Birla SL Small Cap Fund", "M_ADICM");
+        mutualFundNameToIdMap.put("Shriram Balanced Advantage Fund(IDCW)", "M_SHRA");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Medium Duration Fund(H-IDCW)", "M_BAMH");
+        mutualFundNameToIdMap.put("Bank of India Ultra Short Duration Fund(DD-IDCW)", "M_BOUX");
+        mutualFundNameToIdMap.put("UTI Nifty Midcap 150 Quality 50 Index Fund", "M_UT5Y");
+        mutualFundNameToIdMap.put("PGIM India Gilt Fund(Q-IDCW)", "M_PGGF");
+        mutualFundNameToIdMap.put("DSP 10Y G-Sec Fund(M-IDCW Reinv)", "M_DS10");
+        mutualFundNameToIdMap.put("SBI Magnum Gilt Fund", "M_SBIGA");
+        mutualFundNameToIdMap.put("Quant Mid Cap Fund", "M_QUTD");
+        mutualFundNameToIdMap.put("DSP Banking & PSU Debt Fund(M-IDCW Reinv)", "M_DSBA");
+        mutualFundNameToIdMap.put("Aditya Birla SL Low Duration Fund(DD-IDCW)", "M_ADIWB");
+        mutualFundNameToIdMap.put("Mirae Asset Nifty AAA PSU Bond Plus SDL Apr 2026 50:50 Index Fund", "M_MIA5");
+        mutualFundNameToIdMap.put("Tata India Pharma & Healthcare Fund(IDCW-Payout)", "M_TAIP");
+        mutualFundNameToIdMap.put("DSP Banking & PSU Debt Fund(Q-IDCW Reinv)", "M_DSBB");
+        mutualFundNameToIdMap.put("HSBC Arbitrage Fund(Q-IDCW Payout)", "M_LTAA");
+        mutualFundNameToIdMap.put("Nippon India Nifty G-Sec Sep 2027 Maturity Index Fund(IDCW)", "M_NIC0");
+        mutualFundNameToIdMap.put("Franklin India Equity Advantage Fund(IDCW Payout)", "M_FREW");
+        mutualFundNameToIdMap.put("Aditya Birla SL FTP-UB-1224D", "M_ADI24");
+        mutualFundNameToIdMap.put("Canara Rob ELSS Tax Saver(IDCW)", "M_CARX");
+        mutualFundNameToIdMap.put("Shriram Flexi Cap Fund(IDCW-Payout)", "M_SHRU");
+        mutualFundNameToIdMap.put("Bandhan Nifty 50 Index Fund(IDCW-Reinv)", "M_IDFY");
+        mutualFundNameToIdMap.put("Nippon India Gilt Securities Fund(M-IDCW)", "M_NIPGO");
+        mutualFundNameToIdMap.put("Sundaram Banking & PSU Debt Fund", "M_SUKI");
+        mutualFundNameToIdMap.put("DSP 10Y G-Sec Fund(Q-IDCW Reinv)", "M_DS11");
+        mutualFundNameToIdMap.put("Tata Digital India Fund(IDCW)", "M_TADI");
+        mutualFundNameToIdMap.put("Mirae Asset Balanced Advantage Fund(IDCW)", "M_MIBG");
+        mutualFundNameToIdMap.put("Bandhan Sterling Value Fund", "M_IDLV");
+        mutualFundNameToIdMap.put("Motilal Oswal Liquid Fund(Q-IDCW)", "M_MOAU");
+        mutualFundNameToIdMap.put("Templeton India Equity Income Fund(IDCW Payout)", "M_TEPL");
+        mutualFundNameToIdMap.put("Aditya Birla SL Small Cap Fund(IDCW)", "M_ADTMY");
+        mutualFundNameToIdMap.put("Bandhan Equity Savings Fund(A-IDCW)Reinvest Exch", "M_IDES");
+        mutualFundNameToIdMap.put("Edelweiss Large Cap Fund(IDCW)", "M_EDPA");
+        mutualFundNameToIdMap.put("Kotak FMP-327-101D(IDCW)", "M_KOT7C");
+        mutualFundNameToIdMap.put("HDFC Non-Cyclical Consumer Fund(IDCW)", "M_HDFWI");
+        mutualFundNameToIdMap.put("Motilal Oswal Liquid Fund", "M_MOID");
+        mutualFundNameToIdMap.put("Axis Strategic Bond Fund", "M_AXTO");
+        mutualFundNameToIdMap.put("ICICI Pru Bharat 22 FOF", "M_ICB2");
+        mutualFundNameToIdMap.put("Union Arbitrage Fund(IDCW)", "M_UNNR");
+        mutualFundNameToIdMap.put("DSP Multi Asset Allocation Fund", "M_DSPUI");
+        mutualFundNameToIdMap.put("Taurus ELSS Tax Saver Fund", "M_TASH");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Multi Asset Fund", "M_BABL");
+        mutualFundNameToIdMap.put("Invesco India - Invesco Global Equity Income FoF", "M_INOQ");
+        mutualFundNameToIdMap.put("Kotak Equity Opp Fund(IDCW)", "M_KOQT");
+        mutualFundNameToIdMap.put("HDFC Charity Fund for Cancer Cure-Direct Plan-(75% IDCW Donation Option)", "M_HDH5");
+        mutualFundNameToIdMap.put("HDFC Dynamic Debt Fund(A-IDCW Reinv)", "M_HDDB");
+        mutualFundNameToIdMap.put("Axis Nifty Next 50 Index Fund", "M_AXFX");
+        mutualFundNameToIdMap.put("360 ONE Liquid Fund(DD-IDCW)", "M_IILC");
+        mutualFundNameToIdMap.put("Aditya Birla SL Medium Term Plan(Q-IDCW)", "M_ADTME");
+        mutualFundNameToIdMap.put("PGIM India Balanced Advantage Fund", "M_PGBB");
+        mutualFundNameToIdMap.put("Axis Retirement Savings Fund-Aggressive Plan(IDCW)", "M_AXSR");
+        mutualFundNameToIdMap.put("UTI FTIF-XXXVI-I(1574D)", "M_UT75");
+        mutualFundNameToIdMap.put("HSBC CRISIL IBX 50:50 Gilt Plus SDL Apr 2028 Index Fund", "M_HSRX");
+        mutualFundNameToIdMap.put("ICICI Pru Ultra Short Term Fund Fund(DD-IDCW)", "M_ICLP");
+        mutualFundNameToIdMap.put("Tata Multi Asset Opp Fund(IDCW-Payout)", "M_TATA");
+        mutualFundNameToIdMap.put("Mirae Asset CRISIL IBX Gilt Index - April 2033 Index Fund(IDCW)", "M_MIE3");
+        mutualFundNameToIdMap.put("Axis Nifty 50 Index Fund(IDCW)", "M_AX0Y");
+        mutualFundNameToIdMap.put("Tata Corp Bond Fund(M-IDCW)", "M_TATOP");
+        mutualFundNameToIdMap.put("Nippon India Nifty SDL Plus G-Sec - Jun 2029 Maturity 70:30 Index Fund(IDCW)", "M_NIE7");
+        mutualFundNameToIdMap.put("Kotak FMP-300-1223D", "M_KOTPA");
+        mutualFundNameToIdMap.put("Franklin India ST Income Plan(M-IDCW Payout)", "M_FRSY");
+        mutualFundNameToIdMap.put("Tata Balanced Adv Fund", "M_TABN");
+        mutualFundNameToIdMap.put("SBI FMP-43-1616D", "M_SBIP3");
+        mutualFundNameToIdMap.put("Union Dynamic Bond(IDCW-Payout)", "M_UNDO");
+        mutualFundNameToIdMap.put("Aditya Birla SL MNC Fund(IDCW)", "M_ADTMB");
+        mutualFundNameToIdMap.put("Bandhan Flexi Cap Fund", "M_IDFMM");
+        mutualFundNameToIdMap.put("Bajaj Finserv Balanced Advantage Fund", "M_BAJAF");
+        mutualFundNameToIdMap.put("SBI PSU Fund", "M_SBUP");
+        mutualFundNameToIdMap.put("Nippon India Banking & PSU Debt Fund(W-IDCW)", "M_NIKW");
+        mutualFundNameToIdMap.put("Nippon India Liquid Fund(DD-IDCW)", "M_NIQR");
+        mutualFundNameToIdMap.put("Union Value Fund", "M_UNOY");
+        mutualFundNameToIdMap.put("TRUSTMF Banking & PSU Fund(DD-IDCW)", "M_TRUB");
+        mutualFundNameToIdMap.put("Aditya Birla SL CRISIL IBX Gilt Apr 2028 Index Fund(IDCW)", "M_ADIG8");
+        mutualFundNameToIdMap.put("Edelweiss Nifty Smallcap 250 Index Fund(IDCW)", "M_EDFR");
+        mutualFundNameToIdMap.put("DSP Low Duration Fund(W-IDCW)", "M_DSPLW");
+        mutualFundNameToIdMap.put("UTI Credit Risk Fund(A-IDCW)", "M_UTIIK");
+        mutualFundNameToIdMap.put("HSBC Liquid Fund(DD-IDCW)", "M_HSAU");
+        mutualFundNameToIdMap.put("Bandhan Asset Alloc FoF-Cons(IDCW)", "M_BAEC");
+        mutualFundNameToIdMap.put("Tata Gold ETF FoF", "M_TATOE");
+        mutualFundNameToIdMap.put("Nippon India Gold Savings Fund(IDCW)", "M_NIPGI");
+        mutualFundNameToIdMap.put("JM Large Cap Fund(M-IDCW)", "M_JMRM");
+        mutualFundNameToIdMap.put("Tata Nifty India Digital ETF FoF", "M_TATNT");
+        mutualFundNameToIdMap.put("Aditya Birla SL Liquid Fund(DD-IDCW)", "M_ADTUD");
+        mutualFundNameToIdMap.put("Nippon India Low Duration Fund(Q-IDCW)", "M_NIPLA");
+        mutualFundNameToIdMap.put("Nippon India Index Fund-S&P BSE Sensex Plan(Q-IDCW)", "M_NIPAX");
+        mutualFundNameToIdMap.put("Parag Parikh ELSS Tax Saver Fund", "M_PARA");
+        mutualFundNameToIdMap.put("Mirae Asset Midcap Fund(IDCW)", "M_MIMI");
+        mutualFundNameToIdMap.put("Nippon India Equity Savings Fund", "M_NIEQ");
+        mutualFundNameToIdMap.put("Edelweiss Nifty PSU Bond Plus SDL Apr 2026 50:50 Index Fund", "M_EDS6");
+        mutualFundNameToIdMap.put("Mahindra Manulife Dynamic Bond Fund-(IDCW)", "M_MAND");
+        mutualFundNameToIdMap.put("SBI FMP-47-1434D", "M_SBIPC");
+        mutualFundNameToIdMap.put("HDFC Dynamic Debt Fund", "M_HDFBY");
+        mutualFundNameToIdMap.put("Bandhan Nifty IT Index Fund(IDCW)", "M_BAXN");
+        mutualFundNameToIdMap.put("Kotak Floating Rate Fund(IDCW)", "M_KOTFU");
+        mutualFundNameToIdMap.put("HSBC Dynamic Bond Fund(M-IDCW)", "M_LTLB");
+        mutualFundNameToIdMap.put("Bandhan Banking & PSU Debt Fund", "M_IDKP");
+        mutualFundNameToIdMap.put("DSP Low Duration Fund(Q-IDCW Reinv)", "M_DSLL");
+        mutualFundNameToIdMap.put("DSP Ultra Short Fund(DD-IDCW)", "M_DSAH");
+        mutualFundNameToIdMap.put("Quantum Long Term Equity Value Fund", "M_QUTR");
+        mutualFundNameToIdMap.put("HSBC Infrastructure Fund(IDCW Payout)", "M_LTNR");
+        mutualFundNameToIdMap.put("Edelweiss Nifty 100 Quality 30 Index Fund(IDCW)", "M_EDN3");
+        mutualFundNameToIdMap.put("HSBC Large Cap Fund(IDCW)", "M_HSLP");
+        mutualFundNameToIdMap.put("SBI BlueChip Fund(IDCW-Payout)", "M_SBBU");
+        mutualFundNameToIdMap.put("LIC MF Liquid Fund(M-IDCW)", "M_IDBLD");
+        mutualFundNameToIdMap.put("Bandhan Asset Alloc FoF-Aggr", "M_IDFAA");
+        mutualFundNameToIdMap.put("ICICI Pru Liquid Fund(W-IDCW)", "M_ICQW");
+        mutualFundNameToIdMap.put("UTI Innovation Fund", "M_UTNIV");
+        mutualFundNameToIdMap.put("SBI FMP-34-3682D(IDCW)", "M_SBIP");
+        mutualFundNameToIdMap.put("ICICI Pru Short Term Fund(M-IDCW)", "M_ICCSN");
+        mutualFundNameToIdMap.put("UTI Small Cap Fund", "M_UTSSA");
+        mutualFundNameToIdMap.put("ICICI Pru Regular Savings Fund(Q-IDCW Payout)", "M_ICVS");
+        mutualFundNameToIdMap.put("Franklin India Equity Hybrid Fund(IDCW)", "M_FREU");
+        mutualFundNameToIdMap.put("NJ Overnight Fund", "M_NJOV");
+        mutualFundNameToIdMap.put("Tata Retirement Sav Fund - Cons Plan", "M_TAEO");
+        mutualFundNameToIdMap.put("Invesco India Ultra Short Duration Fund(DD-IDCW)", "M_INEH");
+        mutualFundNameToIdMap.put("Bajaj Finserv Large and Mid Cap Fund", "M_BAJAL");
+        mutualFundNameToIdMap.put("Sundaram Balanced Advantage Fund", "M_PRBI");
+        mutualFundNameToIdMap.put("ICICI Pru Multi-Asset Fund(IDCW)", "M_ICPPR");
+        mutualFundNameToIdMap.put("Nippon India Arbitrage Fund(IDCW)", "M_NIPRO");
+        mutualFundNameToIdMap.put("Bandhan Money Manager Fund(DD-IDCW)", "M_IDYF");
+        mutualFundNameToIdMap.put("UTI Liquid Fund(FN-IDCW)", "M_UTIHU");
+        mutualFundNameToIdMap.put("Nippon India Growth Fund(IDCW)", "M_NIPGN");
+        mutualFundNameToIdMap.put("Aditya Birla SL Nifty Midcap 150 Index Fund(IDCW)", "M_ADX5");
+        mutualFundNameToIdMap.put("Edelweiss US Value Equity Offshore Fund", "M_EDIH");
+        mutualFundNameToIdMap.put("PGIM India Flexi Cap Fund(IDCW)", "M_PGFL");
+        mutualFundNameToIdMap.put("HDFC Mid-Cap Opportunities Fund(IDCW-Reinv)", "M_HDCMO");
+        mutualFundNameToIdMap.put("Canara Rob Short Duration Fund(Q-IDCW)", "M_CASD");
+        mutualFundNameToIdMap.put("Aditya Birla SL CRISIL IBX Gilt - April 2026 Index Fund", "M_ADIX6");
+        mutualFundNameToIdMap.put("SBI Credit Risk Fund(IDCW)", "M_SBTK");
+        mutualFundNameToIdMap.put("ICICI Pru Passive Strategy Fund", "M_ICCGY");
+        mutualFundNameToIdMap.put("HSBC Dynamic Bond Fund", "M_LTEO");
+        mutualFundNameToIdMap.put("Canara Rob Focused Equity Fund", "M_CAFF");
+        mutualFundNameToIdMap.put("Axis Small Cap Fund", "M_AXMC");
+        mutualFundNameToIdMap.put("LIC MF Focused 30 Equity Fund", "M_IDB0");
+        mutualFundNameToIdMap.put("ITI Arbitrage Fund(IDCW)", "M_ITAT");
+        mutualFundNameToIdMap.put("Mirae Asset Nifty 100 ESG Sector Leaders FoF", "M_MIRS");
+        mutualFundNameToIdMap.put("Invesco India Medium Duration Fund(IDCW)", "M_INWA");
+        mutualFundNameToIdMap.put("SBI Retirement Benefit Fund-Aggressive Hybrid Plan(IDCW)", "M_SBVY");
+        mutualFundNameToIdMap.put("Franklin India Flexi Cap Fund", "M_FREE");
+        mutualFundNameToIdMap.put("Nippon India Ultra Short Duration Fund(W-IDCW)", "M_NIUW");
+        mutualFundNameToIdMap.put("BHARAT Bond ETF FOF - April 2032 -(IDCW)", "M_BHRI");
+        mutualFundNameToIdMap.put("Quant Liquid Plan(DD-IDCW)", "M_QUNQ");
+        mutualFundNameToIdMap.put("UTI Short Duration Fund", "M_UTISC");
+        mutualFundNameToIdMap.put("Quant Gilt Fund", "M_QUGG");
+        mutualFundNameToIdMap.put("Kotak Gilt Fund-PF&Trust", "M_KOGS");
+        mutualFundNameToIdMap.put("UTI Banking & PSU Fund(H-IDCW)", "M_UTIBK");
+        mutualFundNameToIdMap.put("DSP Healthcare Fund", "M_DSHA");
+        mutualFundNameToIdMap.put("Aditya Birla SL Gold Fund(IDCW-Reinv)", "M_ADIUO");
+        mutualFundNameToIdMap.put("DSP Credit Risk Fund(Q-IDCW)", "M_DSCQ");
+        mutualFundNameToIdMap.put("UTI Medium Duration Fund(F-IDCW)", "M_UTIWM");
+        mutualFundNameToIdMap.put("DSP Ultra Short Fund(IDCW-Reinv)", "M_DSHU");
+        mutualFundNameToIdMap.put("Groww Nifty Total Market Index Fund", "M_GRWY");
+        mutualFundNameToIdMap.put("SBI Liquid Fund(FN-IDCW Payout)", "M_SBLP");
+        mutualFundNameToIdMap.put("Nippon India Nifty G-Sec Oct 2028 Maturity Index Fund(IDCW)", "M_NIE0");
+        mutualFundNameToIdMap.put("Bank of India Flexi Cap Fund(IDCW)", "M_BAKA");
+        mutualFundNameToIdMap.put("Aditya Birla SL Retirement Fund-30(IDCW-Reinv)", "M_ADT3");
+        mutualFundNameToIdMap.put("UTI Overnight Fund", "M_UTHV");
+        mutualFundNameToIdMap.put("Invesco India Largecap Fund", "M_INRI");
+        mutualFundNameToIdMap.put("Templeton India Value Fund", "M_TEMO");
+        mutualFundNameToIdMap.put("HDFC Banking & Financial Services Fund", "M_HDKK");
+        mutualFundNameToIdMap.put("ICICI Pru Liquid Fund(IDCW)", "M_ICCLQ");
+        mutualFundNameToIdMap.put("LIC MF Liquid Fund(W-IDCW)", "M_IDBLU");
+        mutualFundNameToIdMap.put("Axis Treasury Advantage Fund", "M_AXAD");
+        mutualFundNameToIdMap.put("UTI Nifty 50 Index Fund", "M_UTXU");
+        mutualFundNameToIdMap.put("Axis Ultra Short Term Fund(DD-IDCW)", "M_AXUL");
+        mutualFundNameToIdMap.put("Kotak Infra & Eco Reform Fund(IDCW-Payout)", "M_KOAI");
+        mutualFundNameToIdMap.put("Franklin India Equity Hybrid Fund(IDCW Payout)", "M_FRQB");
+        mutualFundNameToIdMap.put("ICICI Pru S&P BSE Sensex Index Fund", "M_ICSN");
+        mutualFundNameToIdMap.put("Bandhan Nifty100 Low Volatility 30 Index Fund", "M_ID1V");
+        mutualFundNameToIdMap.put("UTI CRISIL SDL Maturity April 2033 Index Fund", "M_UTS3");
+        mutualFundNameToIdMap.put("Canara Rob Savings Fund", "M_CAOV");
+        mutualFundNameToIdMap.put("Mirae Asset NYSE FANG+ETF FoF", "M_MINA");
+        mutualFundNameToIdMap.put("Kotak Nifty SDL Jul 2033 Index Fund(IDCW)", "M_KOJY");
+        mutualFundNameToIdMap.put("Franklin India Banking & PSU Debt Fund", "M_FRBK");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas India Consumption Fund", "M_BNAB");
+        mutualFundNameToIdMap.put("Groww ELSS Tax Saver Fund", "M_INIX");
+        mutualFundNameToIdMap.put("Canara Rob Liquid Fund(IDCW)", "M_CABI");
+        mutualFundNameToIdMap.put("Nippon India Quant Fund(IDCW)", "M_NIPQO");
+        mutualFundNameToIdMap.put("Groww Aggressive Hybrid Fund(M-IDCW)", "M_GROG");
+        mutualFundNameToIdMap.put("Nippon India Taiwan Equity Fund", "M_NIWY");
+        mutualFundNameToIdMap.put("Bank of India Multi Asset Allocation Fund(IDCW)", "M_BANKI");
+        mutualFundNameToIdMap.put("Franklin India Focused Equity Fund(IDCW)", "M_FRTQ");
+        mutualFundNameToIdMap.put("Tata S&P BSE Sensex Index Fund", "M_TAIX");
+        mutualFundNameToIdMap.put("LIC MF ULIS Regular Premium Uniform Cover Mthly 10Y(IDCW)", "M_LIFR");
+        mutualFundNameToIdMap.put("360 ONE Liquid Fund", "M_IILT");
+        mutualFundNameToIdMap.put("UTI MNC Fund(IDCW)", "M_UTMMF");
+        mutualFundNameToIdMap.put("Mirae Asset Short Duration Fund", "M_MIEH");
+        mutualFundNameToIdMap.put("ICICI Pru Innovation Fund", "M_ICPFV");
+        mutualFundNameToIdMap.put("Navi Aggressive Hybrid Fund(IDCW)", "M_NAET");
+        mutualFundNameToIdMap.put("HDFC Asset Allocator FoF(IDCW Reinv)", "M_HDSW");
+        mutualFundNameToIdMap.put("UTI NIFTY50 Equal Weight Index Fund", "M_UT5U");
+        mutualFundNameToIdMap.put("Axis Multicap Fund(IDCW)", "M_AXWP");
+        mutualFundNameToIdMap.put("Tata Multi Asset Opp Fund", "M_TATI");
+        mutualFundNameToIdMap.put("DSP Arbitrage Fund(IDCW)", "M_DSAD");
+        mutualFundNameToIdMap.put("Mirae Asset Multi Asset Allocation Fund", "M_MIUD");
+        mutualFundNameToIdMap.put("SBI Banking and PSU Fund(DD-IDCW)", "M_SBKB");
+        mutualFundNameToIdMap.put("Franklin India Technology Fund", "M_FRTK");
+        mutualFundNameToIdMap.put("Nippon India FHF-XLV-4-1111D(IDCW)", "M_NIW4");
+        mutualFundNameToIdMap.put("Nippon India Nifty AAA PSU Bond Plus SDL - Sep 2026 Maturity 50:50 Index Fund(IDCW)", "M_NIS5");
+        mutualFundNameToIdMap.put("UTI Floater Fund(H-IDCW)", "M_UTIEH");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Aqua FoF", "M_BNUB");
+        mutualFundNameToIdMap.put("SBI Magnum Income Fund(Q-IDCW)", "M_SBNQ");
+        mutualFundNameToIdMap.put("LIC MF ULIS Regular Premium Reducing Cover Mthly 15Y(IDCW)", "M_LIFM");
+        mutualFundNameToIdMap.put("HSBC Consumption Fund(IDCW)", "M_HSNU");
+        mutualFundNameToIdMap.put("Franklin India ST Income Plan", "M_FRST");
+        mutualFundNameToIdMap.put("Union Children's Fund", "M_UNCL");
+        mutualFundNameToIdMap.put("Union Value Fund(IDCW-Reinv)", "M_UNIY");
+        mutualFundNameToIdMap.put("Sundaram Infra Advantage Fund", "M_SUNIV");
+        mutualFundNameToIdMap.put("UTI S&P BSE Housing Index Fund", "M_UTISB");
+        mutualFundNameToIdMap.put("Taurus Mid Cap Fund", "M_TACV");
+        mutualFundNameToIdMap.put("SBI Dividend Yield Fund", "M_SBIDY");
+        mutualFundNameToIdMap.put("Tata Large & Mid Cap Fund", "M_TATAU");
+        mutualFundNameToIdMap.put("Nippon India US Equity Opp Fund(IDCW)", "M_NIPAT");
+        mutualFundNameToIdMap.put("ITI Small Cap Fund", "M_ITIM");
+        mutualFundNameToIdMap.put("Nippon India Ultra Short Duration Fund(M-IDCW)", "M_NIPUO");
+        mutualFundNameToIdMap.put("HSBC Banking and PSU Debt Fund(W-IDCW)", "M_LTBK");
+        mutualFundNameToIdMap.put("HSBC Arbitrage Fund(Q-IDCW)", "M_LTAR");
+        mutualFundNameToIdMap.put("Bandhan Equity Savings Fund(M-IDCW)", "M_BAEY");
+        mutualFundNameToIdMap.put("Motilal Oswal Ultra Short Term Fund(DD-IDCW)", "M_MOLH");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Multi Asset Fund(IDCW)", "M_BASM");
+        mutualFundNameToIdMap.put("Mirae Asset Large & Midcap Fund", "M_MISM");
+        mutualFundNameToIdMap.put("ICICI Pru Equity-Arbitrage Fund(IDCW-Payout)", "M_ICIEE");
+        mutualFundNameToIdMap.put("HSBC Short Duration Fund(Q-IDCW Payout)", "M_LTSR");
+        mutualFundNameToIdMap.put("Edelweiss Overnight Fund(M-IDCW)", "M_EDOP");
+        mutualFundNameToIdMap.put("SBI Short Term Debt Fund(FN-IDCW)", "M_SBHM");
+        mutualFundNameToIdMap.put("Nippon India Consumption Fund(IDCW)", "M_NIPCA");
+        mutualFundNameToIdMap.put("HDFC FMP-Sr 47-1269D-March 2023(Q-IDCW)", "M_HDWH");
+        mutualFundNameToIdMap.put("Bandhan Nifty Alpha 50 Index Fund", "M_BAH5");
+        mutualFundNameToIdMap.put("HDFC Defence Fund(IDCW Reinvest)", "M_HDFWD");
+        mutualFundNameToIdMap.put("Motilal Oswal 5 Year G-Sec FoF", "M_MOLY");
+        mutualFundNameToIdMap.put("PGIM India Ultra Short Duration Fund", "M_PGUI");
+        mutualFundNameToIdMap.put("SBI Banking & Financial Services Fund(IDCW)", "M_SBAK");
+        mutualFundNameToIdMap.put("Tata Young Citizen Fund", "M_TATZ");
+        mutualFundNameToIdMap.put("Tata Small Cap Fund(IDCW-Payout)", "M_TASS");
+        mutualFundNameToIdMap.put("HDFC Flexi Cap Fund", "M_HDCEQ");
+        mutualFundNameToIdMap.put("SBI Magnum Global Fund(IDCW)", "M_SBOT");
+        mutualFundNameToIdMap.put("Invesco India ELSS Tax Saver Fund", "M_INTN");
+        mutualFundNameToIdMap.put("Tata Nifty India Digital ETF FoF(IDCW Payout)", "M_TATNG");
+        mutualFundNameToIdMap.put("HDFC Housing Opp Fund(IDCW)", "M_HDHC");
+        mutualFundNameToIdMap.put("SBI Magnum Ultra Short Duration Fund", "M_SBRH");
+        mutualFundNameToIdMap.put("ICICI Pru Equity & Debt Fund(H-IDCW Payout)", "M_ICIQH");
+        mutualFundNameToIdMap.put("LIC MF Gilt Fund", "M_LIGF");
+        mutualFundNameToIdMap.put("Kotak Balanced Advantage Fund(IDCW)", "M_KOBK");
+        mutualFundNameToIdMap.put("Zerodha ELSS Tax Saver Nifty LargeMidcap 250 Index Fund", "M_ZERO");
+        mutualFundNameToIdMap.put("Aditya Birla SL Nifty SDL Plus PSU Bond Sep 2026 60:40 Index Fund", "M_AD06");
+        mutualFundNameToIdMap.put("SBI FMP-73-1226D", "M_SBICL");
+        mutualFundNameToIdMap.put("Franklin India Income Opportunities Fund(IDCW)", "M_FRWC");
+        mutualFundNameToIdMap.put("PGIM India Hybrid Equity Fund", "M_PGHA");
+        mutualFundNameToIdMap.put("SBI Small Cap Fund(IDCW-Payout)", "M_SBSM");
+        mutualFundNameToIdMap.put("Bandhan Floating Rate Fund(DD-IDCW)", "M_IDFTO");
+        mutualFundNameToIdMap.put("Mahindra Manulife Low Duration Fund(W-IDCW)", "M_MADR");
+        mutualFundNameToIdMap.put("Bandhan Large Cap Fund", "M_IDFLL");
+        mutualFundNameToIdMap.put("Kotak Nifty SDL Jul 2033 Index Fund", "M_KOLJ");
+        mutualFundNameToIdMap.put("HSBC Credit Risk Fund(A-IDCW)", "M_LTCE");
+        mutualFundNameToIdMap.put("ITI Overnight Fund", "M_ITIF");
+        mutualFundNameToIdMap.put("Invesco India Aggressive Hybrid Fund", "M_INEY");
+        mutualFundNameToIdMap.put("HDFC Dynamic PE Ratio FOF(IDCW-Reinv)", "M_HDYY");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty 100 Low Volatility 30 ETF FOF", "M_ICIWF");
+        mutualFundNameToIdMap.put("WOC Mid Cap Fund", "M_WOCD");
+        mutualFundNameToIdMap.put("Tata Arbitrage Fund(M-IDCW)", "M_TARU");
+        mutualFundNameToIdMap.put("Mirae Asset ELSS Tax Saver Fund(IDCW)", "M_MIRX");
+        mutualFundNameToIdMap.put("HDFC FMP-Sr 46-1158D-July 2022(Q-IDCW)", "M_HDJW");
+        mutualFundNameToIdMap.put("SBI PSU Fund(IDCW)", "M_SBUS");
+        mutualFundNameToIdMap.put("Navi Nifty Midcap 150 Index Fund", "M_NAVM");
+        mutualFundNameToIdMap.put("Motilal Oswal Gold and Silver ETFs FoF", "M_MOAG");
+        mutualFundNameToIdMap.put("ICICI Pru Housing Opp Fund(IDCW)", "M_ICCNW");
+        mutualFundNameToIdMap.put("HSBC Overnight Fund(W-IDCW)", "M_HSCN");
+        mutualFundNameToIdMap.put("Tata Corp Bond Fund(Q-IDCW)", "M_TATCU");
+        mutualFundNameToIdMap.put("DSP Liquidity Fund", "M_DSYL");
+        mutualFundNameToIdMap.put("SBI Infrastructure Fund(IDCW-Payout)", "M_SBNI");
+        mutualFundNameToIdMap.put("Edelweiss Recently Listed IPO Fund(IDCW)", "M_EDRR");
+        mutualFundNameToIdMap.put("Tata India Consumer Fund(IDCW-Payout)", "M_TAID");
+        mutualFundNameToIdMap.put("Bandhan FTP-179-3652D(H-IDCW)", "M_IDF9");
+        mutualFundNameToIdMap.put("HDFC FMP-Sr 46-1359D-Sep 2022", "M_HDCS5");
+        mutualFundNameToIdMap.put("Canara Rob Focused Equity Fund(IDCW)", "M_CAFC");
+        mutualFundNameToIdMap.put("ICICI Pru Equity & Debt Fund(M-IDCW)", "M_ICCYE");
+        mutualFundNameToIdMap.put("Tata Banking & Financial Services Fund", "M_TABF");
+        mutualFundNameToIdMap.put("Nippon India Overnight Fund(W-IDCW)", "M_NINW");
+        mutualFundNameToIdMap.put("HDFC FMP-Sr 46-1861D-Mar 2022", "M_HDFS6");
+        mutualFundNameToIdMap.put("SBI Small Cap Fund(IDCW)", "M_SBPU");
+        mutualFundNameToIdMap.put("360 ONE Focused Equity Fund(IDCW)", "M_IIFU");
+        mutualFundNameToIdMap.put("HSBC Low Duration Fund(A-IDCW Payout)", "M_LTLO");
+        mutualFundNameToIdMap.put("Groww Banking & Financial Services Fund", "M_GRBK");
+        mutualFundNameToIdMap.put("ICICI Pru Gilt Fund(IDCW-Payout)", "M_ICIGP");
+        mutualFundNameToIdMap.put("ITI ELSS Tax Saver Fund(IDCW)", "M_ITIQ");
+        mutualFundNameToIdMap.put("SBI FMP-74-1243D(IDCW)", "M_SBIWP");
+        mutualFundNameToIdMap.put("Mahindra Manulife Multi Cap Fund(IDCW-Payout)", "M_MAIE");
+        mutualFundNameToIdMap.put("HSBC Arbitrage Fund(M-IDCW)", "M_LTAO");
+        mutualFundNameToIdMap.put("Invesco India Short Duration Fund", "M_INHS");
+        mutualFundNameToIdMap.put("DSP Bond Fund(IDCW-Reinv)", "M_DSOD");
+        mutualFundNameToIdMap.put("UTI Credit Risk Fund(IDCW)", "M_UTIKS");
+        mutualFundNameToIdMap.put("SBI Multi Asset Allocation Fund(A-IDCW Payout)", "M_SBUL");
+        mutualFundNameToIdMap.put("Kotak Nifty Smallcap 50 Index Fund(IDCW)", "M_KO5X");
+        mutualFundNameToIdMap.put("SBI LT Advantage Fund-V-(IDCW)", "M_SBLV");
+        mutualFundNameToIdMap.put("Invesco India - Invesco Global Consumer Trends FoF(IDCW)", "M_INWV");
+        mutualFundNameToIdMap.put("LIC MF Nifty Next 50 Index Fund(IDCW)", "M_IDXY");
+        mutualFundNameToIdMap.put("Kotak Bluechip Fund(IDCW-Payout)", "M_KOBL");
+        mutualFundNameToIdMap.put("Aditya Birla SL Nifty SDL Sep 2027 Index Fund(IDCW)", "M_ADI27");
+        mutualFundNameToIdMap.put("Nippon India Nivesh Lakshya Fund(IDCW)", "M_NIKU");
+        mutualFundNameToIdMap.put("HDFC Overnight Fund(DD-IDCW)", "M_HDHG");
+        mutualFundNameToIdMap.put("Invesco India Gilt Fund", "M_INTG");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas NIFTY SDL Dec 2028 Index Fund(IDCW)", "M_BAD8");
+        mutualFundNameToIdMap.put("Parag Parikh Conservative Hybrid Fund(M-IDCW Payout)", "M_PARY");
+        mutualFundNameToIdMap.put("ICICI Pru FMP-88-1303D-S(IDCW)", "M_ICC8S");
+        mutualFundNameToIdMap.put("UTI Banking & PSU Fund(M-IDCW)", "M_UTIBB");
+        mutualFundNameToIdMap.put("Nippon India Equity Hybrid Fund(M-IDCW)", "M_NIPAQ");
+        mutualFundNameToIdMap.put("ICICI Pru Retirement Fund-Hybrid Aggressive Plan(IDCW)", "M_ICEI");
+        mutualFundNameToIdMap.put("UTI Medium Duration Fund(A-IDCW)", "M_UTIWW");
+        mutualFundNameToIdMap.put("ITI Dynamic Bond Fund", "M_ITDI");
+        mutualFundNameToIdMap.put("ICICI Pru Constant Maturity Gilt Fund(Q-IDCW)", "M_ICNS");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty IT Index Fund(IDCW Payout)", "M_ICCXN");
+        mutualFundNameToIdMap.put("Quantum Equity FoF", "M_QUTE");
+        mutualFundNameToIdMap.put("Nippon India Strategic Debt Fund(Q-IDCW)", "M_NIPAB");
+        mutualFundNameToIdMap.put("LIC MF Small Cap Fund(IDCW)", "M_IDBSM");
+        mutualFundNameToIdMap.put("Bandhan Regular Savings Fund", "M_IDAV");
+        mutualFundNameToIdMap.put("Nippon India Vision Fund", "M_NISG");
+        mutualFundNameToIdMap.put("HDFC Top 100 Fund(IDCW-Reinv)", "M_HDCTO");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty PSU Bond Plus SDL Sep 2027 40:60 Index Fund(A-IDCW)", "M_ICIX6");
+        mutualFundNameToIdMap.put("Shriram Overnight Fund(DD-IDCW)", "M_SHIO");
+        mutualFundNameToIdMap.put("Aditya Birla SL Special Opp Fund(IDCW)", "M_ADIL");
+        mutualFundNameToIdMap.put("PGIM India Equity Savings Fund(M-IDCW)", "M_PGEC");
+        mutualFundNameToIdMap.put("PGIM India Global Equity Opp Fund", "M_PGGI");
+        mutualFundNameToIdMap.put("SBI FMP-78-1170D(IDCW)", "M_SBI8N");
+        mutualFundNameToIdMap.put("Kotak International REIT FOF", "M_KOTII");
+        mutualFundNameToIdMap.put("SBI FMP-1-3668D", "M_SB16");
+        mutualFundNameToIdMap.put("UTI Balanced Advantage Fund(IDCW)", "M_UTWB");
+        mutualFundNameToIdMap.put("Motilal Oswal Liquid Fund(FN-IDCW)", "M_MOII");
+        mutualFundNameToIdMap.put("SBI FMP-1-3668D(IDCW)", "M_SB13");
+        mutualFundNameToIdMap.put("Motilal Oswal Balanced Advantage Fund(Q-IDCW)", "M_MOAT");
+        mutualFundNameToIdMap.put("SBI Savings Fund(W-IDCW Payout)", "M_SBSW");
+        mutualFundNameToIdMap.put("HSBC Managed Solutions India-Growth(IDCW-Payout)", "M_HSCW");
+        mutualFundNameToIdMap.put("HDFC Flexi Cap Fund(IDCW-Reinv)", "M_HDCEE");
+        mutualFundNameToIdMap.put("Franklin India Money Market Fund(M-IDCW)", "M_FRYO");
+        mutualFundNameToIdMap.put("Aditya Birla SL Frontline Equity Fund", "M_ADTOR");
+        mutualFundNameToIdMap.put("Axis Liquid Fund(W-IDCW)", "M_AXILL");
+        mutualFundNameToIdMap.put("SBI Multicap Fund(IDCW Payout)", "M_SBIUI");
+        mutualFundNameToIdMap.put("LIC MF Overnight Fund", "M_LICN");
+        mutualFundNameToIdMap.put("SBI FMP-79-1130D", "M_SBIT9");
+        mutualFundNameToIdMap.put("DSP Low Duration Fund(DD-IDCW)", "M_DSLR");
+        mutualFundNameToIdMap.put("DSP Equity Opportunities Fund(IDCW)", "M_DSEO");
+        mutualFundNameToIdMap.put("Tata Multicap Fund(IDCW-Payout)", "M_TATMY");
+        mutualFundNameToIdMap.put("Nippon India Banking & PSU Debt Fund(Q-IDCW)", "M_NIKG");
+        mutualFundNameToIdMap.put("ICICI Pru Ultra Short Term Fund Fund(M-IDCW)", "M_ICCSL");
+        mutualFundNameToIdMap.put("Nippon India Balanced Advantage Fund(IDCW)", "M_NIPBO");
+        mutualFundNameToIdMap.put("ICICI Pru Income Optimizer Fund", "M_ICOZ");
+        mutualFundNameToIdMap.put("ICICI Pru Balanced Advantage Fund(M-IDCW)", "M_ICCBR");
+        mutualFundNameToIdMap.put("HDFC Focused 30 Fund", "M_HDFSO");
+        mutualFundNameToIdMap.put("Invesco India Gold ETF FoF", "M_INLP");
+        mutualFundNameToIdMap.put("Sundaram Diversified Equity", "M_SUVY");
+        mutualFundNameToIdMap.put("Bandhan Dynamic Bond Fund(IDCW)", "M_BAYU");
+        mutualFundNameToIdMap.put("Mirae Asset Ultra Short Duration Fund", "M_MIRL");
+        mutualFundNameToIdMap.put("Bandhan Overnight Fund(DD-IDCW)", "M_BAVO");
+        mutualFundNameToIdMap.put("Nippon India Nifty IT Index Fund(IDCW)", "M_NIPFE");
+        mutualFundNameToIdMap.put("Quant Business Cycle Fund", "M_QUBB");
+        mutualFundNameToIdMap.put("Canara Rob Ultra Short Term Fund(IDCW)", "M_CARH");
+        mutualFundNameToIdMap.put("Kotak Global Emerging Mkt Fund(IDCW)", "M_KOGB");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Corp Bond Fund(M-IDCW)", "M_BAWS");
+        mutualFundNameToIdMap.put("HDFC Dynamic Debt Fund(H-IDCW)", "M_HDBH");
+        mutualFundNameToIdMap.put("Mirae Asset Banking and Financial Services Fund(IDCW)", "M_MIBI");
+        mutualFundNameToIdMap.put("Sundaram LT Tax Adv Fund-Sr I", "M_SUXL");
+        mutualFundNameToIdMap.put("ITI Focused Equity Fund(IDCW)", "M_ITFD");
+        mutualFundNameToIdMap.put("Aditya Birla SL ESG Integration Strategy Fund(IDCW)", "M_ADYUS");
+        mutualFundNameToIdMap.put("PGIM India Equity Savings Fund", "M_PGEE");
+        mutualFundNameToIdMap.put("Tata India Consumer Fund", "M_TAIU");
+        mutualFundNameToIdMap.put("DSP 10Y G-Sec Fund(Q-IDCW)", "M_DS1U");
+        mutualFundNameToIdMap.put("ICICI Pru Focused Equity Fund(IDCW-Payout)", "M_ICIFQ");
+        mutualFundNameToIdMap.put("Sundaram LT Tax Adv Fund-Sr IV-(IDCW)", "M_SULD");
+        mutualFundNameToIdMap.put("SBI FMP-55-1849D", "M_SBI5T");
+        mutualFundNameToIdMap.put("Nippon India Value Fund(IDCW)", "M_NIPVL");
+        mutualFundNameToIdMap.put("ICICI Pru Overnight fund-Direct Plan-Unclaimed IDCW Stable Scheme", "M_ICCWO");
+        mutualFundNameToIdMap.put("DSP Floater Fund", "M_DSPLT");
+        mutualFundNameToIdMap.put("Aditya Birla SL CRISIL IBX Gilt Apr 2029 Index Fund(IDCW)", "M_ADI2C");
+        mutualFundNameToIdMap.put("Bajaj Finserv Banking and PSU Fund(IDCW)", "M_BAUJ");
+        mutualFundNameToIdMap.put("SBI FMP-53-1839D", "M_SBI5I");
+        mutualFundNameToIdMap.put("Kotak Bluechip Fund(IDCW)", "M_KOBC");
+        mutualFundNameToIdMap.put("Tata Quant Fund(IDCW)", "M_TATF");
+        mutualFundNameToIdMap.put("Bandhan G-Sec-Constant Maturity Plan(W-IDCW)", "M_IDGU");
+        mutualFundNameToIdMap.put("Kotak Bond Fund(IDCW Payout)", "M_KOWB");
+        mutualFundNameToIdMap.put("SBI LT Advantage Fund-III-(IDCW)", "M_SBTL");
+        mutualFundNameToIdMap.put("Taurus Nifty 50 Index Fund(IDCW)", "M_TA5Y");
+        mutualFundNameToIdMap.put("Sundaram Money Market Fund", "M_SUAG");
+        mutualFundNameToIdMap.put("Bandhan Small Cap Fund(IDCW)", "M_IDFE");
+        mutualFundNameToIdMap.put("Tata Gilt Securities Fund(IDCW)", "M_TACS");
+        mutualFundNameToIdMap.put("HDFC FMP-Sr 46-1861D-Mar 2022(Q-IDCW)", "M_HD6W");
+        mutualFundNameToIdMap.put("Axis Short Term Fund(M-IDCW)", "M_AXIHO");
+        mutualFundNameToIdMap.put("Nippon India Index Fund-S&P BSE Sensex Plan(A-IDCW)", "M_NIPDX");
+        mutualFundNameToIdMap.put("JM Arbitrage Fund(A-IDCW)", "M_JMRW");
+        mutualFundNameToIdMap.put("ICICI Pru Floating Interest Fund", "M_ICPIF");
+        mutualFundNameToIdMap.put("Nippon India Small Cap Fund(IDCW)", "M_NIPSA");
+        mutualFundNameToIdMap.put("Invesco India Balanced Advantage Fund(IDCW)", "M_INVCE");
+        mutualFundNameToIdMap.put("Axis Liquid Fund(M-IDCW)", "M_AXILI");
+        mutualFundNameToIdMap.put("Axis India Manufacturing Fund(IDCW)", "M_AXIIN");
+        mutualFundNameToIdMap.put("WOC Large Cap Fund", "M_WOCG");
+        mutualFundNameToIdMap.put("Axis Equity Hybrid Fund(IDCW)", "M_AXIEQ");
+        mutualFundNameToIdMap.put("Canara Rob Conservative Hybrid Fund(Q-IDCW)", "M_CACE");
+        mutualFundNameToIdMap.put("Kotak All Weather Debt FoF(IDCW)", "M_KOWH");
+        mutualFundNameToIdMap.put("Axis Nifty Smallcap 50 Index Fund(IDCW)", "M_AX5Y");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Medium Duration Fund", "M_BNRU");
+        mutualFundNameToIdMap.put("ICICI Pru Ultra Short Term Fund Fund(W-IDCW)", "M_ICLI");
+        mutualFundNameToIdMap.put("ICICI Pru Bond Fund(H-IDCW)", "M_ICIBP");
+        mutualFundNameToIdMap.put("Kotak International REIT FOF(IDCW)", "M_KOTIK");
+        mutualFundNameToIdMap.put("ICICI Pru Global Advantage Fund", "M_ICCWB");
+        mutualFundNameToIdMap.put("DSP Floater Fund(IDCW-Reinvest)", "M_DSPLO");
+        mutualFundNameToIdMap.put("HSBC Infrastructure Fund(IDCW)", "M_LTFW");
+        mutualFundNameToIdMap.put("Kotak Corporate Bond Fund", "M_KOOT");
+        mutualFundNameToIdMap.put("UTI Nifty 50 Index Fund(IDCW)", "M_UTU5");
+        mutualFundNameToIdMap.put("Quant Large & Mid Cap Fund(IDCW)", "M_QULM");
+        mutualFundNameToIdMap.put("JM Large Cap Fund(Q-IDCW)", "M_JMGQ");
+        mutualFundNameToIdMap.put("HDFC FMP-Sr 47-1204D-Dec 2022(Q-IDCW)", "M_HDF7W");
+        mutualFundNameToIdMap.put("Bandhan Small Cap Fund", "M_IDFM");
+        mutualFundNameToIdMap.put("Bandhan Bond Fund - Medium Term Plan(M-IDCW Reinv)", "M_IDFOV");
+        mutualFundNameToIdMap.put("SBI FMP-47-1434D(IDCW)", "M_SB7W");
+        mutualFundNameToIdMap.put("Union Overnight Fund(DD-IDCW)", "M_UNOD");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty 50 Index Fund", "M_ICIDX");
+        mutualFundNameToIdMap.put("SBI Long Term Equity Fund", "M_SBLO");
+        mutualFundNameToIdMap.put("Canara Rob Infrastructure Fund(IDCW)", "M_CAIS");
+        mutualFundNameToIdMap.put("UTI Credit Risk Fund", "M_UTKE");
+        mutualFundNameToIdMap.put("Aditya Birla SL Banking & Financial Services Fund", "M_ADINV");
+        mutualFundNameToIdMap.put("Shriram Aggressive Hybrid Fund(IDCW-Payout)", "M_SHII");
+        mutualFundNameToIdMap.put("HDFC Low Duration Fund(M-IDCW)", "M_HDWL");
+        mutualFundNameToIdMap.put("Quant Mid Cap Fund(IDCW)", "M_QUMD");
+        mutualFundNameToIdMap.put("WOC Liquid Fund(W-IDCW)-Direct plan", "M_YELW");
+        mutualFundNameToIdMap.put("Taurus Nifty 50 Index Fund", "M_TASX");
+        mutualFundNameToIdMap.put("ICICI Pru Short Term Fund", "M_ICCHF");
+        mutualFundNameToIdMap.put("SBI Conservative Hybrid Fund(A-IDCW Payout)", "M_SBDH");
+        mutualFundNameToIdMap.put("HDFC FMP-Sr 47-2638D-Feb 2023(Q-IDCW)", "M_HDF6W");
+        mutualFundNameToIdMap.put("Bandhan Multi Cap Fund", "M_IDFUM");
+        mutualFundNameToIdMap.put("Axis Equity Saver Fund(M-IDCW)", "M_AXVY");
+        mutualFundNameToIdMap.put("Motilal Oswal Balanced Advantage Fund", "M_MOIC");
+        mutualFundNameToIdMap.put("Bajaj Finserv Liquid Fund", "M_BAJA");
+        mutualFundNameToIdMap.put("LIC MF Flexi Cap Fund(IDCW)", "M_LILX");
+        mutualFundNameToIdMap.put("Bandhan Low Duration Fund(Q-IDCW)", "M_BALT");
+        mutualFundNameToIdMap.put("LIC MF Overnight Fund(W-IDCW)", "M_LICO");
+        mutualFundNameToIdMap.put("HDFC FMP-Sr 46-1876D-Mar 2022(IDCW)", "M_HDW8");
+        mutualFundNameToIdMap.put("DSP 10Y G-Sec Fund(IDCW-Reinv)", "M_DS1Y");
+        mutualFundNameToIdMap.put("Tata Equity Savings Fund(M-IDCW Payout)", "M_TAEI");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Low Duration Fund", "M_BNBW");
+        mutualFundNameToIdMap.put("Sundaram Banking & PSU Debt Fund(DD-IDCW)", "M_SUKU");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Value Fund", "M_BANV");
+        mutualFundNameToIdMap.put("Parag Parikh Liquid Fund", "M_PARK");
+        mutualFundNameToIdMap.put("UTI Value Fund(IDCW)", "M_UTVVU");
+        mutualFundNameToIdMap.put("Tata Large Cap Fund(IDCW Payout)", "M_TALL");
+        mutualFundNameToIdMap.put("Edelweiss Liquid Fund", "M_EDQG");
+        mutualFundNameToIdMap.put("Bandhan Bond Fund - Medium Term Plan(P-IDCW)Exch Reinve", "M_IDBX");
+        mutualFundNameToIdMap.put("Franklin India Debt Hybrid Fund(M-IDCW Payout)", "M_FRTM");
+        mutualFundNameToIdMap.put("HDFC Multi Cap Fund(IDCW)", "M_HDFUW");
+        mutualFundNameToIdMap.put("Bandhan Credit Risk Fund", "M_IDRD");
+        mutualFundNameToIdMap.put("ITI Banking & PSU Debt Fund(IDCW)", "M_ITBP");
+        mutualFundNameToIdMap.put("ICICI Pru Medium Term Bond Fund(Q-IDCW)", "M_ICCQO");
+        mutualFundNameToIdMap.put("Axis Equity ETFs FoF(IDCW)", "M_AXWY");
+        mutualFundNameToIdMap.put("UTI Gilt Fund with 10 year Constant Duration(F-IDCW)", "M_UTW0");
+        mutualFundNameToIdMap.put("Kotak Pioneer Fund(IDCW-Payout)", "M_KOTP");
+        mutualFundNameToIdMap.put("Aditya Birla SL US Treasury 1-3 year Bond ETFs FoF", "M_ADI31");
+        mutualFundNameToIdMap.put("SBI Flexicap Fund(IDCW-Payout)", "M_SBGG");
+        mutualFundNameToIdMap.put("TRUSTMF Short Duration Fund", "M_TRSM");
+        mutualFundNameToIdMap.put("HDFC NIFTY50 Equal Weight Index Fund", "M_HD5W");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Dynamic Bond Fund", "M_BNBX");
+        mutualFundNameToIdMap.put("Bank of India Small Cap Fund(IDCW)", "M_BAKM");
+        mutualFundNameToIdMap.put("WOC Flexi Cap Fund(IDCW Payout)", "M_WOCL");
+        mutualFundNameToIdMap.put("Bandhan Dynamic Bond Fund(H-IDCW)", "M_BAYC");
+        mutualFundNameToIdMap.put("Nippon India Retirement Fund-Income Generation", "M_NIRN");
+        mutualFundNameToIdMap.put("Kotak International REIT FOF(IDCW-Payout)", "M_KOTIE");
+        mutualFundNameToIdMap.put("Aditya Birla SL Short Term Fund", "M_ADTHO");
+        mutualFundNameToIdMap.put("Mahindra Manulife Ultra Short Duration Fund(W-IDCW)", "M_MAHS");
+        mutualFundNameToIdMap.put("DSP Multi Asset Allocation Fund(IDCW)", "M_DSPUS");
+        mutualFundNameToIdMap.put("HSBC Corporate Bond Fund(Q-IDCW)", "M_LTTN");
+        mutualFundNameToIdMap.put("Kotak Gold Fund", "M_KOOG");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Arbitrage Fund(Q-IDCW)", "M_BATI");
+        mutualFundNameToIdMap.put("DSP Regular Savings Fund(Q-IDCW Reinv)", "M_DSLS");
+        mutualFundNameToIdMap.put("UTI FTIF-XXXVI-I(1574D)(IDCW)", "M_UT57");
+        mutualFundNameToIdMap.put("Quant Momentum Fund(IDCW)", "M_QUMW");
+        mutualFundNameToIdMap.put("LIC MF Arbitrage Fund", "M_LIMA");
+        mutualFundNameToIdMap.put("HSBC Corporate Bond Fund(H-IDCW Payout)", "M_LTTE");
+        mutualFundNameToIdMap.put("SBI Equity Hybrid Fund(IDCW)", "M_SBQH");
+        mutualFundNameToIdMap.put("Nippon India Floating Rate Fund(DD-IDCW)", "M_NIPPA");
+        mutualFundNameToIdMap.put("Nippon India Nifty AAA CPSE Bond Plus SDL - Apr 2027 Maturity 60:40 Index Fund(IDCW)", "M_NIY4");
+        mutualFundNameToIdMap.put("LIC MF Gold ETF FoF", "M_IDBIG");
+        mutualFundNameToIdMap.put("Tata India Pharma & Healthcare Fund", "M_TAIM");
+        mutualFundNameToIdMap.put("Axis FTP-120-91D(Q-IDCW)", "M_AX0Q");
+        mutualFundNameToIdMap.put("ICICI Pru Long Term Bond Fund(Q-IDCW Payout)", "M_ICCNQ");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Ultra Short Duration Fund(W-IDCW)", "M_BARDB");
+        mutualFundNameToIdMap.put("SBI Equity Savings Fund(M-IDCW)", "M_SBEY");
+        mutualFundNameToIdMap.put("Aditya Birla SL Retirement Fund-50(IDCW)", "M_ADBT");
+        mutualFundNameToIdMap.put("Invesco India Corporate Bond Fund(A-IDCW)", "M_INVCP");
+        mutualFundNameToIdMap.put("Sundaram Debt Oriented Hybrid Fund(Q-IDCW)", "M_SUNYO");
+        mutualFundNameToIdMap.put("Navi US Total Stock Market FoF", "M_NAVU");
+        mutualFundNameToIdMap.put("Kotak Equity Hybrid Fund", "M_KOED");
+        mutualFundNameToIdMap.put("Bandhan Credit Risk Fund(A-IDCW)", "M_IDCK");
+        mutualFundNameToIdMap.put("ICICI Pru Liquid Fund(DD-IDCW)", "M_ICPCQ");
+        mutualFundNameToIdMap.put("Kotak Infra & Eco Reform Fund", "M_KONO");
+        mutualFundNameToIdMap.put("SBI International Access-US Equity FoF", "M_SBPQ");
+        mutualFundNameToIdMap.put("Aditya Birla SL Dynamic Bond Fund(IDCW-Reinv)", "M_ADAA");
+        mutualFundNameToIdMap.put("DSP Focus Fund", "M_DSOF");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Equity Savings Fund", "M_BAOA");
+        mutualFundNameToIdMap.put("Canara Rob Liquid-Unclaimed Redemption and Dividend Plan", "M_CANQ");
+        mutualFundNameToIdMap.put("Sundaram Flexi Cap Fund(IDCW)", "M_SUWX");
+        mutualFundNameToIdMap.put("LIC MF Low Duration Fund", "M_LISF");
+        mutualFundNameToIdMap.put("Sundaram Short Duration Fund(H-IDCW)", "M_SUNWC");
+        mutualFundNameToIdMap.put("Aditya Birla SL Floating Rate Fund", "M_ADTOS");
+        mutualFundNameToIdMap.put("Invesco India Contra Fund(IDCW)", "M_INVCN");
+        mutualFundNameToIdMap.put("Union Innovation & Opp Fund", "M_UNVT");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas ELSS Tax Saver Fund", "M_BNSM");
+        mutualFundNameToIdMap.put("PGIM India Global Select Real Estate Securities FoF", "M_PGGB");
+        mutualFundNameToIdMap.put("Franklin India Money Market Fund(W-IDCW)", "M_FRYW");
+        mutualFundNameToIdMap.put("BHARAT Bond FOF - April 2025 -(IDCW)", "M_BHA5");
+        mutualFundNameToIdMap.put("Union Aggressive Hybrid Fund(IDCW)", "M_UNHH");
+        mutualFundNameToIdMap.put("ICICI Pru Retirement Fund-Pure Equity Plan", "M_ICED");
+        mutualFundNameToIdMap.put("Kotak Overnight Fund", "M_KOOA");
+        mutualFundNameToIdMap.put("Nippon India Liquid Fund", "M_NIQG");
+        mutualFundNameToIdMap.put("Motilal Oswal Nifty Smallcap 250 Index Fund", "M_MOTM");
+        mutualFundNameToIdMap.put("Sundaram Large and Mid Cap Fund(IDCW)", "M_SUDLG");
+        mutualFundNameToIdMap.put("HDFC Nifty G-Sec Dec 2026 Index Fund", "M_HDCN2");
+        mutualFundNameToIdMap.put("BHARAT Bond FOF - April 2031 -(IDCW)", "M_BHA1");
+        mutualFundNameToIdMap.put("UTI Money Market Fund(FN-IDCW)", "M_UTINK");
+        mutualFundNameToIdMap.put("DSP FMP 267-1246D", "M_DSP2C");
+        mutualFundNameToIdMap.put("Aditya Birla SL Short Term Fund(Q-IDCW Reinv)", "M_ADHE");
+        mutualFundNameToIdMap.put("SBI LT Advantage Fund-VI-(IDCW)", "M_SBLL");
+        mutualFundNameToIdMap.put("Tata Large Cap Fund(IDCW)", "M_TATAR");
+        mutualFundNameToIdMap.put("Aditya Birla SL ELSS Tax Saver Fund(IDCW)", "M_ADXE");
+        mutualFundNameToIdMap.put("ICICI Pru US Bluechip Equity Fund", "M_ICCSY");
+        mutualFundNameToIdMap.put("Aditya Birla SL Equity Advantage Fund", "M_ADTQV");
+        mutualFundNameToIdMap.put("Union Children's Fund(IDCW)", "M_UNCE");
+        mutualFundNameToIdMap.put("UTI Large Cap Fund", "M_UTHM");
+        mutualFundNameToIdMap.put("Navi Overnight Fund(M-IDCW Payout)", "M_NAIO");
+        mutualFundNameToIdMap.put("Nippon India Floating Rate Fund", "M_NIPPD");
+        mutualFundNameToIdMap.put("HDFC Liquid Fund", "M_HDCLI");
+        mutualFundNameToIdMap.put("Franklin India Feeder - Franklin U.S. Opportunities Fund", "M_FREK");
+        mutualFundNameToIdMap.put("Edelweiss Balanced Advantage Fund(Q-IDCW)", "M_EDVS");
+        mutualFundNameToIdMap.put("TRUSTMF Overnight Fund(DD-IDCW)", "M_TRSV");
+        mutualFundNameToIdMap.put("DSP Equity & Bond Fund", "M_DSYU");
+        mutualFundNameToIdMap.put("Nippon India Flexi Cap Fund(IDCW)", "M_NIPDA");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty Midcap 150 Index Fund", "M_ICI5X");
+        mutualFundNameToIdMap.put("SBI LT Advantage Fund-II", "M_SBTE");
+        mutualFundNameToIdMap.put("Aditya Birla SL Infrastructure Fund(IDCW-Reinv)", "M_ADTNF");
+        mutualFundNameToIdMap.put("LIC MF Short Duration Fund", "M_LICC");
+        mutualFundNameToIdMap.put("Invesco India Financial Services Fund(IDCW)", "M_INVCD");
+        mutualFundNameToIdMap.put("Invesco India Corporate Bond Fund(IDCW)", "M_INVCR");
+        mutualFundNameToIdMap.put("UTI Liquid Fund(F-IDCW)", "M_UTIHQ");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Short Duration Fund(M-IDCW)", "M_BAWT");
+        mutualFundNameToIdMap.put("Sundaram Liquid Fund(W-IDCW)", "M_PRSP");
+        mutualFundNameToIdMap.put("SBI LT Advantage Fund-IV", "M_SBLU");
+        mutualFundNameToIdMap.put("Navi Flexi Cap Fund(M-IDCW)", "M_NAFA");
+        mutualFundNameToIdMap.put("Invesco India Gilt Fund(M-IDCW)", "M_INTA");
+        mutualFundNameToIdMap.put("Edelweiss Balanced Advantage Fund", "M_EDBA");
+        mutualFundNameToIdMap.put("ICICI Pru Equity & Debt Fund(A-IDCW)", "M_ICIEP");
+        mutualFundNameToIdMap.put("Axis Greater China Equity FoF", "M_AXGY");
+        mutualFundNameToIdMap.put("Axis Arbitrage Fund(IDCW)", "M_AXIAB");
+        mutualFundNameToIdMap.put("Axis Corp Debt Fund(DD-IDCW)", "M_AXCD");
+        mutualFundNameToIdMap.put("Aditya Birla SL Global Emerging Opp Fund", "M_ADINM");
+        mutualFundNameToIdMap.put("Invesco India Overnight Fund(M-IDCW)", "M_INHP");
+        mutualFundNameToIdMap.put("HDFC Corp Bond Fund(IDCW-Reinv)", "M_HDOR");
+        mutualFundNameToIdMap.put("Quantum Long Term Equity Value Fund(IDCW)", "M_QUUO");
+        mutualFundNameToIdMap.put("Navi Flexi Cap Fund(IDCW)", "M_NAFL");
+        mutualFundNameToIdMap.put("Aditya Birla SL Arbitrage Fund(IDCW)", "M_ADTGU");
+        mutualFundNameToIdMap.put("HDFC FMP-Sr 47-1204D-Dec 2022(IDCW)", "M_HDF1W");
+        mutualFundNameToIdMap.put("DSP Nifty Midcap 150 Quality 50 Index Fund", "M_DSYA");
+        mutualFundNameToIdMap.put("LIC MF ULIS Regular Premium Uniform Cover HY 10Y(IDCW)", "M_LIFE");
+        mutualFundNameToIdMap.put("Kotak Money Market Fund", "M_KOOY");
+        mutualFundNameToIdMap.put("Tata Hybrid Equity Fund", "M_TAHR");
+        mutualFundNameToIdMap.put("Edelweiss Equity Savings Fund(IDCW)", "M_EDUV");
+        mutualFundNameToIdMap.put("Invesco India Medium Duration Fund", "M_INVSU");
+        mutualFundNameToIdMap.put("Aditya Birla SL Global Excellence Equity FoF(IDCW-Payout)", "M_ADTOY");
+        mutualFundNameToIdMap.put("Aditya Birla SL Corp Bond Fund", "M_ADTCR");
+        mutualFundNameToIdMap.put("Axis FTP-112-1143D", "M_AX2A");
+        mutualFundNameToIdMap.put("ICICI Pru Overnight Fund(W-IDCW)", "M_ICCWL");
+        mutualFundNameToIdMap.put("DSP Gilt Fund", "M_DSPGC");
+        mutualFundNameToIdMap.put("Bandhan CRISIL IBX Gilt April 2028 Index Fund(IDCW)", "M_ID8X");
+        mutualFundNameToIdMap.put("UTI Medium to Long Duration Fund(A-IDCW)", "M_UTIBI");
+        mutualFundNameToIdMap.put("Nippon India ELSS Tax Saver Fund", "M_NITC");
+        mutualFundNameToIdMap.put("Franklin India Pension Plan", "M_FRPS");
+        mutualFundNameToIdMap.put("DSP Banking & Financial Services Fund", "M_DSKU");
+        mutualFundNameToIdMap.put("UTI Aggressive Hybrid Fund(IDCW)", "M_UTIHB");
+        mutualFundNameToIdMap.put("Kotak Nifty SDL Apr 2032 Top 12 Equal Weight Index Fund(IDCW)", "M_KOPH");
+        mutualFundNameToIdMap.put("Nippon India Vision Fund(IDCW)", "M_NIPVV");
+        mutualFundNameToIdMap.put("Tata Digital India Fund(IDCW-Payout)", "M_TADT");
+        mutualFundNameToIdMap.put("Franklin India Equity Savings Fund", "M_FRIV");
+        mutualFundNameToIdMap.put("Bandhan Balanced Advantage Fund(IDCW)", "M_IDYC");
+        mutualFundNameToIdMap.put("Kotak All Weather Debt FoF(IDCW Payout)", "M_KOHN");
+        mutualFundNameToIdMap.put("DSP Low Duration Fund(M-IDCW Reinv)", "M_DSLO");
+        mutualFundNameToIdMap.put("Franklin Asian Equity Fund", "M_FRSA");
+        mutualFundNameToIdMap.put("LIC MF Arbitrage Fund(M-IDCW)", "M_LIAW");
+        mutualFundNameToIdMap.put("Axis Children's Gift Fund-No Lock in(IDCW)", "M_AXDK");
+        mutualFundNameToIdMap.put("Nippon India Nifty AAA PSU Bond Plus SDL - Sep 2026 Maturity 50:50 Index Fund", "M_NIS2");
+        mutualFundNameToIdMap.put("Aditya Birla SL CRISIL IBX 60:40 SDL + AAA PSU - Apr 2025 Index Fund(IDCW)", "M_AD56");
+        mutualFundNameToIdMap.put("Mahindra Manulife Small Cap Fund", "M_MAAI");
+        mutualFundNameToIdMap.put("Mahindra Manulife Ultra Short Duration Fund(DD-IDCW)", "M_MAHH");
+        mutualFundNameToIdMap.put("DSP Corp Bond Fund(Q-IDCW Reinv)", "M_DSCC");
+        mutualFundNameToIdMap.put("UTI Short Duration Fund(M-IDCW)", "M_UTSST");
+        mutualFundNameToIdMap.put("HDFC ELSS Tax saver(IDCW-Reinv)", "M_HDCTT");
+        mutualFundNameToIdMap.put("Aditya Birla SL Low Duration Fund(W-IDCW Reinv)", "M_ADWO");
+        mutualFundNameToIdMap.put("Axis Gilt Fund(IDCW)", "M_AXIGL");
+        mutualFundNameToIdMap.put("HSBC Money Market Fund(DD-IDCW)", "M_LTOE");
+        mutualFundNameToIdMap.put("Mirae Asset Nifty 100 ESG Sector Leaders FoF(IDCW)", "M_MIT0");
+        mutualFundNameToIdMap.put("Aditya Birla SL Midcap Fund", "M_ADTMI");
+        mutualFundNameToIdMap.put("PGIM India Liquid Fund(M-IDCW)", "M_PGLQ");
+        mutualFundNameToIdMap.put("Nippon India Nifty IT Index Fund", "M_NIPFX");
+        mutualFundNameToIdMap.put("SBI Equity Minimum Variance Fund(IDCW)", "M_SBIV");
+        mutualFundNameToIdMap.put("Bandhan Liquid Fund(DD-IDCW)", "M_IDFAC");
+        mutualFundNameToIdMap.put("Mahindra Manulife ELSS Tax Saver Fund(IDCW)", "M_MADK");
+        mutualFundNameToIdMap.put("Aditya Birla SL Infrastructure Fund(IDCW)", "M_ADTUS");
+        mutualFundNameToIdMap.put("NJ Balanced Advantage Fund(IDCW)", "M_NJBN");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty 200 Momentum 30 Index Fund", "M_ICI3X");
+        mutualFundNameToIdMap.put("Mirae Asset Overnight Fund(M-IDCW)", "M_MIOA");
+        mutualFundNameToIdMap.put("PGIM India Corp Bond Fund(Q-IDCW)", "M_PGCQ");
+        mutualFundNameToIdMap.put("Nippon India Nifty Midcap 150 Index Fund(IDCW)", "M_NIM1");
+        mutualFundNameToIdMap.put("Mahindra Manulife Multi Cap Fund", "M_MADN");
+        mutualFundNameToIdMap.put("LIC MF Overnight Fund(IDCW)", "M_LIVM");
+        mutualFundNameToIdMap.put("SBI Magnum Medium Duration Fund(IDCW)", "M_SBIGO");
+        mutualFundNameToIdMap.put("Bandhan Nifty Smallcap 250 Index Fund(IDCW)", "M_BAT2");
+        mutualFundNameToIdMap.put("Aditya Birla SL Corp Bond Fund(M-IDCW)", "M_ADTCI");
+        mutualFundNameToIdMap.put("LIC MF ELSS Tax Saver(IDCW)", "M_LIFX");
+        mutualFundNameToIdMap.put("SBI FMP-43-1616D(IDCW)", "M_SBPW");
+        mutualFundNameToIdMap.put("Aditya Birla SL Financial Planning FOF Conservative Plan", "M_ADTFO");
+        mutualFundNameToIdMap.put("Franklin Build India Fund(IDCW Payout)", "M_FRUF");
+        mutualFundNameToIdMap.put("HDFC FMP-Sr 46-1162D-Mar 2022", "M_HDCSR");
+        mutualFundNameToIdMap.put("Bandhan Floating Rate Fund", "M_IDFTU");
+        mutualFundNameToIdMap.put("Union Balanced Advantage Fund", "M_UNBB");
+        mutualFundNameToIdMap.put("ICICI Pru Technology Fund(IDCW-Payout)", "M_ICITI");
+        mutualFundNameToIdMap.put("Franklin India Corp Debt Fund-A(Q-IDCW)", "M_FRRB");
+        mutualFundNameToIdMap.put("ICICI Pru NASDAQ 100 Index Fund", "M_ICIX1");
+        mutualFundNameToIdMap.put("Groww ELSS Tax Saver Fund(IDCW)", "M_INDX");
+        mutualFundNameToIdMap.put("LIC MF Ultra Short Duration Fund", "M_LICL");
+        mutualFundNameToIdMap.put("Quant PSU Fund", "M_QUPP");
+        mutualFundNameToIdMap.put("JM Overnight Fund", "M_JMOR");
+        mutualFundNameToIdMap.put("UTI Low Duration Fund(W-IDCW)", "M_UTTEY");
+        mutualFundNameToIdMap.put("Bandhan Dynamic Bond Fund", "M_IDYO");
+        mutualFundNameToIdMap.put("Nippon India Nifty Alpha Low Volatility 30 Index Fund(IDCW)", "M_NIW0");
+        mutualFundNameToIdMap.put("UTI Dynamic Bond Fund(F-IDCW)", "M_UTIBY");
+        mutualFundNameToIdMap.put("LIC MF Flexi Cap Fund", "M_LILU");
+        mutualFundNameToIdMap.put("WOC Ultra Short Duration Fund(DD-IDCW)", "M_YEUR");
+        mutualFundNameToIdMap.put("Kotak Low Duration Fund", "M_KOOW");
+        mutualFundNameToIdMap.put("Tata Focused Equity Fund", "M_TATY");
+        mutualFundNameToIdMap.put("ICICI Pru LT Wealth Enhancement Fund(IDCW)", "M_ICLW");
+        mutualFundNameToIdMap.put("Kotak Global Innovation FoF(IDCW)", "M_KOOV");
+        mutualFundNameToIdMap.put("Invesco India - Invesco Pan European Equity FoF(IDCW)", "M_INVSR");
+        mutualFundNameToIdMap.put("ICICI Pru Quant Fund(IDCW-Payout)", "M_ICRCA");
+        mutualFundNameToIdMap.put("Aditya Birla SL Retirement Fund-50 Plus-Debt Plan", "M_ADAC");
+        mutualFundNameToIdMap.put("SBI Contra Fund(IDCW)", "M_SBICN");
+        mutualFundNameToIdMap.put("ICICI Pru Bharat Consumption Fund(IDCW-Payout)", "M_ICBR");
+        mutualFundNameToIdMap.put("ICICI Pru Bond Fund", "M_ICPCT");
+        mutualFundNameToIdMap.put("ICICI Pru Exports & Services Fund(IDCW-Payout)", "M_ICXS");
+        mutualFundNameToIdMap.put("360 ONE Dynamic Bond Fund(M-IDCW)", "M_IILO");
+        mutualFundNameToIdMap.put("DSP Value Fund(IDCW)", "M_DSPVN");
+        mutualFundNameToIdMap.put("Bandhan Asset Alloc FoF-Aggr(IDCW)", "M_BAGF");
+        mutualFundNameToIdMap.put("PGIM India Ultra Short Duration Fund(DD-IDCW)", "M_PGUN");
+        mutualFundNameToIdMap.put("ICICI Pru Bharat Consumption Fund(IDCW)", "M_ICBB");
+        mutualFundNameToIdMap.put("UTI Gilt Fund with 10 year Constant Duration", "M_UTWI");
+        mutualFundNameToIdMap.put("DSP World Energy Fund(IDCW)", "M_DSWD");
+        mutualFundNameToIdMap.put("360 ONE Flexicap Fund(IDCW Payout)", "M_360O");
+        mutualFundNameToIdMap.put("Tata Floating Rate Fund(M-IDCW Payout)", "M_TAWL");
+        mutualFundNameToIdMap.put("Bandhan US Equity FoF(IDCW Reinv)", "M_IDFUS");
+        mutualFundNameToIdMap.put("SBI Gold(IDCW)", "M_SBIGP");
+        mutualFundNameToIdMap.put("ICICI Pru Banking & Fin Serv Fund", "M_ICINK");
+        mutualFundNameToIdMap.put("Bandhan Banking & PSU Debt Fund(Q-IDCW)", "M_IDKB");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty Bank Index Fund(IDCW)", "M_ICILK");
+        mutualFundNameToIdMap.put("DSP Low Duration Fund(M-IDCW)", "M_DSLD");
+        mutualFundNameToIdMap.put("SBI Magnum Equity ESG Fund", "M_SBUY");
+        mutualFundNameToIdMap.put("ICICI Pru Money Market Fund(IDCW)", "M_ICIOK");
+        mutualFundNameToIdMap.put("Nippon India Credit Risk Fund(IDCW)", "M_NIUK");
+        mutualFundNameToIdMap.put("Aditya Birla SL Multi-Cap Fund", "M_ADYUM");
+        mutualFundNameToIdMap.put("SBI Small Cap Fund", "M_SBILM");
+        mutualFundNameToIdMap.put("NJ Arbitrage Fund", "M_NJAR");
+        mutualFundNameToIdMap.put("HDFC Ultra Short Term Fund(W-IDCW)", "M_HDFUH");
+        mutualFundNameToIdMap.put("Tata Dividend Yield Fund", "M_TATDE");
+        mutualFundNameToIdMap.put("Navi Overnight Fund(W-IDCW)", "M_NAIR");
+        mutualFundNameToIdMap.put("Kotak Bond Short Term Fund(IDCW)", "M_KOBO");
+        mutualFundNameToIdMap.put("DSP Global Allocation FoF(IDCW-Reinv)", "M_DSPC");
+        mutualFundNameToIdMap.put("Nippon India Low Duration Fund", "M_NIWA");
+        mutualFundNameToIdMap.put("UTI Credit Risk Fund(M-IDCW)", "M_UTIDK");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty PSU Bond Plus SDL Sep 2027 40:60 Index Fund", "M_ICI6X");
+        mutualFundNameToIdMap.put("Aditya Birla SL Credit Risk Fund", "M_ADKU");
+        mutualFundNameToIdMap.put("Mirae Asset Global X Artificial Intelligence & Technology ETF FoF", "M_MISX");
+        mutualFundNameToIdMap.put("Bandhan Floating Rate Fund(A-IDCW Reinv)", "M_IDFUR");
+        mutualFundNameToIdMap.put("Axis Money Market Fund(Q-IDCW)", "M_AXMQ");
+        mutualFundNameToIdMap.put("Union Equity Savings Fund(IDCW)", "M_UNNT");
+        mutualFundNameToIdMap.put("Bandhan All Seasons Bond Fund", "M_IDGB");
+        mutualFundNameToIdMap.put("SBI Gold(IDCW-Payout)", "M_SBGO");
+        mutualFundNameToIdMap.put("Mahindra Manulife Mid Cap Fund(IDCW-Payout)", "M_MAIM");
+        mutualFundNameToIdMap.put("Aditya Birla SL US Treasury 3-10 year Bond ETFs FoF", "M_ADI3B");
+        mutualFundNameToIdMap.put("Bajaj Finserv Liquid Fund(DD-IDCW)", "M_BAJN");
+        mutualFundNameToIdMap.put("Sundaram Dividend Yield Fund", "M_PRDN");
+        mutualFundNameToIdMap.put("UTI Corporate Bond Fund(F-IDCW)", "M_UTITB");
+        mutualFundNameToIdMap.put("Quant Value Fund(IDCW)", "M_QUVA");
+        mutualFundNameToIdMap.put("Motilal Oswal Multi Asset Fund", "M_MOTL");
+        mutualFundNameToIdMap.put("HDFC Index Fund-NIFTY 50 Plan", "M_HD5Y");
+        mutualFundNameToIdMap.put("HSBC Small Cap Fund", "M_LTES");
+        mutualFundNameToIdMap.put("Kotak FMP-325-90D(IDCW)", "M_KOT2L");
+        mutualFundNameToIdMap.put("Axis Banking & PSU Debt Fund(W-IDCW)", "M_AXKB");
+        mutualFundNameToIdMap.put("Union Midcap Fund", "M_UNIA");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty Auto Index Fund", "M_ICCAX");
+        mutualFundNameToIdMap.put("Axis Money Market Fund(DD-IDCW)", "M_AXSY");
+        mutualFundNameToIdMap.put("SBI Magnum Ultra Short Duration Fund(W-IDCW)", "M_SBAH");
+        mutualFundNameToIdMap.put("SBI Retirement Benefit Fund-Aggressive Hybrid Plan", "M_SBYV");
+        mutualFundNameToIdMap.put("Groww Liquid Fund", "M_INQA");
+        mutualFundNameToIdMap.put("Aditya Birla SL Dividend Yield Fund(IDCW)", "M_ADTVL");
+        mutualFundNameToIdMap.put("Nippon India FHF-XLIV-4-1223D", "M_NI4E");
+        mutualFundNameToIdMap.put("Bank of India Ultra Short Duration Fund(W-IDCW)", "M_BOIW");
+        mutualFundNameToIdMap.put("Kotak ESG Exclusionary Strategy Fund", "M_KOTEE");
+        mutualFundNameToIdMap.put("SBI Dynamic Bond Fund(IDCW-Payout)", "M_SBDY");
+        mutualFundNameToIdMap.put("UTI Transportation & Logistics Fund", "M_UTITO");
+        mutualFundNameToIdMap.put("SBI FMP-55-1849D(IDCW)", "M_SBWT");
+        mutualFundNameToIdMap.put("HSBC Brazil Fund", "M_HSRB");
+        mutualFundNameToIdMap.put("LIC MF ULIS Regular Premium Reducing Cover Yrly 15Y(IDCW)", "M_LIM5");
+        mutualFundNameToIdMap.put("UTI Low Duration Fund(FN-IDCW)", "M_UTIWV");
+        mutualFundNameToIdMap.put("HDFC Overnight Fund", "M_HDHL");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Aggressive Hybrid Fund", "M_BNAQ");
+        mutualFundNameToIdMap.put("Tata Floating Rate Fund(M-IDCW)", "M_TATFW");
+        mutualFundNameToIdMap.put("HSBC Medium Duration Fund(A-IDCW Payout)", "M_LTRU");
+        mutualFundNameToIdMap.put("Kotak Multi Asset Allocator FoF-Dynamic(IDCW-Payout)", "M_KOTS");
+        mutualFundNameToIdMap.put("Axis Long Duration Fund(M-IDCW)", "M_AXWT");
+        mutualFundNameToIdMap.put("Canara Rob Emerg Equities Fund(IDCW)", "M_CAEW");
+        mutualFundNameToIdMap.put("Invesco India Credit Risk Fund(IDCW)", "M_INKD");
+        mutualFundNameToIdMap.put("ICICI Pru Regular Savings Fund(M-IDCW Payout)", "M_ICIPS");
+        mutualFundNameToIdMap.put("HDFC Transportation and Logistics Fund(IDCW)", "M_HDFWR");
+        mutualFundNameToIdMap.put("ICICI Pru Large & Mid Cap Fund(IDCW-Payout)", "M_ICILG");
+        mutualFundNameToIdMap.put("Sundaram Liquid Fund(M-IDCW)", "M_PRSI");
+        mutualFundNameToIdMap.put("Mirae Asset Great Consumer Fund(IDCW)", "M_MIGC");
+        mutualFundNameToIdMap.put("Nippon India Hybrid Bond Fund(M-IDCW)", "M_NIPHO");
+        mutualFundNameToIdMap.put("DSP Equity Savings Fund(IDCW-Reinv)", "M_DSES");
+        mutualFundNameToIdMap.put("HDFC Money Market Fund(W-IDCW)", "M_HDMW");
+        mutualFundNameToIdMap.put("UTI Quarterly Interval Fund-II", "M_UTGY");
+        mutualFundNameToIdMap.put("HSBC Multi Cap Fund", "M_HSUA");
+        mutualFundNameToIdMap.put("Tata Resources & Energy Fund", "M_TARL");
+        mutualFundNameToIdMap.put("Bandhan Low Duration Fund(DD-IDCW)", "M_IDWO");
+        mutualFundNameToIdMap.put("Motilal Oswal Ultra Short Term Fund", "M_MOLG");
+        mutualFundNameToIdMap.put("LIC MF Short Duration Fund(IDCW)", "M_LIST");
+        mutualFundNameToIdMap.put("ICICI Pru Bluechip Fund", "M_ICCBH");
+        mutualFundNameToIdMap.put("SBI LT Advantage Fund-VI", "M_SBLT");
+        mutualFundNameToIdMap.put("HDFC Asset Allocator FoF(IDCW)", "M_HDFAW");
+        mutualFundNameToIdMap.put("SBI Multi Asset Allocation Fund(Q-IDCW)", "M_SBUQ");
+        mutualFundNameToIdMap.put("DSP US Flexible Equity Fund", "M_DSUX");
+        mutualFundNameToIdMap.put("Navi Overnight Fund(M-IDCW)", "M_NAIV");
+        mutualFundNameToIdMap.put("SBI BlueChip Fund(IDCW)", "M_SBUH");
+        mutualFundNameToIdMap.put("HDFC Ultra Short Term Fund(M-IDCW)", "M_HDCU");
+        mutualFundNameToIdMap.put("Mahindra Manulife Asia Pacific REITs FOF(IDCW)", "M_MAAM");
+        mutualFundNameToIdMap.put("Bank of India Liquid Fund(DD-IDCW)", "M_BOLX");
+        mutualFundNameToIdMap.put("Kotak Business Cycle Fund(IDCW Payout)", "M_KOTBS");
+        mutualFundNameToIdMap.put("Axis Regular Saver Fund(H-IDCW)", "M_AXISV");
+        mutualFundNameToIdMap.put("Bank of India Small Cap Fund", "M_BOIL");
+        mutualFundNameToIdMap.put("SBI FMP-92-91D(IDCW)", "M_SBIWW");
+        mutualFundNameToIdMap.put("Nippon India Silver ETF FOF", "M_NIPIV");
+        mutualFundNameToIdMap.put("Mirae Asset Banking and PSU Fund(IDCW)", "M_MIBU");
+        mutualFundNameToIdMap.put("JM Overnight Fund(W-IDCW)", "M_JMOC");
+        mutualFundNameToIdMap.put("ICICI Pru ELSS Tax Saver Fund(IDCW)", "M_ICLX");
+        mutualFundNameToIdMap.put("ICICI Pru Gilt Fund", "M_ICPIG");
+        mutualFundNameToIdMap.put("HDFC Short Term Debt Fund(IDCW-Reinv)", "M_HDSB");
+        mutualFundNameToIdMap.put("Mirae Asset Short Duration Fund(IDCW)", "M_MIHO");
+        mutualFundNameToIdMap.put("Mirae Asset Nifty AAA PSU Bond Plus SDL Apr 2026 50:50 Index Fund(IDCW)", "M_MIS6");
+        mutualFundNameToIdMap.put("WOC Ultra Short Duration Fund(W-IDCW)", "M_YEUT");
+        mutualFundNameToIdMap.put("Groww Largecap Fund(IDCW)", "M_GRLA");
+        mutualFundNameToIdMap.put("Union Large & Midcap Fund(IDCW)", "M_UNIT");
+        mutualFundNameToIdMap.put("ICICI Pru Large & Mid Cap Fund", "M_ICPIL");
+        mutualFundNameToIdMap.put("Edelweiss Liquid Fund(W-IDCW)", "M_EDPQ");
+        mutualFundNameToIdMap.put("Kotak Nifty G-Sec July 2033 Index Fund", "M_KOEJ");
+        mutualFundNameToIdMap.put("HSBC Short Duration Fund(A-IDCW)", "M_LTSE");
+        mutualFundNameToIdMap.put("HSBC Gilt Fund(Q-IDCW Payout)", "M_LTGL");
+        mutualFundNameToIdMap.put("Bandhan Nifty 100 Index Fund(IDCW Reinvest)", "M_ID1X");
+        mutualFundNameToIdMap.put("HSBC Consumption Fund", "M_HSOS");
+        mutualFundNameToIdMap.put("Mirae Asset Low Duration Fund", "M_MISV");
+        mutualFundNameToIdMap.put("Bandhan Credit Risk Fund(A-IDCW Reinv)", "M_IDFK");
+        mutualFundNameToIdMap.put("Axis Silver FoF", "M_AXVE");
+        mutualFundNameToIdMap.put("DSP Credit Risk Fund", "M_DSDK");
+        mutualFundNameToIdMap.put("Bandhan Bond Fund - Medium Term Plan(BM-IDCW)", "M_BAUT");
+        mutualFundNameToIdMap.put("Franklin India Feeder - Franklin U.S. Opportunities Fund(IDCW)", "M_FREL");
+        mutualFundNameToIdMap.put("SBI FMP-91-90D", "M_SBIT1");
+        mutualFundNameToIdMap.put("Taurus Flexi Cap Fund(IDCW)", "M_TAXS");
+        mutualFundNameToIdMap.put("Aditya Birla SL Retirement Fund-40(IDCW-Reinv)", "M_ADY4");
+        mutualFundNameToIdMap.put("Kotak Dynamic Bond Fund(IDCW)", "M_KODY");
+        mutualFundNameToIdMap.put("Aditya Birla SL Nifty Next 50 Index Fund(IDCW)", "M_ADIX5");
+        mutualFundNameToIdMap.put("DSP Credit Risk Fund(IDCW-Reinv)", "M_DSCK");
+        mutualFundNameToIdMap.put("360 ONE Balanced Hybrid Fund", "M_360A");
+        mutualFundNameToIdMap.put("Edelweiss CRISIL IBX 50:50 Gilt Plus SDL June 2027 Index Fund", "M_EDEJ");
+        mutualFundNameToIdMap.put("Bank of India Multi Cap Fund", "M_BANK");
+        mutualFundNameToIdMap.put("Bandhan Multi Asset Allocation Fund", "M_BANHP");
+        mutualFundNameToIdMap.put("Motilal Oswal Midcap Fund", "M_MOLS");
+        mutualFundNameToIdMap.put("ICICI Pru Value Discovery Fund", "M_ICCYV");
+        mutualFundNameToIdMap.put("SBI Floating Rate Debt Fund(Q-IDCW)", "M_SBWQ");
+        mutualFundNameToIdMap.put("Aditya Birla SL Asset Allocator FoF", "M_ADIIU");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty IT Index Fund(IDCW)", "M_ICCFX");
+        mutualFundNameToIdMap.put("Franklin India Prima Fund", "M_FRRN");
+        mutualFundNameToIdMap.put("Mirae Asset Overnight Fund(W-IDCW)", "M_MIRW");
+        mutualFundNameToIdMap.put("Aditya Birla SL Active Debt Multi-Mgr FoF(IDCW-Payout)", "M_ADIMV");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Dynamic Bond Fund(Q-IDCW)", "M_BAYW");
+        mutualFundNameToIdMap.put("Bandhan Regular Savings Fund(Q-IDCW)", "M_BAEG");
+        mutualFundNameToIdMap.put("Axis Long Duration Fund(DD-IDCW)", "M_AXWL");
+        mutualFundNameToIdMap.put("HDFC Retirement Savings Fund-Hybrid-Equity Plan", "M_HDTH");
+        mutualFundNameToIdMap.put("SBI International Access-US Equity FoF(IDCW)", "M_SBIIY");
+        mutualFundNameToIdMap.put("Groww Aggressive Hybrid Fund(IDCW)", "M_GROR");
+        mutualFundNameToIdMap.put("ICICI Pru ELSS Tax Saver Fund", "M_ICQX");
+        mutualFundNameToIdMap.put("Kotak Flexicap Fund(IDCW)", "M_KOSS");
+        mutualFundNameToIdMap.put("Canara Rob Liquid Fund(M-IDCW)", "M_CALM");
+        mutualFundNameToIdMap.put("Aditya Birla SL Floating Rate Fund(W-IDCW)", "M_ADIOW");
+        mutualFundNameToIdMap.put("Quantum Liquid Fund", "M_QUUT");
+        mutualFundNameToIdMap.put("Bandhan Retirement Fund(IDCW)", "M_BANHT");
+        mutualFundNameToIdMap.put("Invesco India - Invesco Pan European Equity FoF", "M_INOY");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas NIFTY SDL Dec 2026 Index Fund", "M_BAD2");
+        mutualFundNameToIdMap.put("SBI Technology Opp Fund(IDCW-Payout)", "M_SBTT");
+        mutualFundNameToIdMap.put("Tata Liquid Fund(DD-IDCW)", "M_TAQD");
+        mutualFundNameToIdMap.put("ICICI Pru Floating Interest Fund(W-IDCW)", "M_ICIFW");
+        mutualFundNameToIdMap.put("Mahindra Manulife Large Cap Fund(IDCW)", "M_MAIP");
+        mutualFundNameToIdMap.put("Invesco India Credit Risk Fund", "M_INOK");
+        mutualFundNameToIdMap.put("UTI Focused Fund", "M_UTFFO");
+        mutualFundNameToIdMap.put("Kotak Global Emerging Mkt Fund(IDCW-Payout)", "M_KOTGL");
+        mutualFundNameToIdMap.put("DSP Natural Res & New Energy Fund(IDCW)", "M_DSNU");
+        mutualFundNameToIdMap.put("SBI CRISIL IBX Gilt Index - Apr 2029 Fund(IDCW)", "M_SBU9");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Innovation Fund", "M_BAROV");
+        mutualFundNameToIdMap.put("Aditya Birla SL CRISIL IBX AAA Mar 2024 Index Fund", "M_ADI20");
+        mutualFundNameToIdMap.put("JM Short Duration Fund", "M_JMSI");
+        mutualFundNameToIdMap.put("Nippon India Hybrid Bond Fund(Q-IDCW)", "M_NIPHI");
+        mutualFundNameToIdMap.put("Sundaram Corp Bond Fund(M-IDCW)", "M_SUDCR");
+        mutualFundNameToIdMap.put("UTI S&P BSE Sensex Index Fund", "M_UTSSN");
+        mutualFundNameToIdMap.put("ICICI Pru Savings Fund(W-IDCW)", "M_ICVW");
+        mutualFundNameToIdMap.put("Axis All Seasons Debt FOFs(Q-IDCW)", "M_AXIAN");
+        mutualFundNameToIdMap.put("HDFC Asset Allocator FoF", "M_HDCSE");
+        mutualFundNameToIdMap.put("Aditya Birla SL Long Duration Fund(IDCW)", "M_ADTOW");
+        mutualFundNameToIdMap.put("SBI FMP-76-1221D(IDCW)", "M_SBIW6");
+        mutualFundNameToIdMap.put("Quantum Multi Asset Allocation Fund", "M_QUUC");
+        mutualFundNameToIdMap.put("Nippon India Inv-Mthly-II", "M_NIMI");
+        mutualFundNameToIdMap.put("Quant Absolute Fund(IDCW)", "M_QUBA");
+        mutualFundNameToIdMap.put("JM Arbitrage Fund(M-IDCW)", "M_JMRN");
+        mutualFundNameToIdMap.put("DSP Global Innovation FoF", "M_DSPGB");
+        mutualFundNameToIdMap.put("Nippon India Nifty Alpha Low Volatility 30 Index Fund", "M_NIY3");
+        mutualFundNameToIdMap.put("Nippon India Strategic Debt Fund(IDCW)", "M_NIPAR");
+        mutualFundNameToIdMap.put("Bandhan G-Sec-Invest(H-IDCW)", "M_BAGE");
+        mutualFundNameToIdMap.put("Tata Retirement Sav Fund - Prog Plan", "M_TAEV");
+        mutualFundNameToIdMap.put("Quant Teck Fund(IDCW)", "M_QUEC");
+        mutualFundNameToIdMap.put("Axis Global Equity Alpha FoF(IDCW)", "M_AXQB");
+        mutualFundNameToIdMap.put("Kotak India EQ Contra Fund", "M_KOQN");
+        mutualFundNameToIdMap.put("Nippon India Corp Bond Fund(DD-IDCW)", "M_NIBF");
+        mutualFundNameToIdMap.put("HSBC Aggressive Hybrid Fund(IDCW Payout)", "M_LTHQ");
+        mutualFundNameToIdMap.put("Mirae Asset Flexi Cap Fund", "M_MIFE");
+        mutualFundNameToIdMap.put("Tata Flexi Cap Fund(IDCW-Payout)", "M_TAMU");
+        mutualFundNameToIdMap.put("Bandhan Financial Services Fund(IDCW Reinvest)", "M_BANH");
+        mutualFundNameToIdMap.put("Axis Gilt Fund", "M_AXGC");
+        mutualFundNameToIdMap.put("NJ Flexi Cap Fund", "M_NJFL");
+        mutualFundNameToIdMap.put("Union Flexi Cap Fund", "M_UNMN");
+        mutualFundNameToIdMap.put("Bandhan CRISIL IBX Gilt April 2028 Index Fund(IDCW Reinvest)", "M_ID2V");
+        mutualFundNameToIdMap.put("Axis Liquid Fund", "M_AXLF");
+        mutualFundNameToIdMap.put("SBI FMP-46-1850D", "M_SBIPI");
+        mutualFundNameToIdMap.put("Sundaram Dividend Yield Fund(H-IDCW)", "M_PRDC");
+        mutualFundNameToIdMap.put("SBI FMP-34-3682D", "M_SBI3");
+        mutualFundNameToIdMap.put("Aditya Birla SL Equity Advantage Fund(IDCW-Reinv)", "M_ADTUU");
+        mutualFundNameToIdMap.put("LIC MF Banking & Financial Services Fund", "M_LIMK");
+        mutualFundNameToIdMap.put("Bandhan Bond Fund - Income Plan(A-IDCW)", "M_BAUC");
+        mutualFundNameToIdMap.put("ICICI Pru PSU Equity Fund", "M_ICRCY");
+        mutualFundNameToIdMap.put("Navi Nifty Next 50 Index Fund", "M_NAVT");
+        mutualFundNameToIdMap.put("LIC MF ULIS Regular Premium Reducing Cover Mthly 10Y(IDCW)", "M_LIMN");
+        mutualFundNameToIdMap.put("UTI Multi Asset Allocation Fund(IDCW)", "M_UTMUU");
+        mutualFundNameToIdMap.put("Kotak Infra & Eco Reform Fund(IDCW)", "M_KONU");
+        mutualFundNameToIdMap.put("Aditya Birla SL Income Fund(Q-IDCW Reinv)", "M_ADTCL");
+        mutualFundNameToIdMap.put("SBI Overnight Fund(W-IDCW Payout)", "M_SBOV");
+        mutualFundNameToIdMap.put("Canara Rob Liquid Fund(W-IDCW)", "M_CALF");
+        mutualFundNameToIdMap.put("Bandhan Nifty 50 Index Fund(IDCW)", "M_IDNY");
+        mutualFundNameToIdMap.put("SBI Tax Advantage Fund-III", "M_SBUT");
+        mutualFundNameToIdMap.put("Aditya Birla SL Short Term Fund(Q-IDCW)", "M_ADIUH");
+        mutualFundNameToIdMap.put("Nippon India FHF-XLI-8-3654D", "M_NIO8");
+        mutualFundNameToIdMap.put("Aditya Birla SL PSU Equity Fund", "M_ADTS");
+        mutualFundNameToIdMap.put("ICICI Pru Balanced Advantage Fund(IDCW)", "M_ICCBV");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas ELSS Tax Saver Fund(IDCW)", "M_BNSU");
+        mutualFundNameToIdMap.put("Bandhan Financial Services Fund", "M_BAHN");
+        mutualFundNameToIdMap.put("Mirae Asset Multi Asset Allocation Fund(IDCW)", "M_MIUM");
+        mutualFundNameToIdMap.put("Axis Dynamic Bond Fund(H-IDCW)", "M_AXIDD");
+        mutualFundNameToIdMap.put("Kotak Gilt Fund(Q-IDCW)", "M_KOGQ");
+        mutualFundNameToIdMap.put("Bandhan All Seasons Bond Fund(P-IDCW)", "M_BALH");
+        mutualFundNameToIdMap.put("Quant Value Fund", "M_QUVN");
+        mutualFundNameToIdMap.put("Franklin India Corp Debt Fund-A", "M_FRCI");
+        mutualFundNameToIdMap.put("PGIM India Overnight Fund(W-IDCW)", "M_PGOD");
+        mutualFundNameToIdMap.put("DSP World Agriculture Fund(IDCW)", "M_DSWL");
+        mutualFundNameToIdMap.put("DSP Credit Risk Fund(M-IDCW Reinv)", "M_DSCT");
+        mutualFundNameToIdMap.put("UTI Money Market Fund(M-IDCW)", "M_UTIYK");
+        mutualFundNameToIdMap.put("HDFC Mid-Cap Opportunities Fund", "M_HDCMS");
+        mutualFundNameToIdMap.put("JM Value Fund", "M_JMVA");
+        mutualFundNameToIdMap.put("SBI FMP-56-1232D(IDCW)", "M_SBW6");
+        mutualFundNameToIdMap.put("Nippon India Focused Equity Fund(IDCW)", "M_NIPFF");
+        mutualFundNameToIdMap.put("Axis FTP-118-100D(Q-IDCW)", "M_AX80");
+        mutualFundNameToIdMap.put("Franklin India Dynamic Asset Allocation FOFs(IDCW Payout)", "M_FRYN");
+        mutualFundNameToIdMap.put("Kotak FMP-308-1125D(IDCW)", "M_KOT0T");
+        mutualFundNameToIdMap.put("HSBC Multi Asset Allocation Fund", "M_HSAO");
+        mutualFundNameToIdMap.put("DSP Equity Opportunities Fund(IDCW-Reinv)", "M_DSQS");
+        mutualFundNameToIdMap.put("Kotak Overnight Fund(DD-IDCW)", "M_KOKH");
+        mutualFundNameToIdMap.put("Bank of India Short Term Income Fund", "M_BOSA");
+        mutualFundNameToIdMap.put("HDFC Technology Fund", "M_HDFHP");
+        mutualFundNameToIdMap.put("Sundaram Equity Savings Fund(Q-IDCW)", "M_PRPN");
+        mutualFundNameToIdMap.put("Aditya Birla SL Pharma & Healthcare Fund(IDCW-Reinv)", "M_ADTH");
+        mutualFundNameToIdMap.put("DSP Equity Savings Fund", "M_DSEP");
+        mutualFundNameToIdMap.put("ICICI Pru Savings Fund(M-IDCW)", "M_ICCSA");
+        mutualFundNameToIdMap.put("Kotak S&P BSE Housing Index Fund", "M_KOHG");
+        mutualFundNameToIdMap.put("PGIM India Corp Bond Fund(M-IDCW)", "M_PGCB");
+        mutualFundNameToIdMap.put("Franklin India Balanced Advantage Fund(IDCW Payout)", "M_FRVC");
+        mutualFundNameToIdMap.put("Axis Retirement Savings Fund-Aggressive Plan", "M_AXST");
+        mutualFundNameToIdMap.put("SBI LT Advantage Fund-V", "M_SBLN");
+        mutualFundNameToIdMap.put("Nippon India Nivesh Lakshya Fund(Q-IDCW)", "M_NIKF");
+        mutualFundNameToIdMap.put("LIC MF Aggressive Hybrid Fund", "M_LIEM");
+        mutualFundNameToIdMap.put("Tata Nifty India Digital ETF FoF(IDCW)", "M_TATNF");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty Pharma Index Fund", "M_ICCMX");
+        mutualFundNameToIdMap.put("Aditya Birla SL Retirement Fund-30(IDCW)", "M_ADBM");
+        mutualFundNameToIdMap.put("SBI LT Advantage Fund-I", "M_SBNL");
+        mutualFundNameToIdMap.put("Nippon India FHF-XLIII-5-2315D", "M_NI3E");
+        mutualFundNameToIdMap.put("Franklin India NSE Nifty 50 Index Fund(IDCW Payout)", "M_FRXD");
+        mutualFundNameToIdMap.put("UTI Flexi Cap Fund(IDCW)", "M_UTIXW");
+        mutualFundNameToIdMap.put("SBI FMP-54-1842D(IDCW)", "M_SBWI");
+        mutualFundNameToIdMap.put("HSBC Ultra Short Duration Fund(DD-IDCW)", "M_HSCC");
+        mutualFundNameToIdMap.put("HDFC Nifty G-Sec Sep 2032 Index Fund", "M_HDCTG");
+        mutualFundNameToIdMap.put("ICICI Pru Commodities Fund(IDCW Payout)", "M_ICCS");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty Next 50 Index Fund(IDCW-Payout)", "M_ICY5");
+        mutualFundNameToIdMap.put("Bandhan Multi Cap Fund(IDCW)", "M_IDFMW");
+        mutualFundNameToIdMap.put("Aditya Birla SL Nifty SDL Apr 2027 Index Fund(IDCW)", "M_AD7X");
+        mutualFundNameToIdMap.put("SBI Magnum Low Duration Fund", "M_SBUO");
+        mutualFundNameToIdMap.put("SBI Magnum Equity ESG Fund(IDCW)", "M_SBQM");
+        mutualFundNameToIdMap.put("Edelweiss Multi Asset Allocation Fund", "M_EDMU");
+        mutualFundNameToIdMap.put("Mirae Asset Nifty SDL Jun 2027 Index Fund", "M_MIRJ");
+        mutualFundNameToIdMap.put("Invesco India Nifty G-sec Sep 2032 Index Fund", "M_INT2");
+        mutualFundNameToIdMap.put("Canara Rob Conservative Hybrid Fund", "M_CAOC");
+        mutualFundNameToIdMap.put("HDFC Focused 30 Fund(IDCW)", "M_HDOF");
+        mutualFundNameToIdMap.put("Tata Banking & Financial Services Fund(IDCW)", "M_TABG");
+        mutualFundNameToIdMap.put("DSP ELSS Tax Saver Fund", "M_DSXT");
+        mutualFundNameToIdMap.put("DSP Global Allocation FoF(IDCW)", "M_DSGO");
+        mutualFundNameToIdMap.put("Quant Commodities Fund(IDCW)", "M_QUCC");
+        mutualFundNameToIdMap.put("Sundaram Overnight Fund(W-IDCW)", "M_SUDW");
+        mutualFundNameToIdMap.put("Bank of India Balanced Advantage Fund(IDCW)", "M_BAKW");
+        mutualFundNameToIdMap.put("ICICI Pru Multicap Fund(IDCW)", "M_ICPIM");
+        mutualFundNameToIdMap.put("DSP NIFTY 50 Index Fund", "M_DSNY");
+        mutualFundNameToIdMap.put("HSBC Aggressive Hybrid Fund(A-IDCW Payout)", "M_LTHI");
+        mutualFundNameToIdMap.put("Bandhan Corp Bond Fund(H-IDCW)", "M_BACW");
+        mutualFundNameToIdMap.put("ICICI Pru Corp Bond Fund", "M_ICPCA");
+        mutualFundNameToIdMap.put("HDFC Floating Rate Debt Fund", "M_HDFOB");
+        mutualFundNameToIdMap.put("ICICI Pru Long Term Bond Fund(Q-IDCW)", "M_ICCGQ");
+        mutualFundNameToIdMap.put("SBI Corp Bond Fund(Q-IDCW Payout)", "M_SBIB");
+        mutualFundNameToIdMap.put("Franklin India Opportunities Fund", "M_FROL");
+        mutualFundNameToIdMap.put("DSP ELSS Tax Saver Fund(IDCW-Reinv)", "M_DSAX");
+        mutualFundNameToIdMap.put("Bajaj Finserv Money Market Fund(IDCW)", "M_BAFV");
+        mutualFundNameToIdMap.put("ICICI Pru Corp Bond Fund(Q-IDCW Payout)", "M_ICIOP");
+        mutualFundNameToIdMap.put("UTI Ultra Short Duration Fund(F-IDCW)", "M_UTUUH");
+        mutualFundNameToIdMap.put("HDFC Transportation and Logistics Fund", "M_HDCOT");
+        mutualFundNameToIdMap.put("Aditya Birla SL ELSS Tax Saver Fund(IDCW-Reinv)", "M_AD9X");
+        mutualFundNameToIdMap.put("ICICI Pru Corp Bond Fund(Q-IDCW)", "M_ICCOB");
+        mutualFundNameToIdMap.put("Kotak Nifty G-Sec July 2033 Index Fund(IDCW)", "M_KOGJ");
+        mutualFundNameToIdMap.put("HSBC ELSS Tax saver Fund", "M_LTTV");
+        mutualFundNameToIdMap.put("Bandhan Banking & PSU Debt Fund(DD-IDCW)", "M_IDAK");
+        mutualFundNameToIdMap.put("Nippon India Index Fund-Nifty 50 Plan(Q-IDCW)", "M_NI5Q");
+        mutualFundNameToIdMap.put("Groww Value Fund", "M_INUI");
+        mutualFundNameToIdMap.put("Union Midcap Fund(IDCW)", "M_UNDM");
+        mutualFundNameToIdMap.put("UTI Low Duration Fund(M-IDCW)", "M_UTTTM");
+        mutualFundNameToIdMap.put("Nippon India Nifty SDL Plus G-Sec-Jun 2028 Maturity 70:30 Index Fund(IDCW)", "M_NICJ");
+        mutualFundNameToIdMap.put("Sundaram Low Duration Fund(F-IDCW)", "M_SUDRO");
+        mutualFundNameToIdMap.put("Mirae Asset Balanced Advantage Fund", "M_MIBC");
+        mutualFundNameToIdMap.put("UTI Dynamic Bond Fund", "M_UTBM");
+        mutualFundNameToIdMap.put("DSP FMP 268-1281D(IDCW)", "M_DSW8");
+        mutualFundNameToIdMap.put("Axis Balanced Advantage Fund", "M_AXDS");
+        mutualFundNameToIdMap.put("DSP Nifty 50 Equal Weight Index Fund", "M_DSEN");
+        mutualFundNameToIdMap.put("Sundaram Short Duration Fund(F-IDCW)", "M_SUDRH");
+        mutualFundNameToIdMap.put("DSP Multicap Fund", "M_DSPUP");
+        mutualFundNameToIdMap.put("JM Aggressive Hybrid Fund(IDCW)", "M_JMUY");
+        mutualFundNameToIdMap.put("Edelweiss ELSS Tax saver Fund", "M_EDWX");
+        mutualFundNameToIdMap.put("HDFC NIFTY Smallcap 250 Index Fund", "M_HDCTM");
+        mutualFundNameToIdMap.put("Nippon India Multi Asset Fund(IDCW)", "M_NIPDU");
+        mutualFundNameToIdMap.put("HDFC Credit Risk Debt Fund-(IDCW-Reinv)", "M_HDRB");
+        mutualFundNameToIdMap.put("ITI Flexi Cap Fund", "M_ITFF");
+        mutualFundNameToIdMap.put("Union Small Cap Fund(IDCW-Reinv)", "M_UNSO");
+        mutualFundNameToIdMap.put("Tata Ultra Short Term Fund(W-IDCW Payout)", "M_TAUU");
+        mutualFundNameToIdMap.put("DSP Corp Bond Fund", "M_DSCG");
+        mutualFundNameToIdMap.put("Kotak Business Cycle Fund", "M_KOTKY");
+        mutualFundNameToIdMap.put("Aditya Birla SL Financial Planning FOF Aggressive Plan", "M_ADIOV");
+        mutualFundNameToIdMap.put("ICICI Pru Infrastructure Fund(IDCW-Payout)", "M_ICICS");
+        mutualFundNameToIdMap.put("JM Arbitrage Fund(Q-IDCW)", "M_JMRL");
+        mutualFundNameToIdMap.put("HSBC Tax Saver Equity Fund(IDCW)", "M_HSTV");
+        mutualFundNameToIdMap.put("HSBC Value Fund(IDCW-Payout)", "M_LTID");
+        mutualFundNameToIdMap.put("Tata Arbitrage Fund(M-IDCW Payout)", "M_TARB");
+        mutualFundNameToIdMap.put("UTI Liquid Fund(H-IDCW)", "M_UTIHP");
+        mutualFundNameToIdMap.put("Tata Banking & PSU Debt Fund", "M_TAAA");
+        mutualFundNameToIdMap.put("Axis Long Duration Fund(A-IDCW)", "M_AXWR");
+        mutualFundNameToIdMap.put("LIC MF Equity Savings Fund(M-IDCW)", "M_IDBES");
+        mutualFundNameToIdMap.put("Bandhan CRISIL IBX Gilt April 2032 Index Fund(IDCW)", "M_BANX");
+        mutualFundNameToIdMap.put("Tata Business Cycle Fund(IDCW Payout)", "M_TAWB");
+        mutualFundNameToIdMap.put("Groww Overnight Fund(FN-IDCW)", "M_INWH");
+        mutualFundNameToIdMap.put("UTI Overnight Fund(IDCW)", "M_UTOOV");
+        mutualFundNameToIdMap.put("Aditya Birla SL Savings Fund", "M_ADTVA");
+        mutualFundNameToIdMap.put("Mahindra Manulife Focused Fund(IDCW)", "M_MAAU");
+        mutualFundNameToIdMap.put("Invesco India Gilt Fund(Q-IDCW)", "M_INVSL");
+        mutualFundNameToIdMap.put("UTI Short Duration Fund(A-IDCW)", "M_UTSSO");
+        mutualFundNameToIdMap.put("HDFC Long Duration Debt Fund(IDCW)", "M_HDFWL");
+        mutualFundNameToIdMap.put("ICICI Pru Focused Equity Fund", "M_ICCSF");
+        mutualFundNameToIdMap.put("Axis ESG Integration Strategy Fund(IDCW)", "M_AXISY");
+        mutualFundNameToIdMap.put("Axis Equity Hybrid Fund", "M_AXEI");
+        mutualFundNameToIdMap.put("Bank of India Midcap Tax Fund-Sr 2(IDCW)", "M_BOID");
+        mutualFundNameToIdMap.put("Kotak Quant Fund", "M_KOTQK");
+        mutualFundNameToIdMap.put("Axis US Treasury Dynamic Bond ETF FoF", "M_AXIUD");
+        mutualFundNameToIdMap.put("HDFC FMP-Sr 47-2638D-Feb 2023", "M_HDCS8");
+        mutualFundNameToIdMap.put("Quant Active Fund", "M_QUNC");
+        mutualFundNameToIdMap.put("UTI Low Duration Fund(Q-IDCW)", "M_UTTEU");
+        mutualFundNameToIdMap.put("LIC MF Balanced Advantage Fund", "M_LIBC");
+        mutualFundNameToIdMap.put("Bajaj Finserv Liquid Fund(M-IDCW)", "M_BAFP");
+        mutualFundNameToIdMap.put("Mahindra Manulife Business Cycle Fund", "M_MAAS");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty 100 Low Volatility 30 ETF FOF(IDCW)", "M_ICIWN");
+        mutualFundNameToIdMap.put("Nippon India Value Fund", "M_NIEV");
+        mutualFundNameToIdMap.put("UTI Overnight Fund(DD-IDCW)", "M_UTGH");
+        mutualFundNameToIdMap.put("Bandhan Asset Alloc FoF-Mod", "M_IDTM");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Large Cap Fund(IDCW)", "M_BAGU");
+        mutualFundNameToIdMap.put("Quant Liquid Plan", "M_QUTI");
+        mutualFundNameToIdMap.put("Kotak Nifty SDL Apr 2032 Top 12 Equal Weight Index Fund", "M_KOY3");
+        mutualFundNameToIdMap.put("Axis Banking & PSU Debt Fund(M-IDCW)", "M_AXKA");
+        mutualFundNameToIdMap.put("Nippon India Nivesh Lakshya Fund(M-IDCW)", "M_NIKY");
+        mutualFundNameToIdMap.put("Nippon India Passive Flexicap FoF(IDCW)", "M_NIPDP");
+        mutualFundNameToIdMap.put("HDFC Retirement Savings Fund-Equity Plan", "M_HDYV");
+        mutualFundNameToIdMap.put("Axis All Seasons Debt FOFs(M-IDCW)", "M_AXMB");
+        mutualFundNameToIdMap.put("Bandhan US Treasury Bond 0-1 year FoF(IDCW)", "M_BAN0");
+        mutualFundNameToIdMap.put("Kotak Dynamic Bond Fund(IDCW Payout)", "M_KOTD");
+        mutualFundNameToIdMap.put("DSP Quant Fund(IDCW)", "M_DSPA");
+        mutualFundNameToIdMap.put("Nippon India Quant Fund", "M_NIQU");
+        mutualFundNameToIdMap.put("LIC MF ULIS Regular Premium Reducing Cover Qtrly 10Y(IDCW)", "M_LIMU");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty G-Sec Dec 2030 Index Fund", "M_ICCS2");
+        mutualFundNameToIdMap.put("ICICI Pru Liquid Fund(IDCW-Payout)", "M_ICILU");
+        mutualFundNameToIdMap.put("Kotak Equity Opp Fund", "M_KOEO");
+        mutualFundNameToIdMap.put("Aditya Birla SL Long Duration Fund(IDCW Reinvest)", "M_ADTRW");
+        mutualFundNameToIdMap.put("UTI Innovation Fund(IDCW)", "M_UTNIO");
+        mutualFundNameToIdMap.put("Bank of India ELSS Tax Saver(IDCW)", "M_BOXV");
+        mutualFundNameToIdMap.put("ICICI Pru Savings Fund(Q-IDCW)", "M_ICCSR");
+        mutualFundNameToIdMap.put("HDFC Housing Opp Fund", "M_HDHH");
+        mutualFundNameToIdMap.put("Aditya Birla SL FMP-UQ-92D(IDCW)", "M_ADIQ9");
+        mutualFundNameToIdMap.put("TRUSTMF Banking & PSU Fund", "M_TRUA");
+        mutualFundNameToIdMap.put("PGIM India Equity Savings Fund(A-IDCW)", "M_PGEW");
+        mutualFundNameToIdMap.put("Aditya Birla SL CRISIL IBX 50:50 Gilt Plus SDL Apr 2028 Index Fund(IDCW)", "M_AD58");
+        mutualFundNameToIdMap.put("Kotak S&P BSE Housing Index Fund(IDCW)", "M_KOHC");
+        mutualFundNameToIdMap.put("ICICI Pru Passive Multi-Asset FoF", "M_ICPVS");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Arbitrage Fund(M-IDCW)", "M_BATP");
+        mutualFundNameToIdMap.put("Canara Rob Gilt Fund", "M_CAA9");
+        mutualFundNameToIdMap.put("Kotak Healthcare Fund(IDCW)", "M_KOTKH");
+        mutualFundNameToIdMap.put("Sundaram Medium Term Bond Fund(A-IDCW)", "M_SUDMW");
+        mutualFundNameToIdMap.put("Nippon India Nifty Smallcap 250 Index Fund(IDCW)", "M_NIM0");
+        mutualFundNameToIdMap.put("ITI Arbitrage Fund", "M_ITIP");
+        mutualFundNameToIdMap.put("Mahindra Manulife Balanced Advantage Fund(IDCW Payout)", "M_MARG");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Multi Cap Fund", "M_BAMU");
+        mutualFundNameToIdMap.put("Bandhan G-Sec-Constant Maturity Plan(P-IDCW)Exch Reinv", "M_IDGE");
+        mutualFundNameToIdMap.put("Union Liquid Fund", "M_UNLF");
+        mutualFundNameToIdMap.put("ICICI Pru Retirement Fund-Hybrid Aggressive Plan", "M_ICEU");
+        mutualFundNameToIdMap.put("Nippon India Silver ETF FOF(IDCW)", "M_NIPDI");
+        mutualFundNameToIdMap.put("Tata ST Bond Fund(P-IDCW)", "M_TASN");
+        mutualFundNameToIdMap.put("Samco Overnight Fund", "M_SAME");
+        mutualFundNameToIdMap.put("ICICI Pru MNC Fund(IDCW)", "M_ICRF");
+        mutualFundNameToIdMap.put("ICICI Pru Regular Savings Fund(H-IDCW Payout)", "M_ICIIS");
+        mutualFundNameToIdMap.put("Axis Business Cycles Fund(IDCW)", "M_AXWE");
+        mutualFundNameToIdMap.put("Nippon India Pharma Fund", "M_NIHU");
+        mutualFundNameToIdMap.put("LIC MF ULIS", "M_LIUS");
+        mutualFundNameToIdMap.put("DSP Multicap Fund(IDCW)", "M_DSPUD");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Small Cap Fund", "M_BARDN");
+        mutualFundNameToIdMap.put("Axis Money Market Fund", "M_AXSK");
+        mutualFundNameToIdMap.put("JM ELSS Tax Saver Fund", "M_JMTA");
+        mutualFundNameToIdMap.put("ICICI Pru Large & Mid Cap Fund(IDCW)", "M_ICPIA");
+        mutualFundNameToIdMap.put("HSBC Large Cap Fund", "M_HSLQ");
+        mutualFundNameToIdMap.put("WOC Liquid Fund(FN-IDCW)-Direct plan", "M_YELF");
+        mutualFundNameToIdMap.put("Canara Rob Conservative Hybrid Fund(M-IDCW)", "M_CACS");
+        mutualFundNameToIdMap.put("JM Aggressive Hybrid Fund(M-IDCW)", "M_JMQM");
+        mutualFundNameToIdMap.put("DSP Ultra Short Fund(M-IDCW)", "M_DSLH");
+        mutualFundNameToIdMap.put("Aditya Birla SL Credit Risk Fund(IDCW)", "M_ADKC");
+        mutualFundNameToIdMap.put("SBI Savings Fund(IDCW-Payout)", "M_SBAS");
+        mutualFundNameToIdMap.put("SBI Consumption Opp Fund(IDCW-Payout)", "M_SBOS");
+        mutualFundNameToIdMap.put("ICICI Pru Equity Savings Fund(Q-IDCW)", "M_ICYS");
+        mutualFundNameToIdMap.put("ITI Mid Cap Fund(IDCW)", "M_ITMP");
+        mutualFundNameToIdMap.put("UTI FTIF-XXXV-III(1176D)(IDCW)", "M_UTWR");
+        mutualFundNameToIdMap.put("PGIM India Midcap Opp Fund(IDCW)", "M_PGCW");
+        mutualFundNameToIdMap.put("Sundaram LT Micro Cap Tax Adv Fund-Sr III", "M_SUTU");
+        mutualFundNameToIdMap.put("ICICI Pru Overnight fund-Direct Plan-Unclaimed Redemption IDCW Transitory Scheme", "M_ICCWU");
+        mutualFundNameToIdMap.put("Tata CRISIL IBX Gilt Index - April 2026 Index Fund(IDCW Payout)", "M_TABX");
+        mutualFundNameToIdMap.put("Kotak Bond Fund(IDCW)", "M_KOBE");
+        mutualFundNameToIdMap.put("ICICI Pru Balanced Advantage Fund(IDCW-Payout)", "M_ICIBA");
+        mutualFundNameToIdMap.put("Motilal Oswal Nasdaq 100 FOF", "M_MOT1");
+        mutualFundNameToIdMap.put("Axis Nifty Midcap 50 Index Fund", "M_AXM0");
+        mutualFundNameToIdMap.put("HSBC Flexi Cap Fund(IDCW)", "M_HSMQ");
+        mutualFundNameToIdMap.put("SBI Short Term Debt Fund(FN-IDCW Payout)", "M_SBHS");
+        mutualFundNameToIdMap.put("ICICI Pru Commodities Fund(IDCW)", "M_ICPDO");
+        mutualFundNameToIdMap.put("Bandhan Bond Fund - Medium Term Plan(Q-IDCW)", "M_BAUE");
+        mutualFundNameToIdMap.put("Mirae Asset Dynamic Bond Fund", "M_MIED");
+        mutualFundNameToIdMap.put("Kotak Equity Arbitrage Fund(M-IDCW Payout)", "M_KOEY");
+        mutualFundNameToIdMap.put("Tata Ethical Fund(IDCW)", "M_TAHT");
+        mutualFundNameToIdMap.put("Axis FTP-113-1228D", "M_AX8C");
+        mutualFundNameToIdMap.put("HSBC Business Cycles Fund(IDCW)", "M_LTBU");
+        mutualFundNameToIdMap.put("Union Arbitrage Fund", "M_UNNB");
+        mutualFundNameToIdMap.put("SBI Magnum Income Fund(Q-IDCW Payout)", "M_SBAQ");
+        mutualFundNameToIdMap.put("Aditya Birla SL Special Opp Fund(IDCW-Reinv)", "M_ADIY");
+        mutualFundNameToIdMap.put("DSP Dynamic Asset Allocation Fund", "M_DSYD");
+        mutualFundNameToIdMap.put("DSP Quant Fund(IDCW-Reinv)", "M_DSPQ");
+        mutualFundNameToIdMap.put("Nippon India Gilt Securities-AARO", "M_NIGL");
+        mutualFundNameToIdMap.put("Canara Rob Income Fund(Q-IDCW)", "M_CAIQ");
+        mutualFundNameToIdMap.put("Bandhan Ultra Short Term Fund(M-IDCW Reinvest)", "M_IDUL");
+        mutualFundNameToIdMap.put("Mirae Asset Corp Bond Fund(IDCW)", "M_MICB");
+        mutualFundNameToIdMap.put("Bandhan Corp Bond Fund(IDCW-Reinv)", "M_IDFO");
+        mutualFundNameToIdMap.put("Franklin India ELSS Tax Saver Fund", "M_FRIX");
+        mutualFundNameToIdMap.put("Aditya Birla SL Dividend Yield Fund(IDCW-Reinv)", "M_ADTDV");
+        mutualFundNameToIdMap.put("Quant Teck Fund", "M_QUEK");
+        mutualFundNameToIdMap.put("WOC ELSS Tax Saver Fund", "M_WOCS");
+        mutualFundNameToIdMap.put("Bank of India Mfg & Infra Fund(IDCW)", "M_BAMK");
+        mutualFundNameToIdMap.put("DSP India T.I.G.E.R Fund", "M_DSPID");
+        mutualFundNameToIdMap.put("HSBC Aggressive Hybrid Fund(A-IDCW)", "M_LTHB");
+        mutualFundNameToIdMap.put("HSBC Midcap Fund(IDCW)", "M_HSDW");
+        mutualFundNameToIdMap.put("DSP Equity Opportunities Fund", "M_DSIY");
+        mutualFundNameToIdMap.put("Aditya Birla SL Banking & PSU Debt(Q-IDCW)", "M_ADTNK");
+        mutualFundNameToIdMap.put("HDFC Gilt Fund(IDCW)", "M_HDCGG");
+        mutualFundNameToIdMap.put("Aditya Birla SL Regular Savings Fund(M-IDCW)", "M_ADGV");
+        mutualFundNameToIdMap.put("Franklin India Smaller Cos Fund(IDCW Payout)", "M_FRMY");
+        mutualFundNameToIdMap.put("WOC Ultra Short Duration Fund(W-IDCW Payout)", "M_YESS");
+        mutualFundNameToIdMap.put("Tata Banking & PSU Debt Fund(IDCW-Payout)", "M_TATB");
+        mutualFundNameToIdMap.put("ICICI Pru Midcap Fund(IDCW-Payout)", "M_ICIDR");
+        mutualFundNameToIdMap.put("DSP Strategic Bond Fund(IDCW-Reinv)", "M_DSSR");
+        mutualFundNameToIdMap.put("WOC Liquid Fund", "M_YELG");
+        mutualFundNameToIdMap.put("Bandhan Dynamic Bond Fund(P-IDCW)", "M_IDDN");
+        mutualFundNameToIdMap.put("Groww Value Fund(Q-IDCW)", "M_GRWV");
+        mutualFundNameToIdMap.put("Sundaram LT Tax Adv Fund-Sr III", "M_SULT");
+        mutualFundNameToIdMap.put("SBI FMP-51-1846D", "M_SBIPA");
+        mutualFundNameToIdMap.put("Parag Parikh Flexi Cap Fund", "M_PARO");
+        mutualFundNameToIdMap.put("Aditya Birla SL Pure Value Fund(IDCW)", "M_ADUV");
+        mutualFundNameToIdMap.put("Nippon India Japan Equity Fund(IDCW)", "M_NIJD");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Business Cycle Fund(IDCW)", "M_BAPY");
+        mutualFundNameToIdMap.put("Bandhan Liquid Fund(W-IDCW)", "M_IDAW");
+        mutualFundNameToIdMap.put("SBI Flexicap Fund(IDCW)", "M_SBIMU");
+        mutualFundNameToIdMap.put("Bandhan Bond Fund - Medium Term Plan(BM-IDCW Reinv)", "M_IDVO");
+        mutualFundNameToIdMap.put("HDFC MNC Fund(IDCW)", "M_HDFDW");
+        mutualFundNameToIdMap.put("Aditya Birla SL CRISIL IBX AAA Mar 2024 Index Fund(IDCW)", "M_ADI2M");
+        mutualFundNameToIdMap.put("Nippon India Nifty Smallcap 250 Index Fund", "M_NIPA");
+        mutualFundNameToIdMap.put("Nippon India Multi Asset Fund", "M_NIPU");
+        mutualFundNameToIdMap.put("Axis Bluechip Fund", "M_AXLB");
+        mutualFundNameToIdMap.put("Tata Ultra Short Term Fund(W-IDCW)", "M_TAUS");
+        mutualFundNameToIdMap.put("Tata Housing Opportunities Fund(IDCW)", "M_TAHO");
+        mutualFundNameToIdMap.put("Kotak All Weather Debt FoF", "M_KOHW");
+        mutualFundNameToIdMap.put("Franklin India Income Opportunities Fund", "M_FRCM");
+        mutualFundNameToIdMap.put("Invesco India Overnight Fund(W-IDCW)", "M_INVN");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty Bank Index Fund(IDCW Payout)", "M_ICKX");
+        mutualFundNameToIdMap.put("Sundaram Corp Bond Fund(Q-IDCW)", "M_SUDCM");
+        mutualFundNameToIdMap.put("Bandhan Liquid Fund(M-IDCW)", "M_BAQL");
+        mutualFundNameToIdMap.put("Aditya Birla SL Multi Asset Allocation Fund(IDCW Reinvest)", "M_ADTEW");
+        mutualFundNameToIdMap.put("SBI Magnum Children's Benefit Fund-Savings Plan", "M_SBNH");
+        mutualFundNameToIdMap.put("Axis Equity Saver Fund(IDCW)", "M_AXVP");
+        mutualFundNameToIdMap.put("Navi Aggressive Hybrid Fund", "M_ESEH");
+        mutualFundNameToIdMap.put("Axis Liquid Fund(DD-IDCW)", "M_AXLD");
+        mutualFundNameToIdMap.put("ICICI Pru Overnight Fund(W-IDCW Payout)", "M_ICCWH");
+        mutualFundNameToIdMap.put("Sundaram Arbitrage Fund(M-IDCW)", "M_PRPB");
+        mutualFundNameToIdMap.put("Invesco India PSU Equity Fund", "M_INPE");
+        mutualFundNameToIdMap.put("HDFC Corp Bond Fund(IDCW)", "M_HDBO");
+        mutualFundNameToIdMap.put("Aditya Birla SL Focused Fund", "M_ADTFU");
+        mutualFundNameToIdMap.put("Aditya Birla SL Global Emerging Opp Fund(IDCW)", "M_ADGM");
+        mutualFundNameToIdMap.put("Edelweiss Balanced Advantage Fund(M-IDCW)", "M_EDAB");
+        mutualFundNameToIdMap.put("DSP Multicap Fund(IDCW Reinvest)", "M_DSPUF");
+        mutualFundNameToIdMap.put("Kotak Multi Asset Allocator FoF-Dynamic", "M_KOSE");
+        mutualFundNameToIdMap.put("Kotak Equity Arbitrage Fund(M-IDCW)", "M_KOQI");
+        mutualFundNameToIdMap.put("Aditya Birla SL Equity Savings Fund(IDCW)", "M_ADIAV");
+        mutualFundNameToIdMap.put("HDFC NIFTY Midcap 150 Index Fund", "M_HDCYI");
+        mutualFundNameToIdMap.put("HDFC Credit Risk Debt Fund-(Q-IDCW)", "M_HDIK");
+        mutualFundNameToIdMap.put("HSBC Short Duration Fund(Q-IDCW)", "M_LTSD");
+        mutualFundNameToIdMap.put("Bank of India Overnight Fund(DD-IDCW)", "M_BOIE");
+        mutualFundNameToIdMap.put("Motilal Oswal S&P BSE Low Volatility Index Fund", "M_MOAA");
+        mutualFundNameToIdMap.put("LIC MF Medium to Long Duration Bond Fund(Q-IDCW)", "M_IDKQ");
+        mutualFundNameToIdMap.put("PGIM India Liquid Fund(W-IDCW)", "M_PGQM");
+        mutualFundNameToIdMap.put("ICICI Pru Savings Fund(IDCW)", "M_ICCSI");
+        mutualFundNameToIdMap.put("Kotak Emerging Equity Fund(IDCW-Payout)", "M_KOKU");
+        mutualFundNameToIdMap.put("SBI Nifty50 Equal Weight Index Fund", "M_SBQ5");
+        mutualFundNameToIdMap.put("Aditya Birla SL NASDAQ 100 FOF", "M_ADI1Q");
+        mutualFundNameToIdMap.put("Axis Arbitrage Fund", "M_AXAB");
+        mutualFundNameToIdMap.put("Sundaram Ultra Short Duration Fund(Q-IDCW)", "M_SUDAL");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Overnight Fund(DD-IDCW)", "M_BAOV");
+        mutualFundNameToIdMap.put("Invesco India Liquid Fund(DD-IDCW)", "M_INQE");
+        mutualFundNameToIdMap.put("360 ONE Quant Fund(IDCW Payout)", "M_IIQN");
+        mutualFundNameToIdMap.put("LIC MF ULIS Regular Premium Uniform Cover Yrly 15Y(IDCW)", "M_LIFF");
+        mutualFundNameToIdMap.put("PGIM India Dynamic Bond Fund", "M_PGYN");
+        mutualFundNameToIdMap.put("Union Dynamic Bond", "M_UNDN");
+        mutualFundNameToIdMap.put("SBI Balanced Advantage Fund", "M_SBIBA");
+        mutualFundNameToIdMap.put("Bandhan Credit Risk Fund(Q-IDCW)", "M_IDRR");
+        mutualFundNameToIdMap.put("DSP Nifty SDL Plus G-Sec Jun 2028 30:70 Index Fund(IDCW)", "M_DSTJ");
+        mutualFundNameToIdMap.put("Bandhan Money Manager Fund(M-IDCW)", "M_BAMG");
+        mutualFundNameToIdMap.put("Nippon India Credit Risk Fund", "M_NICG");
+        mutualFundNameToIdMap.put("Quantum Dynamic Bond Fund", "M_QUAI");
+        mutualFundNameToIdMap.put("HSBC Flexi Cap Fund(IDCW-Payout)", "M_HSMU");
+        mutualFundNameToIdMap.put("Kotak Equity Savings Fund(M-IDCW)", "M_KOEL");
+        mutualFundNameToIdMap.put("Union Overnight Fund(M-IDCW Payout)", "M_UNIH");
+        mutualFundNameToIdMap.put("Tata Hybrid Equity Fund(M-IDCW Payout)", "M_TAHA");
+        mutualFundNameToIdMap.put("LIC MF Medium to Long Duration Bond Fund(IDCW)", "M_LIBP");
+        mutualFundNameToIdMap.put("DSP Banking & PSU Debt Fund(IDCW)", "M_DSNR");
+        mutualFundNameToIdMap.put("ICICI Pru Balanced Advantage Fund(M-IDCW Payout)", "M_ICIBB");
+        mutualFundNameToIdMap.put("Bandhan Ultra Short Term Fund(M-IDCW)", "M_IDFLH");
+        mutualFundNameToIdMap.put("Navi Conservative Hybrid Fund", "M_ESRE");
+        mutualFundNameToIdMap.put("Bajaj Finserv Liquid Fund(W-IDCW)", "M_BAFQ");
+        mutualFundNameToIdMap.put("Aditya Birla SL Multi-Index FoF(IDCW)", "M_ADIWX");
+        mutualFundNameToIdMap.put("SBI Balanced Advantage Fund(IDCW Payout)", "M_SBWE");
+        mutualFundNameToIdMap.put("SBI FMP-67-1467D(IDCW)", "M_SBI7W");
+        mutualFundNameToIdMap.put("Aditya Birla SL FMP-UR-85D", "M_ADI8L");
+        mutualFundNameToIdMap.put("UTI Money Market Fund(Q-IDCW)", "M_UTQK");
+        mutualFundNameToIdMap.put("Kotak Banking & Financial Services Fund(IDCW)", "M_KOCV");
+        mutualFundNameToIdMap.put("Quant BFSI Fund", "M_QUBD");
+        mutualFundNameToIdMap.put("Tata India Pharma & Healthcare Fund(IDCW)", "M_TAIR");
+        mutualFundNameToIdMap.put("Old Bridge Focused Equity Fund(IDCW)", "M_OLDI");
+        mutualFundNameToIdMap.put("Navi ELSS Tax Saver Nifty 50 Index Fund(IDCW)", "M_NAVL");
+        mutualFundNameToIdMap.put("DSP 10Y G-Sec Fund(M-IDCW)", "M_DS0Y");
+        mutualFundNameToIdMap.put("JM Dynamic Bond Fund", "M_JMDT");
+        mutualFundNameToIdMap.put("Kotak Manufacture in India Fund(IDCW Payout)", "M_KOTAY");
+        mutualFundNameToIdMap.put("Aditya Birla SL Infrastructure Fund", "M_ADTUL");
+        mutualFundNameToIdMap.put("Mirae Asset Large & Midcap Fund(IDCW)", "M_MIMR");
+        mutualFundNameToIdMap.put("Motilal Oswal Midcap Fund(IDCW)", "M_MOOL");
+        mutualFundNameToIdMap.put("LIC MF Midcap Fund(IDCW)", "M_IDBMI");
+        mutualFundNameToIdMap.put("UTI Low Duration Fund(A-IDCW)", "M_UTIWR");
+        mutualFundNameToIdMap.put("UTI Money Market Fund(W-IDCW)", "M_UTIKF");
+        mutualFundNameToIdMap.put("Mirae Asset Nifty SDL June 2028 Index Fund", "M_MIEJ");
+        mutualFundNameToIdMap.put("DSP Ultra Short Fund(M-IDCW Reinv)", "M_DSUU");
+        mutualFundNameToIdMap.put("Bank of India Mid & Small Cap Equity & Debt Fund(IDCW)", "M_BAKP");
+        mutualFundNameToIdMap.put("SBI CRISIL IBX SDL Index - Sep 2027 Fund(IDCW)", "M_SB7X");
+        mutualFundNameToIdMap.put("Aditya Birla SL Bal Bhavishya Yojna(IDCW-Reinv)", "M_ADTJ");
+        mutualFundNameToIdMap.put("Nippon India Ultra Short Duration Fund(DD-IDCW)", "M_NILH");
+        mutualFundNameToIdMap.put("Navi S&P BSE Sensex Index Fund", "M_NASI");
+        mutualFundNameToIdMap.put("Franklin India Technology Fund(IDCW)", "M_FRTN");
+        mutualFundNameToIdMap.put("HSBC Conservative Hybrid Fund(Q-IDCW Payout)", "M_HSRE");
+        mutualFundNameToIdMap.put("SBI Arbitrage Opportunities Fund", "M_SBIAB");
+        mutualFundNameToIdMap.put("SBI Multi Asset Allocation Fund(Q-IDCW Payout)", "M_SBUU");
+        mutualFundNameToIdMap.put("ICICI Pru Business Cycle Fund(IDCW-Payout)", "M_ICPBS");
+        mutualFundNameToIdMap.put("Aditya Birla SL Banking & PSU Debt(M-IDCW)", "M_ADIMK");
+        mutualFundNameToIdMap.put("Sundaram Ultra Short Duration Fund(M-IDCW)", "M_PRUC");
+        mutualFundNameToIdMap.put("SBI Short Term Debt Fund(M-IDCW Payout)", "M_SBSO");
+        mutualFundNameToIdMap.put("Nippon India Gilt Securities-ACAPO", "M_NIGT");
+        mutualFundNameToIdMap.put("Sundaram Overnight Fund(M-IDCW)", "M_SUDV");
+        mutualFundNameToIdMap.put("ITI ELSS Tax Saver Fund", "M_ITIY");
+        mutualFundNameToIdMap.put("Kotak Low Duration Fund(IDCW Payout)", "M_KOLU");
+        mutualFundNameToIdMap.put("Aditya Birla SL Nifty SDL Plus PSU Bond Sep 2026 60:40 Index Fund(IDCW)", "M_AD2X");
+        mutualFundNameToIdMap.put("WOC Flexi Cap Fund(IDCW)", "M_WOCI");
+        mutualFundNameToIdMap.put("DSP CRISIL SDL Plus G-Sec Apr 2033 50:50 Index Fund(IDCW)", "M_DSGX");
+        mutualFundNameToIdMap.put("ICICI Pru Savings Fund(Q-IDCW Payout)", "M_ICISI");
+        mutualFundNameToIdMap.put("Edelweiss Technology Fund(IDCW)", "M_EDCY");
+        mutualFundNameToIdMap.put("Axis Midcap Fund", "M_AXMI");
+        mutualFundNameToIdMap.put("Nippon India Nifty 50 Value 20 Index Fund(IDCW)", "M_NI0T");
+        mutualFundNameToIdMap.put("Nippon India Gold Savings Fund", "M_NIGU");
+        mutualFundNameToIdMap.put("Bandhan Ultra Short Term Fund(Q-IDCW)", "M_BAUH");
+        mutualFundNameToIdMap.put("Bandhan All Seasons Bond Fund(H-IDCW)", "M_BAUI");
+        mutualFundNameToIdMap.put("Tata Equity P/E Fund(Div Trig Opt B-10%)", "M_TAE1");
+        mutualFundNameToIdMap.put("Tata Corp Bond Fund(Q-IDCW Payout)", "M_TATCY");
+        mutualFundNameToIdMap.put("Sundaram LT Tax Adv Fund-Sr III-(IDCW)", "M_SULL");
+        mutualFundNameToIdMap.put("Sundaram LT Micro Cap Tax Adv Fund-Sr V", "M_SULU");
+        mutualFundNameToIdMap.put("PGIM India Money Market Fund(W-IDCW)", "M_PGIY");
+        mutualFundNameToIdMap.put("JM Arbitrage Fund", "M_JMRG");
+        mutualFundNameToIdMap.put("TRUSTMF Overnight Fund", "M_TRUV");
+        mutualFundNameToIdMap.put("DSP Multi Asset Allocation Fund(IDCW Reinvest)", "M_DSPUL");
+        mutualFundNameToIdMap.put("Bajaj Finserv Arbitrage Fund(IDCW)", "M_BAVL");
+        mutualFundNameToIdMap.put("Aditya Birla SL Banking & PSU Debt", "M_ADTKI");
+        mutualFundNameToIdMap.put("Bandhan Ultra Short Term Fund(W-IDCW)", "M_BAUA");
+        mutualFundNameToIdMap.put("TRUSTMF Liquid Fund", "M_TRUE");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Nifty 50 Index Fund", "M_BAP0");
+        mutualFundNameToIdMap.put("Axis Quant Fund(IDCW)", "M_AXISQ");
+        mutualFundNameToIdMap.put("Axis Equity Hybrid Fund(M-IDCW)", "M_AXIET");
+        mutualFundNameToIdMap.put("Kotak FMP-304-3119D", "M_KOT3E");
+        mutualFundNameToIdMap.put("ICICI Pru FMCG Fund(IDCW)", "M_ICPPI");
+        mutualFundNameToIdMap.put("SBI Banking and PSU Fund(W-IDCW Payout)", "M_SBBA");
+        mutualFundNameToIdMap.put("HDFC NIFTY SDL Plus G-Sec Jun 2027 40:60 Index Fund", "M_HDCN4");
+        mutualFundNameToIdMap.put("DSP Strategic Bond Fund(IDCW)", "M_DSRO");
+        mutualFundNameToIdMap.put("Sundaram Medium Term Bond Fund(Q-IDCW)", "M_SUDEA");
+        mutualFundNameToIdMap.put("Bandhan Bond Fund - Income Plan(Q-IDCW)", "M_BAUQ");
+        mutualFundNameToIdMap.put("Kotak Bluechip Fund", "M_KOLB");
+        mutualFundNameToIdMap.put("ITI Flexi Cap Fund(IDCW)", "M_ITFI");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Corp Bond Fund(A-IDCW)", "M_BAWI");
+        mutualFundNameToIdMap.put("PGIM India Liquid Fund", "M_PGST");
+        mutualFundNameToIdMap.put("Invesco India Nifty G-sec Sep 2032 Index Fund(IDCW)", "M_INF0");
+        mutualFundNameToIdMap.put("WOC Multi Cap Fund", "M_WOMI");
+        mutualFundNameToIdMap.put("Quantum Nifty 50 ETF FoF", "M_QUA0");
+        mutualFundNameToIdMap.put("Edelweiss CRISIL IBX 50:50 Gilt Plus SDL April 2037 Index Fund", "M_EDCC");
+        mutualFundNameToIdMap.put("Canara Rob Liquid Fund(DD-IDCW)", "M_CABL");
+        mutualFundNameToIdMap.put("DSP Ultra Short Fund(W-IDCW)", "M_DSHP");
+        mutualFundNameToIdMap.put("Sundaram Small Cap Fund", "M_SUNSP");
+        mutualFundNameToIdMap.put("JM Aggressive Hybrid Fund(Q-IDCW)", "M_JMQE");
+        mutualFundNameToIdMap.put("ICICI Pru Balanced Advantage Fund", "M_ICCVB");
+        mutualFundNameToIdMap.put("Invesco India Gilt Fund(A-IDCW)", "M_INVST");
+        mutualFundNameToIdMap.put("Bandhan Banking & PSU Debt Fund(IDCW-Reinv)", "M_IDKG");
+        mutualFundNameToIdMap.put("Tata Multi Asset Opp Fund(IDCW)", "M_TATU");
+        mutualFundNameToIdMap.put("Aditya Birla SL Nifty SDL Sep 2025 Index Fund", "M_ADI2N");
+        mutualFundNameToIdMap.put("Aditya Birla SL FMP-UR-85D(IDCW)", "M_ADI8R");
+        mutualFundNameToIdMap.put("Union FMP-Sr 13", "M_UNFN");
+        mutualFundNameToIdMap.put("Kotak Nifty SDL Plus AAA PSU Bond Jul 2028 60:40 Index Fund", "M_KOTJ");
+        mutualFundNameToIdMap.put("Kotak Nifty Financial Services Ex-Bank Index Fund", "M_KORX");
+        mutualFundNameToIdMap.put("SBI Nifty Next 50 Index Fund(IDCW)", "M_SBY5");
+        mutualFundNameToIdMap.put("HSBC Global Emerging Markets Fund(IDCW-Payout)", "M_HSCK");
+        mutualFundNameToIdMap.put("SBI FMP-42-1857D", "M_SBIP5");
+        mutualFundNameToIdMap.put("ICICI Pru US Bluechip Equity Fund(IDCW-Payout)", "M_ICISP");
+        mutualFundNameToIdMap.put("SBI Balanced Advantage Fund(IDCW)", "M_SBWC");
+        mutualFundNameToIdMap.put("Mahindra Manulife Large & Mid Cap Fund(IDCW Payout)", "M_MAHE");
+        mutualFundNameToIdMap.put("DSP Banking & PSU Debt Fund(IDCW-Reinv)", "M_DSBN");
+        mutualFundNameToIdMap.put("HSBC Nifty Next 50 Index Fund(IDCW Payout)", "M_LTNW");
+        mutualFundNameToIdMap.put("WOC Ultra Short Duration Fund", "M_YEUA");
+        mutualFundNameToIdMap.put("Nippon India Retirement Fund-Wealth Creation", "M_NIRA");
+        mutualFundNameToIdMap.put("Nippon India Index Fund-Nifty 50 Plan(A-IDCW)", "M_NI0U");
+        mutualFundNameToIdMap.put("DSP FMP 268-1281D", "M_DSP2L");
+        mutualFundNameToIdMap.put("Canara Rob Banking and PSU Debt Fund(IDCW)", "M_CABK");
+        mutualFundNameToIdMap.put("Motilal Oswal Nifty 500 Index Fund", "M_MOT5");
+        mutualFundNameToIdMap.put("HDFC Income Fund(IDCW-Reinv)", "M_HDNI");
+        mutualFundNameToIdMap.put("LIC MF Healthcare Fund(IDCW)", "M_IDBIH");
+        mutualFundNameToIdMap.put("HSBC Balanced Advantage Fund(IDCW-Payout)", "M_LTBC");
+        mutualFundNameToIdMap.put("Aditya Birla SL Nifty 50 Index Fund", "M_ADIXD");
+        mutualFundNameToIdMap.put("Mirae Asset Equity Savings Fund(IDCW)", "M_MIQS");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty SDL Sep 2026 Index Fund", "M_ICC2X");
+        mutualFundNameToIdMap.put("ICICI Pru Regular Gold Savings Fund", "M_ICCVO");
+        mutualFundNameToIdMap.put("ICICI Pru Money Market Fund(DD-IDCW)", "M_ICIKY");
+        mutualFundNameToIdMap.put("SBI FMP-74-1243D", "M_SBITM");
+        mutualFundNameToIdMap.put("Nippon India Income Fund(H-IDCW)", "M_NIPCI");
+        mutualFundNameToIdMap.put("Kotak ESG Exclusionary Strategy Fund(IDCW)", "M_KOTES");
+        mutualFundNameToIdMap.put("Franklin India Opportunities Fund(IDCW)", "M_FROK");
+        mutualFundNameToIdMap.put("DSP Liquidity Fund(W-IDCW)", "M_DSWQ");
+        mutualFundNameToIdMap.put("Tata Small Cap Fund", "M_TASC");
+        mutualFundNameToIdMap.put("Bandhan Multi Cap Fund(IDCW Reinvest)", "M_IDFWU");
+        mutualFundNameToIdMap.put("Edelweiss Flexi Cap Fund(IDCW)", "M_EDXL");
+        mutualFundNameToIdMap.put("Bank of India Bluechip Fund", "M_BOBB");
+        mutualFundNameToIdMap.put("PGIM India Money Market Fund(DD-IDCW)", "M_PGIK");
+        mutualFundNameToIdMap.put("Invesco India Smallcap Fund(IDCW)", "M_INPW");
+        mutualFundNameToIdMap.put("Aditya Birla SL Equity Hybrid '95 Fund", "M_AD9H");
+        mutualFundNameToIdMap.put("SBI FMP-91-90D(IDCW)", "M_SBIWC");
+        mutualFundNameToIdMap.put("Mahindra Manulife Large Cap Fund", "M_MAIY");
+        mutualFundNameToIdMap.put("HDFC Ultra Short Term Fund", "M_HDUU");
+        mutualFundNameToIdMap.put("Sundaram Multi Cap Fund", "M_PRPW");
+        mutualFundNameToIdMap.put("ICICI Pru Equity Savings Fund", "M_ICIQC");
+        mutualFundNameToIdMap.put("Nippon India Dynamic Bond Fund", "M_NIYA");
+        mutualFundNameToIdMap.put("Bajaj Finserv Overnight Fund", "M_BAJO");
+        mutualFundNameToIdMap.put("Quant Quantamental Fund", "M_QUQQ");
+        mutualFundNameToIdMap.put("HSBC Short Duration Fund(A-IDCW Payout)", "M_LTSN");
+        mutualFundNameToIdMap.put("HDFC Hybrid Debt Fund(M-IDCW)", "M_HDFHH");
+        mutualFundNameToIdMap.put("HDFC Long Duration Debt Fund", "M_HDCLC");
+        mutualFundNameToIdMap.put("Tata Equity Savings Fund(P-IDCW)", "M_TAQE");
+        mutualFundNameToIdMap.put("Tata Flexi Cap Fund(IDCW)", "M_TAMT");
+        mutualFundNameToIdMap.put("Franklin India Feeder - Templeton European Opportunities Fund", "M_FRFO");
+        mutualFundNameToIdMap.put("HDFC Infrastructure Fund", "M_HDFNS");
+        mutualFundNameToIdMap.put("Canara Rob Corp Bond Fund", "M_CARD");
+        mutualFundNameToIdMap.put("Bandhan Bond Fund - Medium Term Plan(FN-IDCW)", "M_BAUW");
+        mutualFundNameToIdMap.put("SBI Credit Risk Fund", "M_SBEK");
+        mutualFundNameToIdMap.put("Navi Liquid Fund", "M_ESII");
+        mutualFundNameToIdMap.put("Canara Rob Savings Fund(W-IDCW)", "M_CASW");
+        mutualFundNameToIdMap.put("Kotak Nifty SDL Plus AAA PSU Bond Jul 2028 60:40 Index Fund(IDCW)", "M_KOPJ");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Money Market Fund(DD-IDCW)", "M_BAOK");
+        mutualFundNameToIdMap.put("ITI Overnight Fund(W-IDCW)", "M_ITIG");
+        mutualFundNameToIdMap.put("Sundaram Debt Oriented Hybrid Fund(M-IDCW)", "M_SUNYB");
+        mutualFundNameToIdMap.put("Nippon India Corp Bond Fund", "M_NIBC");
+        mutualFundNameToIdMap.put("Sundaram Corp Bond Fund(A-IDCW)", "M_SUDCA");
+        mutualFundNameToIdMap.put("Sundaram Money Market Fund(M-IDCW)", "M_SUKY");
+        mutualFundNameToIdMap.put("Aditya Birla SL Equity Savings Fund", "M_ADIBV");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Value Fund(IDCW)", "M_BASR");
+        mutualFundNameToIdMap.put("LIC MF Small Cap Fund", "M_IDIS");
+        mutualFundNameToIdMap.put("Groww Nifty Total Market Index Fund(IDCW)", "M_GROX");
+        mutualFundNameToIdMap.put("Edelweiss Multi Cap Fund(IDCW)", "M_EDEWT");
+        mutualFundNameToIdMap.put("DSP World Energy Fund(IDCW-Reinv)", "M_DSWN");
+        mutualFundNameToIdMap.put("Bandhan Corp Bond Fund(IDCW)", "M_IDOT");
+        mutualFundNameToIdMap.put("HSBC Conservative Hybrid Fund(M-IDCW Payout)", "M_HSRG");
+        mutualFundNameToIdMap.put("Franklin India Equity Advantage Fund(IDCW)", "M_FREI");
+        mutualFundNameToIdMap.put("Tata Equity Savings Fund", "M_TAQU");
+        mutualFundNameToIdMap.put("Quant Manufacturing Fund(IDCW)", "M_QUMG");
+        mutualFundNameToIdMap.put("Aditya Birla SL Medium Term Plan", "M_ADTMM");
+        mutualFundNameToIdMap.put("ICICI Pru ESG Exclusionary Strategy Fund", "M_ICIP");
+        mutualFundNameToIdMap.put("Axis Business Cycles Fund", "M_AXISB");
+        mutualFundNameToIdMap.put("SBI Equity Minimum Variance Fund", "M_SBEE");
+        mutualFundNameToIdMap.put("Tata Focused Equity Fund(IDCW)", "M_TATS");
+        mutualFundNameToIdMap.put("SBI FMP-6-3668D(IDCW)", "M_SB6F");
+        mutualFundNameToIdMap.put("Kotak Banking and PSU Debt Fund(M-IDCW)", "M_KOBP");
+        mutualFundNameToIdMap.put("Parag Parikh Arbitrage Fund", "M_PARB");
+        mutualFundNameToIdMap.put("ICICI Pru Overnight Fund", "M_ICPVH");
+        mutualFundNameToIdMap.put("Mahindra Manulife Liquid Fund(DD-IDCW)", "M_MADP");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Short Duration Fund(Q-IDCW)", "M_BATH");
+        mutualFundNameToIdMap.put("Groww Liquid Fund(FN-IDCW)", "M_GRWQ");
+        mutualFundNameToIdMap.put("Bandhan Bond Fund - Short Term Plan(M-IDCW Reinv)", "M_IDFBW");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty 50 Index Fund(IDCW-Payout)", "M_ICYX");
+        mutualFundNameToIdMap.put("Aditya Birla SL Dynamic Bond Fund(Q-IDCW Reinv)", "M_ADMQ");
+        mutualFundNameToIdMap.put("SBI Credit Risk Fund(IDCW-Payout)", "M_SBCK");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Ultra Short Duration Fund", "M_BADU");
+        mutualFundNameToIdMap.put("Aditya Birla SL Dynamic Bond Fund(M-IDCW Reinv)", "M_ADITN");
+        mutualFundNameToIdMap.put("Tata Nifty Midcap 150 Momentum 50 Index Fund", "M_TAN5");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Large Cap Fund", "M_BNLP");
+        mutualFundNameToIdMap.put("Tata Mid Cap Growth Fund", "M_TAMW");
+        mutualFundNameToIdMap.put("Tata Nifty G-Sec Dec 2026 Index Fund(IDCW)", "M_TA0T");
+        mutualFundNameToIdMap.put("Bandhan Infrastructure Fund(IDCW)", "M_IDSU");
+        mutualFundNameToIdMap.put("ICICI Pru Focused Equity Fund(IDCW)", "M_ICCOQ");
+        mutualFundNameToIdMap.put("Nippon India Corp Bond Fund(IDCW)", "M_NIPAL");
+        mutualFundNameToIdMap.put("HDFC Business Cycle Fund", "M_HDCBU");
+        mutualFundNameToIdMap.put("UTI Balanced Advantage Fund", "M_UTIBA");
+        mutualFundNameToIdMap.put("DSP Banking & PSU Debt Fund(W-IDCW)", "M_DSKK");
+        mutualFundNameToIdMap.put("Bandhan Bond Fund - Short Term Plan(A-IDCW Reinv)", "M_IDBF");
+        mutualFundNameToIdMap.put("Sundaram Aggressive Hybrid Fund", "M_PRHN");
+        mutualFundNameToIdMap.put("WOC Ultra Short Duration Fund(M-IDCW Payout)", "M_YESL");
+        mutualFundNameToIdMap.put("Navi Flexi Cap Fund(Q-IDCW)", "M_NAFF");
+        mutualFundNameToIdMap.put("BHARAT Bond ETF FOF - April 2033(IDCW)", "M_BHRF");
+        mutualFundNameToIdMap.put("Nippon India Short Term Fund", "M_NIHS");
+        mutualFundNameToIdMap.put("Mirae Asset Midcap Fund", "M_MIAI");
+        mutualFundNameToIdMap.put("Edelweiss Liquid Fund(A-IDCW)", "M_EDAQ");
+        mutualFundNameToIdMap.put("HDFC Technology Fund(IDCW Reinvest)", "M_HDFEH");
+        mutualFundNameToIdMap.put("Axis Banking & PSU Debt Fund(DD-IDCW)", "M_AXAK");
+        mutualFundNameToIdMap.put("Aditya Birla SL Corp Bond Fund(M-IDCW Reinv)", "M_ADDM");
+        mutualFundNameToIdMap.put("ICICI Pru Debt Mgmt Fund", "M_ICPIP");
+        mutualFundNameToIdMap.put("Kotak Nifty 50 Index Fund(IDCW Payout)", "M_KONW");
+        mutualFundNameToIdMap.put("Bandhan Overnight Fund", "M_IDOO");
+        mutualFundNameToIdMap.put("Navi Large & Midcap Fund(H-IDCW)", "M_NALI");
+        mutualFundNameToIdMap.put("Taurus Mid Cap Fund(IDCW)", "M_TAUUD");
+        mutualFundNameToIdMap.put("ITI Dynamic Bond Fund(A-IDCW)", "M_ITDU");
+        mutualFundNameToIdMap.put("Bandhan Bond Fund - Medium Term Plan(M-IDCW)", "M_BAWN");
+        mutualFundNameToIdMap.put("DSP Strategic Bond Fund", "M_DSIS");
+        mutualFundNameToIdMap.put("Axis Children's Gift Fund-No Lock in", "M_AXHL");
+        mutualFundNameToIdMap.put("Kotak Nifty SDL Apr 2027 Top 12 Equal Weight Index Fund(IDCW)", "M_KO2S");
+        mutualFundNameToIdMap.put("Invesco India Banking and PSU Fund(DD-IDCW)", "M_INKS");
+        mutualFundNameToIdMap.put("Axis CRISIL IBX 50:50 Gilt Plus SDL Sep 2027 Index Fund(IDCW)", "M_AXB0");
+        mutualFundNameToIdMap.put("Axis Nifty Next 50 Index Fund(IDCW)", "M_AXE5");
+        mutualFundNameToIdMap.put("Kotak Healthcare Fund", "M_KOTAH");
+        mutualFundNameToIdMap.put("Bandhan FTP-179-3652D", "M_IDF2");
+        mutualFundNameToIdMap.put("Aditya Birla SL NASDAQ 100 FOF(IDCW)", "M_ADIQ0");
+        mutualFundNameToIdMap.put("Quant Business Cycle Fund(IDCW)", "M_QUBY");
+        mutualFundNameToIdMap.put("Aditya Birla SL Active Debt Multi-Mgr FoF", "M_ADIVM");
+        mutualFundNameToIdMap.put("LIC MF Medium to Long Duration Bond Fund(A-IDCW)", "M_IDWK");
+        mutualFundNameToIdMap.put("Axis Retirement Savings Fund-Dynamic Plan(IDCW)", "M_AXIY");
+        mutualFundNameToIdMap.put("UTI Money Market Fund(A-IDCW)", "M_UTIOK");
+        mutualFundNameToIdMap.put("LIC MF Large Cap Fund(IDCW)", "M_LIGA");
+        mutualFundNameToIdMap.put("Kotak Nifty 50 Index Fund", "M_KOYG");
+        mutualFundNameToIdMap.put("Aditya Birla SL FTP-TI-1837D(IDCW)", "M_AD3W");
+        mutualFundNameToIdMap.put("HDFC Capital Builder Value Fund", "M_HDCAC");
+        mutualFundNameToIdMap.put("Kotak Savings Fund(M-IDCW)", "M_KOSI");
+        mutualFundNameToIdMap.put("Kotak Small Cap Fund", "M_KOSM");
+        mutualFundNameToIdMap.put("WOC Liquid Fund(M-IDCW)-Direct plan", "M_YELN");
+        mutualFundNameToIdMap.put("Kotak Consumption Fund(IDCW Payout)", "M_KOTOK");
+        mutualFundNameToIdMap.put("JM Low Duration Fund(W-IDCW)", "M_JMOO");
+        mutualFundNameToIdMap.put("DSP Natural Res & New Energy Fund(IDCW-Reinv)", "M_DSAY");
+        mutualFundNameToIdMap.put("Bank of India Arbitrage Fund(Q-IDCW)", "M_BAKT");
+        mutualFundNameToIdMap.put("TRUSTMF Money Market Fund(M-IDCW)", "M_TRTO");
+        mutualFundNameToIdMap.put("Sundaram Short Duration Fund(Q-IDCW)", "M_SUNEW");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Conservative Hybrid Fund(Q-IDCW)", "M_BAVB");
+        mutualFundNameToIdMap.put("Mirae Asset Nifty SDL June 2028 Index Fund(IDCW)", "M_MIS0");
+        mutualFundNameToIdMap.put("Sundaram Liquid Fund(Q-IDCW)", "M_SUNQW");
+        mutualFundNameToIdMap.put("HDFC Arbitrage-WP", "M_HDRW");
+        mutualFundNameToIdMap.put("Nippon India Retirement Fund-Income Generation(IDCW)", "M_NIRP");
+        mutualFundNameToIdMap.put("UTI Conservative Hybrid Fund(M-IDCW)", "M_UTRRA");
+        mutualFundNameToIdMap.put("ICICI Pru Equity-Arbitrage Fund", "M_ICCYA");
+        mutualFundNameToIdMap.put("Shriram ELSS Tax Saver Fund(IDCW)", "M_SHRO");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Liquid Fund(DD-IDCW)", "M_BALA");
+        mutualFundNameToIdMap.put("HDFC Ultra Short Term Fund(DD-IDCW)", "M_HDUC");
+        mutualFundNameToIdMap.put("Navi Liquid Fund(M-IDCW)", "M_NALU");
+        mutualFundNameToIdMap.put("SBI FMP-56-1232D", "M_SBI5L");
+        mutualFundNameToIdMap.put("Axis Flexi Cap Fund", "M_AXMM");
+        mutualFundNameToIdMap.put("Aditya Birla SL CRISIL IBX 60:40 SDL + AAA PSU Apr 2026 Index Fund", "M_ADIX4");
+        mutualFundNameToIdMap.put("Tata Multicap Fund(IDCW)", "M_TATMW");
+        mutualFundNameToIdMap.put("Kotak FMP-328-90D(IDCW)", "M_KOT8W");
+        mutualFundNameToIdMap.put("Union Large & Midcap Fund(IDCW-Payout)", "M_UNIL");
+        mutualFundNameToIdMap.put("Mirae Asset Dynamic Bond Fund(IDCW)", "M_MIDA");
+        mutualFundNameToIdMap.put("Canara Rob Savings Fund(M-IDCW)", "M_CASF");
+        mutualFundNameToIdMap.put("Bandhan Nifty 50 Index Fund", "M_IDFNN");
+        mutualFundNameToIdMap.put("ICICI Pru Overnight fund-Direct Plan-Unclaimed IDCW Transitory Scheme", "M_ICCWR");
+        mutualFundNameToIdMap.put("Tata Nifty G-Sec Dec 2029 Index Fund", "M_TAN9");
+        mutualFundNameToIdMap.put("DSP Banking & PSU Debt Fund(M-IDCW)", "M_DSNK");
+        mutualFundNameToIdMap.put("ICICI Pru Bond Fund(H-IDCW Payout)", "M_ICIHB");
+        mutualFundNameToIdMap.put("ICICI Pru S&P BSE 500 ETF FOF(IDCW Payout)", "M_ICCBW");
+        mutualFundNameToIdMap.put("HSBC Brazil Fund(IDCW-Payout)", "M_HSCZ");
+        mutualFundNameToIdMap.put("Franklin India Banking & PSU Debt Fund(IDCW)", "M_FRWI");
+        mutualFundNameToIdMap.put("LIC MF ULIS Regular Premium Reducing Cover Yrly 10Y(IDCW)", "M_LIMY");
+        mutualFundNameToIdMap.put("SBI Dynamic Bond Fund", "M_SBYA");
+        mutualFundNameToIdMap.put("Motilal Oswal Nifty Next 50 Index Fund", "M_MOTS");
+        mutualFundNameToIdMap.put("HDFC Balanced Advantage Fund(IDCW)", "M_HDBB");
+        mutualFundNameToIdMap.put("Aditya Birla SL Silver ETF FOF(IDCW)", "M_ADIWP");
+        mutualFundNameToIdMap.put("Quantum ELSS Tax Saver Fund(IDCW)", "M_QUTX");
+        mutualFundNameToIdMap.put("Nippon India Equity Savings Fund(M-IDCW)", "M_NIPAF");
+        mutualFundNameToIdMap.put("Motilal Oswal Large & Midcap Fund(IDCW)", "M_MOAE");
+        mutualFundNameToIdMap.put("Kotak Banking & Financial Services Fund(IDCW Payout)", "M_KOVG");
+        mutualFundNameToIdMap.put("PGIM India Corp Bond Fund(A-IDCW)", "M_PGCL");
+        mutualFundNameToIdMap.put("Union Balanced Advantage Fund(IDCW-Payout)", "M_UNOB");
+        mutualFundNameToIdMap.put("HDFC Dynamic Debt Fund(Q-IDCW)", "M_HDCDD");
+        mutualFundNameToIdMap.put("Union Liquid Fund(M-IDCW)", "M_UNLI");
+        mutualFundNameToIdMap.put("Tata Business Cycle Fund", "M_TATBB");
+        mutualFundNameToIdMap.put("Groww Dynamic Bond Fund(M-IDCW)", "M_GROD");
+        mutualFundNameToIdMap.put("Aditya Birla SL Liquid Fund(W-IDCW)", "M_ADIQW");
+        mutualFundNameToIdMap.put("HDFC Equity Savings Fund", "M_HDFYS");
+        mutualFundNameToIdMap.put("HSBC Medium Duration Fund(IDCW)", "M_LTRE");
+        mutualFundNameToIdMap.put("Bandhan Ultra Short Term Fund(DD-IDCW)", "M_BAUU");
+        mutualFundNameToIdMap.put("Groww Value Fund(M-IDCW)", "M_GROL");
+        mutualFundNameToIdMap.put("Tata Ultra Short Term Fund(M-IDCW)", "M_TAUR");
+        mutualFundNameToIdMap.put("HDFC Small Cap Fund", "M_HDFSU");
+        mutualFundNameToIdMap.put("Mirae Asset ELSS Tax Saver Fund", "M_MIAX");
+        mutualFundNameToIdMap.put("Nippon India FHF-XLIV-1-1743D", "M_NI7R");
+        mutualFundNameToIdMap.put("Shriram Overnight Fund", "M_SHIV");
+        mutualFundNameToIdMap.put("DSP Equity Savings Fund(M-IDCW)", "M_DSQU");
+        mutualFundNameToIdMap.put("Shriram Overnight Fund(M-IDCW)", "M_SHIF");
+        mutualFundNameToIdMap.put("SBI CPSE Bond Plus SDL Sep 2026 50:50 Index Fund(IDCW Payout)", "M_SBO6");
+        mutualFundNameToIdMap.put("Canara Rob Liquid Fund", "M_CABQ");
+        mutualFundNameToIdMap.put("ICICI Pru PSU Equity Fund(IDCW)", "M_ICCWS");
+        mutualFundNameToIdMap.put("HSBC CRISIL IBX 50:50 Gilt Plus SDL Apr 2028 Index Fund(IDCW)", "M_HSR0");
+        mutualFundNameToIdMap.put("JM Dynamic Bond Fund(DD-IDCW)", "M_JMDD");
+        mutualFundNameToIdMap.put("Aditya Birla SL Business Cycle Fund", "M_ADYUN");
+        mutualFundNameToIdMap.put("Nippon India Floating Rate Fund(M-IDCW)", "M_NIPFA");
+        mutualFundNameToIdMap.put("Nippon India Nifty Next 50 Junior BeES FoF-(IDCW)", "M_NIXJ");
+        mutualFundNameToIdMap.put("ICICI Pru Silver ETF FOF(IDCW)", "M_ICCSW");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Aggressive Hybrid Fund(IDCW)", "M_BAIH");
+        mutualFundNameToIdMap.put("ICICI Pru Business Cycle Fund(IDCW)", "M_ICRCS");
+        mutualFundNameToIdMap.put("HSBC Gilt Fund(Q-IDCW)", "M_LTGU");
+        mutualFundNameToIdMap.put("HDFC Large and Mid Cap Fund", "M_HDOW");
+        mutualFundNameToIdMap.put("Bank of India Flexi Cap Fund", "M_BOIX");
+        mutualFundNameToIdMap.put("Axis Global Innovation FoF", "M_AXOB");
+        mutualFundNameToIdMap.put("Nippon India Credit Risk Fund(Q-IDCW)", "M_NIQK");
+        mutualFundNameToIdMap.put("Groww Overnight Fund", "M_INDN");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Ultra Short Duration Fund(DD-IDCW)", "M_BAOH");
+        mutualFundNameToIdMap.put("SBI CRISIL IBX Gilt Index - June 2036 Fund", "M_SBRJ");
+        mutualFundNameToIdMap.put("Aditya Birla SL Long Duration Fund", "M_ADYOO");
+        mutualFundNameToIdMap.put("HSBC Credit Risk Fund(M-IDCW)", "M_HSES");
+        mutualFundNameToIdMap.put("DSP World Agriculture Fund", "M_DSWC");
+        mutualFundNameToIdMap.put("Axis Small Cap Fund(IDCW)", "M_AXIMM");
+        mutualFundNameToIdMap.put("LIC MF Dividend Yield Fund(IDCW)", "M_IDBDI");
+        mutualFundNameToIdMap.put("Bank of India Ultra Short Duration Fund", "M_BOUA");
+        mutualFundNameToIdMap.put("Tata Nifty SDL Plus AAA PSU Bond Dec 2027 60:40 Index Fund(IDCW Payout)", "M_TAN0");
+        mutualFundNameToIdMap.put("Bandhan Hybrid Equity Fund(IDCW-Reinv)", "M_IDCH");
+        mutualFundNameToIdMap.put("Union Equity Savings Fund", "M_UNOQ");
+        mutualFundNameToIdMap.put("UTI Money Market Fund(F-IDCW)", "M_UTIMK");
+        mutualFundNameToIdMap.put("SBI FMP-57-1835D", "M_SBI5N");
+        mutualFundNameToIdMap.put("Nippon India Inv-Annual-I", "M_NIGV");
+        mutualFundNameToIdMap.put("ITI Multi-Cap Fund", "M_ITMU");
+        mutualFundNameToIdMap.put("Tata Dividend Yield Fund(IDCW)", "M_TAWD");
+        mutualFundNameToIdMap.put("JM Overnight Fund(DD-IDCW)", "M_JMOE");
+        mutualFundNameToIdMap.put("ICICI Pru Banking & PSU Debt Fund", "M_ICIKB");
+        mutualFundNameToIdMap.put("Kotak Equity Hybrid Fund(IDCW)", "M_KOQY");
+        mutualFundNameToIdMap.put("Invesco India Medium Duration Fund(Q-IDCW)", "M_INWD");
+        mutualFundNameToIdMap.put("HDFC Dynamic Debt Fund(IDCW-Reinv)", "M_HDYD");
+        mutualFundNameToIdMap.put("UTI Multi Asset Allocation Fund", "M_UTIMA");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Banking and Fin Serv Fund(IDCW)", "M_BAGK");
+        mutualFundNameToIdMap.put("Union Multicap Fund(IDCW)", "M_UNUO");
+        mutualFundNameToIdMap.put("Edelweiss Government Securities Fund", "M_EDSF");
+        mutualFundNameToIdMap.put("UTI Infrastructure Fund", "M_UTINS");
+        mutualFundNameToIdMap.put("SBI Multicap Fund", "M_SBIUC");
+        mutualFundNameToIdMap.put("Nippon India Nifty G-Sec Jun 2036 Maturity Index Fund", "M_NISJ");
+        mutualFundNameToIdMap.put("Edelweiss Banking and PSU Debt Fund", "M_EDBW");
+        mutualFundNameToIdMap.put("Aditya Birla SL CRISIL IBX 50:50 Gilt Plus SDL Apr 2028 Index Fund", "M_AD85");
+        mutualFundNameToIdMap.put("Motilal Oswal S&P BSE Financials ex Bank 30 Index Fund", "M_MOTK");
+        mutualFundNameToIdMap.put("LIC MF ULIS Regular Premium Reducing Cover Qtrly 15Y(IDCW)", "M_LICQ");
+        mutualFundNameToIdMap.put("Kotak FMP-304-3119D(IDCW)", "M_KOT3W");
+        mutualFundNameToIdMap.put("Kotak Consumption Fund(IDCW)", "M_KOTCL");
+        mutualFundNameToIdMap.put("ITI Overnight Fund(M-IDCW)", "M_ITOI");
+        mutualFundNameToIdMap.put("HSBC Corporate Bond Fund", "M_LTTF");
+        mutualFundNameToIdMap.put("LIC MF Low Duration Fund(DD-IDCW)", "M_LISE");
+        mutualFundNameToIdMap.put("DSP Strategic Bond Fund(M-IDCW)", "M_DSSE");
+        mutualFundNameToIdMap.put("Tata Corp Bond Fund", "M_TATCG");
+        mutualFundNameToIdMap.put("UTI Equity Savings Fund", "M_UTEU");
+        mutualFundNameToIdMap.put("Axis Global Equity Alpha FoF", "M_AXIG");
+        mutualFundNameToIdMap.put("ICICI Pru Quant Fund(IDCW)", "M_ICRCT");
+        mutualFundNameToIdMap.put("HSBC Banking and PSU Debt Fund", "M_LTBR");
+        mutualFundNameToIdMap.put("ICICI Pru Constant Maturity Gilt Fund", "M_ICISY");
+        mutualFundNameToIdMap.put("Invesco India Midcap Fund(IDCW)", "M_INVSW");
+        mutualFundNameToIdMap.put("DSP Arbitrage Fund", "M_DSAP");
+        mutualFundNameToIdMap.put("Axis Regular Saver Fund(Q-IDCW)", "M_AXIRR");
+        mutualFundNameToIdMap.put("HSBC Large & Mid Cap Fund(IDCW-Payout)", "M_HSCQ");
+        mutualFundNameToIdMap.put("HDFC Money Market Fund(DD-IDCW Reinv)", "M_HDOK");
+        mutualFundNameToIdMap.put("ICICI Pru Savings Fund(FN-IDCW Payout)", "M_ICSV");
+        mutualFundNameToIdMap.put("Invesco India Arbitrage Fund", "M_INRB");
+        mutualFundNameToIdMap.put("IL&FS Infra Debt Fund - Series 3-B", "M_ILFS");
+        mutualFundNameToIdMap.put("UTI Annual Interval Fund-II", "M_UTIIS");
+        mutualFundNameToIdMap.put("Nippon India ELSS Tax Saver Fund(A-IDCW)", "M_NITS");
+        mutualFundNameToIdMap.put("Sundaram Low Duration Fund(M-IDCW)", "M_PROC");
+        mutualFundNameToIdMap.put("PGIM India Overnight Fund(DD-IDCW)", "M_PGIG");
+        mutualFundNameToIdMap.put("HSBC Medium to Long Duration Fund Fund", "M_HSDB");
+        mutualFundNameToIdMap.put("Nippon India Gilt Securities-DMDO", "M_NIGG");
+        mutualFundNameToIdMap.put("HDFC Capital Builder Value Fund(IDCW-Reinv)", "M_HDFBV");
+        mutualFundNameToIdMap.put("Bandhan G-Sec-Invest(A-IDCW)", "M_BAGH");
+        mutualFundNameToIdMap.put("Franklin India Technology Fund(IDCW Payout)", "M_FRHN");
+        mutualFundNameToIdMap.put("Taurus Large Cap Fund(IDCW)", "M_TAUUL");
+        mutualFundNameToIdMap.put("HSBC Liquid Fund(W-IDCW Payout)", "M_HSAF");
+        mutualFundNameToIdMap.put("Tata Large & Mid Cap Fund(IDCW-Payout)", "M_TALR");
+        mutualFundNameToIdMap.put("PGIM India Money Market Fund(M-IDCW)", "M_PGIO");
+        mutualFundNameToIdMap.put("JM Aggressive Hybrid Fund(H-IDCW)", "M_JMQN");
+        mutualFundNameToIdMap.put("HDFC Gold Fund", "M_HDCGO");
+        mutualFundNameToIdMap.put("Canara Rob Small Cap Fund(IDCW)", "M_CASM");
+        mutualFundNameToIdMap.put("PGIM India Flexi Cap Fund", "M_PGAV");
+        mutualFundNameToIdMap.put("Mirae Asset Overnight Fund(DD-IDCW)", "M_MIRP");
+        mutualFundNameToIdMap.put("HDFC Banking and PSU Debt Fund(IDCW)", "M_HDBK");
+        mutualFundNameToIdMap.put("UTI Flexi Cap Fund", "M_UTIEY");
+        mutualFundNameToIdMap.put("Parag Parikh Liquid Fund(M-IDCW)", "M_PARI");
+        mutualFundNameToIdMap.put("Sundaram LT Tax Adv Fund-Sr I-(IDCW)", "M_SUXM");
+        mutualFundNameToIdMap.put("Motilal Oswal Asset Allocation Passive FoF-Aggressive", "M_MOLV");
+        mutualFundNameToIdMap.put("SBI Retirement Benefit Fund-Aggressive Plan(IDCW)", "M_SBIRU");
+        mutualFundNameToIdMap.put("Bandhan Ultra Short Term Fund", "M_IDUA");
+        mutualFundNameToIdMap.put("Kotak Gold Fund(IDCW-Payout)", "M_KOOD");
+        mutualFundNameToIdMap.put("ICICI Pru NASDAQ 100 Index Fund(IDCW Payout)", "M_ICIX0");
+        mutualFundNameToIdMap.put("Groww Value Fund(H-IDCW)", "M_GRWE");
+        mutualFundNameToIdMap.put("HDFC Focused 30 Fund(IDCW-Reinv)", "M_HDFUS");
+        mutualFundNameToIdMap.put("Invesco India Flexi Cap Fund", "M_INXO");
+        mutualFundNameToIdMap.put("SBI S&P BSE Sensex Index Fund(IDCW Payout)", "M_SBOX");
+        mutualFundNameToIdMap.put("Kotak Quant Fund(IDCW Payout)", "M_KOTQA");
+        mutualFundNameToIdMap.put("Franklin India Equity Hybrid Fund", "M_FREY");
+        mutualFundNameToIdMap.put("Sundaram Banking & PSU Debt Fund(W-IDCW)", "M_SUBW");
+        mutualFundNameToIdMap.put("UTI Focused Fund(IDCW)", "M_UTFW");
+        mutualFundNameToIdMap.put("JM Aggressive Hybrid Fund", "M_JMEG");
+        mutualFundNameToIdMap.put("DSP Regular Savings Fund(Q-IDCW)", "M_DSRL");
+        mutualFundNameToIdMap.put("ICICI Pru Pharma Healthcare & Diagnostics (P.H.D) Fund-(IDCW-Payout)", "M_ICRO");
+        mutualFundNameToIdMap.put("HSBC ELSS Tax saver Fund(IDCW)", "M_LTTA");
+        mutualFundNameToIdMap.put("SBI Equity Savings Fund(Q-IDCW Payout)", "M_SBQT");
+        mutualFundNameToIdMap.put("Kotak Small Cap Fund(IDCW)", "M_KOSL");
+        mutualFundNameToIdMap.put("Canara Rob Overnight Fund(DD-IDCW)", "M_CANA");
+        mutualFundNameToIdMap.put("ICICI Pru Liquid Fund", "M_ICPIQ");
+        mutualFundNameToIdMap.put("DSP Gold ETF FoF", "M_DSPOE");
+        mutualFundNameToIdMap.put("HSBC Dynamic Bond Fund(A-IDCW)", "M_LTLL");
+        mutualFundNameToIdMap.put("Edelweiss MSCI India Domestic & World Healthcare 45 Index Fund(IDCW)", "M_EDMH");
+        mutualFundNameToIdMap.put("Canara Rob Gilt Fund(IDCW)", "M_CAGO");
+        mutualFundNameToIdMap.put("Aditya Birla SL Flexi Cap Fund(IDCW)", "M_ADTUQ");
+        mutualFundNameToIdMap.put("Mirae Asset Low Duration Fund(M-IDCW)", "M_MIVF");
+        mutualFundNameToIdMap.put("SBI Magnum Low Duration Fund(W-IDCW Payout)", "M_SBMW");
+        mutualFundNameToIdMap.put("HDFC Pharma and Healthcare Fund", "M_HDCHP");
+        mutualFundNameToIdMap.put("ICICI Pru Passive Multi-Asset FoF(IDCW Payout)", "M_ICCRW");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Small Cap Fund(IDCW)", "M_BARDP");
+        mutualFundNameToIdMap.put("Bandhan Floating Rate Fund(Q-IDCW)", "M_IDFUE");
+        mutualFundNameToIdMap.put("HDFC Liquid Fund(W-IDCW)", "M_HDFQW");
+        mutualFundNameToIdMap.put("Franklin India Feeder - Templeton European Opportunities Fund(IDCW)", "M_FRRT");
+        mutualFundNameToIdMap.put("Sundaram Arbitrage Fund", "M_PRPG");
+        mutualFundNameToIdMap.put("SBI Magnum Gilt Fund(IDCW-Payout)", "M_SBGM");
+        mutualFundNameToIdMap.put("HSBC Nifty Next 50 Index Fund(IDCW)", "M_LTNI");
+        mutualFundNameToIdMap.put("Tata Infrastructure Fund(IDCW-Payout)", "M_TAII");
+        mutualFundNameToIdMap.put("Nippon India Nifty 50 Value 20 Index Fund", "M_NI5T");
+        mutualFundNameToIdMap.put("Motilal Oswal Large Cap Fund(IDCW)", "M_MOSW");
+        mutualFundNameToIdMap.put("SBI FMP-60-1878D(IDCW)", "M_SBW0");
+        mutualFundNameToIdMap.put("Bandhan Low Duration Fund(IDCW)", "M_BALF");
+        mutualFundNameToIdMap.put("PGIM India Arbitrage Fund", "M_PGRR");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Dynamic Bond Fund(M-IDCW)", "M_BAYS");
+        mutualFundNameToIdMap.put("Aditya Birla SL India GenNext Fund(IDCW-Reinv)", "M_ADDX");
+        mutualFundNameToIdMap.put("SBI Floating Rate Debt Fund(M-IDCW)", "M_SBIFO");
+        mutualFundNameToIdMap.put("Mahindra Manulife Ultra Short Duration Fund", "M_MAHG");
+        mutualFundNameToIdMap.put("Bandhan Large Cap Fund(IDCW)", "M_BAGR");
+        mutualFundNameToIdMap.put("Navi Aggressive Hybrid Fund(H-IDCW)", "M_ESSY");
+        mutualFundNameToIdMap.put("Axis Floater Fund(Q-IDCW)", "M_AXISE");
+        mutualFundNameToIdMap.put("Axis Dynamic Bond Fund(Q-IDCW)", "M_AXIDY");
+        mutualFundNameToIdMap.put("Sundaram Large Cap Fund", "M_SUNA");
+        mutualFundNameToIdMap.put("Aditya Birla SL Regular Savings Fund(M-IDCW Reinv)", "M_ADIUM");
+        mutualFundNameToIdMap.put("PGIM India Arbitrage Fund(M-IDCW)", "M_PGRU");
+        mutualFundNameToIdMap.put("UTI Long Duration Fund(H-IDCW)", "M_UTINH");
+        mutualFundNameToIdMap.put("Quantum ELSS Tax Saver Fund", "M_QUTS");
+        mutualFundNameToIdMap.put("Tata Silver ETF FoF(IDCW Payout)", "M_TATSV");
+        mutualFundNameToIdMap.put("Nippon India US Equity Opp Fund", "M_NIUQ");
+        mutualFundNameToIdMap.put("Motilal Oswal Balanced Advantage Fund(A-IDCW)", "M_MOAV");
+        mutualFundNameToIdMap.put("HSBC Medium Duration Fund", "M_LTRI");
+        mutualFundNameToIdMap.put("Bandhan Arbitrage Fund(M-IDCW Reinv)", "M_IDFA");
+        mutualFundNameToIdMap.put("Aditya Birla SL Short Term Fund(IDCW-Reinv)", "M_ADIOM");
+        mutualFundNameToIdMap.put("Aditya Birla SL Bal Bhavishya Yojna", "M_ADAW");
+        mutualFundNameToIdMap.put("PGIM India Dynamic Bond Fund(Q-IDCW)", "M_PGYB");
+        mutualFundNameToIdMap.put("Axis Midcap Fund(IDCW)", "M_AXIMI");
+        mutualFundNameToIdMap.put("UTI Nifty SDL Plus AAA PSU Bond Apr 2026 75:25 Index Fund", "M_UTY6");
+        mutualFundNameToIdMap.put("Franklin India Liquid Fund-Super Inst(W-IDCW)", "M_FRQL");
+        mutualFundNameToIdMap.put("Kotak Focused Equity Fund", "M_KOTY");
+        mutualFundNameToIdMap.put("Navi Overnight Fund", "M_NAIH");
+        mutualFundNameToIdMap.put("Edelweiss Large & Mid Cap Fund", "M_EDAA");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Dynamic Bond Fund(H-IDCW)", "M_BAYP");
+        mutualFundNameToIdMap.put("Bandhan G-Sec-Invest", "M_IDVS");
+        mutualFundNameToIdMap.put("Aditya Birla SL Nifty Smallcap 50 Index Fund", "M_ADIMX");
+        mutualFundNameToIdMap.put("Tata Corp Bond Fund(IDCW Payout)", "M_TATOB");
+        mutualFundNameToIdMap.put("Mirae Asset Nifty SDL Jun 2027 Index Fund(IDCW)", "M_MIA7");
+        mutualFundNameToIdMap.put("Kotak Technology Fund(IDCW)", "M_KOTTK");
+        mutualFundNameToIdMap.put("ICICI Pru Retirement Fund-Hybrid Cons Plan", "M_ICET");
+        mutualFundNameToIdMap.put("Invesco India ELSS Tax Saver Fund(IDCW)", "M_INTD");
+        mutualFundNameToIdMap.put("Bandhan Money Manager Fund(W-IDCW)", "M_IDNW");
+        mutualFundNameToIdMap.put("Navi Aggressive Hybrid Fund(M-IDCW)", "M_NAIY");
+        mutualFundNameToIdMap.put("Sundaram Balanced Advantage Fund(M-IDCW)", "M_PRCT");
+        mutualFundNameToIdMap.put("DSP NIFTY Next 50 Index Fund(IDCW)", "M_DSNN");
+        mutualFundNameToIdMap.put("Axis Nifty SDL Sep 2026 Debt Index Fund", "M_AXN6");
+        mutualFundNameToIdMap.put("SBI Large & Midcap Fund(IDCW-Payout)", "M_SBLM");
+        mutualFundNameToIdMap.put("Mirae Asset Low Duration Fund(W-IDCW)", "M_MIEW");
+        mutualFundNameToIdMap.put("Axis FTP-120-91D", "M_AX0C");
+        mutualFundNameToIdMap.put("Aditya Birla SL Midcap Fund(IDCW-Reinv)", "M_ADMC");
+        mutualFundNameToIdMap.put("SBI Magnum Gilt Fund(IDCW)", "M_SBIGN");
+        mutualFundNameToIdMap.put("Tata Nifty Midcap 150 Momentum 50 Index Fund(IDCW Payout)", "M_TAYX");
+        mutualFundNameToIdMap.put("JM Midcap Fund", "M_JMDL");
+        mutualFundNameToIdMap.put("UTI Large & Mid Cap Fund(IDCW)", "M_UTCCR");
+        mutualFundNameToIdMap.put("Union Medium Duration Fund(IDCW)", "M_UNIN");
+        mutualFundNameToIdMap.put("Sundaram Liquid Fund(B-IDCW)", "M_SUNIW");
+        mutualFundNameToIdMap.put("Edelweiss Liquid Fund(DD-IDCW)", "M_EDQR");
+        mutualFundNameToIdMap.put("HDFC Liquid Fund(M-IDCW)", "M_HDCLQ");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Dynamic Bond Fund(W-IDCW)", "M_BNPX");
+        mutualFundNameToIdMap.put("Sundaram Equity Savings Fund(H-IDCW)", "M_PRPI");
+        mutualFundNameToIdMap.put("ICICI Pru Floating Interest Fund(IDCW)", "M_ICILO");
+        mutualFundNameToIdMap.put("SBI Overnight Fund", "M_SBOE");
+        mutualFundNameToIdMap.put("HSBC Ultra Short Duration Fund(M-IDCW)", "M_HSUS");
+        mutualFundNameToIdMap.put("DSP Savings Fund(M-IDCW)", "M_DSVC");
+        mutualFundNameToIdMap.put("UTI Liquid Fund(W-IDCW)", "M_UTLW");
+        mutualFundNameToIdMap.put("360 ONE Quant Fund(IDCW)", "M_IIQL");
+        mutualFundNameToIdMap.put("Navi NASDAQ 100 FoF", "M_NAVA");
+        mutualFundNameToIdMap.put("Bank of India Liquid Fund", "M_BOLI");
+        mutualFundNameToIdMap.put("ICICI Pru Money Market Fund", "M_ICIKL");
+        mutualFundNameToIdMap.put("Navi Aggressive Hybrid Fund(H-IDCW Payout)", "M_NAEU");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty Alpha Low - Volatility 30 ETF FOF(IDCW Payout)", "M_ICIHW");
+        mutualFundNameToIdMap.put("Aditya Birla SL Dynamic Bond Fund", "M_ADTMN");
+        mutualFundNameToIdMap.put("Groww Dynamic Bond Fund(W-IDCW)", "M_GROM");
+        mutualFundNameToIdMap.put("Aditya Birla SL Mfg. Equity Fund(IDCW)", "M_ADIBU");
+        mutualFundNameToIdMap.put("Union Liquid Fund(FN-IDCW Payout)", "M_UNLQ");
+        mutualFundNameToIdMap.put("Mahindra Manulife Overnight Fund", "M_MAHC");
+        mutualFundNameToIdMap.put("SBI Equity Savings Fund(Q-IDCW)", "M_SBES");
+        mutualFundNameToIdMap.put("Canara Rob Dynamic Bond Fund(IDCW)", "M_CADO");
+        mutualFundNameToIdMap.put("Sundaram Nifty 100 Equal Weight Fund", "M_PRL0");
+        mutualFundNameToIdMap.put("Union Largecap Fund", "M_UNLN");
+        mutualFundNameToIdMap.put("Canara Rob Ultra Short Term Fund(W-IDCW)", "M_CAUB");
+        mutualFundNameToIdMap.put("Aditya Birla SL Gold Fund", "M_ADTOB");
+        mutualFundNameToIdMap.put("HDFC Developed World Indexes FoF", "M_HDWV");
+        mutualFundNameToIdMap.put("Mirae Asset CRISIL IBX Gilt Index - April 2033 Index Fund", "M_MIE2");
+        mutualFundNameToIdMap.put("HSBC Conservative Hybrid Fund(M-IDCW)", "M_HSRS");
+        mutualFundNameToIdMap.put("HDFC Housing Opp Fund(IDCW Reinvest)", "M_HDHW");
+        mutualFundNameToIdMap.put("Edelweiss Recently Listed IPO Fund", "M_EDLA");
+        mutualFundNameToIdMap.put("WOC Large Cap Fund(IDCW)", "M_WOCW");
+        mutualFundNameToIdMap.put("SBI Gold", "M_SBIGL");
+        mutualFundNameToIdMap.put("HDFC Corp Bond Fund", "M_HDCOO");
+        mutualFundNameToIdMap.put("JM Medium to Long Duration Fund(Q-IDCW)", "M_JMEO");
+        mutualFundNameToIdMap.put("Invesco India Largecap Fund(IDCW)", "M_INVCW");
+        mutualFundNameToIdMap.put("Mahindra Manulife Aggressive Hybrid Fund(IDCW)", "M_MAHJ");
+        mutualFundNameToIdMap.put("ICICI Pru Silver ETF FOF", "M_ICPVF");
+        mutualFundNameToIdMap.put("HDFC FMP-Sr 47-1269D-March 2023(IDCW)", "M_HDF7H");
+        mutualFundNameToIdMap.put("Kotak Banking and PSU Debt Fund", "M_KONB");
+        mutualFundNameToIdMap.put("Union Largecap Fund(IDCW-Reinv)", "M_UNOA");
+        mutualFundNameToIdMap.put("ICICI Pru Transportation and Logistics Fund(IDCW)", "M_ICPWP");
+        mutualFundNameToIdMap.put("Aditya Birla SL Nifty Smallcap 50 Index Fund(IDCW Reinv)", "M_ADI5L");
+        mutualFundNameToIdMap.put("Invesco India Infrastructure Fund", "M_INFR");
+        mutualFundNameToIdMap.put("ICICI Pru Dividend Yield Equity Fund", "M_ICIVQ");
+        mutualFundNameToIdMap.put("ICICI Pru Technology Fund(IDCW)", "M_ICCHT");
+        mutualFundNameToIdMap.put("HSBC Asia Pacific (Ex Japan) DYF", "M_HSAS");
+        mutualFundNameToIdMap.put("Bandhan Ultra Short Term Fund(P-IDCW Reinvest)", "M_IDUC");
+        mutualFundNameToIdMap.put("Axis Retirement Savings Fund-Dynamic Plan", "M_AXSI");
+        mutualFundNameToIdMap.put("HDFC Small Cap Fund(IDCW-Reinv)", "M_HDAS");
+        mutualFundNameToIdMap.put("Aditya Birla SL Frontline Equity Fund(IDCW)", "M_ADTOL");
+        mutualFundNameToIdMap.put("Bandhan CRISIL IBX Gilt April 2026 Index Fund(IDCW)", "M_BAHX");
+        mutualFundNameToIdMap.put("Franklin India NSE Nifty 50 Index Fund(IDCW)", "M_FRDX");
+        mutualFundNameToIdMap.put("Aditya Birla SL Nifty 50 Equal Weight Index Fund(IDCW Reinv)", "M_ADI5F");
+        mutualFundNameToIdMap.put("HDFC ELSS Tax saver(IDCW)", "M_HDTT");
+        mutualFundNameToIdMap.put("UTI Transportation & Logistics Fund(IDCW)", "M_UTTAO");
+        mutualFundNameToIdMap.put("ICICI Pru Bluechip Fund(IDCW)", "M_ICCHB");
+        mutualFundNameToIdMap.put("WOC Banking & Financial Services Fund", "M_WOCK");
+        mutualFundNameToIdMap.put("TRUSTMF Short Duration Fund(W-IDCW)", "M_TRUC");
+        mutualFundNameToIdMap.put("NJ ELSS Tax Saver Scheme(IDCW)", "M_NJEL");
+        mutualFundNameToIdMap.put("JM Dynamic Bond Fund(IDCW)", "M_JMYI");
+        mutualFundNameToIdMap.put("HSBC Overnight Fund", "M_HSCG");
+        mutualFundNameToIdMap.put("Bajaj Finserv Balanced Advantage Fund(IDCW)", "M_BAJAI");
+        mutualFundNameToIdMap.put("Aditya Birla SL MNC Fund", "M_ADTMA");
+        mutualFundNameToIdMap.put("Kotak Bond Short Term Fund", "M_KOON");
+        mutualFundNameToIdMap.put("ICICI Pru Multicap Fund(IDCW-Payout)", "M_ICILM");
+        mutualFundNameToIdMap.put("HDFC S&P BSE 500 Index Fund", "M_HDCSN");
+        mutualFundNameToIdMap.put("Nippon India Nivesh Lakshya Fund", "M_NIVE");
+        mutualFundNameToIdMap.put("ICICI Pru FMP-85-10Y-I", "M_IC8Y");
+        mutualFundNameToIdMap.put("WOC Liquid Fund(DD-IDCW)-Direct plan", "M_YELR");
+        mutualFundNameToIdMap.put("UTI Liquid Fund(M-IDCW)", "M_UTLLA");
+        mutualFundNameToIdMap.put("ICICI Pru Housing Opp Fund(IDCW Payout)", "M_ICCWP");
+        mutualFundNameToIdMap.put("Axis Money Market Fund(M-IDCW)", "M_AXYK");
+        mutualFundNameToIdMap.put("Sundaram Low Duration Fund(W-IDCW)", "M_SUDLO");
+        mutualFundNameToIdMap.put("UTI Quarterly Interval Fund-I-(IDCW)", "M_UTFQW");
+        mutualFundNameToIdMap.put("ICICI Pru Long Term Bond Fund", "M_ICPIO");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Focused Fund(IDCW)", "M_BACU");
+        mutualFundNameToIdMap.put("ICICI Pru Strategic Metal and Energy Equity FoF(IDCW Payout)", "M_ICCAW");
+        mutualFundNameToIdMap.put("Invesco India Low Duration Fund", "M_INTS");
+        mutualFundNameToIdMap.put("Franklin India Equity Savings Fund(IDCW)", "M_FRUW");
+        mutualFundNameToIdMap.put("Nippon India FHF-XLIV-1-1743D(IDCW)", "M_NI7C");
+        mutualFundNameToIdMap.put("Tata Housing Opportunities Fund(IDCW Payout)", "M_TAWH");
+        mutualFundNameToIdMap.put("DSP Nifty Smallcap250 Quality 50 Index Fund", "M_DS5S");
+        mutualFundNameToIdMap.put("LIC MF ULIS Regular Premium Uniform Cover Qtrly 15Y(IDCW)", "M_LIML");
+        mutualFundNameToIdMap.put("DSP Short Term Fund", "M_DSHM");
+        mutualFundNameToIdMap.put("Aditya Birla SL NASDAQ 100 FOF(IDCW Reinvest)", "M_ADI1V");
+        mutualFundNameToIdMap.put("Invesco India Equity Savings Fund", "M_INVU");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty G-Sec Dec 2030 Index Fund(A-IDCW)", "M_ICC3X");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Multi Cap Fund(IDCW)", "M_BAWO");
+        mutualFundNameToIdMap.put("Union Retirement Fund(IDCW)", "M_UNRN");
+        mutualFundNameToIdMap.put("DSP FMP 264-60M & 17D", "M_DSP2I");
+        mutualFundNameToIdMap.put("HDFC Hybrid Debt Fund(Q-IDCW Reinv)", "M_HDHB");
+        mutualFundNameToIdMap.put("Tata Digital India Fund", "M_TADL");
+        mutualFundNameToIdMap.put("Aditya Birla SL CRISIL IBX 60:40 SDL + AAA PSU Apr 2026 Index Fund(IDCW)", "M_ADI6A");
+        mutualFundNameToIdMap.put("Nippon India Small Cap Fund", "M_NIMS");
+        mutualFundNameToIdMap.put("ICICI Pru All Seasons Bond Fund", "M_ICCBS");
+        mutualFundNameToIdMap.put("Union Innovation & Opp Fund(IDCW)", "M_UNVN");
+        mutualFundNameToIdMap.put("Bandhan CRISIL IBX 90:10 SDL Plus Gilt - Nov 2026 Index Fund(IDCW)", "M_BAN6");
+        mutualFundNameToIdMap.put("JM Liquid Fund(W-IDCW)", "M_JMUW");
+        mutualFundNameToIdMap.put("Bandhan CRISIL IBX 90:10 SDL Plus Gilt - Nov 2026 Index Fund", "M_IDX0");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Floater Fund(W-IDCW)", "M_BASF");
+        mutualFundNameToIdMap.put("Parag Parikh Liquid Fund(W-IDCW)", "M_PARQ");
+        mutualFundNameToIdMap.put("Navi ELSS Tax Saver Fund(IDCW)", "M_ESEO");
+        mutualFundNameToIdMap.put("Franklin India Smaller Cos Fund(IDCW)", "M_FRSD");
+        mutualFundNameToIdMap.put("Nippon India Nivesh Lakshya Fund(A-IDCW)", "M_NILK");
+        mutualFundNameToIdMap.put("HDFC NIFTY G- Sec Apr 2029 Index Fund", "M_HDCTR");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Banking and Fin Serv Fund", "M_BABO");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Medium Duration Fund(A-IDCW)", "M_BAMR");
+        mutualFundNameToIdMap.put("Tata CRISIL IBX Gilt Index - April 2026 Index Fund(IDCW)", "M_TALX");
+        mutualFundNameToIdMap.put("Sundaram Overnight Fund(M-IDCW Payout)", "M_SUNO");
+        mutualFundNameToIdMap.put("Aditya Birla SL Global Emerging Opp Fund(IDCW-Payout)", "M_ADIMO");
+        mutualFundNameToIdMap.put("Tata Treasury Advantage Fund(W-IDCW Payout)", "M_TARY");
+        mutualFundNameToIdMap.put("Union Large & Midcap Fund", "M_UNOO");
+        mutualFundNameToIdMap.put("JM Flexicap Fund", "M_JMUU");
+        mutualFundNameToIdMap.put("SBI Banking & Financial Services Fund", "M_SBNB");
+        mutualFundNameToIdMap.put("Nippon India ELSS Tax Saver Fund(IDCW)", "M_NISX");
+        mutualFundNameToIdMap.put("Union Overnight Fund(M-IDCW)", "M_UNOG");
+        mutualFundNameToIdMap.put("Bandhan G-Sec-Invest(P-IDCW)", "M_IDGI");
+        mutualFundNameToIdMap.put("Kotak Liquid Fund(DD-IDCW)", "M_KOQL");
+        mutualFundNameToIdMap.put("Nippon India FMP-XLVI-1(IDCW)", "M_NIMX");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Money Market Fund", "M_BAOT");
+        mutualFundNameToIdMap.put("DSP Nifty Smallcap250 Quality 50 Index Fund(IDCW)", "M_DS2Y");
+        mutualFundNameToIdMap.put("Kotak Multi Asset Allocation Fund", "M_KOTUU");
+        mutualFundNameToIdMap.put("DSP Bond Fund", "M_DSOG");
+        mutualFundNameToIdMap.put("HSBC Corporate Bond Fund(A-IDCW)", "M_LTTB");
+        mutualFundNameToIdMap.put("Tata Mid Cap Growth Fund(IDCW)", "M_TAIW");
+        mutualFundNameToIdMap.put("HDFC Dynamic PE Ratio FOF(IDCW)", "M_HDFYO");
+        mutualFundNameToIdMap.put("Bank of India Conservative Hybrid Fund(M-IDCW)", "M_BACV");
+        mutualFundNameToIdMap.put("Kotak Money Market Fund(M-IDCW)", "M_KOOU");
+        mutualFundNameToIdMap.put("HDFC Ultra Short Term Fund(M-IDCW Reinv)", "M_HDFC");
+        mutualFundNameToIdMap.put("Bandhan Focused Equity Fund(IDCW)", "M_BAUY");
+        mutualFundNameToIdMap.put("Union Overnight Fund", "M_UNOP");
+        mutualFundNameToIdMap.put("Canara Rob Equity Hybrid Fund", "M_CABE");
+        mutualFundNameToIdMap.put("JM Large Cap Fund(A-IDCW)", "M_JMGP");
+        mutualFundNameToIdMap.put("Bandhan Focused Equity Fund", "M_IDYS");
+        mutualFundNameToIdMap.put("Motilal Oswal Ultra Short Term Fund(FN-IDCW)", "M_MOIH");
+        mutualFundNameToIdMap.put("SBI FMP-67-1467D", "M_SBI7L");
+        mutualFundNameToIdMap.put("LIC MF S&P BSE Sensex Index Fund(IDCW)", "M_LISB");
+        mutualFundNameToIdMap.put("SBI Floating Rate Debt Fund", "M_SBIO");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Innovation Fund(IDCW)", "M_BARDV");
+        mutualFundNameToIdMap.put("Edelweiss CRISIL IBX 50:50 Gilt Plus SDL Sep 2028 Index Fund(IDCW)", "M_EDC2");
+        mutualFundNameToIdMap.put("Bandhan Credit Risk Fund(IDCW)", "M_IDRE");
+        mutualFundNameToIdMap.put("Bandhan Banking & PSU Debt Fund(FN-IDCW)", "M_IDNK");
+        mutualFundNameToIdMap.put("JM Value Fund(IDCW)", "M_JMVF");
+        mutualFundNameToIdMap.put("Sundaram Multi Asset Allocation Fund(IDCW)", "M_SUDUI");
+        mutualFundNameToIdMap.put("ICICI Pru S&P BSE Sensex Index Fund(IDCW-Payout)", "M_ICIX");
+        mutualFundNameToIdMap.put("UTI Liquid Fund(Q-IDCW)", "M_UTIHC");
+        mutualFundNameToIdMap.put("LIC MF ULIS-10Y Single Premium(IDCW)", "M_LIF1");
+        mutualFundNameToIdMap.put("Kotak Flexicap Fund(IDCW-Payout)", "M_KOSK");
+        mutualFundNameToIdMap.put("Kotak Savings Fund", "M_KOSG");
+        mutualFundNameToIdMap.put("Kotak Equity Hybrid Fund(IDCW-Payout)", "M_KOEI");
+        mutualFundNameToIdMap.put("Union Gilt Fund(H-IDCW)", "M_UNGD");
+        mutualFundNameToIdMap.put("UTI Floater Fund", "M_UTLL");
+        mutualFundNameToIdMap.put("Invesco India Arbitrage Fund(IDCW)", "M_INVCB");
+        mutualFundNameToIdMap.put("HSBC Short Duration Fund(IDCW)", "M_LTSU");
+        mutualFundNameToIdMap.put("Aditya Birla SL Banking & PSU Debt(IDCW)", "M_ADTKR");
+        mutualFundNameToIdMap.put("HDFC FMP-Sr 46-1162D-Mar 2022(Q-IDCW)", "M_HDW4");
+        mutualFundNameToIdMap.put("Edelweiss Aggressive Hybrid Fund", "M_EDAL");
+        mutualFundNameToIdMap.put("Mahindra Manulife Multi Cap Fund(IDCW)", "M_MANH");
+        mutualFundNameToIdMap.put("Bandhan G-Sec-Constant Maturity Plan(Q-IDCW Reinvest)", "M_IDFTY");
+        mutualFundNameToIdMap.put("HSBC Low Duration Fund", "M_LTLT");
+        mutualFundNameToIdMap.put("Invesco India Banking and PSU Fund(M-IDCW)", "M_INKK");
+        mutualFundNameToIdMap.put("Tata Equity Savings Fund(P-IDCW Payout)", "M_TAEU");
+        mutualFundNameToIdMap.put("Nippon India Asset Allocator FoF", "M_NIPIT");
+        mutualFundNameToIdMap.put("HDFC Balanced Advantage Fund", "M_HDCBA");
+        mutualFundNameToIdMap.put("Aditya Birla SL FTP-UJ-1110D(IDCW)", "M_ADIUJ");
+        mutualFundNameToIdMap.put("Tata Money Market Fund", "M_TAON");
+        mutualFundNameToIdMap.put("Axis Equity Saver Fund", "M_AXQT");
+        mutualFundNameToIdMap.put("Union Liquid Fund(M-IDCW Reinv)", "M_UNLM");
+        mutualFundNameToIdMap.put("Tata NIFTY 50 Index Fund", "M_TANX");
+        mutualFundNameToIdMap.put("Mahindra Manulife Small Cap Fund(IDCW)", "M_MAAA");
+        mutualFundNameToIdMap.put("Sundaram Debt Oriented Hybrid Fund(H-IDCW)", "M_SUNYN");
+        mutualFundNameToIdMap.put("Nippon India FHF-XLI-8-3654D(IDCW)", "M_NIP8");
+        mutualFundNameToIdMap.put("SBI FMP-81-1157D", "M_SBIT8");
+        mutualFundNameToIdMap.put("Tata Ethical Fund(IDCW-Payout)", "M_TAEA");
+        mutualFundNameToIdMap.put("HDFC Business Cycle Fund(IDCW)", "M_HDFIW");
+        mutualFundNameToIdMap.put("Edelweiss Nifty PSU Bond Plus SDL Apr 2027 50:50 Index Fund(IDCW)", "M_EDNB");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Arbitrage Fund(IDCW)", "M_BATC");
+        mutualFundNameToIdMap.put("360 ONE Liquid Fund(W-IDCW)", "M_IIFW");
+        mutualFundNameToIdMap.put("Bandhan Nifty200 Momentum 30 Index Fund(IDCW)", "M_IDO2");
+        mutualFundNameToIdMap.put("SBI Magnum Children's Benefit Fund-Investment Plan", "M_SBIM");
+        mutualFundNameToIdMap.put("Navi Large & Midcap Fund", "M_ESLI");
+        mutualFundNameToIdMap.put("SBI Arbitrage Opportunities Fund(IDCW-Payout)", "M_SBRB");
+        mutualFundNameToIdMap.put("UTI Nifty 500 Value 50 Index Fund", "M_WOMU");
+        mutualFundNameToIdMap.put("JM Liquid Fund(DD-IDCW)", "M_JMIR");
+        mutualFundNameToIdMap.put("SBI Nifty Midcap 150 Index Fund(IDCW Payout)", "M_SBY1");
+        mutualFundNameToIdMap.put("DSP Focus Fund(IDCW-Reinv)", "M_DSOU");
+        mutualFundNameToIdMap.put("Bandhan G-Sec-Constant Maturity Plan(P-IDCW)", "M_IDGO");
+        mutualFundNameToIdMap.put("Aditya Birla SL G-Sec Fund(Q-IDCW Reinv)", "M_ADITG");
+        mutualFundNameToIdMap.put("Samco Flexi Cap Fund", "M_SAMC");
+        mutualFundNameToIdMap.put("Invesco India Contra Fund", "M_INTT");
+        mutualFundNameToIdMap.put("Navi ELSS Tax Saver Nifty 50 Index Fund", "M_NAVE");
+        mutualFundNameToIdMap.put("DSP Small Cap Fund(IDCW)", "M_DSSM");
+        mutualFundNameToIdMap.put("Aditya Birla SL Mfg. Equity Fund(IDCW-Reinv)", "M_ADMG");
+        mutualFundNameToIdMap.put("Nippon India Equity Hybrid Fund(IDCW)", "M_NIPED");
+        mutualFundNameToIdMap.put("ICICI Pru India Opp Fund(IDCW-Payout)", "M_ICNC");
+        mutualFundNameToIdMap.put("Aditya Birla SL Regular Savings Fund", "M_ADTEV");
+        mutualFundNameToIdMap.put("Aditya Birla SL CRISIL IBX Gilt Apr 2028 Index Fund", "M_ADI28");
+        mutualFundNameToIdMap.put("SBI FMP-66-1361D(IDCW)", "M_SBI3W");
+        mutualFundNameToIdMap.put("Bank of India Midcap Tax Fund-Sr 2", "M_BOIT");
+        mutualFundNameToIdMap.put("Bank of India Midcap Tax Fund-Sr 1", "M_BOAM");
+        mutualFundNameToIdMap.put("Nippon India Innovation Fund(IDCW)", "M_NIPVF");
+        mutualFundNameToIdMap.put("Taurus Infrastructure Fund", "M_TAURS");
+        mutualFundNameToIdMap.put("Canara Rob Short Duration Fund(M-IDCW)", "M_CASU");
+        mutualFundNameToIdMap.put("Kotak Gold Fund(IDCW)", "M_KOGA");
+        mutualFundNameToIdMap.put("Aditya Birla SL Overnight Fund(M-IDCW Reinv)", "M_ADTV");
+        mutualFundNameToIdMap.put("Aditya Birla SL Nifty SDL Sep 2027 Index Fund", "M_ADIN7");
+        mutualFundNameToIdMap.put("Tata Silver ETF FoF", "M_TATSI");
+        mutualFundNameToIdMap.put("Bandhan Banking & PSU Debt Fund(M-IDCW)", "M_IDNM");
+        mutualFundNameToIdMap.put("360 ONE Focused Equity Fund(IDCW-Reinv)", "M_IIFO");
+        mutualFundNameToIdMap.put("HDFC Floating Rate Debt Fund(M-IDCW)", "M_HDFBO");
+        mutualFundNameToIdMap.put("SBI Magnum Income Fund", "M_SBOD");
+        mutualFundNameToIdMap.put("Quant Overnight Fund", "M_QUAH");
+        mutualFundNameToIdMap.put("DSP Low Duration Fund(Q-IDCW)", "M_DSLW");
+        mutualFundNameToIdMap.put("Tata Equity P/E Fund(Div Trig Opt B-10%)Pay", "M_TAEE");
+        mutualFundNameToIdMap.put("LIC MF Nifty 50 Index Fund", "M_LIIE");
+        mutualFundNameToIdMap.put("Sundaram Flexi Cap Fund", "M_SUNRX");
+        mutualFundNameToIdMap.put("Groww Overnight Fund(DD-IDCW)", "M_INDR");
+        mutualFundNameToIdMap.put("DSP Equity & Bond Fund(IDCW)", "M_DSEC");
+        mutualFundNameToIdMap.put("360 ONE Dynamic Bond Fund(Q-IDCW)", "M_IILB");
+        mutualFundNameToIdMap.put("SBI Nifty Next 50 Index Fund", "M_SBY0");
+        mutualFundNameToIdMap.put("SBI CRISIL IBX Gilt Index - Apr 2029 Fund", "M_SB9X");
+        mutualFundNameToIdMap.put("HSBC Gilt Fund", "M_LTTG");
+        mutualFundNameToIdMap.put("Sundaram Overnight Fund(DD-IDCW)", "M_SUDC");
+        mutualFundNameToIdMap.put("Aditya Birla SL Multi Asset Allocation Fund(IDCW)", "M_ADTUW");
+        mutualFundNameToIdMap.put("Tata ELSS Tax Saver Fund(IDCW)", "M_TATX");
+        mutualFundNameToIdMap.put("HSBC Aggressive Hybrid Fund(IDCW)", "M_HSAV");
+        mutualFundNameToIdMap.put("Nippon India Equity Hybrid Fund", "M_NIQT");
+        mutualFundNameToIdMap.put("Invesco India Low Duration Fund(IDCW)", "M_INVSY");
+        mutualFundNameToIdMap.put("UTI Healthcare Fund(IDCW)", "M_UTHHE");
+        mutualFundNameToIdMap.put("PGIM India Gilt Fund", "M_PGGN");
+        mutualFundNameToIdMap.put("SBI Large & Midcap Fund(IDCW)", "M_SBUI");
+        mutualFundNameToIdMap.put("Bandhan Low Duration Fund(M-IDCW Reinvest)", "M_IDFLV");
+        mutualFundNameToIdMap.put("ICICI Pru Savings Fund(DD-IDCW)", "M_ICPIV");
+        mutualFundNameToIdMap.put("Mahindra Manulife Low Duration Fund(DD-IDCW)", "M_MADA");
+        mutualFundNameToIdMap.put("SBI Retirement Benefit Fund-Conservative Plan(IDCW)", "M_SBIRO");
+        mutualFundNameToIdMap.put("Sundaram Mid Cap Fund(IDCW)", "M_SUDMD");
+        mutualFundNameToIdMap.put("HDFC FMP-Sr 46-1876D-Mar 2022", "M_HDCS6");
+        mutualFundNameToIdMap.put("Groww Short Duration Fund(M-IDCW)", "M_GRWH");
+        mutualFundNameToIdMap.put("Franklin India Balanced Advantage Fund", "M_FRVA");
+        mutualFundNameToIdMap.put("HDFC Technology Fund(IDCW)", "M_HDFHW");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Focused Fund", "M_BNP5");
+        mutualFundNameToIdMap.put("WOC Ultra Short Duration Fund(FN-IDCW Payout)", "M_YESA");
+        mutualFundNameToIdMap.put("DSP Healthcare Fund(IDCW)", "M_DSHE");
+        mutualFundNameToIdMap.put("Bandhan All Seasons Bond Fund(DD-IDCW)", "M_IDAO");
+        mutualFundNameToIdMap.put("Bandhan Dynamic Bond Fund(P-IDCW)Exch Reinv", "M_IDCX");
+        mutualFundNameToIdMap.put("Axis Strategic Bond Fund(H-IDCW)", "M_AXITT");
+        mutualFundNameToIdMap.put("SBI Magnum Midcap Fund(IDCW)", "M_SBIAM");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Equity Savings Fund(IDCW)", "M_BASV");
+        mutualFundNameToIdMap.put("Quant Active Fund(IDCW)", "M_QUCT");
+        mutualFundNameToIdMap.put("Motilal Oswal Nifty Midcap 150 Index Fund", "M_MOTY");
+        mutualFundNameToIdMap.put("Motilal Oswal Ultra Short Term Fund(M-IDCW)", "M_MOAH");
+        mutualFundNameToIdMap.put("Invesco India Money Market Fund", "M_INMD");
+        mutualFundNameToIdMap.put("Sundaram LT Micro Cap Tax Adv Fund-Sr VI-(IDCW)", "M_SULI");
+        mutualFundNameToIdMap.put("Union Small Cap Fund(IDCW)", "M_UNSC");
+        mutualFundNameToIdMap.put("HDFC Credit Risk Debt Fund-(IDCW)", "M_HDEK");
+        mutualFundNameToIdMap.put("DSP 10Y G-Sec Fund(IDCW)", "M_DS0S");
+        mutualFundNameToIdMap.put("Invesco India Liquid Fund", "M_INQS");
+        mutualFundNameToIdMap.put("HDFC Dynamic Debt Fund(IDCW)", "M_HDYN");
+        mutualFundNameToIdMap.put("Quant Infrastructure Fund(IDCW)", "M_QUII");
+        mutualFundNameToIdMap.put("Shriram Multi Asset Allocation Fund", "M_SHRS");
+        mutualFundNameToIdMap.put("Invesco India Nifty G-sec Jul 2027 Index Fund(IDCW)", "M_INOJ");
+        mutualFundNameToIdMap.put("Canara Rob Value Fund", "M_CAVO");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Medium Duration Fund(Q-IDCW)", "M_BAMF");
+        mutualFundNameToIdMap.put("UTI FTIF-XXXV-III(1176D)", "M_UTTL1");
+        mutualFundNameToIdMap.put("Aditya Birla SL Intl. Equity Fund", "M_ADTQU");
+        mutualFundNameToIdMap.put("DSP Credit Risk Fund(Q-IDCW Reinv)", "M_DSRK");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty Midcap 150 Index Fund(IDCW)", "M_ICIX5");
+        mutualFundNameToIdMap.put("Bajaj Finserv Overnight Fund(DD-IDCW)", "M_BAJH");
+        mutualFundNameToIdMap.put("Edelweiss Arbitrage Fund", "M_EDIT");
+        mutualFundNameToIdMap.put("HDFC Flexi Cap Fund(IDCW)", "M_HDEN");
+        mutualFundNameToIdMap.put("Tata Floating Rate Fund(IDCW Payout)", "M_TATAW");
+        mutualFundNameToIdMap.put("UTI FTIF-XXXV-II(1223D)(F-IDCW)", "M_UT3W");
+        mutualFundNameToIdMap.put("Kotak Credit Risk Fund(IDCW)", "M_KORU");
+        mutualFundNameToIdMap.put("HDFC FMP-Sr 46-1158D-July 2022", "M_HDFSJ");
+        mutualFundNameToIdMap.put("Mahindra Manulife Arbitrage Fund(IDCW)", "M_MAAF");
+        mutualFundNameToIdMap.put("ITI Focused Equity Fund", "M_ITFC");
+        mutualFundNameToIdMap.put("Bajaj Finserv Overnight Fund(F-IDCW)", "M_BAFU");
+        mutualFundNameToIdMap.put("Union Dynamic Bond(IDCW)", "M_UNDD");
+        mutualFundNameToIdMap.put("Kotak Multi Asset Allocation Fund(IDCW Payout)", "M_KOTUL");
+        mutualFundNameToIdMap.put("SBI S&P BSE Sensex Index Fund(IDCW)", "M_SBWX");
+        mutualFundNameToIdMap.put("Edelweiss Money Market Fund", "M_EDDE");
+        mutualFundNameToIdMap.put("Bandhan Asset Alloc FoF-Mod-(IDCW)", "M_BAEM");
+        mutualFundNameToIdMap.put("Kotak Nifty Next 50 Index Fund(IDCW)", "M_KONX");
+        mutualFundNameToIdMap.put("Edelweiss CRISIL IBX 50:50 Gilt Plus SDL April 2037 Index Fund(IDCW)", "M_EDCA");
+        mutualFundNameToIdMap.put("DSP Corp Bond Fund(IDCW)", "M_DSCU");
+        mutualFundNameToIdMap.put("Sundaram Medium Term Bond Fund", "M_SUNEB");
+        mutualFundNameToIdMap.put("WOC Liquid Fund(W-IDCW Payout)", "M_YELI");
+        mutualFundNameToIdMap.put("Motilal Oswal Focused Fund(IDCW)", "M_MOOC");
+        mutualFundNameToIdMap.put("Canara Rob Overnight Fund", "M_CANR");
+        mutualFundNameToIdMap.put("Canara Rob Small Cap Fund", "M_CANM");
+        mutualFundNameToIdMap.put("Axis CRISIL IBX SDL May 2027 Index Fund", "M_AXR0");
+        mutualFundNameToIdMap.put("SBI FMP-49-1823D", "M_SBIP9");
+        mutualFundNameToIdMap.put("TRUSTMF Corporate Bond Fund", "M_TRSC");
+        mutualFundNameToIdMap.put("SBI FMP-66-1361D", "M_SBIEL");
+        mutualFundNameToIdMap.put("UTI Banking & PSU Fund(F-IDCW)", "M_UTIBT");
+        mutualFundNameToIdMap.put("Mahindra Manulife Large Cap Fund(IDCW Payout)", "M_MAIF");
+        mutualFundNameToIdMap.put("ICICI Pru Equity & Debt Fund", "M_ICCYG");
+        mutualFundNameToIdMap.put("Taurus Ethical Fund", "M_TAHC");
+        mutualFundNameToIdMap.put("Sundaram Nifty 100 Equal Weight Fund(IDCW)", "M_PRI0");
+        mutualFundNameToIdMap.put("UTI Long Duration Fund(Q-IDCW)", "M_UTIDW");
+        mutualFundNameToIdMap.put("Bank of India Credit Risk Fund", "M_BOIK");
+        mutualFundNameToIdMap.put("Bandhan Equity Savings Fund(A-IDCW)", "M_IDEA");
+        mutualFundNameToIdMap.put("Edelweiss Overnight Fund(A-IDCW)", "M_EDOV");
+        mutualFundNameToIdMap.put("Aditya Birla SL ESG Integration Strategy Fund(IDCW-Reinv)", "M_ADYEP");
+        mutualFundNameToIdMap.put("Nippon India Overnight Fund", "M_NIAE");
+        mutualFundNameToIdMap.put("HDFC Medium Term Debt Fund", "M_HDCED");
+        mutualFundNameToIdMap.put("Motilal Oswal Ultra Short Term Fund(W-IDCW)", "M_MOLR");
+        mutualFundNameToIdMap.put("360 ONE Flexicap Fund", "M_360E");
+        mutualFundNameToIdMap.put("Bajaj Finserv Flexi Cap Fund", "M_BAFN");
+        mutualFundNameToIdMap.put("PGIM India CRISIL IBX Gilt Index - Apr 2028 Fund(IDCW)", "M_PGM0");
+        mutualFundNameToIdMap.put("ITI Ultra Short Duration Fund(A-IDCW)", "M_ITUC");
+        mutualFundNameToIdMap.put("Invesco India Midcap Fund", "M_INMI");
+        mutualFundNameToIdMap.put("SBI FMP-79-1130D(IDCW)", "M_SBIC0");
+        mutualFundNameToIdMap.put("UTI Banking & PSU Fund(A-IDCW)", "M_UTPK");
+        mutualFundNameToIdMap.put("Motilal Oswal Liquid Fund(M-IDCW)", "M_MOAM");
+        mutualFundNameToIdMap.put("Canara Rob Multi Cap Fund(IDCW)", "M_CAMC");
+        mutualFundNameToIdMap.put("Bandhan Nifty200 Momentum 30 Index Fund", "M_ID2O");
+        mutualFundNameToIdMap.put("WOC Ultra Short Duration Fund(M-IDCW)", "M_YESC");
+        mutualFundNameToIdMap.put("ITI Multi-Cap Fund(IDCW)", "M_ITMN");
+        mutualFundNameToIdMap.put("Edelweiss Banking and PSU Debt Fund(IDCW)", "M_EDKL");
+        mutualFundNameToIdMap.put("Axis Floater Fund", "M_AXNL");
+        mutualFundNameToIdMap.put("Kotak India EQ Contra Fund(IDCW-Payout)", "M_KOTK");
+        mutualFundNameToIdMap.put("Tata Floating Rate Fund(IDCW)", "M_TAWF");
+        mutualFundNameToIdMap.put("Quant Multi Asset Fund(IDCW)", "M_QUML");
+        mutualFundNameToIdMap.put("Kotak NASDAQ 100 FoF", "M_KOS1");
+        mutualFundNameToIdMap.put("Bandhan Balanced Advantage Fund", "M_IDYY");
+        mutualFundNameToIdMap.put("SBI FMP-46-1850D(IDCW)", "M_SBCW");
+        mutualFundNameToIdMap.put("Motilal Oswal Ultra Short Term Fund(Q-IDCW)", "M_MOOO");
+        mutualFundNameToIdMap.put("Mirae Asset Aggressive Hybrid Fund", "M_MIEI");
+        mutualFundNameToIdMap.put("Bank of India Arbitrage Fund", "M_BOAA");
+        mutualFundNameToIdMap.put("TRUSTMF Short Duration Fund(Q-IDCW)", "M_TRSQ");
+        mutualFundNameToIdMap.put("Bandhan ELSS Tax Saver Fund", "M_IDTX");
+        mutualFundNameToIdMap.put("Franklin India Corp Debt Fund-A(M-IDCW)", "M_FRCA");
+        mutualFundNameToIdMap.put("Nippon India Inv-Qrtly-III", "M_NIQI");
+        mutualFundNameToIdMap.put("Kotak Global Innovation FoF", "M_KOBV");
+        mutualFundNameToIdMap.put("Tata Large Cap Fund", "M_TATAL");
+        mutualFundNameToIdMap.put("Union Multicap Fund", "M_UNMI");
+        mutualFundNameToIdMap.put("Aditya Birla SL Equity Hybrid '95 Fund(IDCW)", "M_ADEH");
+        mutualFundNameToIdMap.put("Nippon India FHF-XLIII-1-1755D", "M_NI7L");
+        mutualFundNameToIdMap.put("Mahindra Manulife Dynamic Bond Fund-(IDCW-Payout)", "M_MAIC");
+        mutualFundNameToIdMap.put("LIC MF Nifty 50 Index Fund(IDCW)", "M_LII5");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty Pharma Index Fund(IDCW)", "M_ICCXH");
+        mutualFundNameToIdMap.put("SBI Magnum Income Fund(IDCW)", "M_SBOF");
+        mutualFundNameToIdMap.put("Canara Rob Savings Fund(IDCW)", "M_CASC");
+        mutualFundNameToIdMap.put("SBI International Access-US Equity FoF(IDCW-Payout)", "M_SBIIO");
+        mutualFundNameToIdMap.put("Invesco India Multicap Fund(IDCW)", "M_INVCI");
+        mutualFundNameToIdMap.put("Bandhan Midcap Fund", "M_IDCCL");
+        mutualFundNameToIdMap.put("SBI FMP-81-1157D(IDCW)", "M_SBIWI");
+        mutualFundNameToIdMap.put("Canara Rob Value Fund(IDCW)", "M_CAVV");
+        mutualFundNameToIdMap.put("Nippon India Passive Flexicap FoF", "M_NIPOX");
+        mutualFundNameToIdMap.put("Canara Rob Equity Hybrid Fund(M-IDCW)", "M_CAQA");
+        mutualFundNameToIdMap.put("Kotak Healthcare Fund(IDCW Payout)", "M_KOTHK");
+        mutualFundNameToIdMap.put("DSP Savings Fund(DD-IDCW)", "M_DSSI");
+        mutualFundNameToIdMap.put("ICICI Pru PSU Equity Fund(IDCW Payout)", "M_ICPEW");
+        mutualFundNameToIdMap.put("HSBC Medium to Long Duration Fund Fund(IDCW)", "M_HSEO");
+        mutualFundNameToIdMap.put("Aditya Birla SL Inv Inc-QS I", "M_ADTNY");
+        mutualFundNameToIdMap.put("Kotak FMP-326-175D(IDCW)", "M_KOT2N");
+        mutualFundNameToIdMap.put("Kotak FMP-324-109D", "M_KOT2T");
+        mutualFundNameToIdMap.put("UTI CRISIL SDL Maturity June 2027 Index Fund", "M_UTSJ");
+        mutualFundNameToIdMap.put("Bajaj Finserv Arbitrage Fund", "M_BAEJ");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Gilt Fund", "M_BAGD");
+        mutualFundNameToIdMap.put("Edelweiss ELSS Tax saver Fund(IDCW)", "M_EDLX");
+        mutualFundNameToIdMap.put("UTI FTIF-XXXV-II(1223D)(A-IDCW)", "M_UTAW");
+        mutualFundNameToIdMap.put("SBI Magnum Equity ESG Fund(IDCW-Payout)", "M_SBGQ");
+        mutualFundNameToIdMap.put("Invesco India Multicap Fund", "M_INMC");
+        mutualFundNameToIdMap.put("Taurus Ethical Fund(IDCW)", "M_TAUUH");
+        mutualFundNameToIdMap.put("ITI Small Cap Fund(IDCW)", "M_ITSM");
+        mutualFundNameToIdMap.put("Sundaram Debt Oriented Hybrid Fund", "M_SUNEE");
+        mutualFundNameToIdMap.put("Axis Bluechip Fund(IDCW)", "M_AXIBB");
+        mutualFundNameToIdMap.put("Nippon India Taiwan Equity Fund(IDCW)", "M_NIPNY");
+        mutualFundNameToIdMap.put("Nippon India Floating Rate Fund(IDCW)", "M_NIPFN");
+        mutualFundNameToIdMap.put("HSBC Balanced Advantage Fund(IDCW)", "M_LTNU");
+        mutualFundNameToIdMap.put("Bandhan Transportation and Logistics Fund(IDCW)", "M_BAHT");
+        mutualFundNameToIdMap.put("Shriram Aggressive Hybrid Fund(IDCW)", "M_SHRY");
+        mutualFundNameToIdMap.put("UTI Medium Duration Fund(Q-IDCW)", "M_UTIWP");
+        mutualFundNameToIdMap.put("JM Short Duration Fund(IDCW)", "M_JMSW");
+        mutualFundNameToIdMap.put("HDFC Infrastructure Fund(IDCW-Reinv)", "M_HDCIF");
+        mutualFundNameToIdMap.put("ICICI Pru Housing Opp Fund", "M_ICPHO");
+        mutualFundNameToIdMap.put("TRUSTMF Short Duration Fund(M-IDCW)", "M_TRTH");
+        mutualFundNameToIdMap.put("SBI Liquid Fund(FN-IDCW)", "M_SBQL");
+        mutualFundNameToIdMap.put("SBI FMP-64-1169D(IDCW)", "M_SBII4");
+        mutualFundNameToIdMap.put("UTI Annual Interval Fund-I(IDCW)", "M_UTFSC");
+        mutualFundNameToIdMap.put("HDFC Mid-Cap Opportunities Fund(IDCW)", "M_HDDO");
+        mutualFundNameToIdMap.put("HDFC Medium Term Debt Fund(IDCW)", "M_HDUB");
+        mutualFundNameToIdMap.put("HDFC Banking & Financial Services Fund(IDCW Reinvest)", "M_HDKB");
+        mutualFundNameToIdMap.put("Union Corporate Bond Fund(IDCW-Reinv)", "M_UNNC");
+        mutualFundNameToIdMap.put("LIC MF Medium to Long Duration Bond Fund", "M_LIBO");
+        mutualFundNameToIdMap.put("Quant BFSI Fund(IDCW)", "M_QUBC");
+        mutualFundNameToIdMap.put("Axis ESG Integration Strategy Fund", "M_AXIQ");
+        mutualFundNameToIdMap.put("Parag Parikh Liquid Fund(DD-IDCW)", "M_PARU");
+        mutualFundNameToIdMap.put("DSP Gilt Fund(M-IDCW)", "M_DSGS");
+        mutualFundNameToIdMap.put("HDFC FMP-Sr 46-1158D-July 2022(IDCW)", "M_HDJS");
+        mutualFundNameToIdMap.put("Mirae Asset Healthcare Fund(IDCW)", "M_MIHS");
+        mutualFundNameToIdMap.put("DSP Ultra Short Fund", "M_DSRH");
+        mutualFundNameToIdMap.put("Mirae Asset Global Electric & Autonomous Vehicles ETFs FoF", "M_MIGO");
+        mutualFundNameToIdMap.put("Mahindra Manulife Low Duration Fund", "M_MADM");
+        mutualFundNameToIdMap.put("DSP Arbitrage Fund(M-IDCW)", "M_DSAN");
+        mutualFundNameToIdMap.put("Kotak Dynamic Bond Fund", "M_KODO");
+        mutualFundNameToIdMap.put("HSBC Medium Duration Fund(A-IDCW)", "M_LTRS");
+        mutualFundNameToIdMap.put("Aditya Birla SL CRISIL IBX 60:40 SDL + AAA PSU - Apr 2027 Index Fund", "M_AD47");
+        mutualFundNameToIdMap.put("Quant Liquid Plan(M-IDCW)", "M_QULQ");
+        mutualFundNameToIdMap.put("Axis Ultra Short Term Fund(IDCW)", "M_AXIUR");
+        mutualFundNameToIdMap.put("Kotak FMP-292-1735D", "M_KOTMT");
+        mutualFundNameToIdMap.put("UTI Floater Fund(Q-IDCW)", "M_UTIWA");
+        mutualFundNameToIdMap.put("ICICI Pru Innovation Fund(IDCW)", "M_ICPWI");
+        mutualFundNameToIdMap.put("HSBC Value Fund", "M_LTNA");
+        mutualFundNameToIdMap.put("LIC MF Banking & PSU Debt Fund(DD-IDCW)", "M_LIAK");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Gilt Fund(IDCW)", "M_BAGP");
+        mutualFundNameToIdMap.put("Franklin India Corp Debt Fund-A(H-IDCW)", "M_FRRH");
+        mutualFundNameToIdMap.put("SBI FMP-53-1839D(IDCW)", "M_SBW3");
+        mutualFundNameToIdMap.put("Bank of India Mfg & Infra Fund", "M_BOMI");
+        mutualFundNameToIdMap.put("HSBC Money Market Fund", "M_LTON");
+        mutualFundNameToIdMap.put("Edelweiss MSCI India Domestic & World Healthcare 45 Index Fund", "M_EDEE");
+        mutualFundNameToIdMap.put("Mahindra Manulife Equity Savings Fund(IDCW)", "M_MADQ");
+        mutualFundNameToIdMap.put("Nippon India Nifty SDL Plus G-Sec-Jun 2028 Maturity 70:30 Index Fund", "M_NITJ");
+        mutualFundNameToIdMap.put("Groww Largecap Fund(Q-IDCW)", "M_GROQ");
+        mutualFundNameToIdMap.put("HSBC Low Duration Fund(A-IDCW)", "M_LTLU");
+        mutualFundNameToIdMap.put("ICICI Pru Flexicap Fund", "M_ICIXD");
+        mutualFundNameToIdMap.put("LIC MF Short Duration Fund(W-IDCW)", "M_IDBSD");
+        mutualFundNameToIdMap.put("Navi Liquid Fund(DD-IDCW)", "M_ESIL");
+        mutualFundNameToIdMap.put("DSP Gilt Fund(IDCW)", "M_DSGE");
+        mutualFundNameToIdMap.put("WOC Balanced Hybrid Fund", "M_WOCH");
+        mutualFundNameToIdMap.put("Tata Equity P/E Fund(Div Trig Opt A-5%)Pay", "M_TAEQ");
+        mutualFundNameToIdMap.put("DSP 10Y G-Sec Fund", "M_DS0U");
+        mutualFundNameToIdMap.put("Kotak Emerging Equity Fund(IDCW)", "M_KORQ");
+        mutualFundNameToIdMap.put("Aditya Birla SL Financial Planning FOF Moderate Plan", "M_ADTSM");
+        mutualFundNameToIdMap.put("Axis Nifty AAA Bond Plus SDL Apr 2026 50:50 ETF FoF(IDCW)", "M_AXO0");
+        mutualFundNameToIdMap.put("Axis Equity Saver Fund(Q-IDCW)", "M_AXQV");
+        mutualFundNameToIdMap.put("Mirae Asset Overnight Fund", "M_MIAS");
+        mutualFundNameToIdMap.put("SBI Magnum Low Duration Fund(FN-IDCW)", "M_SBUW");
+        mutualFundNameToIdMap.put("ICICI Pru Regular Savings Fund(H-IDCW)", "M_ICCGH");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty 100 Low Volatility 30 ETF FOF(IDCW Payout)", "M_ICC1W");
+        mutualFundNameToIdMap.put("LIC MF Arbitrage Fund(W-IDCW)", "M_LICW");
+        mutualFundNameToIdMap.put("HSBC Managed Solutions India-Growth(IDCW)", "M_HSME");
+        mutualFundNameToIdMap.put("ITI Dynamic Bond Fund(Q-IDCW)", "M_ITDQ");
+        mutualFundNameToIdMap.put("UTI Medium Duration Fund(M-IDCW)", "M_UTIWC");
+        mutualFundNameToIdMap.put("DSP Short Term Fund(IDCW)", "M_DSHO");
+        mutualFundNameToIdMap.put("Samco Active Momentum Fund", "M_SAMA");
+        mutualFundNameToIdMap.put("Nippon India Retirement Fund-Wealth Creation(IDCW)", "M_NIRD");
+        mutualFundNameToIdMap.put("Sundaram Overnight Fund(FN-IDCW)", "M_SUDI");
+        mutualFundNameToIdMap.put("Groww Largecap Fund", "M_INHI");
+        mutualFundNameToIdMap.put("UTI S&P BSE Low Volatility Index Fund", "M_UTPW");
+        mutualFundNameToIdMap.put("Edelweiss Nifty Midcap150 Momentum 50 Index Fund(IDCW)", "M_EDF5");
+        mutualFundNameToIdMap.put("DSP Flexi Cap Fund", "M_DSYE");
+        mutualFundNameToIdMap.put("Canara Rob Bluechip Equity Fund(IDCW)", "M_CALC");
+        mutualFundNameToIdMap.put("Canara Rob Mid Cap Fund", "M_CAMR");
+        mutualFundNameToIdMap.put("Aditya Birla SL Balanced Advantage Fund", "M_ADTNG");
+        mutualFundNameToIdMap.put("Sundaram Fin Serv Opp Fund", "M_SUNFV");
+        mutualFundNameToIdMap.put("Quantum Small Cap Fund", "M_QUUS");
+        mutualFundNameToIdMap.put("DSP Global Innovation FoF(IDCW Reinvst)", "M_DSWV");
+        mutualFundNameToIdMap.put("Nippon India Corp Bond Fund(W-IDCW)", "M_NIPCR");
+        mutualFundNameToIdMap.put("Mirae Asset Money Market Fund(IDCW)", "M_MIMM");
+        mutualFundNameToIdMap.put("Templeton India Equity Income Fund", "M_TEME");
+        mutualFundNameToIdMap.put("Aditya Birla SL Dynamic Bond Fund(Q-IDCW)", "M_ADTDM");
+        mutualFundNameToIdMap.put("UTI Floater Fund(F-IDCW)", "M_UTIWT");
+        mutualFundNameToIdMap.put("Nippon India Large Cap Fund(IDCW)", "M_NIPLD");
+        mutualFundNameToIdMap.put("Bandhan G-Sec-Constant Maturity Plan(Q-IDCW)", "M_BAGC");
+        mutualFundNameToIdMap.put("Franklin India Equity Advantage Fund", "M_FRED");
+        mutualFundNameToIdMap.put("Invesco India Focused Fund(IDCW)", "M_IN2E");
+        mutualFundNameToIdMap.put("Kotak FMP-324-109D(IDCW)", "M_KOT2E");
+        mutualFundNameToIdMap.put("Mahindra Manulife Aggressive Hybrid Fund(IDCW-Payout)", "M_MAHY");
+        mutualFundNameToIdMap.put("Parag Parikh Liquid Fund(M-IDCW Payout)", "M_PARG");
+        mutualFundNameToIdMap.put("Nippon India Equity Hybrid Fund(Q-IDCW)", "M_NIPEN");
+        mutualFundNameToIdMap.put("Aditya Birla SL ESG Integration Strategy Fund", "M_ADYGN");
+        mutualFundNameToIdMap.put("Invesco India Smallcap Fund", "M_INEP");
+        mutualFundNameToIdMap.put("SBI FMP-76-1221D", "M_SBIT7");
+        mutualFundNameToIdMap.put("Axis Nifty 100 Index Fund", "M_AXIX");
+        mutualFundNameToIdMap.put("HDFC Nifty G-Sec Jul 2031 Index Fund", "M_HDCNS");
+        mutualFundNameToIdMap.put("Axis NIFTY IT Index Fund(IDCW)", "M_AXXT");
+        mutualFundNameToIdMap.put("Aditya Birla SL Money Manager Fund", "M_ADTMG");
+        mutualFundNameToIdMap.put("Sundaram Equity Savings Fund", "M_PREY");
+        mutualFundNameToIdMap.put("HSBC Managed Solutions India-Growth", "M_HSMW");
+        mutualFundNameToIdMap.put("SBI Magnum Ultra Short Duration Fund(DD-IDCW)", "M_SBGH");
+        mutualFundNameToIdMap.put("ICICI Pru Bond Fund(M-IDCW Payout)", "M_ICIBN");
+        mutualFundNameToIdMap.put("DSP Top 100 Equity Fund(IDCW)", "M_DSTT");
+        mutualFundNameToIdMap.put("DSP Bond Fund(M-IDCW)", "M_DSOM");
+        mutualFundNameToIdMap.put("Mahindra Manulife Aggressive Hybrid Fund", "M_MAHQ");
+        mutualFundNameToIdMap.put("Mirae Asset Aggressive Hybrid Fund(IDCW)", "M_MIHY");
+        mutualFundNameToIdMap.put("ICICI Pru Dividend Yield Equity Fund(IDCW)", "M_ICIDP");
+        mutualFundNameToIdMap.put("Nippon India Short Term Fund(IDCW)", "M_NIPSO");
+        mutualFundNameToIdMap.put("Tata Treasury Advantage Fund(W-IDCW)", "M_TAEW");
+        mutualFundNameToIdMap.put("360 ONE Dynamic Bond Fund(Q-IDCW Payout)", "M_IIFL");
+        mutualFundNameToIdMap.put("Nippon India FHF-XLV-4-1111D", "M_NIR4");
+        mutualFundNameToIdMap.put("Bandhan Equity Savings Fund(Q-IDCW)", "M_BAHE");
+        mutualFundNameToIdMap.put("Edelweiss Banking and PSU Debt Fund(W-IDCW)", "M_EDSK");
+        mutualFundNameToIdMap.put("ICICI Pru Exports & Services Fund(IDCW)", "M_ICIEX");
+        mutualFundNameToIdMap.put("Tata Dividend Yield Fund(IDCW Payout)", "M_TAVW");
+        mutualFundNameToIdMap.put("WOC Mid Cap Fund(IDCW Payout)", "M_WOCN");
+        mutualFundNameToIdMap.put("Bandhan US Treasury Bond 0-1 year FoF", "M_IDFU1");
+        mutualFundNameToIdMap.put("360 ONE Dynamic Bond Fund(M-IDCW Payout)", "M_IIFB");
+        mutualFundNameToIdMap.put("360 ONE Flexicap Fund(IDCW)", "M_360X");
+        mutualFundNameToIdMap.put("Nippon India Low Duration Fund(IDCW)", "M_NIPLO");
+        mutualFundNameToIdMap.put("Kotak Banking and PSU Debt Fund(M-IDCW Payout)", "M_KOTN");
+        mutualFundNameToIdMap.put("Bank of India Bluechip Fund(IDCW)", "M_BAKN");
+        mutualFundNameToIdMap.put("LIC MF Dividend Yield Fund", "M_IDBV");
+        mutualFundNameToIdMap.put("Bandhan Core Equity Fund", "M_IDFOC");
+        mutualFundNameToIdMap.put("DSP Banking & PSU Debt Fund(DD-IDCW)", "M_DSNG");
+        mutualFundNameToIdMap.put("Tata Infrastructure Fund(IDCW)", "M_TATAS");
+        mutualFundNameToIdMap.put("Helios Flexi Cap Fund", "M_HELF");
+        mutualFundNameToIdMap.put("Motilal Oswal Liquid Fund(W-IDCW)", "M_MOIL");
+        mutualFundNameToIdMap.put("HDFC Non-Cyclical Consumer Fund(IDCW Reinvest)", "M_HDFYW");
+        mutualFundNameToIdMap.put("Kotak Pioneer Fund", "M_KOTR");
+        mutualFundNameToIdMap.put("Tata Liquid Fund", "M_TAQL");
+        mutualFundNameToIdMap.put("HDFC Balanced Advantage Fund(IDCW-Reinv)", "M_HDCBL");
+        mutualFundNameToIdMap.put("Bank of India ELSS Tax Saver", "M_BOTA");
+        mutualFundNameToIdMap.put("Tata Balanced Adv Fund(IDCW-Payout)", "M_TABA");
+        mutualFundNameToIdMap.put("Kotak Silver ETF FoF", "M_KOVL");
+        mutualFundNameToIdMap.put("Axis Focused 25 Fund(IDCW)", "M_AXU5");
+        mutualFundNameToIdMap.put("SBI Savings Fund", "M_SBUV");
+        mutualFundNameToIdMap.put("ICICI Pru Child Care Fund-Gift Plan", "M_ICCHL");
+        mutualFundNameToIdMap.put("LIC MF Long Term Value Fund(IDCW)", "M_IDBLN");
+        mutualFundNameToIdMap.put("Invesco India ESG Equity Fund(IDCW)", "M_INWG");
+        mutualFundNameToIdMap.put("SBI Liquid Fund(W-IDCW)", "M_SBLW");
+        mutualFundNameToIdMap.put("HSBC Low Duration Fund(IDCW)", "M_HSWC");
+        mutualFundNameToIdMap.put("WOC Liquid Fund(FN-IDCW Payout)", "M_YELL");
+        mutualFundNameToIdMap.put("Tata Large & Mid Cap Fund(IDCW)", "M_TATAT");
+        mutualFundNameToIdMap.put("Mirae Asset Nifty India Manufacturing ETF FoF(IDCW)", "M_MINF");
+        mutualFundNameToIdMap.put("SBI Multi Asset Allocation Fund(A-IDCW)", "M_SBOL");
+        mutualFundNameToIdMap.put("UTI Ultra Short Duration Fund(DD-IDCW)", "M_UTHT");
+        mutualFundNameToIdMap.put("LIC MF ULIS Regular Premium Uniform Cover Yrly 10Y(IDCW)", "M_LIFS");
+        mutualFundNameToIdMap.put("Bandhan Floating Rate Fund(M-IDCW Reinv)", "M_IDFOL");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty 50 Index Fund(IDCW)", "M_ICINT");
+        mutualFundNameToIdMap.put("DSP Nifty SDL Plus G-Sec Sep 2027 50:50 Index Fund(IDCW)", "M_DSLX");
+        mutualFundNameToIdMap.put("Edelweiss Mid Cap Fund", "M_EDME");
+        mutualFundNameToIdMap.put("Kotak FMP-300-1223D(IDCW)", "M_KOW3");
+        mutualFundNameToIdMap.put("HSBC Ultra Short Duration Fund(W-IDCW)", "M_HSBN");
+        mutualFundNameToIdMap.put("Axis Quant Fund", "M_AXQC");
+        mutualFundNameToIdMap.put("Axis Value Fund(IDCW)", "M_AXVN");
+        mutualFundNameToIdMap.put("Tata Business Cycle Fund(IDCW)", "M_TAWP");
+        mutualFundNameToIdMap.put("Kotak Balanced Advantage Fund", "M_KOBA");
+        mutualFundNameToIdMap.put("HDFC Hybrid Equity Fund(IDCW)", "M_HDHE");
+        mutualFundNameToIdMap.put("Franklin Build India Fund", "M_FRBU");
+        mutualFundNameToIdMap.put("HSBC Value Fund(IDCW)", "M_LTNV");
+        mutualFundNameToIdMap.put("Union Liquid Fund(DD-IDCW)", "M_UNLU");
+        mutualFundNameToIdMap.put("Tata ST Bond Fund(M-IDCW Payout)", "M_TASO");
+        mutualFundNameToIdMap.put("Mirae Asset Banking and PSU Fund", "M_MIRN");
+        mutualFundNameToIdMap.put("Mirae Asset Multicap Fund", "M_MIMC");
+        mutualFundNameToIdMap.put("ICICI Pru Regular Savings Fund", "M_ICCVS");
+        mutualFundNameToIdMap.put("SBI Magnum Midcap Fund(IDCW-Payout)", "M_SBGN");
+        mutualFundNameToIdMap.put("ICICI Pru Infrastructure Fund(IDCW)", "M_ICPIN");
+        mutualFundNameToIdMap.put("UTI Medium Duration Fund(H-IDCW)", "M_UTIHT");
+        mutualFundNameToIdMap.put("UTI FTIF-XXXV-II(1223D)(Q-IDCW)", "M_UTW1");
+        mutualFundNameToIdMap.put("Axis Regular Saver Fund", "M_AXGU");
+        mutualFundNameToIdMap.put("Tata Nifty G-Sec Dec 2029 Index Fund(IDCW)", "M_TA2W");
+        mutualFundNameToIdMap.put("Union Corporate Bond Fund(IDCW)", "M_UNND");
+        mutualFundNameToIdMap.put("Kotak Bond Short Term Fund(IDCW Payout)", "M_KOHO");
+        mutualFundNameToIdMap.put("Edelweiss Small Cap Fund(IDCW)", "M_EDCM");
+        mutualFundNameToIdMap.put("Axis S&P BSE Sensex Index Fund", "M_AXXP");
+        mutualFundNameToIdMap.put("Axis Short Term Fund(W-IDCW)", "M_AXIHR");
+        mutualFundNameToIdMap.put("HDFC Multi-Asset Fund(IDCW)", "M_HDCUM");
+        mutualFundNameToIdMap.put("Edelweiss Flexi Cap Fund", "M_EDWU");
+        mutualFundNameToIdMap.put("ICICI Pru Retirement Fund-Hybrid Cons Plan(IDCW)", "M_ICEE");
+        mutualFundNameToIdMap.put("SBI Conservative Hybrid Fund(Q-IDCW Payout)", "M_SBDU");
+        mutualFundNameToIdMap.put("Invesco India Infrastructure Fund(IDCW)", "M_INVCF");
+        mutualFundNameToIdMap.put("UTI Quarterly Interval Fund-III-(IDCW)", "M_UTFTW");
+        mutualFundNameToIdMap.put("HSBC Balanced Advantage Fund", "M_LTLV");
+        mutualFundNameToIdMap.put("Kotak Nifty 200 Momentum 30 Index Fund(IDCW)", "M_KO2X");
+        mutualFundNameToIdMap.put("UTI Gold ETF FoF", "M_UTGGO");
+        mutualFundNameToIdMap.put("Quant Large Cap Fund(IDCW)", "M_QULU");
+        mutualFundNameToIdMap.put("Aditya Birla SL Equity Savings Fund(IDCW-Reinv)", "M_ADQV");
+        mutualFundNameToIdMap.put("Bajaj Finserv Flexi Cap Fund(IDCW)", "M_BAFL");
+        mutualFundNameToIdMap.put("DSP Short Term Fund(IDCW-Reinv)", "M_DSSH");
+        mutualFundNameToIdMap.put("UTI FTIF-XXXV-I(1260D)", "M_UTI26");
+        mutualFundNameToIdMap.put("ITI Mid Cap Fund", "M_ITMA");
+        mutualFundNameToIdMap.put("Aditya Birla SL Banking & Financial Services Fund(IDCW-Reinv)", "M_ADKN");
+        mutualFundNameToIdMap.put("ICICI Pru Ultra Short Term Fund Fund(W-IDCW Payout)", "M_ICCW");
+        mutualFundNameToIdMap.put("Mahindra Manulife Overnight Fund(DD-IDCW)", "M_MAHV");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Large & Mid Cap Fund", "M_BARD");
+        mutualFundNameToIdMap.put("DSP World Energy Fund", "M_DSWE");
+        mutualFundNameToIdMap.put("ICICI Pru Floating Interest Fund(DD-IDCW)", "M_ICPIE");
+        mutualFundNameToIdMap.put("Kotak Low Duration Fund(IDCW)", "M_KOOL");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Flexi Cap Fund", "M_BARX");
+        mutualFundNameToIdMap.put("ICICI Pru Midcap Fund", "M_ICPID");
+        mutualFundNameToIdMap.put("Taurus Large Cap Fund", "M_TARQ");
+        mutualFundNameToIdMap.put("Mahindra Manulife Mid Cap Fund(IDCW)", "M_MANE");
+        mutualFundNameToIdMap.put("Tata Focused Equity Fund(IDCW-Payout)", "M_TATO");
+        mutualFundNameToIdMap.put("Edelweiss Gold and Silver ETF FoF(IDCW)", "M_EDGV");
+        mutualFundNameToIdMap.put("HDFC Hybrid Debt Fund(M-IDCW Reinv)", "M_HDHM");
+        mutualFundNameToIdMap.put("ICICI Pru Credit Risk Fund(Q-IDCW Payout)", "M_ICKE");
+        mutualFundNameToIdMap.put("Navi Liquid Fund(W-IDCW)", "M_NALQ");
+        mutualFundNameToIdMap.put("Taurus Flexi Cap Fund", "M_TAHU");
+        mutualFundNameToIdMap.put("Quant Liquid Plan(W-IDCW)", "M_QULI");
+        mutualFundNameToIdMap.put("Union Medium Duration Fund(IDCW-Payout)", "M_UNID");
+        mutualFundNameToIdMap.put("Groww Short Duration Fund", "M_INUE");
+        mutualFundNameToIdMap.put("ICICI Pru Regular Savings Fund(Q-IDCW)", "M_ICCES");
+        mutualFundNameToIdMap.put("Franklin India Flexi Cap Fund(IDCW)", "M_FREA");
+        mutualFundNameToIdMap.put("Nippon India Balanced Advantage Fund", "M_NIBA");
+        mutualFundNameToIdMap.put("Nippon India Low Duration Fund(DD-IDCW)", "M_NIWL");
+        mutualFundNameToIdMap.put("Tata Infrastructure Fund", "M_TATAN");
+        mutualFundNameToIdMap.put("Motilal Oswal S&P BSE Quality Index Fund", "M_MOLQ");
+        mutualFundNameToIdMap.put("Invesco India Money Market Fund(DD-IDCW)", "M_INMA");
+        mutualFundNameToIdMap.put("Bandhan US Equity FoF", "M_IDFUY");
+        mutualFundNameToIdMap.put("UTI FTIF-XXXV-I(1260D)(IDCW)", "M_UT2W");
+        mutualFundNameToIdMap.put("SBI Tax Advantage Fund-III(IDCW)", "M_SBXU");
+        mutualFundNameToIdMap.put("Kotak FMP-328-90D", "M_KOT8R");
+        mutualFundNameToIdMap.put("Bandhan Core Equity Fund(IDCW)", "M_BAQC");
+        mutualFundNameToIdMap.put("SBI FMP-72-1239D(IDCW)", "M_SBIC2");
+        mutualFundNameToIdMap.put("UTI Gilt Fund with 10 year Constant Duration(Q-IDCW)", "M_UTH0");
+        mutualFundNameToIdMap.put("Mahindra Manulife Large & Mid Cap Fund", "M_MAHT");
+        mutualFundNameToIdMap.put("DSP NIFTY Next 50 Index Fund", "M_DSNI");
+        mutualFundNameToIdMap.put("HSBC Money Market Fund(M-IDCW)", "M_HSMK");
+        mutualFundNameToIdMap.put("Kotak FMP-327-101D", "M_KOT7I");
+        mutualFundNameToIdMap.put("Aditya Birla SL G-Sec Fund(Q-IDCW)", "M_ADTCA");
+        mutualFundNameToIdMap.put("Nippon India Equity Savings Fund(Q-IDCW)", "M_NIPAC");
+        mutualFundNameToIdMap.put("SBI Retirement Benefit Fund-Conservative Plan", "M_SBIRL");
+        mutualFundNameToIdMap.put("Sundaram Banking & PSU Debt Fund(M-IDCW)", "M_SUNKN");
+        mutualFundNameToIdMap.put("ICICI Pru Innovation Fund(IDCW Payout)", "M_ICPDW");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Balanced Advantage Fund(IDCW)", "M_BALN");
+        mutualFundNameToIdMap.put("Aditya Birla SL Intl. Equity Fund(IDCW-Reinv)", "M_ADTQC");
+        mutualFundNameToIdMap.put("UTI Floater Fund(A-IDCW)", "M_UTIWO");
+        mutualFundNameToIdMap.put("Edelweiss Large Cap Fund", "M_EDAI");
+        mutualFundNameToIdMap.put("Union Liquid Fund(W-IDCW)", "M_UNLW");
+        mutualFundNameToIdMap.put("ICICI Pru Midcap Fund(IDCW)", "M_ICPCD");
+        mutualFundNameToIdMap.put("Axis Treasury Advantage Fund(DD-IDCW)", "M_AXAG");
+        mutualFundNameToIdMap.put("HDFC Large and Mid Cap Fund(IDCW)", "M_HDWC");
+        mutualFundNameToIdMap.put("Nippon India Nifty Next 50 Junior BeES FoF", "M_NIOJ");
+        mutualFundNameToIdMap.put("Aditya Birla SL Digital India Fund(IDCW-Reinv)", "M_ADTDU");
+        mutualFundNameToIdMap.put("Sundaram Aggressive Hybrid Fund(M-IDCW)", "M_PRPA");
+        mutualFundNameToIdMap.put("SBi Equity Savings Fund(M-IDCW Payout)", "M_SBQI");
+        mutualFundNameToIdMap.put("Axis Corp Debt Fund(IDCW)", "M_AXICC");
+        mutualFundNameToIdMap.put("ICICI Pru FMCG Fund(IDCW-Payout)", "M_ICIGR");
+        mutualFundNameToIdMap.put("SBI Nifty Index Fund(IDCW)", "M_SBYI");
+        mutualFundNameToIdMap.put("ICICI Pru Equity & Debt Fund(A-IDCW Payout)", "M_ICIET");
+        mutualFundNameToIdMap.put("Edelweiss Arbitrage Fund(IDCW)", "M_EDTG");
+        mutualFundNameToIdMap.put("ITI Value Fund", "M_ITVA");
+        mutualFundNameToIdMap.put("Groww Nifty Smallcap 250 Index Fund", "M_GRO5");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Arbitrage Fund", "M_BNAN");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty Alpha Low - Volatility 30 ETF FOF(IDCW)", "M_ICCHW");
+        mutualFundNameToIdMap.put("Aditya Birla SL FMP-US-100D(IDCW)", "M_ADI0U");
+        mutualFundNameToIdMap.put("Kotak FMP-326-175D", "M_KOT6I");
+        mutualFundNameToIdMap.put("Union Largecap Fund(IDCW)", "M_UNLO");
+        mutualFundNameToIdMap.put("SBI Consumption Opp Fund(IDCW)", "M_SBOP");
+        mutualFundNameToIdMap.put("Invesco India Large & Mid Cap Fund", "M_INCW");
+        mutualFundNameToIdMap.put("Invesco India Balanced Advantage Fund", "M_INYS");
+        mutualFundNameToIdMap.put("Bandhan Bond Fund - Short Term Plan(FN-IDCW)", "M_BAWH");
+        mutualFundNameToIdMap.put("Nippon India Corp Bond Fund(M-IDCW)", "M_NIPCP");
+        mutualFundNameToIdMap.put("Navi Flexi Cap Fund(A-IDCW)", "M_NAFX");
+        mutualFundNameToIdMap.put("Canara Rob Consumer Trends Fund", "M_CAOM");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty Smallcap 250 Index Fund(IDCW)", "M_ICIWC");
+        mutualFundNameToIdMap.put("Axis CRISIL IBX SDL May 2027 Index Fund(IDCW)", "M_AXXR");
+        mutualFundNameToIdMap.put("Groww Short Duration Fund(W-IDCW)", "M_GRWS");
+        mutualFundNameToIdMap.put("Edelweiss Banking and PSU Debt Fund(M-IDCW)", "M_EDAK");
+        mutualFundNameToIdMap.put("Aditya Birla SL Dynamic Bond Fund(M-IDCW)", "M_ADTMD");
+        mutualFundNameToIdMap.put("ITI Liquid Fund(A-IDCW)", "M_ITQF");
+        mutualFundNameToIdMap.put("ICICI Pru Retirement Fund-Pure Debt Plan", "M_ICER");
+        mutualFundNameToIdMap.put("DSP FMP 267-1246D(IDCW)", "M_DSP6I");
+        mutualFundNameToIdMap.put("Sundaram Services Fund(IDCW)", "M_SUNVE");
+        mutualFundNameToIdMap.put("Kotak Credit Risk Fund", "M_KODS");
+        mutualFundNameToIdMap.put("Aditya Birla SL Nifty 50 Index Fund(IDCW-Reinv)", "M_ADEX");
+        mutualFundNameToIdMap.put("Nippon India Banking & PSU Debt Fund(IDCW)", "M_NIKB");
+        mutualFundNameToIdMap.put("Aditya Birla SL Money Manager Fund(W-IDCW)", "M_ADIMW");
+        mutualFundNameToIdMap.put("UTI Gilt Fund(IDCW)-Direct plan", "M_UTGGC");
+        mutualFundNameToIdMap.put("ICICI Pru Regular Savings Fund(M-IDCW)", "M_ICCVM");
+        mutualFundNameToIdMap.put("Franklin India Focused Equity Fund", "M_FRON");
+        mutualFundNameToIdMap.put("DSP Small Cap Fund", "M_DSPSM");
+        mutualFundNameToIdMap.put("DSP Savings Fund(M-IDCW Reinv)", "M_DSSV");
+        mutualFundNameToIdMap.put("HDFC Corp Bond Fund(Q-IDCW Reinv)", "M_HDOO");
+        mutualFundNameToIdMap.put("UTI FTIF-XXXV-III(1176D)(A-IDCW)", "M_UTW7");
+        mutualFundNameToIdMap.put("JM Dynamic Bond Fund(M-IDCW)", "M_JMYM");
+        mutualFundNameToIdMap.put("ICICI Pru ESG Exclusionary Strategy Fund(IDCW Payout)", "M_ICIC");
+        mutualFundNameToIdMap.put("HSBC Overnight Fund(W-IDCW Payout)", "M_HSCO");
+        mutualFundNameToIdMap.put("SBI Magnum Comma Fund", "M_SBIAO");
+        mutualFundNameToIdMap.put("SBI Short Term Debt Fund(W-IDCW)", "M_SBHO");
+        mutualFundNameToIdMap.put("Edelweiss Liquid Fund(FN-IDCW)", "M_EDRQ");
+        mutualFundNameToIdMap.put("SBI Liquid Fund", "M_SBQA");
+        mutualFundNameToIdMap.put("SBI Magnum Low Duration Fund(W-IDCW)", "M_SBGW");
+        mutualFundNameToIdMap.put("Aditya Birla SL Mfg. Equity Fund", "M_ADIIR");
+        mutualFundNameToIdMap.put("UTI Large & Mid Cap Fund", "M_UTICY");
+        mutualFundNameToIdMap.put("Mirae Asset Low Duration Fund(DD-IDCW)", "M_MIEG");
+        mutualFundNameToIdMap.put("LIC MF S&P BSE Sensex Index Fund", "M_LIII");
+        mutualFundNameToIdMap.put("Bajaj Finserv Overnight Fund(M-IDCW)", "M_BAFT");
+        mutualFundNameToIdMap.put("Quant Infrastructure Fund", "M_QUNG");
+        mutualFundNameToIdMap.put("Franklin Asian Equity Fund(IDCW Payout)", "M_FRQC");
+        mutualFundNameToIdMap.put("DSP Arbitrage Fund(M-IDCW Reinv)", "M_DSAR");
+        mutualFundNameToIdMap.put("SBI Magnum Comma Fund(IDCW-Payout)", "M_SBAO");
+        mutualFundNameToIdMap.put("Nippon India Liquid Fund(M-IDCW)", "M_NIPLI");
+        mutualFundNameToIdMap.put("Quant Dynamic Asset Allocation Fund(IDCW)", "M_QUDM");
+        mutualFundNameToIdMap.put("Quant Healthcare Fund", "M_QUHN");
+        mutualFundNameToIdMap.put("DSP Bond Fund(IDCW)", "M_DSBT");
+        mutualFundNameToIdMap.put("Mirae Asset Liquid Fund(DD-IDCW)", "M_MISP");
+        mutualFundNameToIdMap.put("ICICI Pru Overnight Fund(DD-IDCW)", "M_ICCWA");
+        mutualFundNameToIdMap.put("DSP World Mining Fund(IDCW-Reinv)", "M_DSWI");
+        mutualFundNameToIdMap.put("Axis Floater Fund(A-IDCW)", "M_AXISA");
+        mutualFundNameToIdMap.put("Bandhan CRISIL IBX Gilt June 2027 Index Fund", "M_ID0X");
+        mutualFundNameToIdMap.put("HSBC Equity Savings Fund(Q-IDCW)", "M_LTQU");
+        mutualFundNameToIdMap.put("ITI Value Fund(IDCW)", "M_ITVF");
+        mutualFundNameToIdMap.put("ICICI Pru Passive Multi-Asset FoF(IDCW)", "M_ICCVW");
+        mutualFundNameToIdMap.put("Bandhan Bond Fund - Income Plan(H-IDCW)", "M_BALM");
+        mutualFundNameToIdMap.put("DSP Credit Risk Fund(M-IDCW)", "M_DSEK");
+        mutualFundNameToIdMap.put("Aditya Birla SL FTP-TJ-1838D", "M_AD1J");
+        mutualFundNameToIdMap.put("UTI Value Fund", "M_UTILO");
+        mutualFundNameToIdMap.put("DSP Global Innovation FoF(IDCW)", "M_DSPGI");
+        mutualFundNameToIdMap.put("SBI FMP-48-1458D", "M_SBIPT");
+        mutualFundNameToIdMap.put("SBI Nifty Midcap 150 Index Fund(IDCW)", "M_SBXM");
+        mutualFundNameToIdMap.put("Bandhan Liquid Fund(IDCW)", "M_BAQA");
+        mutualFundNameToIdMap.put("SBI Short Term Debt Fund(M-IDCW)", "M_SBHR");
+        mutualFundNameToIdMap.put("Bandhan Sterling Value Fund(IDCW)", "M_IDVC");
+        mutualFundNameToIdMap.put("LIC MF ULIS Regular Premium Uniform Cover Qtrly 10Y(IDCW)", "M_LIC1");
+        mutualFundNameToIdMap.put("SBI FMP-42-1857D(IDCW)", "M_SBIP8");
+        mutualFundNameToIdMap.put("DSP Credit Risk Fund(IDCW)", "M_DSTK");
+        mutualFundNameToIdMap.put("ICICI Pru MNC Fund(IDCW-Payout)", "M_ICRM");
+        mutualFundNameToIdMap.put("PGIM India ELSS Tax Saver Fund", "M_PGAU");
+        mutualFundNameToIdMap.put("DSP World Agriculture Fund(IDCW-Reinv)", "M_DSWA");
+        mutualFundNameToIdMap.put("Groww Dynamic Bond Fund(DD-IDCW)", "M_INIP");
+        mutualFundNameToIdMap.put("Kotak Money Market Fund(M-IDCW Payout)", "M_KOTL");
+        mutualFundNameToIdMap.put("DSP World Gold FoF(IDCW)", "M_DSWO");
+        mutualFundNameToIdMap.put("Mahindra Manulife Dynamic Bond Fund-(Q-IDCW)", "M_MANN");
+        mutualFundNameToIdMap.put("Bandhan Midcap Fund(IDCW Reinvest)", "M_IDFPV");
+        mutualFundNameToIdMap.put("Bandhan Ultra Short Term Fund(P-IDCW)", "M_IDFUH");
+        mutualFundNameToIdMap.put("Aditya Birla SL Overnight Fund(DD-IDCW)", "M_ADLH");
+        mutualFundNameToIdMap.put("Franklin India Overnight Fund", "M_FRLH");
+        mutualFundNameToIdMap.put("Aditya Birla SL CRISIL IBX Gilt April 2033 Index Fund(IDCW)", "M_ADIG3");
+        mutualFundNameToIdMap.put("Bandhan Corp Bond Fund(A-IDCW)", "M_BACT");
+        mutualFundNameToIdMap.put("Sundaram Consumption Fund", "M_SUNUA");
+        mutualFundNameToIdMap.put("LIC MF Focused 30 Equity Fund(IDCW)", "M_IDU3");
+        mutualFundNameToIdMap.put("Aditya Birla SL Pharma & Healthcare Fund(IDCW)", "M_ADYH");
+        mutualFundNameToIdMap.put("SBI FMP-60-1878D", "M_SBI8L");
+        mutualFundNameToIdMap.put("Edelweiss Government Securities Fund(M-IDCW)", "M_EDGC");
+        mutualFundNameToIdMap.put("DSP Equity Savings Fund(Q-IDCW)", "M_DSEV");
+        mutualFundNameToIdMap.put("Aditya Birla SL Dynamic Bond Fund(IDCW)", "M_ADIBC");
+        mutualFundNameToIdMap.put("Quantum Dynamic Bond Fund(M-IDCW)", "M_QUUD");
+        mutualFundNameToIdMap.put("Mahindra Manulife Balanced Advantage Fund(IDCW)", "M_MADV");
+        mutualFundNameToIdMap.put("HDFC Defence Fund(IDCW)", "M_HDFWU");
+        mutualFundNameToIdMap.put("Edelweiss US Technology Equity FOF", "M_EDES");
+        mutualFundNameToIdMap.put("SBI Large & Midcap Fund", "M_SBRU");
+        mutualFundNameToIdMap.put("SBI Magnum Low Duration Fund(M-IDCW)", "M_SBNW");
+        mutualFundNameToIdMap.put("Aditya Birla SL Low Duration Fund(W-IDCW)", "M_ADIWY");
+        mutualFundNameToIdMap.put("DSP Regular Savings Fund(M-IDCW)", "M_DSGV");
+        mutualFundNameToIdMap.put("Nippon India Money Market Fund(DD-IDCW)", "M_NIMR");
+        mutualFundNameToIdMap.put("Nippon India FMP-XLVI-1", "M_NIXM");
+        mutualFundNameToIdMap.put("HDFC FMP-Sr 46-1162D-Mar 2022(IDCW)", "M_HDW6");
+        mutualFundNameToIdMap.put("HDFC Arbitrage Fund", "M_HDCAG");
+        mutualFundNameToIdMap.put("HSBC Multi Cap Fund(IDCW)", "M_HSUD");
+        mutualFundNameToIdMap.put("DSP Nifty SDL Plus G-Sec Sep 2027 50:50 Index Fund", "M_DSS5");
+        mutualFundNameToIdMap.put("HSBC Global Equity Climate Change FoF", "M_HSGE");
+        mutualFundNameToIdMap.put("Union Gilt Fund", "M_UNGI");
+        mutualFundNameToIdMap.put("Franklin India Smaller Cos Fund", "M_FRSM");
+        mutualFundNameToIdMap.put("SBI Contra Fund", "M_SBICO");
+        mutualFundNameToIdMap.put("Aditya Birla SL Banking & PSU Debt(IDCW-Reinv)", "M_ADYK");
+        mutualFundNameToIdMap.put("Nippon India Liquid Fund(W-IDCW)", "M_NIQL");
+        mutualFundNameToIdMap.put("Axis Ultra Short Term Fund(M-IDCW)", "M_AXIUT");
+        mutualFundNameToIdMap.put("Bandhan All Seasons Bond Fund(A-IDCW Reinv)", "M_IDFAW");
+        mutualFundNameToIdMap.put("Aditya Birla SL Intl. Equity Fund(IDCW)", "M_ADITL");
+        mutualFundNameToIdMap.put("Nippon India FHF-XLV-5-1158D", "M_NI8C");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty Bank Index Fund", "M_ICIKX");
+        mutualFundNameToIdMap.put("SBI FMP-6-3668D", "M_SB6M");
+        mutualFundNameToIdMap.put("UTI Nifty SDL Plus AAA PSU Bond Apr 2028 75:25 Index Fund", "M_UTY8");
+        mutualFundNameToIdMap.put("HDFC Income Fund(Q-IDCW)", "M_HDFQO");
+        mutualFundNameToIdMap.put("HSBC Asia Pacific (Ex Japan) DYF(IDCW-Payout)", "M_HSAA");
+        mutualFundNameToIdMap.put("Aditya Birla SL Transportation and Logistics Fund(IDCW)", "M_ADTWA");
+        mutualFundNameToIdMap.put("Axis Value Fund", "M_AXVV");
+        mutualFundNameToIdMap.put("Nippon India Income Fund(A-IDCW)", "M_NIPCC");
+        mutualFundNameToIdMap.put("Kotak Multi Asset Allocator FoF-Dynamic(IDCW)", "M_KOST");
+        mutualFundNameToIdMap.put("Mirae Asset Great Consumer Fund", "M_MISG");
+        mutualFundNameToIdMap.put("HSBC Equity Savings Fund(Q-IDCW Payout)", "M_LTEY");
+        mutualFundNameToIdMap.put("UTI FTIF-XXXV-II(1223D)(IDCW)", "M_UTW2");
+        mutualFundNameToIdMap.put("SBI Conservative Hybrid Fund(M-IDCW)", "M_SBBY");
+        mutualFundNameToIdMap.put("HDFC Dividend Yield Fund(IDCW-Reinv)", "M_HDCEA");
+        mutualFundNameToIdMap.put("Franklin India Prima Fund(IDCW)", "M_FRPU");
+        mutualFundNameToIdMap.put("Edelweiss Money Market Fund(A-IDCW)", "M_EDMY");
+        mutualFundNameToIdMap.put("ICICI Pru FMP-88-1303D-S", "M_ICCS8");
+        mutualFundNameToIdMap.put("Edelweiss Aggressive Hybrid Fund(IDCW)", "M_EDGY");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Dynamic Bond Fund(DD-IDCW)", "M_BNSX");
+        mutualFundNameToIdMap.put("UTI Ultra Short Duration Fund(Q-IDCW)", "M_UTUUR");
+        mutualFundNameToIdMap.put("SBI FMP-51-1846D(IDCW)", "M_SBW1");
+        mutualFundNameToIdMap.put("HDFC Medium Term Debt Fund(IDCW-Reinv)", "M_HDED");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Business Cycle Fund", "M_BABU");
+        mutualFundNameToIdMap.put("PGIM India CRISIL IBX Gilt Index - Apr 2028 Fund", "M_PGI0");
+        mutualFundNameToIdMap.put("SBI Infrastructure Fund", "M_SBIIN");
+        mutualFundNameToIdMap.put("Bandhan G-Sec-Constant Maturity Plan(M-IDCW)", "M_BAGM");
+        mutualFundNameToIdMap.put("ICICI Pru S&P BSE 500 ETF FOF(IDCW)", "M_ICI5W");
+        mutualFundNameToIdMap.put("SBI FMP-57-1835D(IDCW)", "M_SBW7");
+        mutualFundNameToIdMap.put("ICICI Pru US Bluechip Equity Fund(IDCW)", "M_ICCSB");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Mid Cap Fund(IDCW)", "M_BAWM");
+        mutualFundNameToIdMap.put("Aditya Birla SL Nifty Midcap 150 Index Fund(IDCW-Reinv)", "M_AD5W");
+        mutualFundNameToIdMap.put("Sundaram Low Duration Fund(Q-IDCW)", "M_SUDRL");
+        mutualFundNameToIdMap.put("HSBC Conservative Hybrid Fund", "M_HSRU");
+        mutualFundNameToIdMap.put("DSP Banking & PSU Debt Fund", "M_DSNC");
+        mutualFundNameToIdMap.put("Aditya Birla SL Digital India Fund", "M_ADTUR");
+        mutualFundNameToIdMap.put("Aditya Birla SL India GenNext Fund(IDCW)", "M_ADIEX");
+        mutualFundNameToIdMap.put("Mirae Asset Liquid Fund", "M_MIEM");
+        mutualFundNameToIdMap.put("Nippon India Innovation Fund", "M_NIPVG");
+        mutualFundNameToIdMap.put("Tata Quant Fund", "M_TATD");
+        mutualFundNameToIdMap.put("Bandhan Focused Equity Fund(IDCW-Reinv)", "M_IDFOW");
+        mutualFundNameToIdMap.put("Motilal Oswal Nifty 200 Momentum 30 Index Fund", "M_MOIX");
+        mutualFundNameToIdMap.put("Axis Nifty AAA Bond Plus SDL Apr 2026 50:50 ETF FoF", "M_AXA2");
+        mutualFundNameToIdMap.put("Aditya Birla SL Focused Fund(IDCW)", "M_ADTOA");
+        mutualFundNameToIdMap.put("UTI Liquid Fund(A-IDCW)", "M_UTIHL");
+        mutualFundNameToIdMap.put("Tata Arbitrage Fund", "M_TARG");
+        mutualFundNameToIdMap.put("Invesco India Large & Mid Cap Fund(IDCW)", "M_INVCG");
+        mutualFundNameToIdMap.put("Edelweiss Mid Cap Fund(IDCW)", "M_EDPM");
+        mutualFundNameToIdMap.put("Sundaram LT Micro Cap Tax Adv Fund-Sr IV-(IDCW)", "M_SUTI");
+        mutualFundNameToIdMap.put("Navi Flexi Cap Fund(H-IDCW)", "M_NAFC");
+        mutualFundNameToIdMap.put("Parag Parikh Conservative Hybrid Fund", "M_PARS");
+        mutualFundNameToIdMap.put("Mirae Asset Corp Bond Fund", "M_MICR");
+        mutualFundNameToIdMap.put("Franklin India Overnight Fund(DD-IDCW)", "M_FRLV");
+        mutualFundNameToIdMap.put("DSP Arbitrage Fund(IDCW-Reinv)", "M_DSAB");
+        mutualFundNameToIdMap.put("Axis CRISIL IBX 50:50 Gilt Plus SDL June 2028 Index Fund(IDCW)", "M_AXRJ");
+        mutualFundNameToIdMap.put("UTI Nifty Next 50 Index Fund", "M_UTNN");
+        mutualFundNameToIdMap.put("Axis Ultra Short Term Fund(W-IDCW)", "M_AXIUU");
+        mutualFundNameToIdMap.put("SBI Corp Bond Fund", "M_SBCT");
+        mutualFundNameToIdMap.put("Tata Nifty G-Sec Dec 2026 Index Fund", "M_TA2Y");
+        mutualFundNameToIdMap.put("UTI Corporate Bond Fund(A-IDCW)", "M_UTIEB");
+        mutualFundNameToIdMap.put("Edelweiss Equity Savings Fund(M-IDCW)", "M_EDQP");
+        mutualFundNameToIdMap.put("DSP Regular Savings Fund(M-IDCW Reinv)", "M_DSRU");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty Smallcap 250 Index Fund(IDCW Payout)", "M_ICIWE");
+        mutualFundNameToIdMap.put("Sundaram Focused Fund(H-IDCW)", "M_PRPH");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty Next 50 Index Fund", "M_ICIYX");
+        mutualFundNameToIdMap.put("DSP Global Allocation FoF", "M_DSGL");
+        mutualFundNameToIdMap.put("Bandhan Nifty 100 Index Fund(IDCW)", "M_IDXF");
+        mutualFundNameToIdMap.put("LIC MF Healthcare Fund", "M_IDBH");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty SDL Dec 2028 Index Fund(A-IDCW)", "M_ICC8X");
+        mutualFundNameToIdMap.put("Sundaram Short Duration Fund(M-IDCW)", "M_PRAH");
+        mutualFundNameToIdMap.put("Sundaram Corp Bond Fund", "M_SUBO");
+        mutualFundNameToIdMap.put("Bandhan Arbitrage Fund(A-IDCW)Reinvest Exch", "M_IDAR");
+        mutualFundNameToIdMap.put("Tata India Consumer Fund(IDCW)", "M_TAIS");
+        mutualFundNameToIdMap.put("SBI Magnum Constant Maturity Fund(IDCW)", "M_SBGY");
+        mutualFundNameToIdMap.put("Quant Dynamic Asset Allocation Fund", "M_QUDA");
+        mutualFundNameToIdMap.put("PGIM India Large Cap Fund(IDCW)", "M_PGRL");
+        mutualFundNameToIdMap.put("HDFC Income Fund", "M_HDCII");
+        mutualFundNameToIdMap.put("Quant Consumption Fund(IDCW)", "M_QUCS");
+        mutualFundNameToIdMap.put("DSP Savings Fund", "M_DSVP");
+        mutualFundNameToIdMap.put("Quant Absolute Fund", "M_QUNB");
+        mutualFundNameToIdMap.put("Motilal Oswal Large & Midcap Fund", "M_MOTG");
+        mutualFundNameToIdMap.put("UTI Dynamic Bond Fund(A-IDCW)", "M_UTIIB");
+        mutualFundNameToIdMap.put("ICICI Pru All Seasons Bond Fund(W-IDCW)", "M_ICWS");
+        mutualFundNameToIdMap.put("UTI Liquid Fund(DD-IDCW)", "M_UTHQ");
+        mutualFundNameToIdMap.put("Kotak Credit Risk Fund(IDCW Payout)", "M_KOTC");
+        mutualFundNameToIdMap.put("ICICI Pru Manufacturing Fund(IDCW-Payout)", "M_ICUM");
+        mutualFundNameToIdMap.put("Aditya Birla SL Income Fund(Q-IDCW)", "M_ADCQ");
+        mutualFundNameToIdMap.put("DSP ELSS Tax Saver Fund(IDCW)", "M_DSTA");
+        mutualFundNameToIdMap.put("UTI Long Duration Fund", "M_UTLLO");
+        mutualFundNameToIdMap.put("Nippon India Large Cap Fund", "M_NIGE");
+        mutualFundNameToIdMap.put("Nippon India Banking & PSU Debt Fund", "M_NIBD");
+        mutualFundNameToIdMap.put("Aditya Birla SL Silver ETF FOF(IDCW Reinv)", "M_ADTIW");
+        mutualFundNameToIdMap.put("TRUSTMF Banking & PSU Fund(A-IDCW)", "M_TRTB");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Money Market Fund(M-IDCW)", "M_BAOM");
+        mutualFundNameToIdMap.put("Bandhan Bond Fund - Short Term Plan(Q-IDCW)", "M_BABH");
+        mutualFundNameToIdMap.put("HDFC Gilt Fund(IDCW-Reinv)", "M_HDGG");
+        mutualFundNameToIdMap.put("HDFC Business Cycle Fund(IDCW-Reinv)", "M_HDWY");
+        mutualFundNameToIdMap.put("Motilal Oswal Large Cap Fund", "M_MOSI");
+        mutualFundNameToIdMap.put("UTI Credit Risk Fund(H-IDCW)", "M_UTIRK");
+        mutualFundNameToIdMap.put("Bajaj Finserv Large and Mid Cap Fund(IDCW)", "M_BAJAR");
+        mutualFundNameToIdMap.put("JM Low Duration Fund(DD-IDCW)", "M_JMOU");
+        mutualFundNameToIdMap.put("DSP Gilt Fund(M-IDCW Reinv)", "M_DSPGE");
+        mutualFundNameToIdMap.put("UTI India Consumer Fund", "M_UTINO");
+        mutualFundNameToIdMap.put("Parag Parikh Dynamic Asset Allocation Fund(M-IDCW)", "M_PAAP");
+        mutualFundNameToIdMap.put("Kotak Nifty SDL Jul 2026 Index Fund", "M_KOS6");
+        mutualFundNameToIdMap.put("Kotak Business Cycle Fund(IDCW)", "M_KOYB");
+        mutualFundNameToIdMap.put("Bank of India Short Term Income Fund(M-IDCW)", "M_BAHK");
+        mutualFundNameToIdMap.put("JM Focused Fund", "M_JMCR");
+        mutualFundNameToIdMap.put("Mahindra Manulife Liquid Fund(W-IDCW)", "M_MADW");
+        mutualFundNameToIdMap.put("ITI Balanced Advantage Fund", "M_ITIE");
+        mutualFundNameToIdMap.put("Bandhan Low Duration Fund", "M_IDWL");
+        mutualFundNameToIdMap.put("DSP Short Term Fund(W-IDCW)", "M_DSHI");
+        mutualFundNameToIdMap.put("LIC MF Infra Fund", "M_LIIM");
+        mutualFundNameToIdMap.put("Axis India Manufacturing Fund", "M_AXIIM");
+        mutualFundNameToIdMap.put("Bandhan Floating Rate Fund(A-IDCW)", "M_IDFLT");
+        mutualFundNameToIdMap.put("PGIM India Large Cap Fund", "M_PGLR");
+        mutualFundNameToIdMap.put("Aditya Birla SL Arbitrage Fund(IDCW-Reinv)", "M_ADITT");
+        mutualFundNameToIdMap.put("JM Flexicap Fund(IDCW)", "M_JMLX");
+        mutualFundNameToIdMap.put("DSP Corp Bond Fund(Q-IDCW)", "M_DSCD");
+        mutualFundNameToIdMap.put("UTI Mid Cap Fund", "M_UTIMP");
+        mutualFundNameToIdMap.put("HDFC Liquid Fund(M-IDCW Reinv)", "M_HDLI");
+        mutualFundNameToIdMap.put("SBI FMP-59-1618D(IDCW)", "M_SBI9W");
+        mutualFundNameToIdMap.put("PGIM India Emerging Markets Equity Fund", "M_PGEA");
+        mutualFundNameToIdMap.put("Bajaj Finserv Overnight Fund(W-IDCW)", "M_BAFG");
+        mutualFundNameToIdMap.put("ICICI Pru MNC Fund", "M_ICRD");
+        mutualFundNameToIdMap.put("HDFC FMP-Sr 46-1861D-Mar 2022(IDCW)", "M_HD4W");
+        mutualFundNameToIdMap.put("UTI Banking & PSU Fund", "M_UTKA");
+        mutualFundNameToIdMap.put("DSP Credit Risk Fund(W-IDCW)", "M_DSKS");
+        mutualFundNameToIdMap.put("Axis Special Situations Fund", "M_AXNP");
+        mutualFundNameToIdMap.put("Mahindra Manulife Low Duration Fund(M-IDCW)", "M_MANW");
+        mutualFundNameToIdMap.put("UTI Gilt Fund with 10 year Constant Duration(A-IDCW)", "M_UTWY");
+        mutualFundNameToIdMap.put("Kotak Balanced Advantage Fund(IDCW-Payout)", "M_KOKA");
+        mutualFundNameToIdMap.put("NJ Balanced Advantage Fund", "M_NJBC");
+        mutualFundNameToIdMap.put("HSBC Money Market Fund(W-IDCW)", "M_LTMW");
+        mutualFundNameToIdMap.put("Invesco India Short Duration Fund(W-IDCW)", "M_INEW");
+        mutualFundNameToIdMap.put("Axis Corp Debt Fund", "M_AXCB");
+        mutualFundNameToIdMap.put("UTI ELSS Tax Saver Fund(IDCW)", "M_UTYX");
+        mutualFundNameToIdMap.put("Nippon India Nifty G-Sec Jun 2036 Maturity Index Fund(IDCW)", "M_NIE3");
+        mutualFundNameToIdMap.put("Bank of India Conservative Hybrid Fund(A-IDCW)", "M_BAFY");
+        mutualFundNameToIdMap.put("Axis ELSS Tax Saver Fund", "M_AXLO");
+        mutualFundNameToIdMap.put("LIC MF Infra Fund(IDCW)", "M_LIIC");
+        mutualFundNameToIdMap.put("DSP FMP 264-60M & 17D(IDCW)", "M_DSP6W");
+        mutualFundNameToIdMap.put("Bandhan Transportation and Logistics Fund", "M_IDCCO");
+        mutualFundNameToIdMap.put("JM Dynamic Bond Fund(W-IDCW)", "M_JMDE");
+        mutualFundNameToIdMap.put("UTI Credit Risk Fund(F-IDCW)", "M_UTIEK");
+        mutualFundNameToIdMap.put("Sundaram Ultra Short Duration Fund", "M_PRUN");
+        mutualFundNameToIdMap.put("UTI Medium to Long Duration Fund", "M_UTIBO");
+        mutualFundNameToIdMap.put("360 ONE ELSS Tax Saver Nifty 50 Index Fund(IDCW)", "M_IIF5");
+        mutualFundNameToIdMap.put("Groww Overnight Fund(W-IDCW)", "M_INWR");
+        mutualFundNameToIdMap.put("DSP Banking & PSU Debt Fund(Q-IDCW)", "M_DSNB");
+        mutualFundNameToIdMap.put("Kotak Gilt Fund", "M_KOFU");
+        mutualFundNameToIdMap.put("Axis Growth Opp Fund", "M_AXGG");
+        mutualFundNameToIdMap.put("Kotak Debt Hybrid Fund(M-IDCW)", "M_KODB");
+        mutualFundNameToIdMap.put("SBI Corp Bond Fund(M-IDCW)", "M_SBCM");
+        mutualFundNameToIdMap.put("Axis Treasury Advantage Fund(W-IDCW)", "M_AXITR");
+        mutualFundNameToIdMap.put("Quantum Gold Saving Fund", "M_QUNV");
+        mutualFundNameToIdMap.put("Tata Corp Bond Fund(IDCW)", "M_TATCW");
+        mutualFundNameToIdMap.put("LIC MF Ultra Short Duration Fund(W-IDCW)", "M_LILH");
+        mutualFundNameToIdMap.put("Quant Flexi Cap Fund", "M_QUTO");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Banking and PSU Bond Fund(Q-IDCW)", "M_BASK");
+        mutualFundNameToIdMap.put("ICICI Pru Corp Bond Fund(M-IDCW Payout)", "M_ICIOR");
+        mutualFundNameToIdMap.put("UTI Short Duration Fund(H-IDCW)", "M_UTSSU");
+        mutualFundNameToIdMap.put("DSP Strategic Bond Fund(M-IDCW Reinv)", "M_DSAO");
+        mutualFundNameToIdMap.put("SBI CRISIL IBX SDL Index - Sep 2027 Fund(IDCW Payout)", "M_SBX2");
+        mutualFundNameToIdMap.put("DSP Top 100 Equity Fund(IDCW-Reinv)", "M_DSTY");
+        mutualFundNameToIdMap.put("HSBC Large Cap Fund(IDCW-Payout)", "M_HSLE");
+        mutualFundNameToIdMap.put("ITI Large Cap Fund(IDCW)", "M_ITAE");
+        mutualFundNameToIdMap.put("SBI Magnum Ultra Short Duration Fund(W-IDCW Payout)", "M_SBMH");
+        mutualFundNameToIdMap.put("Kotak Floating Rate Fund", "M_KOAN");
+        mutualFundNameToIdMap.put("DSP Dynamic Asset Allocation Fund(M-IDCW Reinv)", "M_DSDD");
+        mutualFundNameToIdMap.put("HDFC Multi Cap Fund(IDCW Reinvst)", "M_HDWM");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty50 Equal Weight Index Fund(IDCW)", "M_ICIHX");
+        mutualFundNameToIdMap.put("Bank of India Overnight Fund(W-IDCW)", "M_BOIV");
+        mutualFundNameToIdMap.put("Shriram Aggressive Hybrid Fund", "M_SHRQ");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Corp Bond Fund", "M_BNCR");
+        mutualFundNameToIdMap.put("HDFC Corp Bond Fund(Q-IDCW)", "M_HDCOC");
+        mutualFundNameToIdMap.put("Franklin India ELSS Tax Saver Fund(IDCW)", "M_FRLX");
+        mutualFundNameToIdMap.put("HDFC Infrastructure Fund(IDCW)", "M_HDNC");
+        mutualFundNameToIdMap.put("Aditya Birla SL CRISIL IBX 60:40 SDL + AAA PSU - Apr 2025 Index Fund", "M_AD65");
+        mutualFundNameToIdMap.put("Bandhan Bond Fund - Short Term Plan", "M_IDFCS");
+        mutualFundNameToIdMap.put("Bandhan Retirement Fund", "M_BANHF");
+        mutualFundNameToIdMap.put("Bank of India Midcap Tax Fund-Sr 1(IDCW)", "M_BOI1");
+        mutualFundNameToIdMap.put("Mahindra Manulife Asia Pacific REITs FOF", "M_MARP");
+        mutualFundNameToIdMap.put("Edelweiss Arbitrage Fund(M-IDCW)", "M_EDRF");
+        mutualFundNameToIdMap.put("Aditya Birla SL Income Fund(IDCW-Reinv)", "M_ADCM");
+        mutualFundNameToIdMap.put("Bandhan Dynamic Bond Fund(A-IDCW)", "M_BAYF");
+        mutualFundNameToIdMap.put("SBI Retirement Benefit Fund-Aggressive Plan", "M_SBIRV");
+        mutualFundNameToIdMap.put("SBI Magnum Low Duration Fund(FN-IDCW Payout)", "M_SBGL");
+        mutualFundNameToIdMap.put("Kotak Nifty Financial Services Ex-Bank Index Fund(IDCW Payout)", "M_KOVC");
+        mutualFundNameToIdMap.put("Sundaram ELSS Tax Saver Fund", "M_PRLT");
+        mutualFundNameToIdMap.put("UTI Long Duration Fund(A-IDCW)", "M_UTIGW");
+        mutualFundNameToIdMap.put("Sundaram LT Micro Cap Tax Adv Fund-Sr IV", "M_SUTC");
+        mutualFundNameToIdMap.put("SBI LT Advantage Fund-I-(IDCW)", "M_SBVU");
+        mutualFundNameToIdMap.put("Motilal Oswal Small Cap Fund", "M_MOON");
+        mutualFundNameToIdMap.put("ICICI Pru Multi-Asset Fund(IDCW-Payout)", "M_ICIMS");
+        mutualFundNameToIdMap.put("HDFC FMP-Sr 46-1359D-Sep 2022(Q-IDCW)", "M_HD3W");
+        mutualFundNameToIdMap.put("Edelweiss Multi Asset Allocation Fund(IDCW)", "M_EDMN");
+        mutualFundNameToIdMap.put("Aditya Birla SL Small Cap Fund(IDCW-Reinv)", "M_ADMU");
+        mutualFundNameToIdMap.put("Invesco India Flexi Cap Fund(IDCW)", "M_INXN");
+        mutualFundNameToIdMap.put("ICICI Pru FMP-88-1226D-F(H-IDCW)", "M_ICC2H");
+        mutualFundNameToIdMap.put("Invesco India Short Duration Fund(M-IDCW)", "M_INVSH");
+        mutualFundNameToIdMap.put("Bandhan G-Sec-Invest(IDCW)", "M_BAGI");
+        mutualFundNameToIdMap.put("Quant ELSS Tax Saver Fund(IDCW)", "M_QUNX");
+        mutualFundNameToIdMap.put("Tata ST Bond Fund(P-IDCW Payout)", "M_TASB");
+        mutualFundNameToIdMap.put("Mirae Asset S&P 500 Top 50 ETF FoF", "M_MIR0");
+        mutualFundNameToIdMap.put("Invesco India Financial Services Fund", "M_INFV");
+        mutualFundNameToIdMap.put("ITI Large Cap Fund", "M_ITLC");
+        mutualFundNameToIdMap.put("Sundaram Global Brand Fund", "M_SUNGB");
+        mutualFundNameToIdMap.put("SBI Magnum Global Fund", "M_SBOB");
+        mutualFundNameToIdMap.put("DSP Gilt Fund(IDCW-Reinv)", "M_DSPGS");
+        mutualFundNameToIdMap.put("Motilal Oswal S&P 500 Index Fund", "M_MOTA");
+        mutualFundNameToIdMap.put("Parag Parikh Conservative Hybrid Fund(M-IDCW)", "M_PARC");
+        mutualFundNameToIdMap.put("Edelweiss Multi Cap Fund", "M_EDEWA");
+        mutualFundNameToIdMap.put("LIC MF Short Duration Fund(M-IDCW)", "M_IDBSO");
+        mutualFundNameToIdMap.put("Axis Multi Asset Allocation Fund", "M_AXPU");
+        mutualFundNameToIdMap.put("HSBC Overnight Fund(M-IDCW Payout)", "M_HSBV");
+        mutualFundNameToIdMap.put("Motilal Oswal ELSS Tax Saver Fund(IDCW)", "M_MOIT");
+        mutualFundNameToIdMap.put("Aditya Birla SL Liquid Fund(W-IDCW Reinv)", "M_ADQW");
+        mutualFundNameToIdMap.put("Bandhan Nifty Alpha 50 Index Fund(IDCW)", "M_BAA5");
+        mutualFundNameToIdMap.put("Nippon India Money Market Fund(Q-IDCW)", "M_NIKQ");
+        mutualFundNameToIdMap.put("Aditya Birla SL Equity Hybrid '95 Fund(IDCW-Reinv)", "M_AD5H");
+        mutualFundNameToIdMap.put("Bandhan G-Sec-Invest(Q-IDCW)", "M_BAGV");
+        mutualFundNameToIdMap.put("Bandhan CRISIL IBX Gilt April 2026 Index Fund", "M_IDSX");
+        mutualFundNameToIdMap.put("SBI Equity Savings Fund", "M_SBQU");
+        mutualFundNameToIdMap.put("Motilal Oswal Asset Allocation Passive FoF-Conservative", "M_MOTV");
+        mutualFundNameToIdMap.put("Aditya Birla SL Overnight Fund", "M_ADLU");
+        mutualFundNameToIdMap.put("Invesco India Banking and PSU Fund", "M_INKE");
+        mutualFundNameToIdMap.put("Aditya Birla SL Asset Allocator FoF(IDCW)", "M_ADEM");
+        mutualFundNameToIdMap.put("WOC Large & Mid Cap Fund", "M_WOLR");
+        mutualFundNameToIdMap.put("DSP Gold ETF FoF(IDCW)", "M_DSPOL");
+        mutualFundNameToIdMap.put("UTI Medium to Long Duration Fund(H-IDCW)", "M_UTIBH");
+        mutualFundNameToIdMap.put("Kotak Focused Equity Fund(IDCW-Payout)", "M_KOTU");
+        mutualFundNameToIdMap.put("Franklin India Balanced Advantage Fund(IDCW)", "M_FRBV");
+        mutualFundNameToIdMap.put("Bandhan Floating Rate Fund(Q-IDCW Reinv)", "M_IDFLP");
+        mutualFundNameToIdMap.put("PGIM India Liquid Fund(DD-IDCW)", "M_PGSS");
+        mutualFundNameToIdMap.put("Edelweiss Gr China Equity Off-Shore Fund", "M_EDGI");
+        mutualFundNameToIdMap.put("Canara Rob Corp Bond Fund(IDCW)", "M_CACD");
+        mutualFundNameToIdMap.put("Bank of India Overnight Fund(M-IDCW)", "M_BAKV");
+        mutualFundNameToIdMap.put("Edelweiss Money Market Fund(IDCW)", "M_EDMK");
+        mutualFundNameToIdMap.put("Edelweiss NIFTY Large Mid Cap 250 Index Fund", "M_EDAT");
+        mutualFundNameToIdMap.put("DSP Banking & Financial Services Fund(IDCW)", "M_DSKG");
+        mutualFundNameToIdMap.put("Edelweiss Equity Savings Fund", "M_EDII");
+        mutualFundNameToIdMap.put("HDFC Arbitrage Fund(Q-IDCW Reinv)", "M_HDCAT");
+        mutualFundNameToIdMap.put("Edelweiss Small Cap Fund", "M_EDEC");
+        mutualFundNameToIdMap.put("HDFC Dividend Yield Fund", "M_HDCEC");
+        mutualFundNameToIdMap.put("HDFC FMP-Sr 47-1204D-Dec 2022", "M_HDCS7");
+        mutualFundNameToIdMap.put("SBI Energy Opportunities Fund(IDCW)", "M_SBIEO");
+        mutualFundNameToIdMap.put("ICICI Pru All Seasons Bond Fund(IDCW)", "M_ICCAS");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty 200 Momentum 30 Index Fund(IDCW)", "M_ICCX2");
+        mutualFundNameToIdMap.put("Tata Nifty SDL Plus AAA PSU Bond Dec 2027 60:40 Index Fund", "M_TAN7");
+        mutualFundNameToIdMap.put("UTI Dividend Yield Fund", "M_UTIDY");
+        mutualFundNameToIdMap.put("Axis Nifty 50 Index Fund", "M_AXSX");
+        mutualFundNameToIdMap.put("DSP Midcap Fund", "M_DSPMU");
+        mutualFundNameToIdMap.put("Tata Floating Rate Fund(Q-IDCW Payout)", "M_TAWQ");
+        mutualFundNameToIdMap.put("ICICI Pru Silver ETF FOF(IDCW Payout)", "M_ICCFW");
+        mutualFundNameToIdMap.put("Tata Retirement Sav Fund - Mod Plan", "M_TAIV");
+        mutualFundNameToIdMap.put("Aditya Birla SL Medium Term Plan(IDCW)", "M_ADME");
+        mutualFundNameToIdMap.put("UTI Aggressive Hybrid Fund", "M_UTHY");
+        mutualFundNameToIdMap.put("SBI Conservative Hybrid Fund(M-IDCW Payout)", "M_SBEB");
+        mutualFundNameToIdMap.put("Kotak Manufacture in India Fund", "M_KOTMN");
+        mutualFundNameToIdMap.put("Axis All Seasons Debt FOFs(H-IDCW)", "M_AXISH");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Liquid Fund(W-IDCW)", "M_BALP");
+        mutualFundNameToIdMap.put("UTI Medium to Long Duration Fund(F-IDCW)", "M_UTIBC");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty PSU Bond Plus SDL Sep 2027 40:60 Index Fund(A-IDCW Payout)", "M_ICIS6");
+        mutualFundNameToIdMap.put("Aditya Birla SL Banking & Financial Services Fund(IDCW)", "M_ADINK");
+        mutualFundNameToIdMap.put("Aditya Birla SL US Treasury 3-10 year Bond ETFs FoF(IDCW)", "M_ADI3I");
+        mutualFundNameToIdMap.put("DSP Midcap Fund(IDCW-Reinv)", "M_DSPII");
+        mutualFundNameToIdMap.put("SBI FMP-73-1226D(IDCW)", "M_SBICW");
+        mutualFundNameToIdMap.put("LIC MF Ultra Short Duration Fund(M-IDCW)", "M_LITS");
+        mutualFundNameToIdMap.put("Invesco India Equity Savings Fund(IDCW)", "M_INWP");
+        mutualFundNameToIdMap.put("SBI Equity Hybrid Fund", "M_SBQB");
+        mutualFundNameToIdMap.put("Invesco India Short Duration Fund(DD-IDCW)", "M_INHC");
+        mutualFundNameToIdMap.put("Aditya Birla SL FTP-UJ-1110D", "M_ADIJ0");
+        mutualFundNameToIdMap.put("Nippon India Equity Savings Fund(IDCW)", "M_NIPAW");
+        mutualFundNameToIdMap.put("Mahindra Manulife Large & Mid Cap Fund(IDCW)", "M_MAH2");
+        mutualFundNameToIdMap.put("Quant ELSS Tax Saver Fund", "M_QUTA");
+        mutualFundNameToIdMap.put("Edelweiss Government Securities Fund(W-IDCW)", "M_EDSV");
+        mutualFundNameToIdMap.put("Axis Regular Saver Fund(A-IDCW)", "M_AXIRE");
+        mutualFundNameToIdMap.put("Sundaram LT Micro Cap Tax Adv Fund-Sr V-(IDCW)", "M_SULF");
+        mutualFundNameToIdMap.put("Kotak Global Innovation FoF(IDCW Payout)", "M_KOBW");
+        mutualFundNameToIdMap.put("HDFC Nifty SDL Oct 2026 Index Fund", "M_HDCTD");
+        mutualFundNameToIdMap.put("Franklin India Equity Savings Fund(M-IDCW)", "M_FRUM");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Credit Risk Fund(Q-IDCW)", "M_BACK");
+        mutualFundNameToIdMap.put("Franklin India Multi-Asset Solution FoF(IDCW)", "M_FRWL");
+        mutualFundNameToIdMap.put("DSP US Flexible Equity Fund(IDCW-Reinv)", "M_DSUY");
+        mutualFundNameToIdMap.put("HDFC FMP-Sr 46-1406D-Aug 2022", "M_HDCSU");
+        mutualFundNameToIdMap.put("Sundaram Multi Cap Fund(H-IDCW)", "M_PRLU");
+        mutualFundNameToIdMap.put("Kotak Multicap Fund", "M_KOTMU");
+        mutualFundNameToIdMap.put("Bank of India Arbitrage Fund(M-IDCW)", "M_BAKC");
+        mutualFundNameToIdMap.put("DSP Nifty 50 Equal Weight Index Fund(IDCW-Reinv)", "M_DSEE");
+        mutualFundNameToIdMap.put("Union Arbitrage Fund(IDCW-Reinv)", "M_UNOI");
+        mutualFundNameToIdMap.put("HSBC Small Cap Fund(IDCW-Reinv)", "M_LTEN");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Banking and PSU Bond Fund", "M_BABK");
+        mutualFundNameToIdMap.put("Franklin India Floating Rate Fund(IDCW)", "M_FROI");
+        mutualFundNameToIdMap.put("Aditya Birla SL Money Manager Fund(DD-IDCW)", "M_ADTMO");
+        mutualFundNameToIdMap.put("JM Liquid Fund(Q-IDCW)", "M_JMUE");
+        mutualFundNameToIdMap.put("Franklin India Liquid Fund-Super", "M_FRQK");
+        mutualFundNameToIdMap.put("Axis ELSS Tax Saver Fund(IDCW)", "M_AXLN");
+        mutualFundNameToIdMap.put("SBI FMP-68-1302D(IDCW)", "M_SBI8W");
+        mutualFundNameToIdMap.put("SBI Credit Risk Fund(DD-IDCW)", "M_SBDK");
+        mutualFundNameToIdMap.put("Mahindra Manulife Liquid Fund", "M_MADG");
+        mutualFundNameToIdMap.put("HDFC FMP-Sr 47-1269D-March 2023", "M_HDF2H");
+        mutualFundNameToIdMap.put("Axis Nifty Smallcap 50 Index Fund", "M_AXYX");
+        mutualFundNameToIdMap.put("Aditya Birla SL Dividend Yield Fund", "M_ADTVR");
+        mutualFundNameToIdMap.put("SBI Conservative Hybrid Fund", "M_SBTY");
+        mutualFundNameToIdMap.put("Mahindra Manulife ELSS Tax Saver Fund", "M_MADB");
+        mutualFundNameToIdMap.put("HSBC Short Duration Fund(IDCW Payout)", "M_LTST");
+        mutualFundNameToIdMap.put("HDFC Dynamic PE Ratio FOF", "M_HDFOY");
+        mutualFundNameToIdMap.put("Canara Rob ELSS Tax Saver", "M_CAAX");
+        mutualFundNameToIdMap.put("ICICI Pru Money Market Fund(IDCW-Payout)", "M_ICOK");
+        mutualFundNameToIdMap.put("Sundaram Liquid Fund(F-IDCW)", "M_SUNNW");
+        mutualFundNameToIdMap.put("ICICI Pru Bond Fund(M-IDCW)", "M_ICCBN");
+        mutualFundNameToIdMap.put("HDFC Dividend Yield Fund(IDCW)", "M_HDCEL");
+        mutualFundNameToIdMap.put("Canara Rob Bluechip Equity Fund", "M_CANY");
+        mutualFundNameToIdMap.put("ICICI Pru Bond Fund(Q-IDCW Payout)", "M_ICIBO");
+        mutualFundNameToIdMap.put("Aditya Birla SL Medium Term Plan(H-IDCW)", "M_ADIMU");
+        mutualFundNameToIdMap.put("Mirae Asset Low Duration Fund(Q-IDCW)", "M_MIVU");
+        mutualFundNameToIdMap.put("Motilal Oswal ELSS Tax Saver Fund", "M_MOIP");
+        mutualFundNameToIdMap.put("SBI Liquid Fund(W-IDCW Payout)", "M_SBLQ");
+        mutualFundNameToIdMap.put("Bandhan Nifty Smallcap 250 Index Fund", "M_BAF5");
+        mutualFundNameToIdMap.put("Bandhan Credit Risk Fund(Q-IDCW Reinv)", "M_IDFQ");
+        mutualFundNameToIdMap.put("Sundaram Short Duration Fund(A-IDCW)", "M_SUNWH");
+        mutualFundNameToIdMap.put("Union ELSS Tax Saver Fund(IDCW-Payout)", "M_UNNM");
+        mutualFundNameToIdMap.put("Quant Gilt Fund(IDCW)", "M_QUGL");
+        mutualFundNameToIdMap.put("Union Small Cap Fund", "M_UNSL");
+        mutualFundNameToIdMap.put("SBI Magnum Medium Duration Fund(IDCW-Payout)", "M_SBGE");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty IT Index Fund", "M_ICCTX");
+        mutualFundNameToIdMap.put("Franklin Build India Fund(IDCW)", "M_FRBB");
+        mutualFundNameToIdMap.put("Bandhan Bond Fund - Medium Term Plan(DD-IDCW)", "M_IDFCM");
+        mutualFundNameToIdMap.put("Aditya Birla SL Nifty 50 Index Fund(IDCW)", "M_ADIXE");
+        mutualFundNameToIdMap.put("Sundaram LT Tax Adv Fund-Sr II-(IDCW)", "M_SUXD");
+        mutualFundNameToIdMap.put("ICICI Pru Medium Term Bond Fund", "M_ICCBG");
+        mutualFundNameToIdMap.put("ICICI Pru Retirement Fund-Pure Debt Plan(IDCW)", "M_ICEC");
+        mutualFundNameToIdMap.put("ICICI Pru All Seasons Bond Fund(Q-IDCW Payout)", "M_ICIUS");
+        mutualFundNameToIdMap.put("Navi Aggressive Hybrid Fund(A-IDCW)", "M_NAEE");
+        mutualFundNameToIdMap.put("ICICI Pru Bluechip Fund(IDCW-Payout)", "M_ICIBC");
+        mutualFundNameToIdMap.put("PGIM India Small Cap Fund", "M_PGSE");
+        mutualFundNameToIdMap.put("Axis Gilt Fund(H-IDCW)", "M_AXIGI");
+        mutualFundNameToIdMap.put("ITI Pharma & Healthcare Fund(IDCW)", "M_ITPM");
+        mutualFundNameToIdMap.put("Axis Floater Fund(M-IDCW)", "M_AXISR");
+        mutualFundNameToIdMap.put("Kotak Debt Hybrid Fund", "M_KOBT");
+        mutualFundNameToIdMap.put("Axis CRISIL IBX 70:30 CPSE Plus SDL April 2025 Index Fund(IDCW)", "M_AXL3");
+        mutualFundNameToIdMap.put("Axis Equity ETFs FoF", "M_AXQY");
+        mutualFundNameToIdMap.put("Tata Equity P/E Fund", "M_TAQY");
+        mutualFundNameToIdMap.put("HDFC Liquid Fund(DD-IDCW)", "M_HDCLL");
+        mutualFundNameToIdMap.put("LIC MF Gilt Fund(IDCW)", "M_LIGU");
+        mutualFundNameToIdMap.put("HSBC Dynamic Bond Fund(A-IDCW Payout)", "M_LTFE");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Mid Cap Fund", "M_BNMP");
+        mutualFundNameToIdMap.put("Taurus ELSS Tax Saver Fund(IDCW)", "M_TARX");
+        mutualFundNameToIdMap.put("Bandhan US Equity FoF(IDCW)", "M_IDFQY");
+        mutualFundNameToIdMap.put("Shriram Balanced Advantage Fund", "M_SHRM");
+        mutualFundNameToIdMap.put("HDFC Floating Rate Debt Fund(M-IDCW Reinv)", "M_HDLF");
+        mutualFundNameToIdMap.put("JM Focused Fund(IDCW)", "M_JMCW");
+        mutualFundNameToIdMap.put("SBI S&P BSE Sensex Index Fund", "M_SBISX");
+        mutualFundNameToIdMap.put("Bandhan Floating Rate Fund(M-IDCW)", "M_IDFUU");
+        mutualFundNameToIdMap.put("UTI Mid Cap Fund(IDCW)", "M_UTMMW");
+        mutualFundNameToIdMap.put("SBI FMP-80-366D(IDCW)", "M_SBIW8");
+        mutualFundNameToIdMap.put("HSBC Conservative Hybrid Fund(Q-IDCW)", "M_HSRL");
+        mutualFundNameToIdMap.put("Bandhan CRISIL IBX Gilt April 2032 Index Fund", "M_IDPX");
+        mutualFundNameToIdMap.put("Tata Housing Opportunities Fund", "M_TATHO");
+        mutualFundNameToIdMap.put("Quantum ESG Best In Class Strategy Fund", "M_QUAM");
+        mutualFundNameToIdMap.put("Mirae Asset Hang Seng TECH ETF FoF", "M_MIHE");
+        mutualFundNameToIdMap.put("HSBC Midcap Fund", "M_LTIU");
+        mutualFundNameToIdMap.put("360 ONE ELSS Tax Saver Nifty 50 Index Fund", "M_IIF0");
+        mutualFundNameToIdMap.put("Navi Large & Midcap Fund(IDCW)", "M_NALM");
+        mutualFundNameToIdMap.put("Union Balanced Advantage Fund(IDCW)", "M_UNBO");
+        mutualFundNameToIdMap.put("Kotak FMP-310-1131D", "M_KOT1R");
+        mutualFundNameToIdMap.put("Bandhan Multi Asset Allocation Fund(IDCW)", "M_BANHC");
+        mutualFundNameToIdMap.put("Kotak Equity Arbitrage Fund", "M_KOQU");
+        mutualFundNameToIdMap.put("Edelweiss CRISIL IBX 50:50 Gilt Plus SDL Short Duration Index Fund", "M_EDCG");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Conservative Hybrid Fund(M-IDCW)", "M_BAVP");
+        mutualFundNameToIdMap.put("Bandhan Dynamic Bond Fund(IDCW-Reinv)", "M_IDFDW");
+        mutualFundNameToIdMap.put("Mirae Asset Focused Fund", "M_MIAU");
+        mutualFundNameToIdMap.put("SBI Savings Fund(IDCW)", "M_SBISU");
+        mutualFundNameToIdMap.put("Kotak FMP-292-1735D(IDCW)", "M_KO2W");
+        mutualFundNameToIdMap.put("Kotak ELSS Tax Saver Fund", "M_KOTX");
+        mutualFundNameToIdMap.put("HSBC Managed Solutions India-Moderate(IDCW)", "M_HSMG");
+        mutualFundNameToIdMap.put("Invesco India Ultra Short Duration Fund(M-IDCW)", "M_INVCL");
+        mutualFundNameToIdMap.put("DSP Floater Fund(IDCW)", "M_DSPLA");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Credit Risk Fund(M-IDCW)", "M_BACM");
+        mutualFundNameToIdMap.put("ITI Liquid Fund(DD-IDCW)", "M_ITLF");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty SDL Dec 2028 Index Fund", "M_ICI8S");
+        mutualFundNameToIdMap.put("UTI Small Cap Fund(IDCW)", "M_UTSSM");
+        mutualFundNameToIdMap.put("BHARAT Bond ETF FOF - April 2032", "M_BHRA");
+        mutualFundNameToIdMap.put("JM Arbitrage Fund(H-IDCW)", "M_JMRH");
+        mutualFundNameToIdMap.put("BHARAT Bond ETF FOF - April 2033", "M_BHRO");
+        mutualFundNameToIdMap.put("Quantum Equity FoF(IDCW)", "M_QUUQ");
+        mutualFundNameToIdMap.put("Bandhan Infrastructure Fund", "M_IDFII");
+        mutualFundNameToIdMap.put("Bandhan Overnight Fund(IDCW)", "M_BAVN");
+        mutualFundNameToIdMap.put("Sundaram Low Duration Fund", "M_PROI");
+        mutualFundNameToIdMap.put("Franklin India ST Income Plan(Q-IDCW)", "M_FRWA");
+        mutualFundNameToIdMap.put("Navi Nifty India Manufacturing Index Fund", "M_NAVC");
+        mutualFundNameToIdMap.put("Nippon India Income Fund(M-IDCW)", "M_NIPCM");
+        mutualFundNameToIdMap.put("Axis NIFTY IT Index Fund", "M_AXXS");
+        mutualFundNameToIdMap.put("Kotak Banking & Financial Services Fund", "M_KOFV");
+        mutualFundNameToIdMap.put("SBI Corp Bond Fund(M-IDCW Payout)", "M_SBCR");
+        mutualFundNameToIdMap.put("Templeton India Equity Income Fund(IDCW)", "M_TEML");
+        mutualFundNameToIdMap.put("SBI BlueChip Fund", "M_SBLH");
+        mutualFundNameToIdMap.put("SBI Healthcare Opp Fund", "M_SBHA");
+        mutualFundNameToIdMap.put("Groww Liquid Fund(W-IDCW)", "M_GRLW");
+        mutualFundNameToIdMap.put("Bandhan Sterling Value Fund(IDCW-Reinv)", "M_IDFS");
+        mutualFundNameToIdMap.put("Bandhan Hybrid Equity Fund", "M_IDHH");
+        mutualFundNameToIdMap.put("Bandhan Bond Fund - Income Plan(A-IDCW Reinv)", "M_IDFBV");
+        mutualFundNameToIdMap.put("Aditya Birla SL Retirement Fund-50 Plus-Debt Plan(IDCW)", "M_ADAU");
+        mutualFundNameToIdMap.put("ICICI Pru Gilt Fund(IDCW)", "M_ICPIT");
+        mutualFundNameToIdMap.put("ICICI Pru Constant Maturity Gilt Fund(Q-IDCW Payout)", "M_ICIOQ");
+        mutualFundNameToIdMap.put("HDFC Pharma and Healthcare Fund(IDCW Reinvest)", "M_HDCHA");
+        mutualFundNameToIdMap.put("360 ONE Quant Fund", "M_IIQQ");
+        mutualFundNameToIdMap.put("Bandhan CRISIL IBX Gilt June 2027 Index Fund(IDCW)", "M_BAN7");
+        mutualFundNameToIdMap.put("Bandhan Floating Rate Fund(W-IDCW)", "M_IDFCW");
+        mutualFundNameToIdMap.put("HDFC Income Fund(Q-IDCW Reinv)", "M_HDNN");
+        mutualFundNameToIdMap.put("LIC MF ELSS Tax Saver", "M_LIMX");
+        mutualFundNameToIdMap.put("HSBC Nifty 50 Index Fund(IDCW-Payout)", "M_LTNY");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Flexi Cap Fund(IDCW)", "M_BAPX");
+        mutualFundNameToIdMap.put("ICICI Pru Business Cycle Fund", "M_ICPSB");
+        mutualFundNameToIdMap.put("PGIM India Small Cap Fund(IDCW)", "M_PGSW");
+        mutualFundNameToIdMap.put("Navi Conservative Hybrid Fund(M-IDCW)", "M_NARI");
+        mutualFundNameToIdMap.put("Quantum Liquid Fund(DD-IDCW)", "M_QUUU");
+        mutualFundNameToIdMap.put("HDFC Arbitrage-WP(IDCW)", "M_HDFWW");
+        mutualFundNameToIdMap.put("Axis Banking & PSU Debt Fund", "M_AXAP");
+        mutualFundNameToIdMap.put("Aditya Birla SL Retirement Fund-50 Plus-Debt Plan(IDCW-Reinv)", "M_ADI5");
+        mutualFundNameToIdMap.put("ICICI Pru Savings Fund", "M_ICPIS");
+        mutualFundNameToIdMap.put("LIC MF Conservative Hybrid Fund", "M_LIDE");
+        mutualFundNameToIdMap.put("DSP Healthcare Fund(IDCW-Reinv)", "M_DSHH");
+        mutualFundNameToIdMap.put("HDFC Large and Mid Cap Fund(IDCW-Reinv)", "M_HDGR");
+        mutualFundNameToIdMap.put("SBI Arbitrage Opportunities Fund(IDCW)", "M_SBBO");
+        mutualFundNameToIdMap.put("Canara Rob Mid Cap Fund(IDCW)", "M_CAMD");
+        mutualFundNameToIdMap.put("Aditya Birla SL Frontline Equity Fund(IDCW-Reinv)", "M_ADIOU");
+        mutualFundNameToIdMap.put("Mirae Asset Arbitrage Fund(IDCW)", "M_MIBW");
+        mutualFundNameToIdMap.put("Axis Nifty Midcap 50 Index Fund(IDCW)", "M_AXA5");
+        mutualFundNameToIdMap.put("Nippon India Nivesh Lakshya Fund(H-IDCW)", "M_NIKL");
+        mutualFundNameToIdMap.put("ICICI Pru Short Term Fund(M-IDCW Payout)", "M_ICISS");
+        mutualFundNameToIdMap.put("Bandhan All Seasons Bond Fund(A-IDCW)", "M_IDTB");
+        mutualFundNameToIdMap.put("Axis Credit Risk Fund(W-IDCW)", "M_AXRK");
+        mutualFundNameToIdMap.put("DSP Short Term Fund(M-IDCW Reinv)", "M_DSSO");
+        mutualFundNameToIdMap.put("Bank of India Balanced Advantage Fund", "M_BOAQ");
+        mutualFundNameToIdMap.put("Tata Ethical Fund", "M_TAHE");
+        mutualFundNameToIdMap.put("Axis Silver FoF(IDCW)", "M_AXVD");
+        mutualFundNameToIdMap.put("HDFC FMP-Sr 46-1876D-Mar 2022(Q-IDCW)", "M_HD7W");
+        mutualFundNameToIdMap.put("ICICI Pru Smallcap Fund(IDCW)", "M_ICCSD");
+        mutualFundNameToIdMap.put("HDFC MNC Fund", "M_HDCUN");
+        mutualFundNameToIdMap.put("Bank of India Conservative Hybrid Fund(Q-IDCW)", "M_BAKY");
+        mutualFundNameToIdMap.put("Franklin India Prima Fund(IDCW Payout)", "M_FRRM");
+        mutualFundNameToIdMap.put("UTI Large Cap Fund(IDCW)", "M_UTMMH");
+        mutualFundNameToIdMap.put("Nippon India Index Fund-Nifty 50 Plan", "M_NIXY");
+        mutualFundNameToIdMap.put("UTI Dynamic Bond Fund(Q-IDCW)", "M_UTIQB");
+        mutualFundNameToIdMap.put("WOC Balanced Advantage Fund", "M_WOCB");
+        mutualFundNameToIdMap.put("Edelweiss Focused Fund", "M_EDFC");
+        mutualFundNameToIdMap.put("PGIM India Midcap Opp Fund", "M_PGDO");
+        mutualFundNameToIdMap.put("Edelweiss Banking and PSU Debt Fund(FN-IDCW)", "M_EDWK");
+        mutualFundNameToIdMap.put("Mirae Asset Large Cap Fund(IDCW)", "M_MILF");
+        mutualFundNameToIdMap.put("Invesco India Aggressive Hybrid Fund(IDCW)", "M_INBY");
+        mutualFundNameToIdMap.put("Canara Rob Ultra Short Term Fund(DD-IDCW)", "M_CART");
+        mutualFundNameToIdMap.put("Bandhan Bond Fund - Medium Term Plan(P-IDCW)", "M_IDND");
+        mutualFundNameToIdMap.put("HDFC Medium Term Debt Fund(FN-IDCW Reinv)", "M_HDEM");
+        mutualFundNameToIdMap.put("Shriram ELSS Tax Saver Fund", "M_SHRG");
+        mutualFundNameToIdMap.put("Invesco India Short Duration Fund(IDCW)", "M_INVEH");
+        mutualFundNameToIdMap.put("Invesco India Liquid Fund(W-IDCW)", "M_INSW");
+        mutualFundNameToIdMap.put("Quant Commodities Fund", "M_QUCM");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty Midcap 150 Index Fund(IDCW Payout)", "M_ICCPX");
+        mutualFundNameToIdMap.put("HSBC Credit Risk Fund(A-IDCW Payout)", "M_LTCD");
+        mutualFundNameToIdMap.put("DSP Natural Res & New Energy Fund", "M_DSNW");
+        mutualFundNameToIdMap.put("ICICI Pru India Opp Fund(IDCW)", "M_ICNO");
+        mutualFundNameToIdMap.put("Franklin India Floating Rate Fund", "M_FROD");
+        mutualFundNameToIdMap.put("HDFC Charity Fund for Cancer Cure-Direct Plan-(50% IDCW Donation Option)", "M_HDFHC");
+        mutualFundNameToIdMap.put("DSP Focus Fund(IDCW)", "M_DSFU");
+        mutualFundNameToIdMap.put("LIC MF Banking & PSU Debt Fund", "M_LIBA");
+        mutualFundNameToIdMap.put("Kotak FMP-325-90D", "M_KOT2A");
+        mutualFundNameToIdMap.put("DSP FMP 270-1144D", "M_DSP2N");
+        mutualFundNameToIdMap.put("Edelweiss Nifty Next 50 Index Fund", "M_EDNG");
+        mutualFundNameToIdMap.put("360 ONE Liquid Fund(W-IDCW Reinv)", "M_IIFI");
+        mutualFundNameToIdMap.put("DSP Small Cap Fund(IDCW-Reinv)", "M_DSSC");
+        mutualFundNameToIdMap.put("HDFC Banking and PSU Debt Fund", "M_HDBS");
+        mutualFundNameToIdMap.put("Edelweiss Nifty 100 Quality 30 Index Fund", "M_EDS3");
+        mutualFundNameToIdMap.put("Mahindra Manulife Consumption Fund(IDCW)", "M_MAIB");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty SDL Sep 2026 Index Fund(IDCW)", "M_ICC0X");
+        mutualFundNameToIdMap.put("Sundaram Ultra Short Duration Fund(F-IDCW)", "M_SUNHW");
+        mutualFundNameToIdMap.put("Bandhan Financial Services Fund(IDCW)", "M_BAHC");
+        mutualFundNameToIdMap.put("UTI MNC Fund", "M_UTIMN");
+        mutualFundNameToIdMap.put("Bandhan G-Sec-Invest(P-IDCW)Exch Reinv", "M_IDGS");
+        mutualFundNameToIdMap.put("UTI India Consumer Fund(IDCW)", "M_UTNIA");
+        mutualFundNameToIdMap.put("Bandhan Bond Fund - Income Plan(P-IDCW Reinv)", "M_IDFUB");
+        mutualFundNameToIdMap.put("Aditya Birla SL CRISIL IBX 60:40 SDL + AAA PSU - Apr 2027 Index Fund(IDCW)", "M_AD74");
+        mutualFundNameToIdMap.put("DSP India T.I.G.E.R Fund(IDCW)", "M_DSII");
+        mutualFundNameToIdMap.put("Aditya Birla SL Transportation and Logistics Fund", "M_ADYNG");
+        mutualFundNameToIdMap.put("HDFC Dynamic Debt Fund(H-IDCW Reinv)", "M_HDDH");
+        mutualFundNameToIdMap.put("UTI Low Duration Fund(H-IDCW)", "M_UTIHV");
+        mutualFundNameToIdMap.put("UTI Infrastructure Fund(IDCW)", "M_UTNIR");
+        mutualFundNameToIdMap.put("Aditya Birla SL Credit Risk Fund(IDCW-Reinv)", "M_ADEK");
+        mutualFundNameToIdMap.put("Quant Overnight Fund(IDCW)", "M_QUOO");
+        mutualFundNameToIdMap.put("JM Arbitrage Fund(IDCW)", "M_JMBB");
+        mutualFundNameToIdMap.put("Quant Quantamental Fund(IDCW)", "M_QUQA");
+        mutualFundNameToIdMap.put("UTI Liquid Fund", "M_UTHD");
+        mutualFundNameToIdMap.put("Mahindra Manulife Flexi Cap Fund(IDCW)", "M_MARX");
+        mutualFundNameToIdMap.put("HDFC Arbitrage Fund(Q-IDCW)", "M_HDCAB");
+        mutualFundNameToIdMap.put("Nippon India Multi Cap Fund(IDCW)", "M_NIPMO");
+        mutualFundNameToIdMap.put("Kotak Multicap Fund(IDCW)", "M_KOCY");
+        mutualFundNameToIdMap.put("ICICI Pru Exports & Services Fund", "M_ICVX");
+        mutualFundNameToIdMap.put("Bandhan Bond Fund - Medium Term Plan", "M_IDFBN");
+        mutualFundNameToIdMap.put("SBI FMP-58-1842D(IDCW)", "M_SBI8C");
+        mutualFundNameToIdMap.put("HSBC Banking and PSU Debt Fund(M-IDCW Payout)", "M_LTBN");
+        mutualFundNameToIdMap.put("HDFC Credit Risk Debt Fund", "M_HDTK");
+        mutualFundNameToIdMap.put("UTI Healthcare Fund", "M_UTHE");
+        mutualFundNameToIdMap.put("Aditya Birla SL FTP-TJ-1838D(IDCW)", "M_ADJ8");
+        mutualFundNameToIdMap.put("Aditya Birla SL Income Fund", "M_ADTCS");
+        mutualFundNameToIdMap.put("SBI FMP-52-1848D", "M_SBIPN");
+        mutualFundNameToIdMap.put("Sundaram LT Micro Cap Tax Adv Fund-Sr VI", "M_SULC");
+        mutualFundNameToIdMap.put("Bandhan Dynamic Bond Fund(Q-IDCW Reinv)", "M_IDFDV");
+        mutualFundNameToIdMap.put("DSP Nifty Midcap 150 Quality 50 Index Fund(IDCW Reinvest)", "M_DSFX");
+        mutualFundNameToIdMap.put("Bandhan Overnight Fund(W-IDCW)", "M_BAVD");
+        mutualFundNameToIdMap.put("Tata Gilt Securities Fund(IDCW-Payout)", "M_TAGG");
+        mutualFundNameToIdMap.put("Sundaram Liquid Fund(DD-IDCW)", "M_PRSN");
+        mutualFundNameToIdMap.put("ICICI Pru Banking & PSU Debt Fund(Q-IDCW Payout)", "M_ICNK");
+        mutualFundNameToIdMap.put("HDFC Silver ETF FoF", "M_HDCSV");
+        mutualFundNameToIdMap.put("SBI Conservative Hybrid Fund(A-IDCW)", "M_SBHY");
+        mutualFundNameToIdMap.put("Quant Momentum Fund", "M_QUOE");
+        mutualFundNameToIdMap.put("Mirae Asset Healthcare Fund", "M_MIAL");
+        mutualFundNameToIdMap.put("UTI Arbitrage Fund", "M_UTGB");
+        mutualFundNameToIdMap.put("Helios Overnight Fund", "M_HELO");
+        mutualFundNameToIdMap.put("Quant ESG Equity Fund(IDCW)", "M_QUEN");
+        mutualFundNameToIdMap.put("UTI Banking and Financial Services Fund", "M_UTBV");
+        mutualFundNameToIdMap.put("Franklin India Debt Hybrid Fund(M-IDCW)", "M_FREB");
+        mutualFundNameToIdMap.put("Taurus Banking & Fin Serv Fund", "M_TAUK");
+        mutualFundNameToIdMap.put("LIC MF Banking & Financial Services Fund(IDCW)", "M_LIBW");
+        mutualFundNameToIdMap.put("Axis CRISIL IBX 50:50 Gilt Plus SDL Sep 2027 Index Fund", "M_AXL5");
+        mutualFundNameToIdMap.put("JM Liquid Fund", "M_JMIG");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Overnight Fund", "M_BAOR");
+        mutualFundNameToIdMap.put("Bandhan Corp Bond Fund", "M_IDOL");
+        mutualFundNameToIdMap.put("Nippon India Japan Equity Fund", "M_NIJP");
+        mutualFundNameToIdMap.put("Navi Aggressive Hybrid Fund(Q-IDCW)", "M_NAEI");
+        mutualFundNameToIdMap.put("SBI Banking and PSU Fund", "M_SBKA");
+        mutualFundNameToIdMap.put("NJ Flexi Cap Fund(IDCW)", "M_NJFI");
+        mutualFundNameToIdMap.put("Nippon India Short Term Fund(Q-IDCW)", "M_NIPSD");
+        mutualFundNameToIdMap.put("Mahindra Manulife Short Duration Fund(IDCW)", "M_MARH");
+        mutualFundNameToIdMap.put("Nippon India Growth Fund", "M_NIGW");
+        mutualFundNameToIdMap.put("Bank of India Arbitrage Fund(A-IDCW)", "M_BAKG");
+        mutualFundNameToIdMap.put("HSBC Large & Mid Cap Fund", "M_HSLA");
+        mutualFundNameToIdMap.put("SBI FMP-41-1498D", "M_SBIP4");
+        mutualFundNameToIdMap.put("SBI Long Duration Fund(IDCW Payout)", "M_SBILN");
+        mutualFundNameToIdMap.put("Tata Quant Fund(IDCW-Payout)", "M_TATQ");
+        mutualFundNameToIdMap.put("LIC MF Conservative Hybrid Fund(Q-IDCW)", "M_LIDQ");
+        mutualFundNameToIdMap.put("Canara Rob Short Duration Fund", "M_CARS");
+        mutualFundNameToIdMap.put("LIC MF Large Cap Fund", "M_LILM");
+        mutualFundNameToIdMap.put("Kotak Nifty 200 Momentum 30 Index Fund", "M_KO2Y");
+        mutualFundNameToIdMap.put("Kotak Emerging Equity Fund", "M_KORY");
+        mutualFundNameToIdMap.put("Bandhan Banking & PSU Debt Fund(IDCW)", "M_IDKD");
+        mutualFundNameToIdMap.put("Tata Nifty G-Sec Dec 2026 Index Fund(IDCW Payout)", "M_TA20");
+        mutualFundNameToIdMap.put("Sundaram LT Tax Adv Fund-Sr II", "M_SUXA");
+        mutualFundNameToIdMap.put("Motilal Oswal Focused Fund", "M_MOI2");
+        mutualFundNameToIdMap.put("Bandhan Corp Bond Fund(M-IDCW)", "M_BACH");
+        mutualFundNameToIdMap.put("Kotak Nifty 200 Momentum 30 Index Fund(IDCW Payout)", "M_KO0O");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Aqua FoF(IDCW)", "M_BABQ");
+        mutualFundNameToIdMap.put("UTI Annual Interval Fund-II-(IDCW)", "M_UTFIW");
+        mutualFundNameToIdMap.put("SBI Nifty Index Fund", "M_SBYF");
+        mutualFundNameToIdMap.put("Groww Aggressive Hybrid Fund", "M_INID");
+        mutualFundNameToIdMap.put("Sundaram Infra Advantage Fund(IDCW)", "M_SUNVN");
+        mutualFundNameToIdMap.put("Nippon India Nifty Midcap 150 Index Fund", "M_NIT0");
+        mutualFundNameToIdMap.put("Tata Gilt Securities Fund", "M_TANT");
+        mutualFundNameToIdMap.put("Axis Special Situations Fund(IDCW)", "M_AXISW");
+        mutualFundNameToIdMap.put("Sundaram LT Tax Adv Fund-Sr IV", "M_SULA");
+        mutualFundNameToIdMap.put("Union Aggressive Hybrid Fund", "M_UNHY");
+        mutualFundNameToIdMap.put("Bandhan Nifty IT Index Fund", "M_BAXD");
+        mutualFundNameToIdMap.put("Axis Nifty SDL Sep 2026 Debt Index Fund(IDCW)", "M_AXE6");
+        mutualFundNameToIdMap.put("Invesco India Liquid Fund(M-IDCW)", "M_INVCA");
+        mutualFundNameToIdMap.put("Axis Greater China Equity FoF(IDCW)", "M_AXHQ");
+        mutualFundNameToIdMap.put("Sundaram Low Duration Fund(DD-IDCW)", "M_PROP");
+        mutualFundNameToIdMap.put("SBI Healthcare Opp Fund(IDCW-Payout)", "M_SBHE");
+        mutualFundNameToIdMap.put("UTI Nifty200 Momentum 30 Index Fund", "M_UT2U");
+        mutualFundNameToIdMap.put("Invesco India - Invesco Global Equity Income FoF(IDCW)", "M_INVSV");
+        mutualFundNameToIdMap.put("ICICI Pru All Seasons Bond Fund(Q-IDCW)", "M_ICCAQ");
+        mutualFundNameToIdMap.put("PGIM India Balanced Advantage Fund(IDCW)", "M_PGBV");
+        mutualFundNameToIdMap.put("Bandhan Hybrid Equity Fund(IDCW)", "M_IDHB");
+        mutualFundNameToIdMap.put("Bandhan CRISIL IBX Gilt April 2028 Index Fund", "M_IDXG");
+        mutualFundNameToIdMap.put("Aditya Birla SL Financial Planning FOF Moderate Plan(IDCW)", "M_ADNM");
+        mutualFundNameToIdMap.put("Canara Rob Consumer Trends Fund(IDCW)", "M_CACU");
+        mutualFundNameToIdMap.put("ICICI Pru Technology Fund", "M_ICCHE");
+        mutualFundNameToIdMap.put("Groww Dynamic Bond Fund", "M_INAI");
+        mutualFundNameToIdMap.put("Bandhan Overnight Fund(M-IDCW)", "M_BAHU");
+        mutualFundNameToIdMap.put("ICICI Pru Multi-Asset Fund", "M_ICPPP");
+        mutualFundNameToIdMap.put("LIC MF Conservative Hybrid Fund(M-IDCW)", "M_LIDC");
+        mutualFundNameToIdMap.put("Nippon India Income Fund(Q-IDCW)", "M_NIPCD");
+        mutualFundNameToIdMap.put("Quant Flexi Cap Fund(IDCW)", "M_QUFT");
+        mutualFundNameToIdMap.put("ICICI Pru Equity & Debt Fund(M-IDCW Payout)", "M_ICIEQ");
+        mutualFundNameToIdMap.put("Edelweiss Europe Dynamic Equity Off-shore Fund", "M_EDLH");
+        mutualFundNameToIdMap.put("Union Corporate Bond Fund", "M_UNNF");
+        mutualFundNameToIdMap.put("Franklin India NSE Nifty 50 Index Fund", "M_FRNX");
+        mutualFundNameToIdMap.put("Union Innovation & Opp Fund(IDCW Payout)", "M_UNVI");
+        mutualFundNameToIdMap.put("Franklin Asian Equity Fund(IDCW)", "M_FRSS");
+        mutualFundNameToIdMap.put("HDFC Hybrid Equity Fund", "M_HDFHB");
+        mutualFundNameToIdMap.put("Aditya Birla SL CRISIL IBX SDL Jun 2032 Index Fund", "M_AD3X");
+        mutualFundNameToIdMap.put("SBI Multi Asset Allocation Fund", "M_SBTO");
+        mutualFundNameToIdMap.put("ICICI Pru Value Discovery Fund(IDCW-Payout)", "M_ICSY");
+        mutualFundNameToIdMap.put("Groww Overnight Fund(M-IDCW)", "M_GROW");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Low Duration Fund(W-IDCW)", "M_BAWP");
+        mutualFundNameToIdMap.put("Tata Treasury Advantage Fund", "M_TAYA");
+        mutualFundNameToIdMap.put("ICICI Pru India Equity", "M_ICCN");
+        mutualFundNameToIdMap.put("LIC MF Midcap Fund", "M_IDIC");
+        mutualFundNameToIdMap.put("Aditya Birla SL US Treasury 1-3 year Bond ETFs FoF(IDCW)", "M_ADI3O");
+        mutualFundNameToIdMap.put("Kotak Nifty SDL Jul 2026 Index Fund(IDCW)", "M_KOJL");
+        mutualFundNameToIdMap.put("Bandhan Nifty 100 Index Fund", "M_IDXN");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty SDL Sep 2027 Index Fund(A-IDCW)", "M_ICIW7");
+        mutualFundNameToIdMap.put("HSBC Corporate Bond Fund(A-IDCW Payout)", "M_LTTL");
+        mutualFundNameToIdMap.put("UTI Equity Savings Fund(M-IDCW)", "M_UTISW");
+        mutualFundNameToIdMap.put("Union Value Fund(IDCW)", "M_UNOS");
+        mutualFundNameToIdMap.put("JM Medium to Long Duration Fund", "M_JMIN");
+        mutualFundNameToIdMap.put("Franklin India Debt Hybrid Fund(Q-IDCW)", "M_FRBQ");
+        mutualFundNameToIdMap.put("Nippon India Power & Infra Fund(IDCW)", "M_NIPWO");
+        mutualFundNameToIdMap.put("DSP NIFTY 50 Index Fund(IDCW)", "M_DSNT");
+        mutualFundNameToIdMap.put("UTI FTIF-XXXV-II(1223D)", "M_UTT23");
+        mutualFundNameToIdMap.put("Bank of India Large & Mid Cap Equity Fund", "M_BOLR");
+        mutualFundNameToIdMap.put("TRUSTMF Corporate Bond Fund(M-IDCW)", "M_TRSU");
+        mutualFundNameToIdMap.put("Tata CRISIL IBX Gilt Index - April 2026 Index Fund", "M_TAC0");
+        mutualFundNameToIdMap.put("Tata Banking & Financial Services Fund(IDCW-Payout)", "M_TABK");
+        mutualFundNameToIdMap.put("Groww Nifty Smallcap 250 Index Fund(IDCW)", "M_GRW0");
+        mutualFundNameToIdMap.put("HDFC Small Cap Fund(IDCW)", "M_HDFAS");
+        mutualFundNameToIdMap.put("HDFC Hybrid Equity Fund(IDCW-Reinv)", "M_HDFHY");
+        mutualFundNameToIdMap.put("Edelweiss Overnight Fund(DD-IDCW)", "M_EDEG");
+        mutualFundNameToIdMap.put("Bandhan Bond Fund - Short Term Plan(P-IDCW)Exch Reinv", "M_IDOM");
+        mutualFundNameToIdMap.put("HSBC Focused Fund(IDCW)", "M_HSBS");
+        mutualFundNameToIdMap.put("Groww Liquid Fund(M-IDCW)", "M_GRLL");
+        mutualFundNameToIdMap.put("ICICI Pru S&P BSE Sensex Index Fund(IDCW)", "M_ICSE");
+        mutualFundNameToIdMap.put("Motilal Oswal Nifty Bank Index Fund", "M_MOTT");
+        mutualFundNameToIdMap.put("UTI Conservative Hybrid Fund(F-IDCW)", "M_UTRRL");
+        mutualFundNameToIdMap.put("DSP Ultra Short Fund(IDCW)", "M_DSUL");
+        mutualFundNameToIdMap.put("UTI FTIF-XXXV-I(1260D)(A-IDCW)", "M_UTVW");
+        mutualFundNameToIdMap.put("UTI Money Market Fund(H-IDCW)", "M_UTLK");
+        mutualFundNameToIdMap.put("LIC MF Overnight Fund(DD-IDCW)", "M_LICV");
+        mutualFundNameToIdMap.put("Franklin India Bluechip Fund(IDCW)", "M_FRIH");
+        mutualFundNameToIdMap.put("Navi Conservative Hybrid Fund(Q-IDCW)", "M_NAIS");
+        mutualFundNameToIdMap.put("UTI Conservative Hybrid Fund", "M_UTILS");
+        mutualFundNameToIdMap.put("SBI FMP-59-1618D", "M_SBI8T");
+        mutualFundNameToIdMap.put("Axis NASDAQ 100 FoF", "M_AXQ0");
+        mutualFundNameToIdMap.put("ICICI Pru Flexicap Fund(IDCW Payout)", "M_ICIXW");
+        mutualFundNameToIdMap.put("ICICI Pru Manufacturing Fund(IDCW)", "M_ICAI");
+        mutualFundNameToIdMap.put("Aditya Birla SL Silver ETF FOF", "M_ADYVI");
+        mutualFundNameToIdMap.put("UTI Quarterly Interval Fund-II-(IDCW)", "M_UTFRW");
+        mutualFundNameToIdMap.put("ICICI Pru Floating Interest Fund(W-IDCW Payout)", "M_ICAW");
+        mutualFundNameToIdMap.put("HSBC Global Equity Climate Change FoF(IDCW)", "M_HSGW");
+        mutualFundNameToIdMap.put("HDFC Medium Term Debt Fund(FN-IDCW)", "M_HDCEM");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Money Market Fund(W-IDCW)", "M_BAOY");
+        mutualFundNameToIdMap.put("Old Bridge Focused Equity Fund", "M_OLDD");
+        mutualFundNameToIdMap.put("Edelweiss CRISIL IBX 50:50 Gilt Plus SDL Sep 2028 Index Fund", "M_EDI8");
+        mutualFundNameToIdMap.put("Aditya Birla SL Retirement Fund-30", "M_ADBI");
+        mutualFundNameToIdMap.put("Union Equity Savings Fund(IDCW-Reinv)", "M_UNIQ");
+        mutualFundNameToIdMap.put("Mahindra Manulife Equity Savings Fund(IDCW-Payout)", "M_MAIQ");
+        mutualFundNameToIdMap.put("Kotak FMP-305-1200D", "M_KOT3T");
+        mutualFundNameToIdMap.put("ICICI Pru All Seasons Bond Fund(W-IDCW Payout)", "M_ICEW");
+        mutualFundNameToIdMap.put("SBI Banking and PSU Fund(W-IDCW)", "M_SBBW");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Low Duration Fund(M-IDCW)", "M_BAWR");
+        mutualFundNameToIdMap.put("Nippon India Index Fund-Nifty 50 Plan(H-IDCW)", "M_NI0E");
+        mutualFundNameToIdMap.put("Mahindra Manulife Dynamic Bond Fund", "M_MANR");
+        mutualFundNameToIdMap.put("DSP FMP 270-1144D(IDCW)", "M_DSW0");
+        mutualFundNameToIdMap.put("SBI Technology Opp Fund", "M_SBCY");
+        mutualFundNameToIdMap.put("Canara Rob Infrastructure Fund", "M_CAOB");
+        mutualFundNameToIdMap.put("Axis US Treasury Dynamic Bond ETF FoF(IDCW)", "M_AXIUN");
+        mutualFundNameToIdMap.put("Nippon India Inv-Qrtly-II", "M_NIQO");
+        mutualFundNameToIdMap.put("HDFC Income Fund(IDCW)", "M_HDNO");
+        mutualFundNameToIdMap.put("Kotak Equity Savings Fund(M-IDCW Payout)", "M_KOTV");
+        mutualFundNameToIdMap.put("SBI Contra Fund(IDCW-Payout)", "M_SBON");
+        mutualFundNameToIdMap.put("Franklin India ST Income Plan(W-IDCW)", "M_FRSE");
+        mutualFundNameToIdMap.put("Bandhan Bond Fund - Short Term Plan(A-IDCW)", "M_IDFOS");
+        mutualFundNameToIdMap.put("Invesco India Ultra Short Duration Fund", "M_INLN");
+        mutualFundNameToIdMap.put("SBI Multi Asset Allocation Fund(M-IDCW Payout)", "M_SBUM");
+        mutualFundNameToIdMap.put("Tata Overnight Fund", "M_TAOO");
+        mutualFundNameToIdMap.put("PGIM India Money Market Fund", "M_PGIT");
+        mutualFundNameToIdMap.put("Edelweiss Nifty 50 Index Fund", "M_EDNX");
+        mutualFundNameToIdMap.put("Bandhan Asset Alloc FoF-Cons", "M_IDTO");
+        mutualFundNameToIdMap.put("DSP Corp Bond Fund(M-IDCW Reinv)", "M_DSCO");
+        mutualFundNameToIdMap.put("HSBC Nifty 50 Index Fund", "M_LTND");
+        mutualFundNameToIdMap.put("Aditya Birla SL CRISIL IBX Gilt Apr 2029 Index Fund", "M_ADI2G");
+        mutualFundNameToIdMap.put("ICICI Pru Savings Fund(M-IDCW Payout)", "M_ICSA");
+        mutualFundNameToIdMap.put("DSP Low Duration Fund", "M_DSLA");
+        mutualFundNameToIdMap.put("SBI FMP-48-1458D(IDCW)", "M_SBWF");
+        mutualFundNameToIdMap.put("Axis Multi Asset Allocation Fund(IDCW)", "M_AXIMU");
+        mutualFundNameToIdMap.put("Aditya Birla SL Bal Bhavishya Yojna(IDCW)", "M_ADYW");
+        mutualFundNameToIdMap.put("Mirae Asset Money Market Fund", "M_MIMS");
+        mutualFundNameToIdMap.put("Union Flexi Cap Fund(IDCW-Reinv)", "M_UNMM");
+        mutualFundNameToIdMap.put("Aditya Birla SL Retirement Fund-40(IDCW)", "M_ADBE");
+        mutualFundNameToIdMap.put("Bandhan Corp Bond Fund(Q-IDCW)", "M_BACQ");
+        mutualFundNameToIdMap.put("Groww Liquid Fund(DD-IDCW)", "M_INQI");
+        mutualFundNameToIdMap.put("DSP Short Term Fund(M-IDCW)", "M_DSHR");
+        mutualFundNameToIdMap.put("Bandhan Arbitrage Fund(M-IDCW)", "M_BAGB");
+        mutualFundNameToIdMap.put("DSP Flexi Cap Fund(IDCW)", "M_DSER");
+        mutualFundNameToIdMap.put("Aditya Birla SL Financial Planning FOF Conservative Plan(IDCW)", "M_ADCN");
+        mutualFundNameToIdMap.put("Axis FTP-113-1228D(Q-IDCW)", "M_AX2N");
+        mutualFundNameToIdMap.put("Union Focused Fund(IDCW)", "M_UNFC");
+        mutualFundNameToIdMap.put("Tata Corp Bond Fund(M-IDCW Payout)", "M_TATCM");
+        mutualFundNameToIdMap.put("SBI Nifty Smallcap 250 Index Fund(IDCW Payout)", "M_SB2X");
+        mutualFundNameToIdMap.put("HSBC Liquid Fund", "M_HSAN");
+        mutualFundNameToIdMap.put("Axis Overnight Fund(DD-IDCW)", "M_AXOO");
+        mutualFundNameToIdMap.put("Quantum Multi Asset FOFs", "M_QUTU");
+        mutualFundNameToIdMap.put("ITI Balanced Advantage Fund(IDCW)", "M_ITBC");
+        mutualFundNameToIdMap.put("Mirae Asset Ultra Short Duration Fund(IDCW)", "M_MIUR");
+        mutualFundNameToIdMap.put("Axis Treasury Advantage Fund(M-IDCW)", "M_AXMV");
+        mutualFundNameToIdMap.put("SBI FMP-52-1848D(IDCW)", "M_SBW2");
+        mutualFundNameToIdMap.put("Bandhan CRISIL IBX 90:10 SDL Plus Gilt - Sep 2027 Index Fund(IDCW)", "M_BAN9");
+        mutualFundNameToIdMap.put("Edelweiss Nifty Smallcap 250 Index Fund", "M_EDFA");
+        mutualFundNameToIdMap.put("Franklin India Money Market Fund", "M_FRSV");
+        mutualFundNameToIdMap.put("DSP Nifty SDL Plus G-Sec Jun 2028 30:70 Index Fund", "M_DSIJ");
+        mutualFundNameToIdMap.put("Sundaram Small Cap Fund(IDCW)", "M_SUDSL");
+        mutualFundNameToIdMap.put("Kotak Gilt Fund(Q-IDCW Payout)", "M_KOWG");
+        mutualFundNameToIdMap.put("WOC Multi Asset Allocation Fund", "M_WOMT");
+        mutualFundNameToIdMap.put("Nippon India Inv-Qrtly-II(IDCW)", "M_NIPVA");
+        mutualFundNameToIdMap.put("HSBC Nifty Next 50 Index Fund", "M_LTNF");
+        mutualFundNameToIdMap.put("Aditya Birla SL Liquid Fund(IDCW)", "M_ADTAU");
+        mutualFundNameToIdMap.put("Axis Retirement Savings Fund-Conservative Plan", "M_AXIV");
+        mutualFundNameToIdMap.put("SBI Banking and PSU Fund(M-IDCW)", "M_SBNU");
+        mutualFundNameToIdMap.put("Nippon India Floating Rate Fund(Q-IDCW)", "M_NIPFI");
+        mutualFundNameToIdMap.put("HSBC Multi Asset Allocation Fund(IDCW)", "M_HSUO");
+        mutualFundNameToIdMap.put("Mirae Asset Focused Fund(IDCW)", "M_MIFO");
+        mutualFundNameToIdMap.put("Nippon India Pharma Fund(IDCW)", "M_NIPHN");
+        mutualFundNameToIdMap.put("Aditya Birla SL Multi-Index FoF", "M_ADIXM");
+        mutualFundNameToIdMap.put("Bandhan Money Manager Fund(P-IDCW)", "M_IDMN");
+        mutualFundNameToIdMap.put("SBI Magnum Global Fund(IDCW-Payout)", "M_SBMB");
+        mutualFundNameToIdMap.put("ICICI Pru All Seasons Bond Fund(A-IDCW)", "M_ICCSE");
+        mutualFundNameToIdMap.put("ITI Pharma & Healthcare Fund", "M_ITPH");
+        mutualFundNameToIdMap.put("Nippon India Inv-Mthly-II(IDCW)", "M_NIPVD");
+        mutualFundNameToIdMap.put("Kotak Nifty Financial Services Ex-Bank Index Fund(IDCW)", "M_KOVY");
+        mutualFundNameToIdMap.put("Axis Nifty 100 Index Fund(IDCW)", "M_AX1Y");
+        mutualFundNameToIdMap.put("DSP Quant Fund", "M_DSPN");
+        mutualFundNameToIdMap.put("DSP Liquidity Fund(DD-IDCW)", "M_DSLY");
+        mutualFundNameToIdMap.put("Canara Rob Ultra Short Term Fund(M-IDCW)", "M_CAUU");
+        mutualFundNameToIdMap.put("Tata Silver ETF FoF(IDCW)", "M_TATSR");
+        mutualFundNameToIdMap.put("ICICI Pru S&P BSE 500 ETF FOF", "M_ICCS5");
+        mutualFundNameToIdMap.put("LIC MF Large & Midcap Fund-(IDCW)", "M_LIRW");
+        mutualFundNameToIdMap.put("Tata Equity P/E Fund(Div Trig Opt A-5%)", "M_TAQT");
+        mutualFundNameToIdMap.put("Nippon India Ultra Short Duration Fund", "M_NILS");
+        mutualFundNameToIdMap.put("Franklin India Feeder - Franklin U.S. Opportunities Fund(IDCW Payout)", "M_FRFW");
+        mutualFundNameToIdMap.put("Edelweiss Nifty Next 50 Index Fund(IDCW)", "M_EDTF");
+        mutualFundNameToIdMap.put("Tata Banking & PSU Debt Fund(IDCW)", "M_TATP");
+        mutualFundNameToIdMap.put("SBI FMP-58-1842D", "M_SBI8I");
+        mutualFundNameToIdMap.put("Navi Nifty Bank Index Fund", "M_NAVY");
+        mutualFundNameToIdMap.put("HDFC Short Term Debt Fund(IDCW)", "M_HDHS");
+        mutualFundNameToIdMap.put("Union Focused Fund", "M_UNOF");
+        mutualFundNameToIdMap.put("LIC MF Balanced Advantage Fund(IDCW)", "M_LIBT");
+        mutualFundNameToIdMap.put("HDFC MNC Fund(IDCW Reinvest)", "M_HDFWN");
+        mutualFundNameToIdMap.put("HDFC Hybrid Debt Fund", "M_HDUH");
+        mutualFundNameToIdMap.put("Bandhan Bond Fund - Short Term Plan(M-IDCW)", "M_BAWB");
+        mutualFundNameToIdMap.put("Helios Overnight Fund(DD-IDCW)", "M_HELI");
+        mutualFundNameToIdMap.put("Nippon India Short Term Fund(M-IDCW)", "M_NIPSS");
+        mutualFundNameToIdMap.put("Edelweiss Nifty 50 Index Fund(IDCW)", "M_EDT0");
+        mutualFundNameToIdMap.put("HSBC Asia Pacific (Ex Japan) DYF(IDCW)", "M_HSCJ");
+        mutualFundNameToIdMap.put("HDFC Equity Savings Fund(IDCW)", "M_HDFSY");
+        mutualFundNameToIdMap.put("Aditya Birla SL Multi-Index FoF(IDCW-Reinv)", "M_ADTMX");
+        mutualFundNameToIdMap.put("SBI FMP-68-1302D", "M_SBI8A");
+        mutualFundNameToIdMap.put("Bajaj Finserv Money Market Fund", "M_BAFF");
+        mutualFundNameToIdMap.put("Kotak Small Cap Fund(IDCW-Payout)", "M_KOAS");
+        mutualFundNameToIdMap.put("Bandhan All Seasons Bond Fund(Q-IDCW)", "M_BAUS");
+        mutualFundNameToIdMap.put("Aditya Birla SL Money Manager Fund(W-IDCW Reinv)", "M_ADMW");
+        mutualFundNameToIdMap.put("ICICI Pru Floating Interest Fund(IDCW-Payout)", "M_ICIFS");
+        mutualFundNameToIdMap.put("Aditya Birla SL Active Debt Multi-Mgr FoF(IDCW)", "M_ADVC");
+        mutualFundNameToIdMap.put("Kotak Multi Asset Allocation Fund(IDCW)", "M_KOTUA");
+        mutualFundNameToIdMap.put("ITI Banking & Financial Services Fund(IDCW)", "M_ITBI");
+        mutualFundNameToIdMap.put("Tata Gold ETF FoF(IDCW)", "M_TATGA");
+        mutualFundNameToIdMap.put("Edelweiss ASEAN Equity Off-Shore Fund", "M_EDAS");
+        mutualFundNameToIdMap.put("Sundaram Short Duration Fund(W-IDCW)", "M_SUDRN");
+        mutualFundNameToIdMap.put("UTI Dividend Yield Fund(IDCW)", "M_UTDDW");
+        mutualFundNameToIdMap.put("Franklin India Dynamic Asset Allocation FOFs", "M_FRYK");
+        mutualFundNameToIdMap.put("Bandhan Midcap Fund(IDCW)", "M_IDFIW");
+        mutualFundNameToIdMap.put("LIC MF ULIS Regular Premium Reducing Cover HY 10Y(IDCW)", "M_LIMC");
+        mutualFundNameToIdMap.put("Bandhan ELSS Tax Saver Fund(IDCW)", "M_IDTV");
+        mutualFundNameToIdMap.put("Navi Overnight Fund(W-IDCW Payout)", "M_NAIN");
+        mutualFundNameToIdMap.put("Sundaram Large Cap Fund(IDCW)", "M_SUNBW");
+        mutualFundNameToIdMap.put("Edelweiss Large & Mid Cap Fund(IDCW)", "M_EDPR");
+        mutualFundNameToIdMap.put("Axis Short Term Fund(IDCW)", "M_AXIHH");
+        mutualFundNameToIdMap.put("Aditya Birla SL Pure Value Fund(IDCW-Reinv)", "M_ADTPU");
+        mutualFundNameToIdMap.put("Union Aggressive Hybrid Fund(IDCW-Payout)", "M_UNHO");
+        mutualFundNameToIdMap.put("SBI CPSE Bond Plus SDL Sep 2026 50:50 Index Fund(IDCW)", "M_SBPX");
+        mutualFundNameToIdMap.put("HDFC Equity Savings Fund(IDCW-Reinv)", "M_HDES");
+        mutualFundNameToIdMap.put("Aditya Birla SL Retirement Fund-50(IDCW-Reinv)", "M_ADYD");
+        mutualFundNameToIdMap.put("DSP Savings Fund(IDCW)", "M_DSVF");
+        mutualFundNameToIdMap.put("UTI Money Market Fund", "M_UTKM");
+        mutualFundNameToIdMap.put("ICICI Pru Pharma Healthcare & Diagnostics (P.H.D) Fund", "M_ICHA");
+        mutualFundNameToIdMap.put("Nippon India Nifty SDL Plus G-Sec - Jun 2029 Maturity 70:30 Index Fund", "M_NIS9");
+        mutualFundNameToIdMap.put("UTI Banking & PSU Fund(IDCW)", "M_UTIKI");
+        mutualFundNameToIdMap.put("HDFC Dynamic Debt Fund(A-IDCW)", "M_HDFYB");
+        mutualFundNameToIdMap.put("UTI Ultra Short Duration Fund(A-IDCW)", "M_UTIHR");
+        mutualFundNameToIdMap.put("Edelweiss CRISIL IBX 50:50 Gilt Plus SDL Short Duration Index Fund(IDCW)", "M_EDCP");
+        mutualFundNameToIdMap.put("Tata Multicap Fund", "M_TATUM");
+        mutualFundNameToIdMap.put("Axis FTP-118-100D", "M_AX8A");
+        mutualFundNameToIdMap.put("Kotak Nifty SDL Apr 2027 Top 12 Equal Weight Index Fund", "M_KOFH");
+        mutualFundNameToIdMap.put("WOC Ultra Short Duration Fund(FN-IDCW)", "M_YEUL");
+        mutualFundNameToIdMap.put("Tata Hybrid Equity Fund(IDCW)", "M_TAHI");
+        mutualFundNameToIdMap.put("Franklin India Bluechip Fund", "M_FRDH");
+        mutualFundNameToIdMap.put("ICICI Pru Value Discovery Fund(IDCW)", "M_ICCYL");
+        mutualFundNameToIdMap.put("UTI Low Duration Fund(F-IDCW)", "M_UTTTW");
+        mutualFundNameToIdMap.put("Tata Treasury Advantage Fund(DD-IDCW)", "M_TAYT");
+        mutualFundNameToIdMap.put("Sundaram Overnight Fund", "M_SUDP");
+        mutualFundNameToIdMap.put("SBI Multicap Fund(IDCW)", "M_SBIUW");
+        mutualFundNameToIdMap.put("Sundaram Consumption Fund(IDCW)", "M_SUDCC");
+        mutualFundNameToIdMap.put("ICICI Pru Savings Fund(FN-IDCW)", "M_ICCSU");
+        mutualFundNameToIdMap.put("Sundaram Multi Asset Allocation Fund", "M_SUDUO");
+        mutualFundNameToIdMap.put("Aditya Birla SL Balanced Advantage Fund(IDCW)", "M_ADTCB");
+        mutualFundNameToIdMap.put("Kotak Nifty Next 50 Index Fund(IDCW-Payout)", "M_KOY5");
+        mutualFundNameToIdMap.put("Kotak Medium Term Fund(IDCW)", "M_KOIC");
+        mutualFundNameToIdMap.put("Axis Gold Fund(IDCW)", "M_AXIGO");
+        mutualFundNameToIdMap.put("UTI Banking and Financial Services Fund(IDCW)", "M_UTKV");
+        mutualFundNameToIdMap.put("SBI FMP-54-1842D", "M_SBI5C");
+        mutualFundNameToIdMap.put("Aditya Birla SL India GenNext Fund", "M_ADIDX");
+        mutualFundNameToIdMap.put("Kotak Debt Hybrid Fund(M-IDCW Payout)", "M_KOHB");
+        mutualFundNameToIdMap.put("HDFC Defence Fund", "M_HDCUE");
+        mutualFundNameToIdMap.put("ICICI Pru Manufacturing Fund", "M_ICAP");
+        mutualFundNameToIdMap.put("HSBC Short Duration Fund", "M_LTSF");
+        mutualFundNameToIdMap.put("Motilal Oswal Flexi Cap Fund(IDCW)", "M_MOAP");
+        mutualFundNameToIdMap.put("SBI Magnum Medium Duration Fund", "M_SBIMO");
+        mutualFundNameToIdMap.put("WOC Mid Cap Fund(IDCW)", "M_WOCM");
+        mutualFundNameToIdMap.put("LIC MF Multi Cap Fund(IDCW)", "M_LITP");
+        mutualFundNameToIdMap.put("Mahindra Manulife Arbitrage Fund", "M_MAHA");
+        mutualFundNameToIdMap.put("Franklin India ST Income Plan(M-IDCW)", "M_FRSC");
+        mutualFundNameToIdMap.put("WOC Large Cap Fund(IDCW Payout)", "M_WOCO");
+        mutualFundNameToIdMap.put("Axis S&P BSE Sensex Index Fund(IDCW)", "M_AXXD");
+        mutualFundNameToIdMap.put("PGIM India Arbitrage Fund(IDCW)", "M_PGRC");
+        mutualFundNameToIdMap.put("Samco ELSS Tax Saver Fund", "M_SAML");
+        mutualFundNameToIdMap.put("ICICI Pru Smallcap Fund(IDCW-Payout)", "M_ICISU");
+        mutualFundNameToIdMap.put("UTI FTIF-XXXV-I(1260D)(Q-IDCW)", "M_UT1W");
+        mutualFundNameToIdMap.put("ICICI Pru Nifty50 Value 20 Index Fund(IDCW)", "M_ICC5V");
+        mutualFundNameToIdMap.put("Sundaram Money Market Fund(Q-IDCW)", "M_SUKO");
+        mutualFundNameToIdMap.put("Aditya Birla SL Digital India Fund(IDCW)", "M_ADITD");
+        mutualFundNameToIdMap.put("Mahindra Manulife Equity Savings Fund", "M_MADT");
+        mutualFundNameToIdMap.put("SBI Conservative Hybrid Fund(Q-IDCW)", "M_SBBQ");
+        mutualFundNameToIdMap.put("ICICI Pru Banking & Fin Serv Fund(IDCW-Payout)", "M_ICKA");
+        mutualFundNameToIdMap.put("HDFC NIFTY 100 Equal Weight Index Fund", "M_HD1W");
+        mutualFundNameToIdMap.put("Baroda BNP Paribas Nifty 50 Index Fund(IDCW)", "M_BAP5");
+        mutualFundNameToIdMap.put("DSP Dynamic Asset Allocation Fund(M-IDCW)", "M_DSDS");
+        mutualFundNameToIdMap.put("Nippon India Floating Rate Fund(W-IDCW)", "M_NIPFD");
+        mutualFundNameToIdMap.put("ICICI Pru Smallcap Fund", "M_ICCDS");
+        mutualFundNameToIdMap.put("SBI Nifty Index Fund(IDCW-Payout)", "M_SBNN");
+        mutualFundNameToIdMap.put("UTI Low Duration Fund(DD-IDCW)", "M_UTIRY");
+        mutualFundNameToIdMap.put("HDFC Nifty G-Sec Jun 2027 Index Fund", "M_HDCTE");
+        mutualFundNameToIdMap.put("Axis Balanced Advantage Fund(IDCW)", "M_AXCV");
+        mutualFundNameToIdMap.put("Kotak Nifty G-Sec July 2033 Index Fund(IDCW Payout)", "M_KOGX");
+        mutualFundNameToIdMap.put("Bajaj Finserv Banking and PSU Fund(M-IDCW)", "M_BAGJ");
+        mutualFundNameToIdMap.put("Aditya Birla SL Arbitrage Fund", "M_ADTUT");
+        mutualFundNameToIdMap.put("SBI FMP-61-1927D(IDCW)", "M_SBI2W");
+        mutualFundNameToIdMap.put("Parag Parikh Dynamic Asset Allocation Fund", "M_PAAI");
+        mutualFundNameToIdMap.put("Aditya Birla SL Retirement Fund-50", "M_ADBB");
+        mutualFundNameToIdMap.put("ICICI Pru Multicap Fund", "M_ICPIU");
+        mutualFundNameToIdMap.put("Bajaj Finserv Money Market Fund(M-IDCW)", "M_BAFM");
+        mutualFundNameToIdMap.put("Axis Overnight Fund(M-IDCW)", "M_AXVM");
+        mutualFundNameToIdMap.put("JM Large Cap Fund", "M_JMRE");
+        mutualFundNameToIdMap.put("BHARAT Bond FOF - April 2030", "M_BHAI");
+        mutualFundNameToIdMap.put("BHARAT Bond FOF - April 2031", "M_BHAA");
+        mutualFundNameToIdMap.put("Aditya Birla SL Midcap Fund(IDCW)", "M_ADTMR");
+        mutualFundNameToIdMap.put("SBI Long Term Equity Fund(IDCW)", "M_SBLY");
+        mutualFundNameToIdMap.put("Kotak Equity Savings Fund", "M_KOEC");
+        mutualFundNameToIdMap.put("HSBC Focused Fund", "M_HSBD");
+        mutualFundNameToIdMap.put("Bandhan Bond Fund - Income Plan(P-IDCW)", "M_BAUF");
+        mutualFundNameToIdMap.put("360 ONE Focused Equity Fund", "M_IIFS");
+        mutualFundNameToIdMap.put("SBI CPSE Bond Plus SDL Sep 2026 50:50 Index Fund", "M_SBSX");
+        mutualFundNameToIdMap.put("Axis Credit Risk Fund(M-IDCW)", "M_AXTK");
+        mutualFundNameToIdMap.put("SBI FMP-50-1843D", "M_SBIPL");
+        mutualFundNameToIdMap.put("Aditya Birla SL Retirement Fund-40", "M_ADBS");
+        mutualFundNameToIdMap.put("Bandhan CRISIL IBX 90:10 SDL Plus Gilt - April 2032 Index Fund", "M_IDXB");
+        mutualFundNameToIdMap.put("DSP Bond Fund(M-IDCW Reinv)", "M_DSBC");
+        mutualFundNameToIdMap.put("Sundaram Corp Bond Fund(H-IDCW)", "M_SUDMB");
+        mutualFundNameToIdMap.put("Aditya Birla SL Flexi Cap Fund", "M_ADTUE");
+        mutualFundNameToIdMap.put("HDFC Credit Risk Debt Fund-(Q-IDCW Reinv)", "M_HDRK");
+        mutualFundNameToIdMap.put("Kotak Corporate Bond Fund(M-IDCW Payout)", "M_KOOB");
+        mutualFundNameToIdMap.put("Bandhan Flexi Cap Fund(IDCW)", "M_BAEX");
+        mutualFundNameToIdMap.put("ICICI Pru ESG Exclusionary Strategy Fund(IDCW)", "M_ICII");
+        mutualFundNameToIdMap.put("BHARAT Bond FOF - April 2025", "M_BHAN");
+    }
 
-    private final List<String> subsectorList = Arrays.asList(
-            "FoFs - Gold",
-            "Flexi Cap Fund",
-            "Floating Rate Fund",
-            "Banking & PSU Fund",
-            "Ultra Short Duration Fund",
-            "Medium Duration Fund",
-            "Fixed Maturity Plans",
-            "Money Market Fund",
-            "Overnight Fund",
-            "Credit Risk Fund",
-            "Dynamic Bond Fund",
-            "Liquid Fund",
-            "Corporate Bond Fund",
-            "Low Duration Fund",
-            "Gilt - Long Term Fund",
-            "Short Duration Fund",
-            "Sectoral Fund - Infrastructure (Debt)",
-            "Long Duration Fund",
-            "Gilt - Short & Mid Term Fund",
-            "Medium to Long Duration Fund",
-            "Debt - Interval Fund",
-            "Thematic Fund",
-            "Focused Fund",
-            "Large & Mid Cap Fund",
-            "Index Fund",
-            "Large Cap Fund",
-            "Contra Fund",
-            "Thematic Fund - Global",
-            "Mid Cap Fund",
-            "Small Cap Fund",
-            "Equity Linked Savings Scheme (ELSS)",
-            "Sectoral Fund - Pharma & Health Care",
-            "Thematic Fund - MNC",
-            "Value Fund",
-            "Sectoral Fund - Consumption",
-            "Multi Cap Fund",
-            "Sectoral Fund - Infrastructure",
-            "Dividend Yield Fund",
-            "Sectoral Fund - Service Industry",
-            "Sectoral Fund - Banks & Financial Services",
-            "Sectoral Fund - Technology",
-            "Sectoral Fund - Energy & Power",
-            "Arbitrage Fund",
-            "Multi Asset Allocation Fund",
-            "Balanced Advantage Fund",
-            "Aggressive Hybrid Fund",
-            "Dynamic Asset Allocation Fund",
-            "Equity Savings",
-            "Conservative Hybrid Fund",
-            "Balanced Hybrid Fund",
-            "FoFs (Domestic) - Equity Oriented",
-            "Solution Oriented - Children's Fund",
-            "FoFs (Overseas)",
-            "FoFs (Domestic) - Debt Oriented",
-            "Solution Oriented - Retirement Fund"
-    );
-
-    private final List<String> optionList = Arrays.asList(
-            "IDCW",
-            "Growth",
-            "Bonus"
-    );
-
-    private final List<String> benchmarkIndexList = Arrays.asList(
-            "Gold-India",
-            "Gold-London Bullion Market association (LBMA)",
-            "FTSE Gold Mines",
-            "",
-            "Silver",
-            "Gold-London AM (INR)",
-            "Nifty Short Duration Debt Index",
-            "CRISIL Banking and PSU Debt Index",
-            "NIFTY Ultra Short Duration Debt Index",
-            "CRISIL Medium Duration Debt Index",
-            "Crisil Long Term Debt Index",
-            "CRISIL Money Market Index",
-            "Nifty 1D Rate Index",
-            "CRISIL Liquid Overnight Index",
-            "NIFTY Credit Risk Bond Index",
-            "CRISIL Ultra Short Term Debt Index",
-            "NIFTY Composite Debt Index",
-            "Nifty Money Market Index",
-            "CRISIL Liquid Debt Index",
-            "NIFTY Corporate Bond Index",
-            "NIFTY Low Duration Debt Index",
-            "CRISIL Low Duration Debt Index",
-            "CRISIL Dynamic Bond Index",
-            "CRISIL Corporate Bond Index",
-            "NIFTY Medium Duration Debt Index",
-            "NIFTY Banking and PSU Debt Index",
-            "Crisil 10 Yr Gilt Index",
-            "CRISIL Dynamic Gilt Index",
-            "CRISIL Composite Bond Index",
-            "CRISIL Short Term Bond Index",
-            "CRISIL Corporate Bond Composite Index",
-            "Nifty All Duration G-Sec Index",
-            "CRISIL Medium to Long Term Debt Index",
-            "Nifty Liquid Fund Index",
-            "CRISIL Short Term Credit Risk Fund",
-            "Nifty 10 yr Benchmark G-Sec",
-            "NIFTY Composite Bond Index",
-            "NIFTY Medium to Long Term Debt Index",
-            "NIFTY Long Duration Debt Index",
-            "CRISIL Short Term Gilt Index",
-            "Nifty PSU Bond Plus SDL Apr 2026 50:50 Index",
-            "CRISIL Gilt 2027 Index",
-            "CRISIL Gilt 2028 Index",
-            "Nifty SDL Plus PSU Bond Sep 2026 60:40 Index",
-            "Nifty PSU Bond Plus SDL Sep 2027 40:60 Index",
-            "Nifty PSU Bond Plus SDL Apr 2027 50:50 Index",
-            "CRISIL IBX SDL Index - September 2027",
-            "Nifty SDL Sep 2025 Index",
-            "CRISIL IBX Gilt Index - June 2036",
-            "CRISIL IBX Gilt Index - April 2026",
-            "Nifty SDL Jun 2027 Index",
-            "CRISIL IBX 60:40 SDL + AAA PSU Index - April 2025",
-            "CRISIL IBX 60:40 SDL + AAA PSU Index - April 2027",
-            "Nifty SDL Plus AAA PSU Bond Dec 2027 60: 40 Index - TRI",
-            "Nifty SDL Sep 2027 Index",
-            "Nifty AAA CPSE Bond Plus SDL Apr 2027 60:40 Index",
-            "CRISIL IBX 50:50 Gilt Plus SDL Index - April 2028",
-            "Nifty SDL Plus G-Sec Jun 2028 70:30 Index",
-            "CRISIL IBX 50:50 PSU + SDL Index - October 2025",
-            "CRISIL IBX SDL Index - May 2027",
-            "Nifty SDL Apr 2032 Top 12 Equal Weight Index",
-            "Nifty SDL Apr 2027 Top 12 Equal Weight Index",
-            "Nifty SDL Apr 2027 Index",
-            "CRISIL IBX 70:30 CPSE Plus SDL - April 2025",
-            "Nifty CPSE Bond Plus SDL Sep 2026 50:50 Index",
-            "CRISIL IBX Gilt Index - April 2029",
-            "CRISIL IBX 50:50 Gilt Plus SDL Index - April 2037",
-            "Nifty SDL Plus AAA PSU Bond Jul 2028 60:40 Index",
-            "Nifty SDL Dec 2028 Index",
-            "Nifty G-Sec Dec 2030 Index",
-            "CRISIL IBX 50:50 Gilt Plus SDL Index - June 2027",
-            "Nifty AAA Bond Plus SDL Apr 2026 50:50 Index",
-            "CRISIL IBX Gilt Index - April 2033",
-            "Nifty AAA PSU Bond Plus SDL Sep 2026 50:50 Index",
-            "Nifty G-sec Dec 2026 Index",
-            "Nifty G-Sec July 2031 Index",
-            "CRISIL IBX 50:50 Gilt Plus SDL Index - Sep 2028",
-            "Nifty SDL Sep 2026 Index",
-            "CRISIL IBX 90:10 SDL Plus Gilt Index - April 2032",
-            "CRISIL IBX 90:10 SDL Plus Gilt Index - November 2026",
-            "CRISIL IBX 90:10 SDL Plus Gilt Index - September 2027",
-            "Nifty G-Sec Sep 2027 Index",
-            "CRISIL IBX 60:40 SDL + AAA PSU Index - April 2026",
-            "Nifty G-Sec Jun 2036 Index",
-            "Nifty G-Sec Sep 2032 Index",
-            "Nifty G-Sec Jun 2027 Index",
-            "Nifty SDL Jul 2026 Index",
-            "Nifty G-Sec Dec 2029 Index",
-            "CRISIL IBX SDL Index - June 2027",
-            "CRISIL IBX 50:50 Gilt Plus SDL Index - June 2028",
-            "CRISIL SDL Plus G-Sec Apr 2033 50:50 Index",
-            "NIFTY SDL December 2026 Index",
-            "Nifty SDL Plus G-Sec Sep 2027 50:50 Index",
-            "CRISIL IBX AAA Index - March 2024",
-            "CRISIL IBX 50:50 Gilt Plus SDL Short Duration Index",
-            "Nifty SDL Plus AAA PSU Bond Apr 2026 75:25 Index",
-            "CRISIL IBX Gilt Index - April 2028",
-            "Nifty SDL Jul 2033 Index",
-            "Nifty SDL Plus AAA PSU Bond Apr 2028 75:25 Index",
-            "NIFTY G- Sec Apr 2029 Index",
-            "CRISIL IBX Gilt Index - June 2027",
-            "CRISIL Long Duration Debt Index",
-            "NIFTY SDL Plus G-Sec Jun 2027 40:60 Index",
-            "Nifty G-sec Jul 2027 Index",
-            "Nifty SDL June 2028 Index",
-            "Nifty G-Sec July 2033 Index",
-            "S&P BSE 500 - TRI",
-            "NIFTY 500 - TRI",
-            "Nifty G-Sec Oct 2028 Index",
-            "Nifty SDL Oct 2026 Index",
-            "CRISIL IBX 50:50 Gilt Plus SDL Index - September 2027",
-            "CRISIL IBX SDL Index - June 2032",
-            "Nifty SDL Plus G-Sec Jun 2029 70:30 Index",
-            "CRISIL IBX Gilt Index - April 2032",
-            "NIFTY100 ESG - TRI",
-            "NIFTY LargeMidcap 250 - TRI",
-            "MSCI India Domestic & World Healthcare 45 Index",
-            "Nifty Smallcap 250 - TRI",
-            "NIFTY 100 - TRI",
-            "S&P BSE 250 LargeMidCap Index - TRI",
-            "NIFTY500 Value 50 - TRI",
-            "S&P 500 - TRI",
-            "NIFTY NEXT 50 - TRI",
-            "NIFTY 50 - TRI",
-            "S&P BSE 150 MidCap - TRI",
-            "S&P BSE 200 - TRI",
-            "S&P BSE 250 Small Cap - TRI",
-            "S&P BSE PSU - TRI",
-            "NIFTY COMMODITIES - TRI",
-            "NIFTY BANK - TRI",
-            "Nifty Midcap 150 - TRI",
-            "S&P BSE Health Care - TRI",
-            "NIFTY MNC - TRI",
-            "S&P BSE 100 - TRI",
-            "Nifty India Consumption - TRI",
-            "Nifty500 Multicap 50:25:25 - TRI",
-            "Nifty Infrastructure - TRI",
-            "S&P BSE India Infrastructure Index - TRI",
-            "S&P BSE SENSEX - TRI",
-            "Nifty India Manufacturing - TRI",
-            "NIFTY50 Equal Weight - TRI",
-            "Nifty Services Sector - TRI",
-            "S&P BSE 500",
-            "India Recent 100 IPO Index",
-            "Nifty Housing - TRI",
-            "Nifty Smallcap 100",
-            "Nifty100 Equal Weight - TRI",
-            "Nifty Smallcap 250 Momentum Quality 100 - TRI",
-            "Bloomberg US Intermediate Treasury - TRI",
-            "Bloomberg US Treasury 1-3 Year Index",
-            "Bloomberg US Treasury 3-10 Year Index",
-            "S&P Developed Ex-U.S. BMI Total Return Index",
-            "ICE 0-1 Year US Treasury Securities Index",
-            "NIFTY BHARAT Bond Index - April 2033",
-            "Indxx Artificial Intelligence & Big Data Index - TRI",
-            "Solactive Autonomous & Electric Vehicles Index - TRI",
-            "Nifty India Digital  - TRI",
-            "CRSP US Total Market Index",
-            "NYSE Arca Gold Miners Index",
-            "NIFTY BHARAT Bond Index - April 2032",
-            "Hang Seng TECH TRI",
-            "FTSE EPRA/NAREIT Developed Index",
-            "FTSE EPRA Nareit Asia ex Japan REITs Index",
-            "S&P 500 Top 50 TRI",
-            "NYSE FANG+ TRI",
-            "Nifty 5 yr Benchmark G-Sec Index TRI",
-            "CRISIL Hybrid 65+35 - Conservative Index",
-            "Nasdaq-100 - TRI",
-            "MSCI World Consumer Discretionary Index - Net Dividend",
-            "S&P Asia Pacific ex Japan REIT - TRI",
-            "Russell 3000 Growth Index",
-            "MSCI AC ASEAN 10/40 Index",
-            "MSCI Golden Dragon Index (Total Return Net)",
-            "MSCI EMU Index",
-            "MSCI World Index-Net Dividend",
-            "MSCI Europe Index (Total Return Net)",
-            "NIFTY NEXT 50",
-            "S&P BSE Bharat 22 Index",
-            "MSCI Emerging Market Index",
-            "MSCI Brazil 10/40 Index",
-            "MSCI AC World Index",
-            "MSCI ACWI Metals & Mining 30% Buffer 10/40 (1994) Net TRI",
-            "Russell 1000 Index",
-            "CRISIL Short Term Debt Hybrid 75+25 Index",
-            "MSCI ACWI Net TRI",
-            "CRISIL Hybrid 75+25 - Conservative Index",
-            "NIFTY BHARAT Bond Index - April 2030",
-            "Russell 1000 Equal Weighted Technology Index",
-            "NIFTY BHARAT Bond Index - April 2023",
-            "NIFTY BHARAT Bond Index - April 2031",
-            "Nifty100 ESG Sector Leaders - TRI",
-            "iCOMDEX Composite Index",
-            "NIFTY 50 Hybrid Composite Debt 50:50 Index",
-            "CRISIL Hybrid 35+65 - Aggressive Index",
-            "NIFTY 50 Equity Savings Index - TRI",
-            "Crisil Equity Savings Index",
-            "CRISIL Hybrid 50+50 - Moderate Index",
-            "NIFTY 50 Equity Savings Index",
-            "CRISIL Hybrid 85+15 - Conservative Index",
-            "NIFTY 50 Hybrid Composite Debt 15:85 Index",
-            "NIFTY 50 Hybrid Composite Debt 65:35 Index",
-            "CRISIL Hybrid 25+75 - Aggressive Index",
-            "S&P BSE 200",
-            "MSCI World",
-            "Nifty 50 Arbitrage - TRI",
-            "Nifty 50 Arbitrage",
-            "NIFTY ENERGY - TRI",
-            "S&P BSE Consumer Discretionary Goods & Services - TRI",
-            "Nifty Smallcap250 Quality 50 - TRI",
-            "Nifty Alpha 50 - TRI",
-            "Nifty Total Market - TRI",
-            "Nifty Financial Services Ex-Bank - TRI",
-            "Nifty Microcap 250 - TRI",
-            "S&P BSE Housing - TRI",
-            "Nifty India Defence - TRI",
-            "Nifty Midcap150 Momentum 50 - TRI",
-            "NIFTY AUTO - TRI",
-            "Nifty100 Low Volatility 30 - TRI",
-            "NIFTY Alpha Low-Volatility 30 - TRI",
-            "S&P BSE Enhanced Value Index - TRI",
-            "S&P BSE Quality Index - TRI",
-            "S&P BSE Financials ex Bank 30 - TRI",
-            "NIFTY Midcap150 Quality 50 - TRI",
-            "Nifty Midcap 50 - TRI",
-            "S&P BSE Low Volatility Index - TRI",
-            "S&P BSE TECk Index",
-            "Taiwan Capitalization Weighted Stock Index",
-            "Nifty Healthcare Index - TRI",
-            "Nifty200 Momentum 30 - TRI",
-            "Nifty Smallcap 50 - TRI",
-            "NIFTY 200 - TRI",
-            "Nifty Dividend Opportunities 50 - TRI",
-            "Nasdaq-100",
-            "NIFTY100 Quality 30 - TRI",
-            "Nifty Midcap 100 - TRI",
-            "Nifty Smallcap 100 - TRI",
-            "S&P BSE India Infrastructure Index",
-            "NIFTY 100",
-            "NIFTY 500",
-            "Nifty Smallcap 250",
-            "Nifty50 Value 20 - TRI",
-            "S&P BSE India Manufacturing Index - TRI",
-            "MSCI World Energy 30% Buffer 10/40 Net Total Return",
-            "NIFTY IT - TRI",
-            "NIFTY PHARMA - TRI",
-            "S&P BSE 500 Japan - TRI",
-            "S&P BSE 500 Shariah - TRI",
-            "S&P BSE BANKEX - TRI",
-            "MSCI Asia (ex-Japan) Standard Index",
-            "Nifty Transportation & Logistics - TRI",
-            "NIFTY 50",
-            "NIFTY FMCG - TRI",
-            "S&P Global 1200",
-            "S&P 500",
-            "S&P BSE TECk Index - TRI",
-            "Nifty Financial Services - TRI",
-            "Nifty500 Shariah - TRI"
-    );
-
-    private final List<String> isSipInvestmentAllowed = Arrays.asList(
-            "Allowed",
-            "Not allowed"
-            );
-
-    private final List<String> mutualFundList = Arrays.asList(
-            "Zerodha ELSS Tax Saver Nifty LargeMidcap 250 Index Fund",
-            "Zerodha Nifty LargeMidcap 250 Index Fund",
-            "WOC Ultra Short Duration Fund(M-IDCW Payout)",
-            "WOC Ultra Short Duration Fund(FN-IDCW Payout)",
-            "WOC Ultra Short Duration Fund(W-IDCW Payout)",
-            "WOC Ultra Short Duration Fund(M-IDCW)",
-            "WOC Ultra Short Duration Fund(W-IDCW)",
-            "WOC Ultra Short Duration Fund(DD-IDCW)",
-            "WOC Ultra Short Duration Fund",
-            "WOC Ultra Short Duration Fund(FN-IDCW)",
-            "WOC Liquid Fund(M-IDCW Payout)",
-            "WOC Liquid Fund(W-IDCW Payout)",
-            "WOC Liquid Fund(FN-IDCW Payout)",
-            "WOC Liquid Fund(FN-IDCW)-Direct plan",
-            "WOC Liquid Fund(M-IDCW)-Direct plan",
-            "WOC Liquid Fund(W-IDCW)-Direct plan",
-            "WOC Liquid Fund(DD-IDCW)-Direct plan",
-            "WOC Liquid Fund",
-            "WOC Flexi Cap Fund",
-            "WOC Flexi Cap Fund(IDCW Payout)",
-            "WOC Flexi Cap Fund(IDCW)",
-            "WOC Mid Cap Fund(IDCW)",
-            "WOC Mid Cap Fund",
-            "WOC ELSS Tax Saver Fund(IDCW)",
-            "WOC ELSS Tax Saver Fund",
-            "WOC Mid Cap Fund(IDCW Payout)",
-            "WOC Large Cap Fund(IDCW)",
-            "WOC Large Cap Fund",
-            "WOC Large Cap Fund(IDCW Payout)",
-            "WOC Balanced Advantage Fund",
-            "WOC Multi Asset Allocation Fund",
-            "WOC Multi Cap Fund",
-            "WOC Balanced Hybrid Fund",
-            "WOC Large & Mid Cap Fund",
-            "WOC Banking & Financial Services Fund",
-            "WOC Pharma and Healthcare Fund",
-            "Union Medium Duration Fund",
-            "Union Medium Duration Fund(IDCW)",
-            "Union Medium Duration Fund(IDCW-Payout)",
-            "Union Midcap Fund(IDCW)",
-            "Union Midcap Fund",
-            "Union Large & Midcap Fund(IDCW-Payout)",
-            "Union Large & Midcap Fund",
-            "Union Large & Midcap Fund(IDCW)",
-            "Union Focused Fund",
-            "Union Focused Fund(IDCW)",
-            "Union Value Fund(IDCW-Reinv)",
-            "Union Overnight Fund(M-IDCW Payout)",
-            "Union Largecap Fund(IDCW-Reinv)",
-            "Union Equity Savings Fund(IDCW-Reinv)",
-            "Union Balanced Advantage Fund(IDCW-Payout)",
-            "Union Arbitrage Fund(IDCW-Reinv)",
-            "Union Overnight Fund(M-IDCW)",
-            "Union Overnight Fund(DD-IDCW)",
-            "Union Overnight Fund",
-            "Union Arbitrage Fund(IDCW)",
-            "Union Arbitrage Fund",
-            "Union Value Fund(IDCW)",
-            "Union Value Fund",
-            "Union Equity Savings Fund",
-            "Union Equity Savings Fund(IDCW)",
-            "Union Corporate Bond Fund(IDCW-Reinv)",
-            "Union Corporate Bond Fund(IDCW)",
-            "Union Corporate Bond Fund",
-            "Union Balanced Advantage Fund",
-            "Union Balanced Advantage Fund(IDCW)",
-            "Union Largecap Fund(IDCW)",
-            "Union Largecap Fund",
-            "Union Small Cap Fund(IDCW-Reinv)",
-            "Union ELSS Tax Saver Fund(IDCW-Payout)",
-            "Union Liquid Fund(M-IDCW)",
-            "Union Liquid Fund(FN-IDCW Payout)",
-            "Union Flexi Cap Fund(IDCW)",
-            "Union Dynamic Bond(IDCW-Payout)",
-            "Union Flexi Cap Fund",
-            "Union ELSS Tax Saver Fund",
-            "Union Flexi Cap Fund(IDCW-Reinv)",
-            "Union Dynamic Bond(IDCW)",
-            "Union Dynamic Bond",
-            "Union Liquid Fund",
-            "Union Liquid Fund(FN-IDCW Reinv)",
-            "Union Liquid Fund(DD-IDCW)",
-            "Union Liquid Fund(M-IDCW Reinv)",
-            "Union Liquid Fund(W-IDCW)",
-            "Union Small Cap Fund",
-            "Union Small Cap Fund(IDCW)",
-            "Union Aggressive Hybrid Fund(IDCW-Payout)",
-            "Union Aggressive Hybrid Fund(IDCW)",
-            "Union Aggressive Hybrid Fund",
-            "Union Money Market Fund",
-            "Union Money Market Fund(M-IDCW)",
-            "Union Gilt Fund(A-IDCW)",
-            "Union Gilt Fund(H-IDCW)",
-            "Union Gilt Fund",
-            "Union Retirement Fund",
-            "Union Retirement Fund(IDCW)",
-            "Union Multicap Fund",
-            "Union Multicap Fund(IDCW)",
-            "Union FMP-Sr 13",
-            "Union Multicap Fund(IDCW)",
-            "Union Gilt Fund(A-IDCW)",
-            "Union Gilt Fund(H-IDCW)",
-            "Union Money Market Fund(M-IDCW)",
-            "Union Midcap Fund(IDCW)",
-            "Union Focused Fund(IDCW)",
-            "Union Innovation & Opp Fund(IDCW)",
-            "Union Innovation & Opp Fund(IDCW Payout)",
-            "Union Innovation & Opp Fund",
-            "Union Children's Fund",
-            "Union Children's Fund(IDCW)",
-            "UTI Floater Fund(F-IDCW)",
-            "UTI Floater Fund(H-IDCW)",
-            "UTI Floater Fund(A-IDCW)",
-            "UTI Floater Fund",
-            "UTI Floater Fund(Q-IDCW)",
-            "UTI Equity Savings Fund(Q-IDCW)",
-            "UTI Equity Savings Fund(IDCW)",
-            "UTI Equity Savings Fund(M-IDCW)",
-            "UTI Equity Savings Fund",
-            "UTI Corporate Bond Fund(F-IDCW)",
-            "UTI Corporate Bond Fund(A-IDCW)",
-            "UTI Corporate Bond Fund(H-IDCW)",
-            "UTI Corporate Bond Fund(Q-IDCW)",
-            "UTI Corporate Bond Fund",
-            "UTI Nifty Next 50 Index Fund",
-            "UTI Money Market Fund(F-IDCW)",
-            "UTI Credit Risk Fund(H-IDCW)",
-            "UTI Money Market Fund(A-IDCW)",
-            "UTI Money Market Fund(H-IDCW)",
-            "UTI Money Market Fund(Q-IDCW)",
-            "UTI Liquid Fund(F-IDCW)",
-            "UTI Liquid Fund(Q-IDCW)",
-            "UTI Banking & PSU Fund(H-IDCW)",
-            "UTI Liquid Fund(H-IDCW)",
-            "UTI Banking & PSU Fund(A-IDCW)",
-            "UTI Low Duration Fund(A-IDCW)",
-            "UTI Liquid Fund(FN-IDCW)",
-            "UTI Medium to Long Duration Fund(A-IDCW)",
-            "UTI Credit Risk Fund(F-IDCW)",
-            "UTI Conservative Hybrid Fund",
-            "UTI Money Market Fund(FN-IDCW)",
-            "UTI Credit Risk Fund(M-IDCW)",
-            "UTI Dynamic Bond Fund(A-IDCW)",
-            "UTI Credit Risk Fund(A-IDCW)",
-            "UTI Medium to Long Duration Fund(H-IDCW)",
-            "UTI Dynamic Bond Fund(H-IDCW)",
-            "UTI Liquid Fund(A-IDCW)",
-            "UTI Medium Duration Fund(H-IDCW)",
-            "UTI Medium Duration Fund(M-IDCW)",
-            "UTI Medium Duration Fund",
-            "UTI Medium Duration Fund(A-IDCW)",
-            "UTI Medium Duration Fund(Q-IDCW)",
-            "UTI Medium Duration Fund(F-IDCW)",
-            "UTI Banking & PSU Fund(M-IDCW)",
-            "UTI Banking & PSU Fund(F-IDCW)",
-            "UTI Short Duration Fund(M-IDCW)",
-            "UTI Money Market Fund(M-IDCW)",
-            "UTI Short Duration Fund(A-IDCW)",
-            "UTI Ultra Short Duration Fund(A-IDCW)",
-            "UTI Ultra Short Duration Fund(H-IDCW)",
-            "UTI Ultra Short Duration Fund(FN-IDCW)",
-            "UTI Ultra Short Duration Fund(M-IDCW)",
-            "UTI Medium to Long Duration Fund(F-IDCW)",
-            "UTI Dynamic Bond Fund(F-IDCW)",
-            "UTI Ultra Short Duration Fund(Q-IDCW)",
-            "UTI Low Duration Fund(F-IDCW)",
-            "UTI Low Duration Fund(FN-IDCW)",
-            "UTI Low Duration Fund(H-IDCW)",
-            "UTI Short Duration Fund(H-IDCW)",
-            "UTI Banking & PSU Fund(IDCW)",
-            "UTI Banking & PSU Fund",
-            "UTI Annual Interval Fund-II-(IDCW)",
-            "UTI Annual Interval Fund-II",
-            "UTI Short Duration Fund(F-IDCW)",
-            "UTI Overnight Fund(DD-IDCW)",
-            "UTI Annual Interval Fund-I(IDCW)",
-            "UTI Annual Interval Fund-I",
-            "UTI Low Duration Fund(Q-IDCW)",
-            "UTI Quarterly Interval Fund-I",
-            "UTI Quarterly Interval Fund-I-(IDCW)",
-            "UTI Ultra Short Duration Fund(F-IDCW)",
-            "UTI Quarterly Interval Fund-III",
-            "UTI Quarterly Interval Fund-III-(IDCW)",
-            "UTI Quarterly Interval Fund-II-(IDCW)",
-            "UTI Quarterly Interval Fund-II",
-            "UTI Overnight Fund(IDCW)",
-            "UTI Low Duration Fund(M-IDCW)",
-            "UTI Credit Risk Fund(IDCW)",
-            "UTI Low Duration Fund(W-IDCW)",
-            "UTI Medium to Long Duration Fund(Q-IDCW)",
-            "UTI Overnight Fund",
-            "UTI Gilt Fund(IDCW)-Direct plan",
-            "UTI Liquid Fund(M-IDCW)",
-            "UTI Arbitrage Fund(IDCW)",
-            "UTI Arbitrage Fund",
-            "UTI Conservative Hybrid Fund(F-IDCW)",
-            "UTI Short Duration Fund",
-            "UTI Short Duration Fund(Q-IDCW)",
-            "UTI Ultra Short Duration Fund(DD-IDCW)",
-            "UTI Ultra Short Duration Fund(W-IDCW)",
-            "UTI Gilt Fund",
-            "UTI Dynamic Bond Fund(Q-IDCW)",
-            "UTI Money Market Fund(W-IDCW)",
-            "UTI Low Duration Fund",
-            "UTI Low Duration Fund(DD-IDCW)",
-            "UTI Transportation & Logistics Fund",
-            "UTI Transportation & Logistics Fund(IDCW)",
-            "UTI Large & Mid Cap Fund",
-            "UTI Large & Mid Cap Fund(IDCW)",
-            "UTI Healthcare Fund",
-            "UTI Value Fund(IDCW)",
-            "UTI Value Fund",
-            "UTI Healthcare Fund(IDCW)",
-            "UTI Multi Asset Allocation Fund",
-            "UTI MNC Fund",
-            "UTI Money Market Fund(DD-IDCW)",
-            "UTI MNC Fund(IDCW)",
-            "UTI Multi Asset Allocation Fund(IDCW)",
-            "UTI Large Cap Fund",
-            "UTI Mid Cap Fund(IDCW)",
-            "UTI Mid Cap Fund",
-            "UTI Large Cap Fund(IDCW)",
-            "UTI Liquid Fund(W-IDCW)",
-            "UTI Infrastructure Fund",
-            "UTI Infrastructure Fund(IDCW)",
-            "UTI India Consumer Fund",
-            "UTI Ultra Short Duration Fund",
-            "UTI India Consumer Fund(IDCW)",
-            "UTI ELSS Tax Saver Fund(IDCW)",
-            "UTI ELSS Tax Saver Fund",
-            "UTI Nifty 50 Index Fund(IDCW)",
-            "UTI Nifty 50 Index Fund",
-            "UTI Dividend Yield Fund",
-            "UTI Dynamic Bond Fund",
-            "UTI Flexi Cap Fund",
-            "UTI Flexi Cap Fund(IDCW)",
-            "UTI Conservative Hybrid Fund(M-IDCW)",
-            "UTI Credit Risk Fund",
-            "UTI Banking and Financial Services Fund(IDCW)",
-            "UTI Medium to Long Duration Fund",
-            "UTI Dividend Yield Fund(IDCW)",
-            "UTI Banking and Financial Services Fund",
-            "UTI Conservative Hybrid Fund",
-            "UTI Aggressive Hybrid Fund",
-            "UTI Aggressive Hybrid Fund(IDCW)",
-            "UTI Liquid Fund(DD-IDCW)",
-            "UTI Money Market Fund",
-            "UTI Liquid Fund",
-            "UTI Small Cap Fund(IDCW)",
-            "UTI Small Cap Fund",
-            "UTI Nifty200 Momentum 30 Index Fund",
-            "UTI Focused Fund(IDCW)",
-            "UTI Focused Fund",
-            "UTI S&P BSE Sensex Index Fund",
-            "UTI S&P BSE Low Volatility Index Fund",
-            "UTI Nifty Midcap 150 Quality 50 Index Fund",
-            "UTI Gilt Fund with 10 year Constant Duration(Q-IDCW)",
-            "UTI Gilt Fund with 10 year Constant Duration(F-IDCW)",
-            "UTI Gilt Fund with 10 year Constant Duration(A-IDCW)",
-            "UTI Gilt Fund with 10 year Constant Duration",
-            "UTI Gold ETF FoF",
-            "UTI FTIF-XXXV-I(1260D)(IDCW)",
-            "UTI FTIF-XXXV-I(1260D)(Q-IDCW)",
-            "UTI FTIF-XXXV-I(1260D)(A-IDCW)",
-            "UTI FTIF-XXXV-I(1260D)",
-            "UTI FTIF-XXXV-II(1223D)(A-IDCW)",
-            "UTI FTIF-XXXV-II(1223D)(F-IDCW)",
-            "UTI FTIF-XXXV-II(1223D)(Q-IDCW)",
-            "UTI FTIF-XXXV-II(1223D)(IDCW)",
-            "UTI FTIF-XXXV-II(1223D)",
-            "UTI CRISIL SDL Maturity April 2033 Index Fund",
-            "UTI CRISIL SDL Maturity June 2027 Index Fund",
-            "UTI FTIF-XXXV-III(1176D)(A-IDCW)",
-            "UTI FTIF-XXXV-III(1176D)(Q-IDCW)",
-            "UTI FTIF-XXXV-III(1176D)(IDCW)",
-            "UTI FTIF-XXXV-III(1176D)",
-            "UTI Nifty SDL Plus AAA PSU Bond Apr 2026 75:25 Index Fund",
-            "UTI FTIF-XXXVI-I(1574D)(IDCW)",
-            "UTI FTIF-XXXVI-I(1574D)",
-            "UTI Nifty SDL Plus AAA PSU Bond Apr 2028 75:25 Index Fund",
-            "UTI Long Duration Fund(H-IDCW)",
-            "UTI Long Duration Fund(A-IDCW)",
-            "UTI Long Duration Fund",
-            "UTI Long Duration Fund(Q-IDCW)",
-            "UTI Silver ETF FoF",
-            "UTI Nifty 500 Value 50 Index Fund",
-            "UTI NIFTY50 Equal Weight Index Fund",
-            "UTI S&P BSE Housing Index Fund",
-            "UTI Balanced Advantage Fund",
-            "UTI Balanced Advantage Fund(IDCW)",
-            "UTI Long Duration Fund(A-IDCW)",
-            "UTI Long Duration Fund(H-IDCW)",
-            "UTI Long Duration Fund(Q-IDCW)",
-            "UTI Gilt Fund with 10 year Constant Duration(F-IDCW)",
-            "UTI Gilt Fund with 10 year Constant Duration(A-IDCW)",
-            "UTI Gilt Fund with 10 year Constant Duration(Q-IDCW)",
-            "UTI Floater Fund(H-IDCW)",
-            "UTI Floater Fund(A-IDCW)",
-            "UTI Floater Fund(Q-IDCW)",
-            "UTI Floater Fund(F-IDCW)",
-            "UTI Equity Savings Fund(M-IDCW)",
-            "UTI Equity Savings Fund(Q-IDCW)",
-            "UTI Equity Savings Fund(IDCW)",
-            "UTI Corporate Bond Fund(Q-IDCW)",
-            "UTI Corporate Bond Fund(F-IDCW)",
-            "UTI Corporate Bond Fund(A-IDCW)",
-            "UTI Corporate Bond Fund(H-IDCW)",
-            "UTI Banking & PSU Fund(A-IDCW)",
-            "UTI Liquid Fund(F-IDCW)",
-            "UTI Liquid Fund(FN-IDCW)",
-            "UTI Liquid Fund(Q-IDCW)",
-            "UTI Money Market Fund(H-IDCW)",
-            "UTI Liquid Fund(H-IDCW)",
-            "UTI Credit Risk Fund(H-IDCW)",
-            "UTI Banking & PSU Fund(H-IDCW)",
-            "UTI Low Duration Fund(A-IDCW)",
-            "UTI Money Market Fund(F-IDCW)",
-            "UTI Money Market Fund(A-IDCW)",
-            "UTI Money Market Fund(Q-IDCW)",
-            "UTI Medium to Long Duration Fund(A-IDCW)",
-            "UTI Credit Risk Fund(F-IDCW)",
-            "UTI Credit Risk Fund(M-IDCW)",
-            "UTI Money Market Fund(FN-IDCW)",
-            "UTI Dynamic Bond Fund(A-IDCW)",
-            "UTI Credit Risk Fund(A-IDCW)",
-            "UTI Medium to Long Duration Fund(H-IDCW)",
-            "UTI Dynamic Bond Fund(H-IDCW)",
-            "UTI Medium Duration Fund(F-IDCW)",
-            "UTI Medium Duration Fund(M-IDCW)",
-            "UTI Medium Duration Fund(A-IDCW)",
-            "UTI Liquid Fund(A-IDCW)",
-            "UTI Medium Duration Fund(H-IDCW)",
-            "UTI Medium Duration Fund(Q-IDCW)",
-            "UTI Banking & PSU Fund(M-IDCW)",
-            "UTI Banking & PSU Fund(F-IDCW)",
-            "UTI Short Duration Fund(M-IDCW)",
-            "UTI Ultra Short Duration Fund(A-IDCW)",
-            "UTI Short Duration Fund(A-IDCW)",
-            "UTI Ultra Short Duration Fund(M-IDCW)",
-            "UTI Money Market Fund(M-IDCW)",
-            "UTI Ultra Short Duration Fund(FN-IDCW)",
-            "UTI Ultra Short Duration Fund(H-IDCW)",
-            "UTI Medium to Long Duration Fund(F-IDCW)",
-            "UTI Dynamic Bond Fund(F-IDCW)",
-            "UTI Ultra Short Duration Fund(Q-IDCW)",
-            "UTI Low Duration Fund(FN-IDCW)",
-            "UTI Low Duration Fund(F-IDCW)",
-            "UTI Low Duration Fund(H-IDCW)",
-            "UTI Short Duration Fund(H-IDCW)",
-            "UTI Banking & PSU Fund(IDCW)",
-            "UTI Annual Interval Fund-II-(IDCW)",
-            "UTI Short Duration Fund(F-IDCW)",
-            "UTI Annual Interval Fund-I(IDCW)",
-            "UTI Low Duration Fund(Q-IDCW)",
-            "UTI Quarterly Interval Fund-I-(IDCW)",
-            "UTI Ultra Short Duration Fund(F-IDCW)",
-            "UTI Quarterly Interval Fund-III-(IDCW)",
-            "UTI Quarterly Interval Fund-II-(IDCW)",
-            "UTI Overnight Fund(IDCW)",
-            "UTI Gilt Fund(IDCW)-Direct plan",
-            "UTI Credit Risk Fund(IDCW)",
-            "UTI Medium to Long Duration Fund(Q-IDCW)",
-            "UTI Low Duration Fund(M-IDCW)",
-            "UTI Low Duration Fund(W-IDCW)",
-            "UTI Liquid Fund(M-IDCW)",
-            "UTI Arbitrage Fund(IDCW)",
-            "UTI Conservative Hybrid Fund(F-IDCW)",
-            "UTI Money Market Fund(W-IDCW)",
-            "UTI Dynamic Bond Fund(Q-IDCW)",
-            "UTI Short Duration Fund(Q-IDCW)",
-            "UTI Healthcare Fund(IDCW)",
-            "UTI India Consumer Fund(IDCW)",
-            "UTI Nifty 50 Index Fund(IDCW)",
-            "UTI Transportation & Logistics Fund(IDCW)",
-            "UTI Value Fund(IDCW)",
-            "UTI MNC Fund(IDCW)",
-            "UTI Infrastructure Fund(IDCW)",
-            "UTI Conservative Hybrid Fund(M-IDCW)",
-            "UTI Mid Cap Fund(IDCW)",
-            "UTI Large Cap Fund(IDCW)",
-            "UTI Multi Asset Allocation Fund(IDCW)",
-            "UTI Large & Mid Cap Fund(IDCW)",
-            "UTI Flexi Cap Fund(IDCW)",
-            "UTI Dividend Yield Fund(IDCW)",
-            "UTI Aggressive Hybrid Fund(IDCW)",
-            "UTI Banking and Financial Services Fund(IDCW)",
-            "UTI Innovation Fund(IDCW)",
-            "UTI Innovation Fund",
-            "TRUSTMF Banking & PSU Fund(A-IDCW)",
-            "TRUSTMF Banking & PSU Fund(Q-IDCW)",
-            "TRUSTMF Banking & PSU Fund(M-IDCW)",
-            "TRUSTMF Banking & PSU Fund",
-            "TRUSTMF Banking & PSU Fund(DD-IDCW)",
-            "TRUSTMF Banking & PSU Fund(W-IDCW)",
-            "TRUSTMF Liquid Fund(DD-IDCW)",
-            "TRUSTMF Liquid Fund(W-IDCW)",
-            "TRUSTMF Liquid Fund(M-IDCW)",
-            "TRUSTMF Liquid Fund",
-            "TRUSTMF Short Duration Fund(M-IDCW)",
-            "TRUSTMF Short Duration Fund(Q-IDCW)",
-            "TRUSTMF Short Duration Fund",
-            "TRUSTMF Short Duration Fund(W-IDCW)",
-            "TRUSTMF Overnight Fund(DD-IDCW)",
-            "TRUSTMF Overnight Fund",
-            "TRUSTMF Money Market Fund(M-IDCW)",
-            "TRUSTMF Money Market Fund",
-            "TRUSTMF Corporate Bond Fund",
-            "TRUSTMF Corporate Bond Fund(M-IDCW)",
-            "TRUSTMF FMP-SR-II",
-            "TRUSTMF Corporate Bond Fund(M-IDCW)",
-            "TRUSTMF Money Market Fund(M-IDCW)",
-            "TRUSTMF Short Duration Fund(Q-IDCW)",
-            "TRUSTMF Short Duration Fund(M-IDCW)",
-            "TRUSTMF Liquid Fund(M-IDCW)",
-            "TRUSTMF Liquid Fund(W-IDCW)",
-            "TRUSTMF Banking & PSU Fund(A-IDCW)",
-            "TRUSTMF Banking & PSU Fund(Q-IDCW)",
-            "TRUSTMF Banking & PSU Fund(M-IDCW)",
-            "Taurus Ethical Fund",
-            "Taurus Banking & Fin Serv Fund",
-            "Taurus ELSS Tax Saver Fund(IDCW)",
-            "Taurus Large Cap Fund",
-            "Taurus Banking & Fin Serv Fund(IDCW)",
-            "Taurus Large Cap Fund(IDCW)",
-            "Taurus Mid Cap Fund(IDCW)",
-            "Taurus Infrastructure Fund(IDCW)",
-            "Taurus Nifty 50 Index Fund",
-            "Taurus Nifty 50 Index Fund(IDCW)",
-            "Taurus ELSS Tax Saver Fund",
-            "Taurus Flexi Cap Fund",
-            "Taurus Flexi Cap Fund(IDCW)",
-            "Taurus Infrastructure Fund",
-            "Taurus Mid Cap Fund",
-            "Taurus Ethical Fund",
-            "Taurus Ethical Fund(IDCW)",
-            "Taurus Infrastructure Fund(IDCW)",
-            "Taurus Nifty 50 Index Fund(IDCW)",
-            "Taurus Banking & Fin Serv Fund(IDCW)",
-            "Taurus Mid Cap Fund(IDCW)",
-            "Taurus Large Cap Fund(IDCW)",
-            "Taurus Ethical Fund(IDCW)",
-            "Taurus Flexi Cap Fund(IDCW)",
-            "Tata Multi Asset Opp Fund(IDCW-Payout)",
-            "Tata Multi Asset Opp Fund(IDCW)",
-            "Tata Multi Asset Opp Fund",
-            "Tata Quant Fund(IDCW-Payout)",
-            "Tata Quant Fund(IDCW)",
-            "Tata Quant Fund",
-            "Tata Focused Equity Fund(IDCW-Payout)",
-            "Tata Focused Equity Fund",
-            "Tata Focused Equity Fund(IDCW)",
-            "Tata Banking & PSU Debt Fund(IDCW-Payout)",
-            "Tata Banking & PSU Debt Fund(IDCW)",
-            "Tata Banking & PSU Debt Fund",
-            "Tata Flexi Cap Fund(IDCW-Payout)",
-            "Tata Small Cap Fund(IDCW-Payout)",
-            "Tata Hybrid Equity Fund(IDCW-Payout)",
-            "Tata Arbitrage Fund(M-IDCW Payout)",
-            "Tata Overnight Fund",
-            "Tata Overnight Fund(DD-IDCW)",
-            "Tata Balanced Adv Fund(IDCW-Payout)",
-            "Tata Ultra Short Term Fund(M-IDCW Payout)",
-            "Tata Ultra Short Term Fund(W-IDCW Payout)",
-            "Tata Ultra Short Term Fund(M-IDCW)",
-            "Tata Ultra Short Term Fund",
-            "Tata Ultra Short Term Fund(W-IDCW)",
-            "Tata Balanced Adv Fund(IDCW)",
-            "Tata Balanced Adv Fund",
-            "Tata Arbitrage Fund",
-            "Tata Arbitrage Fund(M-IDCW)",
-            "Tata Small Cap Fund",
-            "Tata Small Cap Fund(IDCW)",
-            "Tata Flexi Cap Fund(IDCW)",
-            "Tata Flexi Cap Fund",
-            "Tata ELSS Tax Saver Fund(IDCW)",
-            "Tata ST Bond Fund(P-IDCW Payout)",
-            "Tata Infrastructure Fund(IDCW-Payout)",
-            "Tata ST Bond Fund(M-IDCW Payout)",
-            "Tata Large Cap Fund(IDCW Payout)",
-            "Tata Ethical Fund(IDCW-Payout)",
-            "Tata Gilt Securities Fund(IDCW-Payout)",
-            "Tata Treasury Advantage Fund(W-IDCW Payout)",
-            "Tata Equity P/E Fund(Div Trig Opt A-5%)Pay",
-            "Tata Equity P/E Fund(Div Trig Opt B-10%)Pay",
-            "Tata Treasury Advantage Fund(IDCW-Payout)",
-            "Tata Large & Mid Cap Fund(IDCW-Payout)",
-            "Tata Equity Savings Fund(M-IDCW Payout)",
-            "Tata Equity Savings Fund(P-IDCW Payout)",
-            "Tata Hybrid Equity Fund(M-IDCW Payout)",
-            "Tata Mid Cap Growth Fund(IDCW-Payout)",
-            "Tata Digital India Fund(IDCW)",
-            "Tata Banking & Financial Services Fund(IDCW-Payout)",
-            "Tata India Consumer Fund(IDCW-Payout)",
-            "Tata India Pharma & Healthcare Fund(IDCW-Payout)",
-            "Tata Resources & Energy Fund(IDCW-Payout)",
-            "Tata Resources & Energy Fund(IDCW)",
-            "Tata India Pharma & Healthcare Fund",
-            "Tata India Pharma & Healthcare Fund(IDCW)",
-            "Tata Resources & Energy Fund",
-            "Tata India Consumer Fund(IDCW)",
-            "Tata India Consumer Fund",
-            "Tata Digital India Fund(IDCW-Payout)",
-            "Tata Digital India Fund",
-            "Tata Banking & Financial Services Fund",
-            "Tata Banking & Financial Services Fund(IDCW)",
-            "Tata ST Bond Fund(P-IDCW)",
-            "Tata ELSS Tax Saver Fund",
-            "Tata Treasury Advantage Fund(IDCW)",
-            "Tata Retirement Sav Fund - Prog Plan",
-            "Tata Retirement Sav Fund - Cons Plan",
-            "Tata ST Bond Fund(M-IDCW)",
-            "Tata Money Market Fund",
-            "Tata Money Market Fund(DD-IDCW)",
-            "Tata Mid Cap Growth Fund",
-            "Tata Equity Savings Fund(P-IDCW)",
-            "Tata Equity Savings Fund(M-IDCW)",
-            "Tata Equity Savings Fund",
-            "Tata Mid Cap Growth Fund(IDCW)",
-            "Tata Gilt Securities Fund",
-            "Tata Gilt Securities Fund(IDCW)",
-            "Tata Retirement Sav Fund - Mod Plan",
-            "Tata Equity P/E Fund(Div Trig Opt A-5%)",
-            "Tata ST Bond Fund",
-            "Tata Ethical Fund(IDCW)",
-            "Tata Ethical Fund",
-            "Tata Large Cap Fund",
-            "Tata Large Cap Fund(IDCW)",
-            "Tata Infrastructure Fund",
-            "Tata Infrastructure Fund(IDCW)",
-            "Tata S&P BSE Sensex Index Fund",
-            "Tata Liquid Fund",
-            "Tata Liquid Fund(DD-IDCW)",
-            "Tata Treasury Advantage Fund",
-            "Tata Treasury Advantage Fund(W-IDCW)",
-            "Tata Hybrid Equity Fund(M-IDCW)",
-            "Tata Young Citizen Fund",
-            "Tata Equity P/E Fund",
-            "Tata Large & Mid Cap Fund(IDCW)",
-            "Tata Large & Mid Cap Fund",
-            "Tata Equity P/E Fund(Div Trig Opt B-10%)",
-            "Tata Treasury Advantage Fund(DD-IDCW)",
-            "Tata NIFTY 50 Index Fund",
-            "Tata Hybrid Equity Fund",
-            "Tata Hybrid Equity Fund(IDCW)",
-            "Tata Dividend Yield Fund(IDCW Payout)",
-            "Tata Dividend Yield Fund",
-            "Tata Dividend Yield Fund(IDCW)",
-            "Tata Floating Rate Fund(IDCW)",
-            "Tata Floating Rate Fund(M-IDCW Payout)",
-            "Tata Floating Rate Fund(Q-IDCW)",
-            "Tata Floating Rate Fund",
-            "Tata Business Cycle Fund(IDCW Payout)",
-            "Tata Business Cycle Fund",
-            "Tata Business Cycle Fund(IDCW)",
-            "Tata Floating Rate Fund(Q-IDCW Payout)",
-            "Tata Floating Rate Fund(IDCW Payout)",
-            "Tata Floating Rate Fund(M-IDCW)",
-            "Tata Corp Bond Fund(M-IDCW Payout)",
-            "Tata Corp Bond Fund(Q-IDCW)",
-            "Tata Corp Bond Fund(IDCW)",
-            "Tata Corp Bond Fund",
-            "Tata Corp Bond Fund(M-IDCW)",
-            "Tata Corp Bond Fund(Q-IDCW Payout)",
-            "Tata Corp Bond Fund(IDCW Payout)",
-            "Tata Nifty India Digital ETF FoF",
-            "Tata Nifty India Digital ETF FoF(IDCW)",
-            "Tata Nifty SDL Plus AAA PSU Bond Dec 2027 60:40 Index Fund(IDCW Payout)",
-            "Tata Nifty SDL Plus AAA PSU Bond Dec 2027 60:40 Index Fund",
-            "Tata Nifty SDL Plus AAA PSU Bond Dec 2027 60:40 Index Fund(IDCW)",
-            "Tata Housing Opportunities Fund(IDCW)",
-            "Tata Housing Opportunities Fund",
-            "Tata Nifty India Digital ETF FoF(IDCW Payout)",
-            "Tata Housing Opportunities Fund(IDCW Payout)",
-            "Tata CRISIL IBX Gilt Index - April 2026 Index Fund(IDCW)",
-            "Tata CRISIL IBX Gilt Index - April 2026 Index Fund",
-            "Tata Nifty Midcap 150 Momentum 50 Index Fund(IDCW)",
-            "Tata Nifty Midcap 150 Momentum 50 Index Fund",
-            "Tata CRISIL IBX Gilt Index - April 2026 Index Fund(IDCW Payout)",
-            "Tata Nifty Midcap 150 Momentum 50 Index Fund(IDCW Payout)",
-            "Tata Nifty G-Sec Dec 2029 Index Fund(IDCW Payout)",
-            "Tata Nifty G-Sec Dec 2029 Index Fund",
-            "Tata Nifty G-Sec Dec 2026 Index Fund(IDCW Payout)",
-            "Tata Nifty G-Sec Dec 2026 Index Fund",
-            "Tata Multicap Fund",
-            "Tata Multicap Fund(IDCW)",
-            "Tata Nifty G-Sec Dec 2029 Index Fund(IDCW)",
-            "Tata Multicap Fund(IDCW-Payout)",
-            "Tata Nifty G-Sec Dec 2026 Index Fund(IDCW)",
-            "Tata Gold ETF FoF(IDCW)",
-            "Tata Gold ETF FoF(IDCW Payout)",
-            "Tata Gold ETF FoF",
-            "Tata Silver ETF FoF",
-            "Tata Silver ETF FoF(IDCW Payout)",
-            "Tata Silver ETF FoF(IDCW)",
-            "Sundaram Large Cap Fund(IDCW)",
-            "Sundaram Large Cap Fund",
-            "Sundaram Overnight Fund(M-IDCW Payout)",
-            "Sundaram Diversified Equity(IDCW)",
-            "Sundaram Overnight Fund(W-IDCW)",
-            "Sundaram Overnight Fund(M-IDCW)",
-            "Sundaram Overnight Fund(FN-IDCW)",
-            "Sundaram Overnight Fund",
-            "Sundaram Overnight Fund(DD-IDCW)",
-            "Sundaram Money Market Fund(M-IDCW)",
-            "Sundaram Money Market Fund(Q-IDCW)",
-            "Sundaram Money Market Fund",
-            "Sundaram Money Market Fund(DD-IDCW)",
-            "Sundaram Services Fund(IDCW)",
-            "Sundaram Services Fund",
-            "Sundaram LT Tax Adv Fund-Sr IV-(IDCW)",
-            "Sundaram LT Tax Adv Fund-Sr IV",
-            "Sundaram Mid Cap Fund(IDCW)",
-            "Sundaram LT Tax Adv Fund-Sr III",
-            "Sundaram LT Tax Adv Fund-Sr III-(IDCW)",
-            "Sundaram ELSS Tax Saver Fund(H-IDCW)",
-            "Sundaram LT Micro Cap Tax Adv Fund-Sr VI-(IDCW)",
-            "Sundaram LT Micro Cap Tax Adv Fund-Sr VI",
-            "Sundaram LT Micro Cap Tax Adv Fund-Sr V-(IDCW)",
-            "Sundaram LT Micro Cap Tax Adv Fund-Sr V",
-            "Sundaram Ultra Short Duration Fund(M-IDCW)",
-            "Sundaram Focused Fund(H-IDCW)",
-            "Sundaram Short Duration Fund(M-IDCW)",
-            "Sundaram Multi Cap Fund(H-IDCW)",
-            "Sundaram Dividend Yield Fund(H-IDCW)",
-            "Sundaram Arbitrage Fund(M-IDCW)",
-            "Sundaram Balanced Advantage Fund(M-IDCW)",
-            "Sundaram Balanced Advantage Fund(M-IDCW)",
-            "Sundaram Equity Savings Fund(H-IDCW)",
-            "Sundaram Low Duration Fund(M-IDCW)",
-            "Sundaram Liquid Fund(M-IDCW)",
-            "Sundaram Equity Savings Fund(Q-IDCW)",
-            "Sundaram Equity Savings Fund(Q-IDCW)",
-            "Sundaram Nifty 100 Equal Weight Fund(IDCW)",
-            "Sundaram Nifty 100 Equal Weight Fund(IDCW)",
-            "Sundaram Equity Savings Fund(H-IDCW)",
-            "Sundaram LT Micro Cap Tax Adv Fund-Sr IV",
-            "Sundaram LT Micro Cap Tax Adv Fund-Sr IV-(IDCW)",
-            "Sundaram Aggressive Hybrid Fund(M-IDCW)",
-            "Sundaram Aggressive Hybrid Fund(M-IDCW)",
-            "Sundaram LT Micro Cap Tax Adv Fund-Sr III-(IDCW)",
-            "Sundaram LT Micro Cap Tax Adv Fund-Sr III",
-            "Sundaram Arbitrage Fund(M-IDCW)",
-            "Sundaram Arbitrage Fund",
-            "Sundaram LT Tax Adv Fund-Sr II-(IDCW)",
-            "Sundaram LT Tax Adv Fund-Sr II",
-            "Sundaram LT Tax Adv Fund-Sr I-(IDCW)",
-            "Sundaram LT Tax Adv Fund-Sr I",
-            "Sundaram Infra Advantage Fund(IDCW)",
-            "Sundaram Banking & PSU Debt Fund",
-            "Sundaram Ultra Short Duration Fund(DD-IDCW)",
-            "Sundaram Large and Mid Cap Fund",
-            "Sundaram Corp Bond Fund",
-            "Sundaram Banking & PSU Debt Fund(M-IDCW)",
-            "Sundaram Corp Bond Fund(H-IDCW)",
-            "Sundaram Banking & PSU Debt Fund",
-            "Sundaram Corp Bond Fund(M-IDCW)",
-            "Sundaram Banking & PSU Debt Fund(W-IDCW)",
-            "Sundaram Banking & PSU Debt Fund(DD-IDCW)",
-            "Sundaram Corp Bond Fund(Q-IDCW)",
-            "Sundaram Corp Bond Fund(A-IDCW)",
-            "Sundaram Global Brand Fund",
-            "Sundaram Global Brand Fund(IDCW)",
-            "Sundaram Debt Oriented Hybrid Fund",
-            "Sundaram Debt Oriented Hybrid Fund(H-IDCW)",
-            "Sundaram Debt Oriented Hybrid Fund(M-IDCW)",
-            "Sundaram Debt Oriented Hybrid Fund(Q-IDCW)",
-            "Sundaram Medium Term Bond Fund(Q-IDCW)",
-            "Sundaram Medium Term Bond Fund(A-IDCW)",
-            "Sundaram Consumption Fund",
-            "Sundaram Fin Serv Opp Fund(IDCW)",
-            "Sundaram Fin Serv Opp Fund",
-            "Sundaram Consumption Fund(IDCW)",
-            "Sundaram Infra Advantage Fund",
-            "Sundaram Diversified Equity",
-            "Sundaram Mid Cap Fund",
-            "Sundaram Small Cap Fund(IDCW)",
-            "Sundaram Small Cap Fund",
-            "Sundaram Large and Mid Cap Fund(IDCW)",
-            "Sundaram Medium Term Bond Fund",
-            "Sundaram ELSS Tax Saver Fund",
-            "Sundaram Focused Fund",
-            "Sundaram Focused Fund(H-IDCW)",
-            "Sundaram Short Duration Fund(M-IDCW)",
-            "Sundaram Short Duration Fund",
-            "Sundaram Multi Cap Fund",
-            "Sundaram Multi Cap Fund(H-IDCW)",
-            "Sundaram Dividend Yield Fund(H-IDCW)",
-            "Sundaram Dividend Yield Fund",
-            "Sundaram Low Duration Fund(W-IDCW)",
-            "Sundaram Low Duration Fund",
-            "Sundaram Low Duration Fund(M-IDCW)",
-            "Sundaram Low Duration Fund(DD-IDCW)",
-            "Sundaram Balanced Advantage Fund",
-            "Sundaram Nifty 100 Equal Weight Fund",
-            "Sundaram Equity Savings Fund",
-            "Sundaram Aggressive Hybrid Fund",
-            "Sundaram Liquid Fund",
-            "Sundaram Liquid Fund(M-IDCW)",
-            "Sundaram Liquid Fund(DD-IDCW)",
-            "Sundaram Liquid Fund(W-IDCW)",
-            "Sundaram Ultra Short Duration Fund(M-IDCW)",
-            "Sundaram Ultra Short Duration Fund",
-            "Sundaram Large Cap Fund(IDCW)",
-            "Sundaram Liquid Fund(B-IDCW)",
-            "Sundaram Liquid Fund(F-IDCW)",
-            "Sundaram Liquid Fund(Q-IDCW)",
-            "Sundaram Ultra Short Duration Fund(Q-IDCW)",
-            "Sundaram Ultra Short Duration Fund(F-IDCW)",
-            "Sundaram Short Duration Fund(A-IDCW)",
-            "Sundaram Low Duration Fund(Q-IDCW)",
-            "Sundaram Low Duration Fund(F-IDCW)",
-            "Sundaram Short Duration Fund(H-IDCW)",
-            "Sundaram Short Duration Fund(Q-IDCW)",
-            "Sundaram Short Duration Fund(F-IDCW)",
-            "Sundaram Short Duration Fund(W-IDCW)",
-            "Sundaram Flexi Cap Fund(IDCW)",
-            "Sundaram Flexi Cap Fund",
-            "Sundaram Flexi Cap Fund(IDCW)",
-            "Sundaram Ultra Short Duration Fund(Q-IDCW)",
-            "Sundaram Low Duration Fund(F-IDCW)",
-            "Sundaram Low Duration Fund(Q-IDCW)",
-            "Sundaram Short Duration Fund(F-IDCW)",
-            "Sundaram Short Duration Fund(W-IDCW)",
-            "Sundaram Money Market Fund(Q-IDCW)",
-            "Sundaram Money Market Fund(M-IDCW)",
-            "Sundaram Services Fund(IDCW)",
-            "Sundaram Mid Cap Fund(IDCW)",
-            "Sundaram Infra Advantage Fund(IDCW)",
-            "Sundaram Corp Bond Fund(H-IDCW)",
-            "Sundaram Debt Oriented Hybrid Fund(M-IDCW)",
-            "Sundaram Medium Term Bond Fund(A-IDCW)",
-            "Sundaram Debt Oriented Hybrid Fund(Q-IDCW)",
-            "Sundaram Banking & PSU Debt Fund(M-IDCW)",
-            "Sundaram Global Brand Fund(IDCW)",
-            "Sundaram Corp Bond Fund(A-IDCW)",
-            "Sundaram Corp Bond Fund(M-IDCW)",
-            "Sundaram Corp Bond Fund(Q-IDCW)",
-            "Sundaram Debt Oriented Hybrid Fund(H-IDCW)",
-            "Sundaram Medium Term Bond Fund(Q-IDCW)",
-            "Sundaram Fin Serv Opp Fund(IDCW)",
-            "Sundaram Consumption Fund(IDCW)",
-            "Sundaram Small Cap Fund(IDCW)",
-            "Sundaram Large and Mid Cap Fund(IDCW)",
-            "Sundaram Low Duration Fund(W-IDCW)",
-            "Sundaram Multi Asset Allocation Fund(IDCW)",
-            "Sundaram Multi Asset Allocation Fund(IDCW)",
-            "Sundaram Multi Asset Allocation Fund",
-            "Shriram Balanced Advantage Fund(IDCW-Payout)",
-            "Shriram Balanced Advantage Fund(IDCW)",
-            "Shriram Balanced Advantage Fund",
-            "Shriram Flexi Cap Fund(IDCW-Payout)",
-            "Shriram ELSS Tax Saver Fund(IDCW)",
-            "Shriram ELSS Tax Saver Fund",
-            "Shriram Flexi Cap Fund",
-            "Shriram Flexi Cap Fund(IDCW)",
-            "Shriram Aggressive Hybrid Fund(IDCW)",
-            "Shriram Aggressive Hybrid Fund",
-            "Shriram Aggressive Hybrid Fund(IDCW-Payout)",
-            "Shriram Overnight Fund(M-IDCW)",
-            "Shriram Overnight Fund",
-            "Shriram Overnight Fund(DD-IDCW)",
-            "Shriram Overnight Fund(M-IDCW)",
-            "Shriram Multi Asset Allocation Fund",
-            "Samco Flexi Cap Fund",
-            "Samco Overnight Fund",
-            "Samco ELSS Tax Saver Fund",
-            "Samco Active Momentum Fund",
-            "Samco Dynamic Asset Allocation Fund(IDCW)",
-            "Samco Dynamic Asset Allocation Fund",
-            "Samco Dynamic Asset Allocation Fund(IDCW)",
-            "SBI Floating Rate Debt Fund(Q-IDCW)",
-            "SBI Floating Rate Debt Fund(M-IDCW Payout)",
-            "SBI Floating Rate Debt Fund",
-            "SBI Magnum Children's Benefit Fund-Investment Plan",
-            "SBI FMP-34-3682D(IDCW)",
-            "SBI FMP-34-3682D",
-            "SBI Equity Minimum Variance Fund(IDCW-Payout)",
-            "SBI Corp Bond Fund(Q-IDCW Payout)",
-            "SBI Corp Bond Fund(M-IDCW Payout)",
-            "SBI FMP-6-3668D(IDCW)",
-            "SBI FMP-6-3668D",
-            "SBI FMP-1-3668D(IDCW)",
-            "SBI FMP-1-3668D",
-            "SBI Equity Minimum Variance Fund(IDCW)",
-            "SBI Equity Minimum Variance Fund",
-            "SBI Corp Bond Fund(Q-IDCW)",
-            "SBI Corp Bond Fund",
-            "SBI Corp Bond Fund(M-IDCW)",
-            "SBI LT Advantage Fund-VI-(IDCW)",
-            "SBI LT Advantage Fund-VI",
-            "SBI LT Advantage Fund-V",
-            "SBI LT Advantage Fund-V-(IDCW)",
-            "SBI LT Advantage Fund-IV-(IDCW)",
-            "SBI LT Advantage Fund-IV",
-            "SBI Small Cap Fund(IDCW-Payout)",
-            "SBI Focused Equity Fund(IDCW-Payout)",
-            "SBI Banking & Financial Services Fund(IDCW-Payout)",
-            "SBI Magnum Gilt Fund(IDCW-Payout)",
-            "SBI Flexicap Fund(IDCW-Payout)",
-            "SBI Banking and PSU Fund(W-IDCW Payout)",
-            "SBI Banking and PSU Fund(M-IDCW Payout)",
-            "SBI Magnum Comma Fund(IDCW-Payout)",
-            "SBI Magnum Income Fund(Q-IDCW Payout)",
-            "SBI Magnum Midcap Fund(IDCW-Payout)",
-            "SBI Magnum Income Fund(IDCW-Payout)",
-            "SBI Credit Risk Fund(IDCW-Payout)",
-            "SBI Savings Fund(W-IDCW Payout)",
-            "SBI Savings Fund(IDCW-Payout)",
-            "SBI Dynamic Bond Fund(IDCW-Payout)",
-            "SBI Liquid Fund(W-IDCW Payout)",
-            "SBI Gold(IDCW-Payout)",
-            "SBI Liquid Fund(FN-IDCW Payout)",
-            "SBI PSU Fund(IDCW-Payout)",
-            "SBI Infrastructure Fund(IDCW-Payout)",
-            "SBI Overnight Fund(W-IDCW Payout)",
-            "SBI BlueChip Fund(IDCW-Payout)",
-            "SBI Short Term Debt Fund(W-IDCW Payout)",
-            "SBI Short Term Debt Fund(M-IDCW Payout)",
-            "SBI Short Term Debt Fund(FN-IDCW Payout)",
-            "SBI Conservative Hybrid Fund(A-IDCW Payout)",
-            "SBI Magnum Low Duration Fund(W-IDCW Payout)",
-            "SBI Magnum Low Duration Fund(M-IDCW Payout)",
-            "SBI Magnum Low Duration Fund(FN-IDCW Payout)",
-            "SBI Conservative Hybrid Fund(Q-IDCW Payout)",
-            "SBI Conservative Hybrid Fund(M-IDCW Payout)",
-            "SBI Magnum Medium Duration Fund(IDCW-Payout)",
-            "SBI Arbitrage Opportunities Fund(IDCW-Payout)",
-            "SBI Multi Asset Allocation Fund(M-IDCW Payout)",
-            "SBI Multi Asset Allocation Fund(Q-IDCW Payout)",
-            "SBI Magnum Ultra Short Duration Fund(W-IDCW Payout)",
-            "SBI Magnum Constant Maturity Fund(IDCW-Payout)",
-            "SBI Contra Fund(IDCW-Payout)",
-            "SBI Multi Asset Allocation Fund(A-IDCW Payout)",
-            "SBI Equity Hybrid Fund(IDCW-Payout)",
-            "SBI Healthcare Opp Fund(IDCW-Payout)",
-            "SBI Technology Opp Fund(IDCW-Payout)",
-            "SBI Magnum Global Fund(IDCW-Payout)",
-            "SBI Consumption Opp Fund(IDCW-Payout)",
-            "SBI Large & Midcap Fund(IDCW-Payout)",
-            "SBI Magnum Equity ESG Fund(IDCW-Payout)",
-            "SBI Equity Savings Fund(M-IDCW)",
-            "SBI Equity Savings Fund(Q-IDCW)",
-            "SBI Nifty Index Fund(IDCW-Payout)",
-            "SBI LT Advantage Fund-III-(IDCW)",
-            "SBI LT Advantage Fund-III",
-            "SBI Equity Savings Fund(Q-IDCW Payout)",
-            "SBi Equity Savings Fund(M-IDCW Payout)",
-            "SBI Equity Savings Fund",
-            "SBI Banking & Financial Services Fund(IDCW)",
-            "SBI Banking & Financial Services Fund",
-            "SBI LT Advantage Fund-II-(IDCW)",
-            "SBI LT Advantage Fund-II",
-            "SBI LT Advantage Fund-I-(IDCW)",
-            "SBI LT Advantage Fund-I",
-            "SBI Banking and PSU Fund(M-IDCW)",
-            "SBI Banking and PSU Fund(W-IDCW)",
-            "SBI Tax Advantage Fund-III(IDCW)",
-            "SBI Tax Advantage Fund-III",
-            "SBI Magnum Income Fund(Q-IDCW)",
-            "SBI Magnum Constant Maturity Fund(IDCW)",
-            "SBI Banking and PSU Fund",
-            "SBI Banking and PSU Fund(DD-IDCW)",
-            "SBI Short Term Debt Fund(W-IDCW)",
-            "SBI Short Term Debt Fund(M-IDCW)",
-            "SBI Short Term Debt Fund(FN-IDCW)",
-            "SBI Short Term Debt Fund",
-            "SBI Small Cap Fund(IDCW)",
-            "SBI Magnum Low Duration Fund(FN-IDCW)",
-            "SBI Magnum Low Duration Fund(W-IDCW)",
-            "SBI Magnum Low Duration Fund(M-IDCW)",
-            "SBI Magnum Low Duration Fund",
-            "SBI Magnum Low Duration Fund(DD-IDCW)",
-            "SBI PSU Fund(IDCW)",
-            "SBI PSU Fund",
-            "SBI Liquid Fund(FN-IDCW)",
-            "SBI Liquid Fund(W-IDCW)",
-            "SBI Healthcare Opp Fund",
-            "SBI Long Term Equity Fund",
-            "SBI Long Term Equity Fund(IDCW)",
-            "SBI Healthcare Opp Fund(IDCW)",
-            "SBI Flexicap Fund",
-            "SBI Large & Midcap Fund",
-            "SBI Large & Midcap Fund(IDCW)",
-            "SBI Flexicap Fund(IDCW)",
-            "SBI Magnum Midcap Fund",
-            "SBI Magnum Midcap Fund(IDCW)",
-            "SBI Multi Asset Allocation Fund",
-            "SBI Conservative Hybrid Fund",
-            "SBI Conservative Hybrid Fund(Q-IDCW)",
-            "SBI Multi Asset Allocation Fund(M-IDCW)",
-            "SBI Multi Asset Allocation Fund(A-IDCW)",
-            "SBI Multi Asset Allocation Fund(Q-IDCW)",
-            "SBI Conservative Hybrid Fund(M-IDCW)",
-            "SBI Technology Opp Fund(IDCW)",
-            "SBI Technology Opp Fund",
-            "SBI Overnight Fund",
-            "SBI Overnight Fund(DD-IDCW)",
-            "SBI Magnum Ultra Short Duration Fund(DD-IDCW)",
-            "SBI Overnight Fund(W-IDCW)",
-            "SBI Magnum Ultra Short Duration Fund(W-IDCW)",
-            "SBI Magnum Income Fund(IDCW)",
-            "SBI Conservative Hybrid Fund(A-IDCW)",
-            "SBI Magnum Income Fund",
-            "SBI Savings Fund(W-IDCW)",
-            "SBI Savings Fund",
-            "SBI Magnum Income Fund",
-            "SBI Savings Fund(DD-IDCW)",
-            "SBI Savings Fund(IDCW)",
-            "SBI Credit Risk Fund",
-            "SBI Magnum Global Fund",
-            "SBI Credit Risk Fund(DD-IDCW)",
-            "SBI Credit Risk Fund(IDCW)",
-            "SBI Magnum Global Fund(IDCW)",
-            "SBI Magnum Constant Maturity Fund",
-            "SBI Magnum Gilt Fund",
-            "SBI Magnum Gilt Fund(IDCW)",
-            "SBI Consumption Opp Fund",
-            "SBI Consumption Opp Fund(IDCW)",
-            "SBI Magnum Equity ESG Fund",
-            "SBI Magnum Equity ESG Fund(IDCW)",
-            "SBI Focused Equity Fund",
-            "SBI Contra Fund(IDCW)",
-            "SBI Contra Fund",
-            "SBI Focused Equity Fund(IDCW)",
-            "SBI Nifty Index Fund",
-            "SBI Nifty Index Fund(IDCW)",
-            "SBI Magnum Medium Duration Fund",
-            "SBI Magnum Comma Fund",
-            "SBI Infrastructure Fund",
-            "SBI Magnum Comma Fund(IDCW)",
-            "SBI Magnum Medium Duration Fund(IDCW)",
-            "SBI Gold",
-            "SBI Infrastructure Fund(IDCW)",
-            "SBI Gold(IDCW)",
-            "SBI Dynamic Bond Fund",
-            "SBI Dynamic Bond Fund(IDCW)",
-            "SBI BlueChip Fund",
-            "SBI BlueChip Fund(IDCW)",
-            "SBI Magnum Children's Benefit Fund-Savings Plan",
-            "SBI Equity Hybrid Fund(IDCW)",
-            "SBI Arbitrage Opportunities Fund(IDCW)",
-            "SBI Equity Hybrid Fund",
-            "SBI Arbitrage Opportunities Fund",
-            "SBI Small Cap Fund",
-            "SBI Liquid Fund",
-            "SBI Liquid Fund(DD-IDCW)",
-            "SBI Magnum Ultra Short Duration Fund",
-            "SBI Floating Rate Debt Fund(M-IDCW)",
-            "SBI Retirement Benefit Fund-Aggressive Hybrid Plan",
-            "SBI Retirement Benefit Fund-Aggressive Hybrid Plan(IDCW)",
-            "SBI Retirement Benefit Fund-Aggressive Plan(IDCW)",
-            "SBI Retirement Benefit Fund-Aggressive Plan",
-            "SBI Retirement Benefit Fund-Conservative Plan",
-            "SBI Retirement Benefit Fund-Conservative Hybrid Plan",
-            "SBI Retirement Benefit Fund-Conservative Plan(IDCW)",
-            "SBI Retirement Benefit Fund-Conservative Hybrid Plan(IDCW)Direct Plan",
-            "SBI International Access-US Equity FoF",
-            "SBI International Access-US Equity FoF(IDCW-Payout)",
-            "SBI FMP-41-1498D(IDCW)",
-            "SBI FMP-41-1498D",
-            "SBI FMP-42-1857D(IDCW)",
-            "SBI FMP-42-1857D",
-            "SBI International Access-US Equity FoF(IDCW)",
-            "SBI FMP-43-1616D",
-            "SBI FMP-43-1616D(IDCW)",
-            "SBI Nifty Next 50 Index Fund(IDCW)",
-            "SBI Nifty Next 50 Index Fund",
-            "SBI FMP-44-1855D",
-            "SBI FMP-44-1855D(IDCW)",
-            "SBI FMP-45-1840D(IDCW)",
-            "SBI FMP-45-1840D",
-            "SBI FMP-46-1850D(IDCW)",
-            "SBI FMP-46-1850D",
-            "SBI FMP-47-1434D",
-            "SBI FMP-47-1434D(IDCW)",
-            "SBI FMP-48-1458D",
-            "SBI FMP-48-1458D(IDCW)",
-            "SBI Balanced Advantage Fund",
-            "SBI Balanced Advantage Fund(IDCW)",
-            "SBI FMP-49-1823D(IDCW)",
-            "SBI FMP-49-1823D",
-            "SBI FMP-50-1843D(IDCW)",
-            "SBI FMP-50-1843D",
-            "SBI Balanced Advantage Fund(IDCW Payout)",
-            "SBI FMP-51-1846D(IDCW)",
-            "SBI FMP-51-1846D",
-            "SBI FMP-52-1848D",
-            "SBI FMP-52-1848D(IDCW)",
-            "SBI FMP-53-1839D(IDCW)",
-            "SBI FMP-53-1839D",
-            "SBI FMP-54-1842D",
-            "SBI FMP-54-1842D(IDCW)",
-            "SBI FMP-55-1849D",
-            "SBI FMP-55-1849D(IDCW)",
-            "SBI FMP-56-1232D",
-            "SBI FMP-56-1232D(IDCW)",
-            "SBI FMP-57-1835D(IDCW)",
-            "SBI FMP-57-1835D",
-            "SBI FMP-58-1842D",
-            "SBI FMP-58-1842D(IDCW)",
-            "SBI CPSE Bond Plus SDL Sep 2026 50:50 Index Fund",
-            "SBI CPSE Bond Plus SDL Sep 2026 50:50 Index Fund(IDCW)",
-            "SBI FMP-59-1618D(IDCW)",
-            "SBI FMP-59-1618D",
-            "SBI FMP-60-1878D",
-            "SBI FMP-60-1878D(IDCW)",
-            "SBI Multicap Fund(IDCW Payout)",
-            "SBI Multicap Fund",
-            "SBI Multicap Fund(IDCW)",
-            "SBI FMP-61-1927D(IDCW)",
-            "SBI FMP-61-1927D",
-            "SBI Nifty Next 50 Index Fund(IDCW Payout)",
-            "SBI FMP-66-1361D(IDCW)",
-            "SBI FMP-66-1361D",
-            "SBI FMP-67-1467D",
-            "SBI FMP-67-1467D(IDCW)",
-            "SBI FMP-64-1169D",
-            "SBI FMP-64-1169D(IDCW)",
-            "SBI FMP-68-1302D(IDCW)",
-            "SBI FMP-68-1302D",
-            "SBI Nifty Smallcap 250 Index Fund",
-            "SBI Nifty Midcap 150 Index Fund",
-            "SBI Nifty Smallcap 250 Index Fund(IDCW Payout)",
-            "SBI Nifty Midcap 150 Index Fund(IDCW Payout)",
-            "SBI CRISIL IBX Gilt Index - June 2036 Fund",
-            "SBI CRISIL IBX Gilt Index - June 2036 Fund(IDCW)",
-            "SBI CRISIL IBX SDL Index - Sep 2027 Fund(IDCW Payout)",
-            "SBI CRISIL IBX Gilt Index - Apr 2029 Fund(IDCW)",
-            "SBI CRISIL IBX SDL Index - Sep 2027 Fund",
-            "SBI CRISIL IBX Gilt Index - Apr 2029 Fund",
-            "SBI CPSE Bond Plus SDL Sep 2026 50:50 Index Fund(IDCW Payout)",
-            "SBI CRISIL IBX SDL Index - Sep 2027 Fund(IDCW)",
-            "SBI Nifty Smallcap 250 Index Fund(IDCW)",
-            "SBI FMP-72-1239D",
-            "SBI FMP-72-1239D(IDCW)",
-            "SBI FMP-73-1226D",
-            "SBI FMP-73-1226D(IDCW)",
-            "SBI Long Duration Fund(IDCW Payout)",
-            "SBI Long Duration Fund",
-            "SBI FMP-74-1243D(IDCW)",
-            "SBI FMP-74-1243D",
-            "SBI FMP-76-1221D(IDCW)",
-            "SBI FMP-76-1221D",
-            "SBI FMP-78-1170D(IDCW)",
-            "SBI FMP-78-1170D",
-            "SBI Dividend Yield Fund(IDCW Payout)",
-            "SBI Dividend Yield Fund",
-            "SBI Nifty Midcap 150 Index Fund(IDCW)",
-            "SBI FMP-79-1130D(IDCW)",
-            "SBI FMP-79-1130D",
-            "SBI FMP-80-366D",
-            "SBI FMP-80-366D(IDCW)",
-            "SBI FMP-81-1157D(IDCW)",
-            "SBI FMP-81-1157D",
-            "SBI Dividend Yield Fund(IDCW)",
-            "SBI S&P BSE Sensex Index Fund",
-            "SBI S&P BSE Sensex Index Fund(IDCW)",
-            "SBI S&P BSE Sensex Index Fund(IDCW Payout)",
-            "SBI Long Duration Fund(IDCW)",
-            "SBI CRISIL IBX Gilt Index - Apr 2029 Fund(IDCW)",
-            "SBI CRISIL IBX Gilt Index - June 2036 Fund(IDCW)",
-            "SBI Floating Rate Debt Fund(Q-IDCW)",
-            "SBI FMP-91-90D(IDCW)",
-            "SBI FMP-91-90D",
-            "SBI Nifty50 Equal Weight Index Fund(IDCW)",
-            "SBI Nifty50 Equal Weight Index Fund(IDCW Payout)",
-            "SBI Nifty50 Equal Weight Index Fund",
-            "SBI FMP-92-91D(IDCW)",
-            "SBI FMP-92-91D",
-            "SBI Energy Opportunities Fund(IDCW)",
-            "SBI Energy Opportunities Fund",
-            "SBI Energy Opportunities Fund(IDCW)",
-            "Quantum ESG Best In Class Strategy Fund",
-            "Quantum Dynamic Bond Fund(M-IDCW)",
-            "Quantum Dynamic Bond Fund",
-            "Quantum Multi Asset FOFs",
-            "Quantum Gold Saving Fund",
-            "Quantum Equity FoF(IDCW)",
-            "Quantum Equity FoF",
-            "Quantum ELSS Tax Saver Fund(IDCW)",
-            "Quantum ELSS Tax Saver Fund",
-            "Quantum Long Term Equity Value Fund",
-            "Quantum Long Term Equity Value Fund(IDCW)",
-            "Quantum Liquid Fund(DD-IDCW)",
-            "Quantum Liquid Fund(M-IDCW)",
-            "Quantum Liquid Fund",
-            "Quantum Nifty 50 ETF FoF",
-            "Quantum Dynamic Bond Fund(M-IDCW)",
-            "Quantum Equity FoF(IDCW)",
-            "Quantum Long Term Equity Value Fund(IDCW)",
-            "Quantum Liquid Fund(M-IDCW)",
-            "Quantum Small Cap Fund",
-            "Quantum Multi Asset Allocation Fund",
-            "Quant ESG Equity Fund",
-            "Quant ESG Equity Fund(IDCW)",
-            "Quant Large & Mid Cap Fund",
-            "Quant Large & Mid Cap Fund",
-            "Quant Large & Mid Cap Fund(IDCW)",
-            "Quant Active Fund(IDCW)",
-            "Quant Active Fund",
-            "Quant Absolute Fund(IDCW)",
-            "Quant Multi Asset Fund",
-            "Quant Multi Asset Fund(IDCW)",
-            "Quant Absolute Fund",
-            "Quant Small Cap Fund(IDCW)",
-            "Quant Small Cap Fund",
-            "Quant Focused Fund(IDCW)",
-            "Quant Liquid Plan(DD-IDCW)",
-            "Quant Infrastructure Fund(IDCW)",
-            "Quant Focused Fund",
-            "Quant Infrastructure Fund",
-            "Quant Liquid Plan(W-IDCW)",
-            "Quant Mid Cap Fund(IDCW)",
-            "Quant Liquid Plan(M-IDCW)",
-            "Quant Liquid Plan",
-            "Quant Mid Cap Fund",
-            "Quant ELSS Tax Saver Fund(IDCW)",
-            "Quant Flexi Cap Fund",
-            "Quant Flexi Cap Fund(IDCW)",
-            "Quant ELSS Tax Saver Fund",
-            "Quant Quantamental Fund(IDCW)",
-            "Quant Quantamental Fund",
-            "Quant Value Fund(IDCW)",
-            "Quant Value Fund",
-            "Quant Large Cap Fund(IDCW)",
-            "Quant Large Cap Fund",
-            "Quant Overnight Fund(IDCW)",
-            "Quant Overnight Fund",
-            "Quant Gilt Fund(IDCW)",
-            "Quant Gilt Fund",
-            "Quant Dynamic Asset Allocation Fund(IDCW)",
-            "Quant Dynamic Asset Allocation Fund",
-            "Quant Business Cycle Fund",
-            "Quant Business Cycle Fund(IDCW)",
-            "Quant BFSI Fund(IDCW)",
-            "Quant BFSI Fund",
-            "Quant Healthcare Fund",
-            "Quant Healthcare Fund(IDCW)",
-            "Quant Manufacturing Fund(IDCW)",
-            "Quant Manufacturing Fund",
-            "Quant Manufacturing Fund(IDCW)",
-            "Quant Healthcare Fund(IDCW)",
-            "Quant BFSI Fund(IDCW)",
-            "Quant Business Cycle Fund(IDCW)",
-            "Quant Dynamic Asset Allocation Fund(IDCW)",
-            "Quant Gilt Fund(IDCW)",
-            "Quant Overnight Fund(IDCW)",
-            "Quant Large Cap Fund(IDCW)",
-            "Quant Value Fund(IDCW)",
-            "Quant Quantamental Fund(IDCW)",
-            "Quant ESG Equity Fund(IDCW)",
-            "Quant Infrastructure Fund(IDCW)",
-            "Quant Flexi Cap Fund(IDCW)",
-            "Quant Liquid Plan(W-IDCW)",
-            "Quant Large & Mid Cap Fund(IDCW)",
-            "Quant Liquid Plan(M-IDCW)",
-            "Quant Focused Fund(IDCW)",
-            "Quant Mid Cap Fund(IDCW)",
-            "Quant Active Fund(IDCW)",
-            "Quant Multi Asset Fund(IDCW)",
-            "Quant Absolute Fund(IDCW)",
-            "Quant Small Cap Fund(IDCW)",
-            "Quant Teck Fund(IDCW)",
-            "Quant Teck Fund(IDCW)",
-            "Quant Teck Fund",
-            "Quant Momentum Fund(IDCW)",
-            "Quant Momentum Fund(IDCW)",
-            "Quant Momentum Fund",
-            "Quant Commodities Fund(IDCW)",
-            "Quant Commodities Fund",
-            "Quant Commodities Fund(IDCW)",
-            "Quant Consumption Fund(IDCW)",
-            "Quant Consumption Fund",
-            "Quant Consumption Fund(IDCW)",
-            "Quant PSU Fund(IDCW)",
-            "Quant PSU Fund(IDCW)",
-            "Quant PSU Fund",
-            "Parag Parikh ELSS Tax Saver Fund",
-            "Parag Parikh Liquid Fund(M-IDCW Payout)",
-            "Parag Parikh Liquid Fund(M-IDCW)",
-            "Parag Parikh Liquid Fund",
-            "Parag Parikh Flexi Cap Fund",
-            "Parag Parikh Liquid Fund(W-IDCW)",
-            "Parag Parikh Liquid Fund(DD-IDCW)",
-            "Parag Parikh Conservative Hybrid Fund(M-IDCW)",
-            "Parag Parikh Conservative Hybrid Fund",
-            "Parag Parikh Conservative Hybrid Fund(M-IDCW Payout)",
-            "Parag Parikh Arbitrage Fund",
-            "Parag Parikh Dynamic Asset Allocation Fund(M-IDCW)",
-            "Parag Parikh Dynamic Asset Allocation Fund(M-IDCW)",
-            "Parag Parikh Dynamic Asset Allocation Fund",
-            "PGIM India Money Market Fund(DD-IDCW)",
-            "PGIM India Money Market Fund(W-IDCW)",
-            "PGIM India Money Market Fund(M-IDCW)",
-            "PGIM India Money Market Fund",
-            "PGIM India Overnight Fund(W-IDCW)",
-            "PGIM India Overnight Fund",
-            "PGIM India Overnight Fund(DD-IDCW)",
-            "PGIM India Hybrid Equity Fund(M-IDCW)",
-            "PGIM India Liquid Fund(M-IDCW)",
-            "PGIM India ELSS Tax Saver Fund(IDCW)",
-            "PGIM India ELSS Tax Saver Fund",
-            "PGIM India Flexi Cap Fund(IDCW)",
-            "PGIM India Flexi Cap Fund",
-            "PGIM India Arbitrage Fund(M-IDCW)",
-            "PGIM India Arbitrage Fund(IDCW)",
-            "PGIM India Arbitrage Fund",
-            "PGIM India Midcap Opp Fund",
-            "PGIM India Midcap Opp Fund(IDCW)",
-            "PGIM India Liquid Fund(W-IDCW)",
-            "PGIM India Dynamic Bond Fund(Q-IDCW)",
-            "PGIM India Global Equity Opp Fund",
-            "PGIM India Ultra Short Duration Fund(M-IDCW)",
-            "PGIM India Ultra Short Duration Fund(DD-IDCW)",
-            "PGIM India Ultra Short Duration Fund",
-            "PGIM India Ultra Short Duration Fund(W-IDCW)",
-            "PGIM India Corp Bond Fund(M-IDCW)",
-            "PGIM India Corp Bond Fund(Q-IDCW)",
-            "PGIM India Corp Bond Fund(A-IDCW)",
-            "PGIM India Large Cap Fund(IDCW)",
-            "PGIM India Equity Savings Fund(M-IDCW)",
-            "PGIM India Emerging Markets Equity Fund",
-            "PGIM India Equity Savings Fund(A-IDCW)",
-            "PGIM India Hybrid Equity Fund(IDCW)",
-            "PGIM India Dynamic Bond Fund",
-            "PGIM India Corp Bond Fund",
-            "PGIM India Gilt Fund(Q-IDCW)",
-            "PGIM India Gilt Fund",
-            "PGIM India Large Cap Fund",
-            "PGIM India Equity Savings Fund",
-            "PGIM India Hybrid Equity Fund",
-            "PGIM India Liquid Fund",
-            "PGIM India Liquid Fund(DD-IDCW)",
-            "PGIM India Balanced Advantage Fund",
-            "PGIM India Balanced Advantage Fund(IDCW)",
-            "PGIM India Small Cap Fund(IDCW)",
-            "PGIM India Small Cap Fund",
-            "PGIM India Global Select Real Estate Securities FoF",
-            "PGIM India CRISIL IBX Gilt Index - Apr 2028 Fund",
-            "PGIM India CRISIL IBX Gilt Index - Apr 2028 Fund(IDCW)",
-            "PGIM India CRISIL IBX Gilt Index - Apr 2028 Fund(IDCW)",
-            "PGIM India Small Cap Fund(IDCW)",
-            "PGIM India Balanced Advantage Fund(IDCW)",
-            "PGIM India Overnight Fund(W-IDCW)",
-            "PGIM India Hybrid Equity Fund(M-IDCW)",
-            "PGIM India Liquid Fund(M-IDCW)",
-            "PGIM India Flexi Cap Fund(IDCW)",
-            "PGIM India Flexi Cap Fund(IDCW)",
-            "PGIM India Arbitrage Fund(M-IDCW)",
-            "PGIM India Arbitrage Fund(IDCW)",
-            "PGIM India Midcap Opp Fund(IDCW)",
-            "PGIM India Midcap Opp Fund(IDCW)",
-            "PGIM India Liquid Fund(W-IDCW)",
-            "PGIM India Dynamic Bond Fund(Q-IDCW)",
-            "PGIM India Dynamic Bond Fund(Q-IDCW)",
-            "PGIM India Ultra Short Duration Fund(W-IDCW)",
-            "PGIM India Ultra Short Duration Fund(M-IDCW)",
-            "PGIM India Large Cap Fund(IDCW)",
-            "PGIM India Corp Bond Fund(M-IDCW)",
-            "PGIM India Hybrid Equity Fund(IDCW)",
-            "PGIM India Equity Savings Fund(M-IDCW)",
-            "PGIM India Equity Savings Fund(A-IDCW)",
-            "PGIM India Corp Bond Fund(Q-IDCW)",
-            "PGIM India Corp Bond Fund(A-IDCW)",
-            "PGIM India Gilt Fund(Q-IDCW)",
-            "PGIM India Large and Mid Cap Fund(IDCW)",
-            "PGIM India Large and Mid Cap Fund",
-            "PGIM India Large and Mid Cap Fund(IDCW)",
-            "Old Bridge Focused Equity Fund(IDCW)",
-            "Old Bridge Focused Equity Fund(IDCW)",
-            "Old Bridge Focused Equity Fund",
-            "Nippon India Nifty Smallcap 250 Index Fund(IDCW)",
-            "Nippon India Nifty Smallcap 250 Index Fund",
-            "Nippon India Multi Asset Fund",
-            "Nippon India Multi Asset Fund(IDCW)",
-            "Nippon India FHF-XLI-8-3654D(IDCW)",
-            "Nippon India FHF-XLI-8-3654D",
-            "Nippon India Nifty Next 50 Junior BeES FoF",
-            "Nippon India Nifty Next 50 Junior BeES FoF-(IDCW)",
-            "Nippon India Overnight Fund(M-IDCW)",
-            "Nippon India Overnight Fund(Q-IDCW)",
-            "Nippon India Overnight Fund(W-IDCW)",
-            "Nippon India Overnight Fund(DD-IDCW)",
-            "Nippon India Overnight Fund",
-            "Nippon India Nivesh Lakshya Fund(H-IDCW)",
-            "Nippon India Nivesh Lakshya Fund",
-            "Nippon India Nivesh Lakshya Fund(IDCW)",
-            "Nippon India Nivesh Lakshya Fund(A-IDCW)",
-            "Nippon India Nivesh Lakshya Fund(Q-IDCW)",
-            "Nippon India Nivesh Lakshya Fund(M-IDCW)",
-            "Nippon India Equity Hybrid Fund(M-IDCW)",
-            "Nippon India US Equity Opp Fund",
-            "Nippon India US Equity Opp Fund(IDCW)",
-            "Nippon India Equity Savings Fund(Q-IDCW)",
-            "Nippon India Equity Savings Fund(M-IDCW)",
-            "Nippon India Equity Savings Fund",
-            "Nippon India Equity Savings Fund",
-            "Nippon India Equity Savings Fund(IDCW)",
-            "Nippon India Banking & PSU Debt Fund",
-            "Nippon India Banking & PSU Debt Fund(Q-IDCW)",
-            "Nippon India Banking & PSU Debt Fund(M-IDCW)",
-            "Nippon India Banking & PSU Debt Fund(W-IDCW)",
-            "Nippon India Banking & PSU Debt Fund",
-            "Nippon India Banking & PSU Debt Fund(IDCW)",
-            "Nippon India ELSS Tax Saver Fund(A-IDCW)",
-            "Nippon India Retirement Fund-Income Generation(IDCW)",
-            "Nippon India Retirement Fund-Income Generation",
-            "Nippon India Retirement Fund-Income Generation",
-            "Nippon India Retirement Fund-Wealth Creation",
-            "Nippon India Retirement Fund-Wealth Creation(IDCW)",
-            "Nippon India Retirement Fund-Wealth Creation",
-            "Nippon India Gilt Securities Fund",
-            "Nippon India Japan Equity Fund",
-            "Nippon India Japan Equity Fund(IDCW)",
-            "Nippon India Japan Equity Fund",
-            "Nippon India Strategic Debt Fund(Q-IDCW)",
-            "Nippon India Strategic Debt Fund(IDCW)",
-            "Nippon India Arbitrage Fund(M-IDCW)",
-            "Nippon India Corp Bond Fund(IDCW)",
-            "Nippon India Short Term Fund(IDCW)",
-            "Nippon India Low Duration Fund(IDCW)",
-            "Nippon India Equity Hybrid Fund(Q-IDCW)",
-            "Nippon India Inv-Qrtly-I",
-            "Nippon India Floating Rate Fund(IDCW)",
-            "Nippon India Inv-Qrtly-II",
-            "Nippon India Gilt Securities-DMDO",
-            "Nippon India Inv-Annual-I",
-            "Nippon India Strategic Debt Fund",
-            "Nippon India Strategic Debt Fund",
-            "Nippon India Inv-Mthly-I",
-            "Nippon India Inv-Qrtly-III(IDCW)",
-            "Nippon India Inv-Qrtly-III",
-            "Nippon India Inv-Mthly-II(IDCW)",
-            "Nippon India Inv-Mthly-II",
-            "Nippon India Inv-Qrtly-II(IDCW)",
-            "Nippon India Money Market Fund",
-            "Nippon India Gilt Securities-AARO",
-            "Nippon India Short Term Fund(Q-IDCW)",
-            "Nippon India Quant Fund",
-            "Nippon India Low Duration Fund",
-            "Nippon India Liquid Fund(M-IDCW)",
-            "Nippon India Ultra Short Duration Fund(Q-IDCW)",
-            "Nippon India Ultra Short Duration Fund(M-IDCW)",
-            "Nippon India Index Fund-S&P BSE Sensex Plan",
-            "Nippon India Floating Rate Fund(Q-IDCW)",
-            "Nippon India Money Market Fund(Q-IDCW)",
-            "Nippon India Credit Risk Fund(IDCW)",
-            "Nippon India Corp Bond Fund",
-            "Nippon India Corp Bond Fund(Q-IDCW)",
-            "Nippon India Income Fund",
-            "Nippon India Income Fund(H-IDCW)",
-            "Nippon India Income Fund(Q-IDCW)",
-            "Nippon India Floating Rate Fund(W-IDCW)",
-            "Nippon India Floating Rate Fund(M-IDCW)",
-            "Nippon India Large Cap Fund(IDCW)",
-            "Nippon India Large Cap Fund",
-            "Nippon India Growth Fund",
-            "Nippon India Gilt Securities-ACAPO",
-            "Nippon India Gilt Securities Fund(M-IDCW)",
-            "Nippon India Vision Fund(IDCW)",
-            "Nippon India Focused Equity Fund(IDCW)",
-            "Nippon India Consumption Fund",
-            "Nippon India Income Fund(A-IDCW)",
-            "Nippon India Consumption Fund(IDCW)",
-            "Nippon India Dynamic Bond Fund(Q-IDCW)",
-            "Nippon India Index Fund-Nifty 50 Plan",
-            "Nippon India Index Fund-Nifty 50 Plan(A-IDCW)",
-            "Nippon India Arbitrage Fund",
-            "Nippon India Index Fund-Nifty 50 Plan(H-IDCW)",
-            "Nippon India Balanced Advantage Fund",
-            "Nippon India Index Fund-Nifty 50 Plan(Q-IDCW)",
-            "Nippon India Balanced Advantage Fund(IDCW)",
-            "Nippon India Quant Fund(IDCW)",
-            "Nippon India Power & Infra Fund",
-            "Nippon India Arbitrage Fund(IDCW)",
-            "Nippon India Pharma Fund",
-            "Nippon India Small Cap Fund(IDCW)",
-            "Nippon India Small Cap Fund",
-            "Nippon India Index Fund-S&P BSE Sensex Plan(H-IDCW)",
-            "Nippon India Index Fund-S&P BSE Sensex Plan(Q-IDCW)",
-            "Nippon India Short Term Fund(M-IDCW)",
-            "Nippon India Index Fund-S&P BSE Sensex Plan(A-IDCW)",
-            "Nippon India Corp Bond Fund(W-IDCW)",
-            "Nippon India Liquid Fund(W-IDCW)",
-            "Nippon India Vision Fund",
-            "Nippon India ELSS Tax Saver Fund",
-            "Nippon India Large Cap Fund",
-            "Nippon India Vision Fund",
-            "Nippon India ELSS Tax Saver Fund(IDCW)",
-            "Nippon India Small Cap Fund",
-            "Nippon India Short Term Fund",
-            "Nippon India Value Fund",
-            "Nippon India Credit Risk Fund",
-            "Nippon India Credit Risk Fund(Q-IDCW)",
-            "Nippon India Value Fund(IDCW)",
-            "Nippon India Quant Fund",
-            "Nippon India Pharma Fund",
-            "Nippon India Pharma Fund(IDCW)",
-            "Nippon India Low Duration Fund(W-IDCW)",
-            "Nippon India Low Duration Fund(Q-IDCW)",
-            "Nippon India Low Duration Fund(M-IDCW)",
-            "Nippon India Low Duration Fund(DD-IDCW)",
-            "Nippon India Low Duration Fund",
-            "Nippon India Corp Bond Fund",
-            "Nippon India Corp Bond Fund(DD-IDCW)",
-            "Nippon India Consumption Fund",
-            "Nippon India Focused Equity Fund",
-            "Nippon India Liquid Fund(Q-IDCW)",
-            "Nippon India Corp Bond Fund(M-IDCW)",
-            "Nippon India Money Market Fund(W-IDCW)",
-            "Nippon India Money Market Fund(M-IDCW)",
-            "Nippon India Ultra Short Duration Fund(W-IDCW)",
-            "Nippon India Ultra Short Duration Fund",
-            "Nippon India Ultra Short Duration Fund(DD-IDCW)",
-            "Nippon India Index Fund-S&P BSE Sensex Plan",
-            "Nippon India Income Fund(M-IDCW)",
-            "Nippon India Income Fund",
-            "Nippon India Growth Fund",
-            "Nippon India Growth Fund(IDCW)",
-            "Nippon India Gold Savings Fund",
-            "Nippon India Gold Savings Fund(IDCW)",
-            "Nippon India Gilt Securities Fund",
-            "Nippon India Floating Rate Fund",
-            "Nippon India Floating Rate Fund(DD-IDCW)",
-            "Nippon India Multi Cap Fund",
-            "Nippon India Multi Cap Fund(IDCW)",
-            "Nippon India Dynamic Bond Fund",
-            "Nippon India Multi Cap Fund",
-            "Nippon India Power & Infra Fund",
-            "Nippon India Dynamic Bond Fund(IDCW)",
-            "Nippon India Banking & Financial Services Fund",
-            "Nippon India Power & Infra Fund(IDCW)",
-            "Nippon India Banking & Financial Services Fund",
-            "Nippon India Banking & Financial Services Fund(IDCW)",
-            "Nippon India Hybrid Bond Fund",
-            "Nippon India Hybrid Bond Fund(Q-IDCW)",
-            "Nippon India Equity Hybrid Fund(IDCW)",
-            "Nippon India Hybrid Bond Fund(M-IDCW)",
-            "Nippon India Equity Hybrid Fund",
-            "Nippon India Index Fund-Nifty 50 Plan",
-            "Nippon India Money Market Fund",
-            "Nippon India Money Market Fund(DD-IDCW)",
-            "Nippon India Liquid Fund(DD-IDCW)",
-            "Nippon India Liquid Fund",
-            "Nippon India Passive Flexicap FoF(IDCW)",
-            "Nippon India Passive Flexicap FoF",
-            "Nippon India Nifty Midcap 150 Index Fund(IDCW)",
-            "Nippon India Nifty Midcap 150 Index Fund",
-            "Nippon India Nifty 50 Value 20 Index Fund",
-            "Nippon India Nifty 50 Value 20 Index Fund(IDCW)",
-            "Nippon India Asset Allocator FoF",
-            "Nippon India Asset Allocator FoF(IDCW)",
-            "Nippon India Flexi Cap Fund",
-            "Nippon India Flexi Cap Fund(IDCW)",
-            "Nippon India FHF-XLIII-1-1755D(IDCW)",
-            "Nippon India FHF-XLIII-1-1755D",
-            "Nippon India Taiwan Equity Fund",
-            "Nippon India Taiwan Equity Fund(IDCW)",
-            "Nippon India Silver ETF FOF(IDCW)",
-            "Nippon India Silver ETF FOF",
-            "Nippon India FHF-XLIII-5-2315D(IDCW)",
-            "Nippon India FHF-XLIII-5-2315D",
-            "Nippon India Nifty AAA CPSE Bond Plus SDL - Apr 2027 Maturity 60:40 Index Fund(IDCW)",
-            "Nippon India Nifty AAA CPSE Bond Plus SDL - Apr 2027 Maturity 60:40 Index Fund",
-            "Nippon India Nifty Alpha Low Volatility 30 Index Fund",
-            "Nippon India Nifty Alpha Low Volatility 30 Index Fund(IDCW)",
-            "Nippon India FHF-XLIV-1-1743D(IDCW)",
-            "Nippon India FHF-XLIV-1-1743D",
-            "Nippon India Nifty AAA PSU Bond Plus SDL - Sep 2026 Maturity 50:50 Index Fund(IDCW)",
-            "Nippon India Nifty AAA PSU Bond Plus SDL - Sep 2026 Maturity 50:50 Index Fund",
-            "Nippon India Nifty SDL Plus G-Sec-Jun 2028 Maturity 70:30 Index Fund(IDCW)",
-            "Nippon India Nifty SDL Plus G-Sec-Jun 2028 Maturity 70:30 Index Fund",
-            "Nippon India Nifty G-Sec Sep 2027 Maturity Index Fund(IDCW)",
-            "Nippon India Nifty G-Sec Sep 2027 Maturity Index Fund",
-            "Nippon India FHF-XLIV-4-1223D",
-            "Nippon India Nifty G-Sec Jun 2036 Maturity Index Fund(IDCW)",
-            "Nippon India Nifty G-Sec Jun 2036 Maturity Index Fund",
-            "Nippon India Nifty SDL Plus G-Sec - Jun 2029 Maturity 70:30 Index Fund(IDCW)",
-            "Nippon India Nifty SDL Plus G-Sec - Jun 2029 Maturity 70:30 Index Fund",
-            "Nippon India Nifty G-Sec Oct 2028 Maturity Index Fund(IDCW)",
-            "Nippon India Nifty G-Sec Oct 2028 Maturity Index Fund",
-            "Nippon India FHF-XLV-4-1111D(IDCW)",
-            "Nippon India FHF-XLV-4-1111D",
-            "Nippon India FHF-XLV-5-1158D",
-            "Nippon India Nifty G-Sec Oct 2028 Maturity Index Fund(IDCW)",
-            "Nippon India Nifty SDL Plus G-Sec - Jun 2029 Maturity 70:30 Index Fund(IDCW)",
-            "Nippon India Nifty G-Sec Jun 2036 Maturity Index Fund(IDCW)",
-            "Nippon India Nifty G-Sec Sep 2027 Maturity Index Fund(IDCW)",
-            "Nippon India Nifty SDL Plus G-Sec-Jun 2028 Maturity 70:30 Index Fund(IDCW)",
-            "Nippon India Nifty AAA PSU Bond Plus SDL - Sep 2026 Maturity 50:50 Index Fund(IDCW)",
-            "Nippon India Nifty Alpha Low Volatility 30 Index Fund(IDCW)",
-            "Nippon India Nifty AAA CPSE Bond Plus SDL - Apr 2027 Maturity 60:40 Index Fund(IDCW)",
-            "Nippon India Silver ETF FOF(IDCW)",
-            "Nippon India Taiwan Equity Fund(IDCW)",
-            "Nippon India Flexi Cap Fund(IDCW)",
-            "Nippon India Asset Allocator FoF(IDCW)",
-            "Nippon India Nifty 50 Value 20 Index Fund(IDCW)",
-            "Nippon India Nifty Midcap 150 Index Fund(IDCW)",
-            "Nippon India Passive Flexicap FoF(IDCW)",
-            "Nippon India Nifty Smallcap 250 Index Fund(IDCW)",
-            "Nippon India Multi Asset Fund(IDCW)",
-            "Nippon India Nifty Next 50 Junior BeES FoF-(IDCW)",
-            "Nippon India Overnight Fund(Q-IDCW)",
-            "Nippon India Overnight Fund(M-IDCW)",
-            "Nippon India Nivesh Lakshya Fund(A-IDCW)",
-            "Nippon India Nivesh Lakshya Fund(H-IDCW)",
-            "Nippon India Nivesh Lakshya Fund(M-IDCW)",
-            "Nippon India Nivesh Lakshya Fund(Q-IDCW)",
-            "Nippon India Nivesh Lakshya Fund(IDCW)",
-            "Nippon India Equity Hybrid Fund(M-IDCW)",
-            "Nippon India US Equity Opp Fund(IDCW)",
-            "Nippon India Equity Savings Fund(M-IDCW)",
-            "Nippon India Equity Savings Fund(Q-IDCW)",
-            "Nippon India Equity Savings Fund(IDCW)",
-            "Nippon India Banking & PSU Debt Fund(IDCW)",
-            "Nippon India Banking & PSU Debt Fund(Q-IDCW)",
-            "Nippon India Banking & PSU Debt Fund(W-IDCW)",
-            "Nippon India Banking & PSU Debt Fund(M-IDCW)",
-            "Nippon India Japan Equity Fund(IDCW)",
-            "Nippon India Strategic Debt Fund(Q-IDCW)",
-            "Nippon India Strategic Debt Fund(IDCW)",
-            "Nippon India Arbitrage Fund(M-IDCW)",
-            "Nippon India Corp Bond Fund(IDCW)",
-            "Nippon India Short Term Fund(IDCW)",
-            "Nippon India Low Duration Fund(IDCW)",
-            "Nippon India Equity Hybrid Fund(Q-IDCW)",
-            "Nippon India Floating Rate Fund(IDCW)",
-            "Nippon India Inv-Qrtly-III(IDCW)",
-            "Nippon India Inv-Mthly-II(IDCW)",
-            "Nippon India Inv-Qrtly-II(IDCW)",
-            "Nippon India Liquid Fund(M-IDCW)",
-            "Nippon India Short Term Fund(Q-IDCW)",
-            "Nippon India Ultra Short Duration Fund(M-IDCW)",
-            "Nippon India Floating Rate Fund(Q-IDCW)",
-            "Nippon India Ultra Short Duration Fund(Q-IDCW)",
-            "Nippon India Money Market Fund(Q-IDCW)",
-            "Nippon India Credit Risk Fund(IDCW)",
-            "Nippon India Corp Bond Fund(Q-IDCW)",
-            "Nippon India Income Fund(H-IDCW)",
-            "Nippon India Income Fund(Q-IDCW)",
-            "Nippon India Floating Rate Fund(W-IDCW)",
-            "Nippon India Floating Rate Fund(M-IDCW)",
-            "Nippon India Focused Equity Fund(IDCW)",
-            "Nippon India Consumption Fund(IDCW)",
-            "Nippon India Vision Fund(IDCW)",
-            "Nippon India Arbitrage Fund(IDCW)",
-            "Nippon India Income Fund(A-IDCW)",
-            "Nippon India Gilt Securities Fund(M-IDCW)",
-            "Nippon India Quant Fund(IDCW)",
-            "Nippon India Index Fund-S&P BSE Sensex Plan(H-IDCW)",
-            "Nippon India Index Fund-S&P BSE Sensex Plan(A-IDCW)",
-            "Nippon India Large Cap Fund(IDCW)",
-            "Nippon India Index Fund-Nifty 50 Plan(H-IDCW)",
-            "Nippon India Index Fund-Nifty 50 Plan(Q-IDCW)",
-            "Nippon India Dynamic Bond Fund(Q-IDCW)",
-            "Nippon India Balanced Advantage Fund(IDCW)",
-            "Nippon India Index Fund-S&P BSE Sensex Plan(Q-IDCW)",
-            "Nippon India Index Fund-Nifty 50 Plan(A-IDCW)",
-            "Nippon India Short Term Fund(M-IDCW)",
-            "Nippon India Small Cap Fund(IDCW)",
-            "Nippon India Corp Bond Fund(W-IDCW)",
-            "Nippon India Low Duration Fund(Q-IDCW)",
-            "Nippon India Credit Risk Fund(Q-IDCW)",
-            "Nippon India Hybrid Bond Fund(M-IDCW)",
-            "Nippon India Low Duration Fund(M-IDCW)",
-            "Nippon India Value Fund(IDCW)",
-            "Nippon India Pharma Fund(IDCW)",
-            "Nippon India Hybrid Bond Fund(Q-IDCW)",
-            "Nippon India Low Duration Fund(W-IDCW)",
-            "Nippon India Banking & Financial Services Fund(IDCW)",
-            "Nippon India Dynamic Bond Fund(IDCW)",
-            "Nippon India Equity Hybrid Fund(IDCW)",
-            "Nippon India Liquid Fund(Q-IDCW)",
-            "Nippon India Multi Cap Fund(IDCW)",
-            "Nippon India Growth Fund(IDCW)",
-            "Nippon India Income Fund(M-IDCW)",
-            "Nippon India Money Market Fund(M-IDCW)",
-            "Nippon India Power & Infra Fund(IDCW)",
-            "Nippon India Corp Bond Fund(M-IDCW)",
-            "Nippon India Gold Savings Fund(IDCW)",
-            "Nippon India Innovation Fund(IDCW)",
-            "Nippon India Innovation Fund",
-            "Nippon India Innovation Fund(IDCW)",
-            "Nippon India FMP-XLVI-1",
-            "Nippon India FMP-XLVI-1(IDCW)",
-            "Nippon India Nifty IT Index Fund(IDCW)",
-            "Nippon India Nifty IT Index Fund(IDCW)",
-            "Nippon India Nifty IT Index Fund",
-            "Nippon India Nifty Bank Index Fund(IDCW)",
-            "Nippon India Nifty Bank Index Fund(IDCW)",
-            "Nippon India Nifty Bank Index Fund",
-            "Navi Flexi Cap Fund(A-IDCW)",
-            "Navi Flexi Cap Fund(H-IDCW)",
-            "Navi Flexi Cap Fund(M-IDCW)",
-            "Navi Flexi Cap Fund(Q-IDCW)",
-            "Navi Flexi Cap Fund",
-            "Navi Flexi Cap Fund(IDCW)",
-            "Navi Large & Midcap Fund(H-IDCW)",
-            "Navi Aggressive Hybrid Fund(H-IDCW)",
-            "Navi Aggressive Hybrid Fund(A-IDCW)",
-            "Navi Aggressive Hybrid Fund(IDCW)",
-            "Navi Aggressive Hybrid Fund",
-            "Navi Aggressive Hybrid Fund(M-IDCW)",
-            "Navi Aggressive Hybrid Fund(Q-IDCW)",
-            "Navi Large & Midcap Fund(A-IDCW)",
-            "Navi ELSS Tax Saver Fund",
-            "Navi ELSS Tax Saver Fund(IDCW)",
-            "Navi Large & Midcap Fund(IDCW)",
-            "Navi Large & Midcap Fund",
-            "Navi Conservative Hybrid Fund(Q-IDCW)",
-            "Navi Liquid Fund(W-IDCW)",
-            "Navi Liquid Fund(M-IDCW)",
-            "Navi Liquid Fund(DD-IDCW)",
-            "Navi Conservative Hybrid Fund",
-            "Navi Conservative Hybrid Fund(M-IDCW)",
-            "Navi Liquid Fund",
-            "Navi Nifty 50 Index Fund",
-            "Navi Nifty Next 50 Index Fund",
-            "Navi Nifty Bank Index Fund",
-            "Navi US Total Stock Market FoF",
-            "Navi Nifty Midcap 150 Index Fund",
-            "Navi NASDAQ 100 FoF",
-            "Navi Nifty India Manufacturing Index Fund",
-            "Navi ELSS Tax Saver Nifty 50 Index Fund",
-            "Navi ELSS Tax Saver Nifty 50 Index Fund(IDCW)",
-            "Navi Overnight Fund(M-IDCW Payout)",
-            "Navi Overnight Fund(W-IDCW Payout)",
-            "Navi Overnight Fund(W-IDCW)",
-            "Navi Overnight Fund",
-            "Navi Overnight Fund(M-IDCW)",
-            "Navi Overnight Fund(DD-IDCW)",
-            "Navi Flexi Cap Fund(Q-IDCW)",
-            "Navi Flexi Cap Fund(IDCW)",
-            "Navi Flexi Cap Fund(H-IDCW)",
-            "Navi Flexi Cap Fund(A-IDCW)",
-            "Navi Flexi Cap Fund(M-IDCW)",
-            "Navi Large & Midcap Fund(H-IDCW)",
-            "Navi Aggressive Hybrid Fund(Q-IDCW)",
-            "Navi Aggressive Hybrid Fund(A-IDCW)",
-            "Navi Aggressive Hybrid Fund(M-IDCW)",
-            "Navi Aggressive Hybrid Fund(IDCW)",
-            "Navi Aggressive Hybrid Fund(H-IDCW Payout)",
-            "Navi Large & Midcap Fund(A-IDCW)",
-            "Navi Large & Midcap Fund(IDCW)",
-            "Navi Conservative Hybrid Fund(Q-IDCW)",
-            "Navi Liquid Fund(W-IDCW)",
-            "Navi Liquid Fund(M-IDCW)",
-            "Navi Conservative Hybrid Fund(M-IDCW)",
-            "Navi S&P BSE Sensex Index Fund",
-            "NJ Balanced Advantage Fund(IDCW)",
-            "NJ Balanced Advantage Fund",
-            "NJ Overnight Fund",
-            "NJ Arbitrage Fund",
-            "NJ ELSS Tax Saver Scheme(IDCW)",
-            "NJ ELSS Tax Saver Scheme",
-            "NJ Flexi Cap Fund",
-            "NJ Flexi Cap Fund(IDCW)",
-            "Motilal Oswal Multi Asset Fund",
-            "Motilal Oswal S&P 500 Index Fund",
-            "Motilal Oswal Nifty Next 50 Index Fund",
-            "Motilal Oswal Nifty 50 Index Fund",
-            "Motilal Oswal Large & Midcap Fund(IDCW)",
-            "Motilal Oswal Large & Midcap Fund",
-            "Motilal Oswal Nifty Bank Index Fund",
-            "Motilal Oswal Nifty Midcap 150 Index Fund",
-            "Motilal Oswal Nifty Smallcap 250 Index Fund",
-            "Motilal Oswal Nifty 500 Index Fund",
-            "Motilal Oswal Liquid Fund(Q-IDCW)",
-            "Motilal Oswal Liquid Fund(M-IDCW)",
-            "Motilal Oswal Liquid Fund(W-IDCW)",
-            "Motilal Oswal Liquid Fund(FN-IDCW)",
-            "Motilal Oswal Liquid Fund(DD-IDCW)",
-            "Motilal Oswal Liquid Fund",
-            "Motilal Oswal Nasdaq 100 FOF",
-            "Motilal Oswal Balanced Advantage Fund(A-IDCW)",
-            "Motilal Oswal Balanced Advantage Fund",
-            "Motilal Oswal Balanced Advantage Fund(Q-IDCW)",
-            "Motilal Oswal ELSS Tax Saver Fund(IDCW)",
-            "Motilal Oswal ELSS Tax Saver Fund",
-            "Motilal Oswal Flexi Cap Fund(IDCW)",
-            "Motilal Oswal Flexi Cap Fund",
-            "Motilal Oswal Midcap Fund(IDCW)",
-            "Motilal Oswal Midcap Fund",
-            "Motilal Oswal Ultra Short Term Fund(M-IDCW)",
-            "Motilal Oswal Ultra Short Term Fund(FN-IDCW)",
-            "Motilal Oswal Ultra Short Term Fund(Q-IDCW)",
-            "Motilal Oswal Ultra Short Term Fund(W-IDCW)",
-            "Motilal Oswal Ultra Short Term Fund(DD-IDCW)",
-            "Motilal Oswal Ultra Short Term Fund",
-            "Motilal Oswal Focused Fund(IDCW)",
-            "Motilal Oswal Focused Fund",
-            "Motilal Oswal Asset Allocation Passive FoF-Conservative",
-            "Motilal Oswal Asset Allocation Passive FoF-Aggressive",
-            "Motilal Oswal 5 Year G-Sec FoF",
-            "Motilal Oswal Nifty 200 Momentum 30 Index Fund",
-            "Motilal Oswal S&P BSE Low Volatility Index Fund",
-            "Motilal Oswal S&P BSE Financials ex Bank 30 Index Fund",
-            "Motilal Oswal S&P BSE Quality Index Fund",
-            "Motilal Oswal S&P BSE Enhanced Value Index Fund",
-            "Motilal Oswal Gold and Silver ETFs FoF",
-            "Motilal Oswal Nifty Microcap 250 Index Fund",
-            "Motilal Oswal Large & Midcap Fund(IDCW)",
-            "Motilal Oswal Liquid Fund(Q-IDCW)",
-            "Motilal Oswal Liquid Fund(M-IDCW)",
-            "Motilal Oswal Balanced Advantage Fund(A-IDCW)",
-            "Motilal Oswal Balanced Advantage Fund(Q-IDCW)",
-            "Motilal Oswal Flexi Cap Fund(IDCW)",
-            "Motilal Oswal Midcap Fund(IDCW)",
-            "Motilal Oswal Ultra Short Term Fund(M-IDCW)",
-            "Motilal Oswal Ultra Short Term Fund(Q-IDCW)",
-            "Motilal Oswal Focused Fund(IDCW)",
-            "Motilal Oswal Developed Market Ex US ETFs FoF",
-            "Motilal Oswal Small Cap Fund(IDCW)",
-            "Motilal Oswal Small Cap Fund",
-            "Motilal Oswal Small Cap Fund(IDCW)",
-            "Motilal Oswal Large Cap Fund(IDCW)",
-            "Motilal Oswal Large Cap Fund",
-            "Motilal Oswal Large Cap Fund(IDCW)",
-            "Mirae Asset Nifty 100 ESG Sector Leaders FoF",
-            "Mirae Asset Nifty 100 ESG Sector Leaders FoF(IDCW)",
-            "Mirae Asset Ultra Short Duration Fund(IDCW)",
-            "Mirae Asset Ultra Short Duration Fund",
-            "Mirae Asset Equity Allocator FoF",
-            "Mirae Asset Equity Allocator FoF(IDCW)",
-            "Mirae Asset Banking and PSU Fund(IDCW)",
-            "Mirae Asset Banking and PSU Fund",
-            "Mirae Asset Arbitrage Fund(IDCW)",
-            "Mirae Asset Arbitrage Fund",
-            "Mirae Asset Overnight Fund(M-IDCW)",
-            "Mirae Asset Overnight Fund(W-IDCW)",
-            "Mirae Asset Overnight Fund(DD-IDCW)",
-            "Mirae Asset Overnight Fund",
-            "Mirae Asset Midcap Fund(IDCW)",
-            "Mirae Asset Midcap Fund",
-            "Mirae Asset Focused Fund",
-            "Mirae Asset Focused Fund(IDCW)",
-            "Mirae Asset Equity Savings Fund(IDCW)",
-            "Mirae Asset Equity Savings Fund",
-            "Mirae Asset Healthcare Fund(IDCW)",
-            "Mirae Asset Healthcare Fund",
-            "Mirae Asset Short Duration Fund",
-            "Mirae Asset Short Duration Fund(IDCW)",
-            "Mirae Asset Dynamic Bond Fund",
-            "Mirae Asset Dynamic Bond Fund(IDCW)",
-            "Mirae Asset ELSS Tax Saver Fund(IDCW)",
-            "Mirae Asset ELSS Tax Saver Fund",
-            "Mirae Asset Aggressive Hybrid Fund",
-            "Mirae Asset Aggressive Hybrid Fund(IDCW)",
-            "Mirae Asset Low Duration Fund(DD-IDCW)",
-            "Mirae Asset Liquid Fund",
-            "Mirae Asset Liquid Fund(M-IDCW)",
-            "Mirae Asset Low Duration Fund(Q-IDCW)",
-            "Mirae Asset Low Duration Fund(W-IDCW)",
-            "Mirae Asset Low Duration Fund(M-IDCW)",
-            "Mirae Asset Low Duration Fund",
-            "Mirae Asset Great Consumer Fund",
-            "Mirae Asset Great Consumer Fund(IDCW)",
-            "Mirae Asset Large Cap Fund(IDCW)",
-            "Mirae Asset Large Cap Fund",
-            "Mirae Asset Large & Midcap Fund",
-            "Mirae Asset Liquid Fund(W-IDCW)",
-            "Mirae Asset Large & Midcap Fund(IDCW)",
-            "Mirae Asset Liquid Fund(DD-IDCW)",
-            "Mirae Asset Banking and Financial Services Fund(IDCW)",
-            "Mirae Asset Banking and Financial Services Fund",
-            "Mirae Asset Corp Bond Fund(IDCW)",
-            "Mirae Asset Corp Bond Fund",
-            "Mirae Asset NYSE FANG+ETF FoF",
-            "Mirae Asset Money Market Fund(IDCW)",
-            "Mirae Asset Money Market Fund",
-            "Mirae Asset S&P 500 Top 50 ETF FoF",
-            "Mirae Asset Hang Seng TECH ETF FoF",
-            "Mirae Asset Nifty India Manufacturing ETF FoF",
-            "Mirae Asset Nifty India Manufacturing ETF FoF(IDCW)",
-            "Mirae Asset Nifty SDL Jun 2027 Index Fund",
-            "Mirae Asset Nifty SDL Jun 2027 Index Fund(IDCW)",
-            "Mirae Asset Balanced Advantage Fund(IDCW)",
-            "Mirae Asset Balanced Advantage Fund",
-            "Mirae Asset Global Electric & Autonomous Vehicles ETFs FoF",
-            "Mirae Asset Global X Artificial Intelligence & Technology ETF FoF",
-            "Mirae Asset CRISIL IBX Gilt Index - April 2033 Index Fund(IDCW)",
-            "Mirae Asset Nifty AAA PSU Bond Plus SDL Apr 2026 50:50 Index Fund",
-            "Mirae Asset CRISIL IBX Gilt Index - April 2033 Index Fund",
-            "Mirae Asset Nifty AAA PSU Bond Plus SDL Apr 2026 50:50 Index Fund(IDCW)",
-            "Mirae Asset Flexi Cap Fund",
-            "Mirae Asset Flexi Cap Fund(IDCW)",
-            "Mirae Asset Nifty SDL June 2028 Index Fund",
-            "Mirae Asset Nifty SDL June 2028 Index Fund(IDCW)",
-            "Mirae Asset Nifty SDL June 2028 Index Fund(IDCW)",
-            "Mirae Asset Flexi Cap Fund(IDCW)",
-            "Mirae Asset CRISIL IBX Gilt Index - April 2033 Index Fund(IDCW)",
-            "Mirae Asset Nifty AAA PSU Bond Plus SDL Apr 2026 50:50 Index Fund(IDCW)",
-            "Mirae Asset Balanced Advantage Fund(IDCW)",
-            "Mirae Asset Nifty SDL Jun 2027 Index Fund(IDCW)",
-            "Mirae Asset Nifty India Manufacturing ETF FoF(IDCW)",
-            "Mirae Asset Money Market Fund(IDCW)",
-            "Mirae Asset Corp Bond Fund(IDCW)",
-            "Mirae Asset Banking and Financial Services Fund(IDCW)",
-            "Mirae Asset Equity Allocator FoF(IDCW)",
-            "Mirae Asset Ultra Short Duration Fund(IDCW)",
-            "Mirae Asset Nifty 100 ESG Sector Leaders FoF(IDCW)",
-            "Mirae Asset Banking and PSU Fund(IDCW)",
-            "Mirae Asset Arbitrage Fund(IDCW)",
-            "Mirae Asset Overnight Fund(M-IDCW)",
-            "Mirae Asset Midcap Fund(IDCW)",
-            "Mirae Asset Focused Fund(IDCW)",
-            "Mirae Asset Equity Savings Fund(IDCW)",
-            "Mirae Asset Healthcare Fund(IDCW)",
-            "Mirae Asset Short Duration Fund(IDCW)",
-            "Mirae Asset Dynamic Bond Fund(IDCW)",
-            "Mirae Asset Aggressive Hybrid Fund(IDCW)",
-            "Mirae Asset Liquid Fund(M-IDCW)",
-            "Mirae Asset Large & Midcap Fund(IDCW)",
-            "Mirae Asset Great Consumer Fund(IDCW)",
-            "Mirae Asset Low Duration Fund(M-IDCW)",
-            "Mirae Asset Low Duration Fund(Q-IDCW)",
-            "Mirae Asset Large Cap Fund(IDCW)",
-            "Mirae Asset Multicap Fund(IDCW)",
-            "Mirae Asset Multicap Fund(IDCW)",
-            "Mirae Asset Multicap Fund",
-            "Mirae Asset Multi Asset Allocation Fund(IDCW)",
-            "Mirae Asset Multi Asset Allocation Fund(IDCW)",
-            "Mirae Asset Multi Asset Allocation Fund",
-            "Mirae Asset Nifty Smallcap 250 Momentum Quality 100 ETF FoF(IDCW)",
-            "Mirae Asset Nifty Smallcap 250 Momentum Quality 100 ETF FoF(IDCW)",
-            "Mirae Asset Nifty Smallcap 250 Momentum Quality 100 ETF FoF",
-            "Mahindra Manulife Focused Fund(IDCW)",
-            "Mahindra Manulife Focused Fund",
-            "Mahindra Manulife Arbitrage Fund",
-            "Mahindra Manulife Arbitrage Fund(IDCW)",
-            "Mahindra Manulife Large & Mid Cap Fund(IDCW Payout)",
-            "Mahindra Manulife Large & Mid Cap Fund",
-            "Mahindra Manulife Ultra Short Duration Fund(DD-IDCW)",
-            "Mahindra Manulife Ultra Short Duration Fund",
-            "Mahindra Manulife Ultra Short Duration Fund(W-IDCW)",
-            "Mahindra Manulife Aggressive Hybrid Fund(IDCW-Payout)",
-            "Mahindra Manulife Overnight Fund(DD-IDCW)",
-            "Mahindra Manulife Overnight Fund",
-            "Mahindra Manulife Aggressive Hybrid Fund",
-            "Mahindra Manulife Aggressive Hybrid Fund(IDCW)",
-            "Mahindra Manulife Mid Cap Fund(IDCW-Payout)",
-            "Mahindra Manulife Consumption Fund(IDCW-Payout)",
-            "Mahindra Manulife Large Cap Fund(IDCW Payout)",
-            "Mahindra Manulife Multi Cap Fund(IDCW-Payout)",
-            "Mahindra Manulife Low Duration Fund(M-IDCW Payout)",
-            "Mahindra Manulife Dynamic Bond Fund-(Q-IDCW Payout)",
-            "Mahindra Manulife Dynamic Bond Fund-(IDCW-Payout)",
-            "Mahindra Manulife Equity Savings Fund(IDCW-Payout)",
-            "Mahindra Manulife Large Cap Fund(IDCW)",
-            "Mahindra Manulife Large Cap Fund",
-            "Mahindra Manulife Consumption Fund",
-            "Mahindra Manulife Consumption Fund(IDCW)",
-            "Mahindra Manulife Dynamic Bond Fund-(Q-IDCW)",
-            "Mahindra Manulife Dynamic Bond Fund-(IDCW)",
-            "Mahindra Manulife Dynamic Bond Fund",
-            "Mahindra Manulife Mid Cap Fund(IDCW)",
-            "Mahindra Manulife Mid Cap Fund",
-            "Mahindra Manulife Multi Cap Fund(IDCW)",
-            "Mahindra Manulife Multi Cap Fund",
-            "Mahindra Manulife Low Duration Fund(M-IDCW)",
-            "Mahindra Manulife Low Duration Fund(DD-IDCW)",
-            "Mahindra Manulife Low Duration Fund(W-IDCW)",
-            "Mahindra Manulife Low Duration Fund",
-            "Mahindra Manulife Equity Savings Fund(IDCW)",
-            "Mahindra Manulife Equity Savings Fund",
-            "Mahindra Manulife ELSS Tax Saver Fund(IDCW)",
-            "Mahindra Manulife ELSS Tax Saver Fund",
-            "Mahindra Manulife Liquid Fund(W-IDCW)",
-            "Mahindra Manulife Liquid Fund(DD-IDCW)",
-            "Mahindra Manulife Liquid Fund",
-            "Mahindra Manulife Short Duration Fund(IDCW)",
-            "Mahindra Manulife Short Duration Fund",
-            "Mahindra Manulife Flexi Cap Fund",
-            "Mahindra Manulife Flexi Cap Fund(IDCW)",
-            "Mahindra Manulife Asia Pacific REITs FOF(IDCW)",
-            "Mahindra Manulife Asia Pacific REITs FOF",
-            "Mahindra Manulife Balanced Advantage Fund(IDCW)",
-            "Mahindra Manulife Balanced Advantage Fund",
-            "Mahindra Manulife Balanced Advantage Fund(IDCW Payout)",
-            "Mahindra Manulife Large & Mid Cap Fund(IDCW)",
-            "Mahindra Manulife Small Cap Fund",
-            "Mahindra Manulife Small Cap Fund(IDCW)",
-            "Mahindra Manulife Small Cap Fund(IDCW)",
-            "Mahindra Manulife Asia Pacific REITs FOF(IDCW)",
-            "Mahindra Manulife Flexi Cap Fund(IDCW)",
-            "Mahindra Manulife Short Duration Fund(IDCW)",
-            "Mahindra Manulife Focused Fund(IDCW)",
-            "Mahindra Manulife Arbitrage Fund(IDCW)",
-            "Mahindra Manulife Business Cycle Fund(IDCW)",
-            "Mahindra Manulife Business Cycle Fund",
-            "Mahindra Manulife Business Cycle Fund(IDCW)",
-            "LIC MF Ultra Short Duration Fund(M-IDCW)",
-            "LIC MF Ultra Short Duration Fund(W-IDCW)",
-            "LIC MF Ultra Short Duration Fund(DD-IDCW)",
-            "LIC MF Ultra Short Duration Fund",
-            "LIC MF Overnight Fund(DD-IDCW)",
-            "LIC MF Overnight Fund(W-IDCW)",
-            "LIC MF Overnight Fund",
-            "LIC MF Overnight Fund(IDCW)",
-            "LIC MF Healthcare Fund(IDCW)",
-            "LIC MF Healthcare Fund",
-            "LIC MF Short Duration Fund(IDCW)",
-            "LIC MF Short Duration Fund",
-            "LIC MF Arbitrage Fund(M-IDCW)",
-            "LIC MF Arbitrage Fund(W-IDCW)",
-            "LIC MF Arbitrage Fund",
-            "LIC MF Dividend Yield Fund(IDCW)",
-            "LIC MF Dividend Yield Fund",
-            "LIC MF Long Term Value Fund(IDCW)",
-            "LIC MF Long Term Value Fund",
-            "LIC MF Focused 30 Equity Fund(IDCW)",
-            "LIC MF Focused 30 Equity Fund",
-            "LIC MF Small Cap Fund",
-            "LIC MF Small Cap Fund(IDCW)",
-            "LIC MF Midcap Fund(IDCW)",
-            "LIC MF Midcap Fund",
-            "LIC MF ULIS Regular Premium Reducing Cover Qtrly 15Y(IDCW)",
-            "LIC MF ULIS Regular Premium Uniform Cover Qtrly 10Y(IDCW)",
-            "LIC MF ULIS Regular Premium Reducing Cover Qtrly 10Y(IDCW)",
-            "LIC MF ULIS Regular Premium Uniform Cover Qtrly 15Y(IDCW)",
-            "LIC MF ULIS Regular Premium Reducing Cover HY 15Y(IDCW)",
-            "LIC MF ULIS Regular Premium Reducing Cover HY 10Y(IDCW)",
-            "LIC MF ULIS Regular Premium Reducing Cover Mthly 10Y(IDCW)",
-            "LIC MF ULIS Regular Premium Reducing Cover Yrly 10Y(IDCW)",
-            "LIC MF ULIS Regular Premium Reducing Cover Mthly 15Y(IDCW)",
-            "LIC MF ULIS Regular Premium Reducing Cover Yrly 15Y(IDCW)",
-            "LIC MF ULIS Regular Premium Uniform Cover Yrly 15Y(IDCW)",
-            "LIC MF ULIS Regular Premium Uniform Cover Mthly 15Y(IDCW)",
-            "LIC MF ULIS Regular Premium Uniform Cover HY 15Y(IDCW)",
-            "LIC MF ULIS Regular Premium Uniform Cover Mthly 10Y(IDCW)",
-            "LIC MF ULIS Regular Premium Uniform Cover HY 10Y(IDCW)",
-            "LIC MF ULIS-10Y Single Premium(IDCW)",
-            "LIC MF ULIS Regular Premium Uniform Cover Yrly 10Y(IDCW)",
-            "LIC MF Banking & Financial Services Fund",
-            "LIC MF Banking & Financial Services Fund(IDCW)",
-            "LIC MF Large & Midcap Fund",
-            "LIC MF Large & Midcap Fund-(IDCW)",
-            "LIC MF ULIS",
-            "LIC MF Medium to Long Duration Bond Fund(IDCW)",
-            "LIC MF Children's Gift Fund",
-            "LIC MF Low Duration Fund(W-IDCW)",
-            "LIC MF Low Duration Fund(M-IDCW)",
-            "LIC MF Banking & PSU Debt Fund(W-IDCW)",
-            "LIC MF Banking & PSU Debt Fund(M-IDCW)",
-            "LIC MF Banking & PSU Debt Fund(DD-IDCW)",
-            "LIC MF Gilt Fund(IDCW)",
-            "LIC MF Conservative Hybrid Fund(A-IDCW)",
-            "LIC MF Conservative Hybrid Fund",
-            "LIC MF Conservative Hybrid Fund(Q-IDCW)",
-            "LIC MF Conservative Hybrid Fund(M-IDCW)",
-            "LIC MF Banking & PSU Debt Fund",
-            "LIC MF Aggressive Hybrid Fund",
-            "LIC MF Liquid Fund(M-IDCW)",
-            "LIC MF Liquid Fund(W-IDCW)",
-            "LIC MF ELSS Tax Saver(IDCW)",
-            "LIC MF ELSS Tax Saver",
-            "LIC MF Low Duration Fund",
-            "LIC MF Low Duration Fund(DD-IDCW)",
-            "LIC MF Infra Fund",
-            "LIC MF Infra Fund(IDCW)",
-            "LIC MF S&P BSE Sensex Index Fund",
-            "LIC MF S&P BSE Sensex Index Fund(IDCW)",
-            "LIC MF Gilt Fund",
-            "LIC MF Large Cap Fund",
-            "LIC MF Large Cap Fund(IDCW)",
-            "LIC MF Flexi Cap Fund",
-            "LIC MF Flexi Cap Fund(IDCW)",
-            "LIC MF Medium to Long Duration Bond Fund",
-            "LIC MF Nifty 50 Index Fund(IDCW)",
-            "LIC MF Nifty 50 Index Fund",
-            "LIC MF Aggressive Hybrid Fund(IDCW)",
-            "LIC MF Short Duration Fund(W-IDCW)",
-            "LIC MF Nifty Next 50 Index Fund",
-            "LIC MF Nifty Next 50 Index Fund(IDCW)",
-            "LIC MF Short Duration Fund(M-IDCW)",
-            "LIC MF Gold ETF FoF",
-            "LIC MF Equity Savings Fund(M-IDCW)",
-            "LIC MF Equity Savings Fund",
-            "LIC MF Equity Savings Fund(Q-IDCW)",
-            "LIC MF Liquid Fund(DD-IDCW)",
-            "LIC MF Liquid Fund",
-            "LIC MF Balanced Advantage Fund",
-            "LIC MF Balanced Advantage Fund(IDCW)",
-            "LIC MF Money Market Fund",
-            "LIC MF Multi Cap Fund",
-            "LIC MF Multi Cap Fund(IDCW)",
-            "LIC MF Multi Cap Fund(IDCW)",
-            "LIC MF Balanced Advantage Fund(IDCW)",
-            "LIC MF Ultra Short Duration Fund(W-IDCW)",
-            "LIC MF Ultra Short Duration Fund(M-IDCW)",
-            "LIC MF Overnight Fund(IDCW)",
-            "LIC MF Healthcare Fund(IDCW)",
-            "LIC MF Short Duration Fund(IDCW)",
-            "LIC MF Arbitrage Fund(M-IDCW)",
-            "LIC MF Dividend Yield Fund(IDCW)",
-            "LIC MF Long Term Value Fund(IDCW)",
-            "LIC MF Focused 30 Equity Fund(IDCW)",
-            "LIC MF Small Cap Fund(IDCW)",
-            "LIC MF Midcap Fund(IDCW)",
-            "LIC MF Banking & Financial Services Fund(IDCW)",
-            "LIC MF Large & Midcap Fund-(IDCW)",
-            "LIC MF Medium to Long Duration Bond Fund(Q-IDCW)",
-            "LIC MF Medium to Long Duration Bond Fund(Q-IDCW)",
-            "LIC MF Medium to Long Duration Bond Fund(A-IDCW)",
-            "LIC MF Medium to Long Duration Bond Fund(A-IDCW)",
-            "LIC MF Medium to Long Duration Bond Fund(IDCW)",
-            "LIC MF Low Duration Fund(W-IDCW)",
-            "LIC MF Banking & PSU Debt Fund(DD-IDCW)",
-            "LIC MF Conservative Hybrid Fund(Q-IDCW)",
-            "LIC MF Low Duration Fund(M-IDCW)",
-            "LIC MF Conservative Hybrid Fund(A-IDCW)",
-            "LIC MF Banking & PSU Debt Fund(W-IDCW)",
-            "LIC MF Conservative Hybrid Fund(M-IDCW)",
-            "LIC MF Banking & PSU Debt Fund(M-IDCW)",
-            "LIC MF Gilt Fund(IDCW)",
-            "LIC MF Liquid Fund(W-IDCW)",
-            "LIC MF Liquid Fund(M-IDCW)",
-            "LIC MF Infra Fund(IDCW)",
-            "LIC MF Large Cap Fund(IDCW)",
-            "LIC MF S&P BSE Sensex Index Fund(IDCW)",
-            "LIC MF Low Duration Fund(DD-IDCW)",
-            "LIC MF Nifty 50 Index Fund(IDCW)",
-            "LIC MF Aggressive Hybrid Fund(IDCW)",
-            "LIC MF Flexi Cap Fund(IDCW)",
-            "LIC MF Short Duration Fund(M-IDCW)",
-            "LIC MF Equity Savings Fund(Q-IDCW)",
-            "LIC MF Equity Savings Fund(Q-IDCW)",
-            "LIC MF Equity Savings Fund(M-IDCW)",
-            "LIC MF Equity Savings Fund(M-IDCW)",
-            "LIC MF Short Duration Fund(W-IDCW)",
-            "LIC MF Nifty Next 50 Index Fund(IDCW)",
-            "LIC MF Liquid Fund(DD-IDCW)",
-            "Kotak Equity Opp Fund(IDCW-Payout)",
-            "Kotak India EQ Contra Fund(IDCW-Payout)",
-            "Kotak Credit Risk Fund(IDCW Payout)",
-            "Kotak Banking and PSU Debt Fund(M-IDCW Payout)",
-            "Kotak Pioneer Fund(IDCW-Payout)",
-            "Kotak Dynamic Bond Fund(IDCW Payout)",
-            "Kotak Pioneer Fund(IDCW)",
-            "Kotak Pioneer Fund",
-            "Kotak Multi Asset Allocator FoF-Dynamic(IDCW-Payout)",
-            "Kotak Focused Equity Fund(IDCW-Payout)",
-            "Kotak Focused Equity Fund(IDCW)",
-            "Kotak Focused Equity Fund",
-            "Kotak Money Market Fund(M-IDCW Payout)",
-            "Kotak Infra & Eco Reform Fund(IDCW-Payout)",
-            "Kotak Small Cap Fund(IDCW-Payout)",
-            "Kotak Equity Savings Fund(M-IDCW Payout)",
-            "Kotak Corporate Bond Fund(M-IDCW)",
-            "Kotak Floating Rate Fund(IDCW)",
-            "Kotak Medium Term Fund(IDCW Payout)",
-            "Kotak Floating Rate Fund",
-            "Kotak Balanced Advantage Fund(IDCW-Payout)",
-            "Kotak Emerging Equity Fund(IDCW-Payout)",
-            "Kotak Overnight Fund(DD-IDCW)",
-            "Kotak Overnight Fund",
-            "Kotak Balanced Advantage Fund",
-            "Kotak Balanced Advantage Fund(IDCW)",
-            "Kotak Bond Short Term Fund(IDCW)",
-            "Kotak Gold Fund(IDCW)",
-            "Kotak Flexicap Fund(IDCW-Payout)",
-            "Kotak Bluechip Fund(IDCW-Payout)",
-            "Kotak Equity Hybrid Fund(IDCW-Payout)",
-            "Kotak Equity Arbitrage Fund(M-IDCW Payout)",
-            "Kotak Equity Hybrid Fund",
-            "Kotak Equity Savings Fund",
-            "Kotak Equity Savings Fund(M-IDCW)",
-            "Kotak Medium Term Fund(IDCW)",
-            "Kotak Medium Term Fund",
-            "Kotak Dynamic Bond Fund(IDCW)",
-            "Kotak Low Duration Fund(IDCW Payout)",
-            "Kotak Credit Risk Fund(IDCW)",
-            "Kotak Flexicap Fund(IDCW)",
-            "Kotak Low Duration Fund(IDCW)",
-            "Kotak Banking and PSU Debt Fund(M-IDCW)",
-            "Kotak Gilt Fund-PF&Trust",
-            "Kotak Multi Asset Allocator FoF-Dynamic",
-            "Kotak Multi Asset Allocator FoF-Dynamic(IDCW)",
-            "Kotak Emerging Equity Fund(IDCW)",
-            "Kotak Bond Fund(IDCW)",
-            "Kotak India EQ Contra Fund(IDCW)",
-            "Kotak Bluechip Fund(IDCW)",
-            "Kotak Debt Hybrid Fund(M-IDCW)",
-            "Kotak Debt Hybrid Fund",
-            "Kotak Global Emerging Mkt Fund",
-            "Kotak Global Emerging Mkt Fund(IDCW)",
-            "Kotak Equity Arbitrage Fund",
-            "Kotak Corporate Bond Fund(M-IDCW Payout)",
-            "Kotak Corporate Bond Fund",
-            "Kotak Credit Risk Fund",
-            "Kotak Emerging Equity Fund",
-            "Kotak Equity Arbitrage Fund(M-IDCW)",
-            "Kotak Flexicap Fund",
-            "Kotak Infra & Eco Reform Fund",
-            "Kotak Low Duration Fund",
-            "Kotak Infra & Eco Reform Fund(IDCW)",
-            "Kotak ELSS Tax Saver Fund",
-            "Kotak ELSS Tax Saver Fund(IDCW)",
-            "Kotak Equity Opp Fund",
-            "Kotak Equity Opp Fund(IDCW)",
-            "Kotak Small Cap Fund",
-            "Kotak Small Cap Fund(IDCW)",
-            "Kotak Gold Fund",
-            "Kotak Gold Fund(IDCW-Payout)",
-            "Kotak Banking and PSU Debt Fund",
-            "Kotak Gilt Fund",
-            "Kotak Gilt Fund(Q-IDCW)",
-            "Kotak Savings Fund(M-IDCW)",
-            "Kotak Savings Fund",
-            "Kotak Dynamic Bond Fund",
-            "Kotak India EQ Contra Fund",
-            "Kotak Bond Short Term Fund",
-            "Kotak Bond Fund",
-            "Kotak Bluechip Fund",
-            "Kotak Equity Hybrid Fund(IDCW)",
-            "Kotak Money Market Fund",
-            "Kotak Money Market Fund(M-IDCW)",
-            "Kotak Liquid Fund(DD-IDCW)",
-            "Kotak Liquid Fund",
-            "Kotak International REIT FOF(IDCW)",
-            "Kotak International REIT FOF",
-            "Kotak ESG Exclusionary Strategy Fund(IDCW)",
-            "Kotak ESG Exclusionary Strategy Fund",
-            "Kotak Debt Hybrid Fund(M-IDCW Payout)",
-            "Kotak ESG Exclusionary Strategy Fund(IDCW-Payout)",
-            "Kotak NASDAQ 100 FoF",
-            "Kotak International REIT FOF(IDCW-Payout)",
-            "Kotak Global Emerging Mkt Fund(IDCW-Payout)",
-            "Kotak Nifty Next 50 Index Fund",
-            "Kotak Nifty Next 50 Index Fund(IDCW)",
-            "Kotak Nifty Next 50 Index Fund(IDCW-Payout)",
-            "Kotak Nifty 50 Index Fund(IDCW Payout)",
-            "Kotak Nifty 50 Index Fund",
-            "Kotak Nifty 50 Index Fund(IDCW)",
-            "Kotak Global Innovation FoF(IDCW)",
-            "Kotak Global Innovation FoF",
-            "Kotak Global Innovation FoF(IDCW Payout)",
-            "Kotak FMP-292-1735D(IDCW)",
-            "Kotak FMP-292-1735D",
-            "Kotak Multicap Fund(IDCW)",
-            "Kotak Multicap Fund",
-            "Kotak Multicap Fund(IDCW Payout)",
-            "Kotak Gilt Fund(Q-IDCW Payout)",
-            "Kotak Bond Fund(IDCW Payout)",
-            "Kotak Bond Short Term Fund(IDCW Payout)",
-            "Kotak Manufacture in India Fund(IDCW)",
-            "Kotak Manufacture in India Fund",
-            "Kotak Nifty SDL Apr 2027 Top 12 Equal Weight Index Fund",
-            "Kotak Nifty SDL Apr 2027 Top 12 Equal Weight Index Fund(IDCW)",
-            "Kotak Nifty SDL Apr 2032 Top 12 Equal Weight Index Fund(IDCW)",
-            "Kotak Nifty SDL Apr 2032 Top 12 Equal Weight Index Fund",
-            "Kotak Manufacture in India Fund(IDCW Payout)",
-            "Kotak Business Cycle Fund(IDCW)",
-            "Kotak Business Cycle Fund",
-            "Kotak Nifty SDL Plus AAA PSU Bond Jul 2028 60:40 Index Fund",
-            "Kotak Nifty SDL Plus AAA PSU Bond Jul 2028 60:40 Index Fund(IDCW)",
-            "Kotak Business Cycle Fund(IDCW Payout)",
-            "Kotak All Weather Debt FoF(IDCW)",
-            "Kotak All Weather Debt FoF",
-            "Kotak FMP-300-1223D(IDCW)",
-            "Kotak FMP-300-1223D",
-            "Kotak Nifty SDL Jul 2026 Index Fund(IDCW)",
-            "Kotak Nifty SDL Jul 2026 Index Fund",
-            "Kotak FMP-304-3119D",
-            "Kotak FMP-304-3119D(IDCW)",
-            "Kotak FMP-305-1200D",
-            "Kotak FMP-305-1200D(IDCW)",
-            "Kotak Banking & Financial Services Fund",
-            "Kotak Banking & Financial Services Fund(IDCW)",
-            "Kotak Nifty SDL Jul 2033 Index Fund(IDCW)",
-            "Kotak Nifty SDL Jul 2033 Index Fund",
-            "Kotak Silver ETF FoF",
-            "Kotak FMP-308-1125D(IDCW)",
-            "Kotak FMP-308-1125D",
-            "Kotak Nifty Smallcap 50 Index Fund(IDCW)",
-            "Kotak Nifty Smallcap 50 Index Fund",
-            "Kotak FMP-310-1131D",
-            "Kotak Banking & Financial Services Fund(IDCW Payout)",
-            "Kotak Nifty 200 Momentum 30 Index Fund",
-            "Kotak Nifty 200 Momentum 30 Index Fund(IDCW)",
-            "Kotak Quant Fund(IDCW)",
-            "Kotak Quant Fund",
-            "Kotak Nifty Financial Services Ex-Bank Index Fund",
-            "Kotak Nifty Financial Services Ex-Bank Index Fund(IDCW)",
-            "Kotak Nifty 200 Momentum 30 Index Fund(IDCW Payout)",
-            "Kotak Nifty Financial Services Ex-Bank Index Fund(IDCW Payout)",
-            "Kotak Quant Fund(IDCW Payout)",
-            "Kotak Nifty Smallcap 50 Index Fund(IDCW)",
-            "Kotak Nifty SDL Jul 2033 Index Fund(IDCW)",
-            "Kotak Nifty SDL Jul 2026 Index Fund(IDCW)",
-            "Kotak All Weather Debt FoF(IDCW Payout)",
-            "Kotak Nifty SDL Plus AAA PSU Bond Jul 2028 60:40 Index Fund(IDCW)",
-            "Kotak Nifty SDL Apr 2032 Top 12 Equal Weight Index Fund(IDCW)",
-            "Kotak Nifty SDL Apr 2027 Top 12 Equal Weight Index Fund(IDCW)",
-            "Kotak Floating Rate Fund(IDCW)",
-            "Kotak S&P BSE Housing Index Fund",
-            "Kotak S&P BSE Housing Index Fund(IDCW Payout)",
-            "Kotak S&P BSE Housing Index Fund(IDCW)",
-            "Kotak Multi Asset Allocation Fund",
-            "Kotak Multi Asset Allocation Fund(IDCW Payout)",
-            "Kotak Multi Asset Allocation Fund(IDCW)",
-            "Kotak Nifty G-Sec July 2033 Index Fund(IDCW)",
-            "Kotak Nifty G-Sec July 2033 Index Fund",
-            "Kotak Nifty G-Sec July 2033 Index Fund(IDCW Payout)",
-            "Kotak Consumption Fund(IDCW)",
-            "Kotak Consumption Fund(IDCW Payout)",
-            "Kotak Consumption Fund",
-            "Kotak Healthcare Fund",
-            "Kotak Healthcare Fund(IDCW)",
-            "Kotak Healthcare Fund(IDCW Payout)",
-            "Kotak FMP-324-109D(IDCW)",
-            "Kotak FMP-324-109D",
-            "Kotak FMP-325-90D",
-            "Kotak FMP-325-90D(IDCW)",
-            "Kotak FMP-326-175D(IDCW)",
-            "Kotak FMP-326-175D",
-            "Kotak FMP-327-101D",
-            "Kotak FMP-327-101D(IDCW)",
-            "Kotak FMP-328-90D",
-            "Kotak FMP-328-90D(IDCW)",
-            "Kotak Technology Fund(IDCW)",
-            "Kotak Technology Fund(IDCW)",
-            "Kotak Technology Fund",
-            "JM Overnight Fund(W-IDCW)",
-            "JM Overnight Fund",
-            "JM Overnight Fund(DD-IDCW)",
-            "JM Arbitrage Fund(A-IDCW)",
-            "JM Arbitrage Fund(H-IDCW)",
-            "JM Arbitrage Fund(Q-IDCW)",
-            "JM Arbitrage Fund(M-IDCW)",
-            "JM Large Cap Fund(A-IDCW)",
-            "JM Large Cap Fund(H-IDCW)",
-            "JM Large Cap Fund(Q-IDCW)",
-            "JM Large Cap Fund(M-IDCW)",
-            "JM Arbitrage Fund",
-            "JM Aggressive Hybrid Fund(H-IDCW)",
-            "JM Low Duration Fund",
-            "JM Aggressive Hybrid Fund(Q-IDCW)",
-            "JM Aggressive Hybrid Fund",
-            "JM Aggressive Hybrid Fund",
-            "JM Aggressive Hybrid Fund(M-IDCW)",
-            "JM Dynamic Bond Fund(M-IDCW)",
-            "JM Dynamic Bond Fund",
-            "JM Arbitrage Fund",
-            "JM Arbitrage Fund",
-            "JM Aggressive Hybrid Fund(A-IDCW)",
-            "JM Aggressive Hybrid Fund",
-            "JM Aggressive Hybrid Fund",
-            "JM Arbitrage Fund",
-            "JM Low Duration Fund",
-            "JM Dynamic Bond Fund",
-            "JM Liquid Fund",
-            "JM Liquid Fund(W-IDCW)",
-            "JM Dynamic Bond Fund(W-IDCW)",
-            "JM Medium to Long Duration Fund",
-            "JM Medium to Long Duration Fund",
-            "JM Dynamic Bond Fund(DD-IDCW)",
-            "JM Medium to Long Duration Fund(Q-IDCW)",
-            "JM Dynamic Bond Fund(IDCW)",
-            "JM Dynamic Bond Fund",
-            "JM Low Duration Fund(W-IDCW)",
-            "JM Low Duration Fund(FN-IDCW)",
-            "JM Focused Fund(IDCW)",
-            "JM Large Cap Fund(IDCW)",
-            "JM Arbitrage Fund(IDCW)",
-            "JM Arbitrage Fund",
-            "JM Aggressive Hybrid Fund(IDCW)",
-            "JM Aggressive Hybrid Fund",
-            "JM Low Duration Fund(DD-IDCW)",
-            "JM Flexicap Fund",
-            "JM ELSS Tax Saver Fund(IDCW)",
-            "JM ELSS Tax Saver Fund",
-            "JM Low Duration Fund",
-            "JM Flexicap Fund(IDCW)",
-            "JM Liquid Fund(Q-IDCW)",
-            "JM Liquid Fund(DD-IDCW)",
-            "JM Large Cap Fund",
-            "JM Focused Fund",
-            "JM Value Fund",
-            "JM Liquid Fund",
-            "JM Value Fund(IDCW)",
-            "JM Short Duration Fund(IDCW)",
-            "JM Short Duration Fund",
-            "JM Midcap Fund",
-            "JM Midcap Fund(IDCW)",
-            "JM Midcap Fund(IDCW)",
-            "JM Short Duration Fund(IDCW)",
-            "JM Overnight Fund(W-IDCW)",
-            "JM Arbitrage Fund(M-IDCW)",
-            "JM Arbitrage Fund(A-IDCW)",
-            "JM Arbitrage Fund(Q-IDCW)",
-            "JM Arbitrage Fund(H-IDCW)",
-            "JM Large Cap Fund(A-IDCW)",
-            "JM Large Cap Fund(Q-IDCW)",
-            "JM Large Cap Fund(M-IDCW)",
-            "JM Large Cap Fund(H-IDCW)",
-            "JM Aggressive Hybrid Fund(H-IDCW)",
-            "JM Aggressive Hybrid Fund(M-IDCW)",
-            "JM Aggressive Hybrid Fund(Q-IDCW)",
-            "JM Dynamic Bond Fund(M-IDCW)",
-            "JM Aggressive Hybrid Fund(A-IDCW)",
-            "JM Medium to Long Duration Fund(Q-IDCW)",
-            "JM Dynamic Bond Fund(IDCW)",
-            "JM Liquid Fund(W-IDCW)",
-            "JM Focused Fund(IDCW)",
-            "JM Aggressive Hybrid Fund(IDCW)",
-            "JM Arbitrage Fund(IDCW)",
-            "JM Large Cap Fund(IDCW)",
-            "JM Flexicap Fund(IDCW)",
-            "JM Liquid Fund(Q-IDCW)",
-            "JM Value Fund(IDCW)",
-            "Invesco India Focused Fund(IDCW)",
-            "Invesco India Focused Fund",
-            "Invesco India Overnight Fund(W-IDCW)",
-            "Invesco India Overnight Fund(M-IDCW)",
-            "Invesco India Overnight Fund(DD-IDCW)",
-            "Invesco India Overnight Fund",
-            "Invesco India Equity Savings Fund(IDCW)",
-            "Invesco India Equity Savings Fund",
-            "Invesco India Smallcap Fund(IDCW)",
-            "Invesco India Smallcap Fund",
-            "Invesco India Aggressive Hybrid Fund(IDCW)",
-            "Invesco India Aggressive Hybrid Fund",
-            "Invesco India Ultra Short Duration Fund(DD-IDCW)",
-            "Invesco India Credit Risk Fund(M-IDCW)",
-            "Invesco India Arbitrage Fund",
-            "Invesco India - Invesco Global Equity Income FoF",
-            "Invesco India - Invesco Global Equity Income FoF(IDCW)",
-            "Invesco India - Invesco Pan European Equity FoF",
-            "Invesco India - Invesco Pan European Equity FoF(IDCW)",
-            "Invesco India Credit Risk Fund",
-            "Invesco India Credit Risk Fund(IDCW)",
-            "Invesco India Gilt Fund(A-IDCW)",
-            "Invesco India Gilt Fund(Q-IDCW)",
-            "Invesco India Low Duration Fund(W-IDCW)",
-            "Invesco India Low Duration Fund(M-IDCW)",
-            "Invesco India Low Duration Fund(DD-IDCW)",
-            "Invesco India Low Duration Fund",
-            "Invesco India Low Duration Fund(IDCW)",
-            "Invesco India ELSS Tax Saver Fund",
-            "Invesco India ELSS Tax Saver Fund(IDCW)",
-            "Invesco India Short Duration Fund(W-IDCW)",
-            "Invesco India Short Duration Fund(M-IDCW)",
-            "Invesco India Short Duration Fund(DD-IDCW)",
-            "Invesco India Short Duration Fund",
-            "Invesco India Short Duration Fund(IDCW)",
-            "Invesco India PSU Equity Fund",
-            "Invesco India PSU Equity Fund(IDCW)",
-            "Invesco India Multicap Fund",
-            "Invesco India Multicap Fund(IDCW)",
-            "Invesco India Midcap Fund",
-            "Invesco India Midcap Fund(IDCW)",
-            "Invesco India Ultra Short Duration Fund(Q-IDCW)",
-            "Invesco India Ultra Short Duration Fund(M-IDCW)",
-            "Invesco India Ultra Short Duration Fund",
-            "Invesco India Liquid Fund(W-IDCW)",
-            "Invesco India Ultra Short Duration Fund(A-IDCW)",
-            "Invesco India Infrastructure Fund",
-            "Invesco India Liquid Fund(M-IDCW)",
-            "Invesco India Gold ETF FoF(IDCW)",
-            "Invesco India Large & Mid Cap Fund",
-            "Invesco India Infrastructure Fund(IDCW)",
-            "Invesco India Large & Mid Cap Fund(IDCW)",
-            "Invesco India Gold ETF FoF",
-            "Invesco India Gilt Fund(M-IDCW)",
-            "Invesco India Gilt Fund",
-            "Invesco India Money Market Fund(DD-IDCW)",
-            "Invesco India Money Market Fund",
-            "Invesco India Money Market Fund(M-IDCW)",
-            "Invesco India Money Market Fund(IDCW)",
-            "Invesco India Largecap Fund",
-            "Invesco India Contra Fund(IDCW)",
-            "Invesco India Contra Fund",
-            "Invesco India Largecap Fund(IDCW)",
-            "Invesco India Financial Services Fund",
-            "Invesco India Banking and PSU Fund(M-IDCW)",
-            "Invesco India Financial Services Fund(IDCW)",
-            "Invesco India Banking and PSU Fund",
-            "Invesco India Banking and PSU Fund(DD-IDCW)",
-            "Invesco India Corporate Bond Fund(IDCW)",
-            "Invesco India Balanced Advantage Fund(IDCW)",
-            "Invesco India Balanced Advantage Fund",
-            "Invesco India Corporate Bond Fund",
-            "Invesco India Corporate Bond Fund(Q-IDCW)",
-            "Invesco India Corporate Bond Fund(M-IDCW)",
-            "Invesco India Corporate Bond Fund(A-IDCW)",
-            "Invesco India Arbitrage Fund(IDCW)",
-            "Invesco India Arbitrage Fund",
-            "Invesco India Liquid Fund(DD-IDCW)",
-            "Invesco India Liquid Fund",
-            "Invesco India - Invesco Global Consumer Trends FoF(IDCW)",
-            "Invesco India - Invesco Global Consumer Trends FoF",
-            "Invesco India ESG Equity Fund(IDCW)",
-            "Invesco India ESG Equity Fund",
-            "Invesco India Medium Duration Fund",
-            "Invesco India Medium Duration Fund(IDCW)",
-            "Invesco India Medium Duration Fund(Q-IDCW)",
-            "Invesco India Flexi Cap Fund(IDCW)",
-            "Invesco India Flexi Cap Fund",
-            "Invesco India - Invesco EQQQ NASDAQ-100 ETF FoF",
-            "Invesco India Nifty G-sec Sep 2032 Index Fund(IDCW)",
-            "Invesco India Nifty G-sec Jul 2027 Index Fund(IDCW)",
-            "Invesco India Nifty G-sec Jul 2027 Index Fund",
-            "Invesco India Nifty G-sec Sep 2032 Index Fund",
-            "Invesco India Flexi Cap Fund(IDCW)",
-            "Invesco India Medium Duration Fund(Q-IDCW)",
-            "Invesco India Medium Duration Fund(IDCW)",
-            "Invesco India ESG Equity Fund(IDCW)",
-            "Invesco India - Invesco Global Consumer Trends FoF(IDCW)",
-            "Invesco India Focused Fund(IDCW)",
-            "Invesco India Overnight Fund(M-IDCW)",
-            "Invesco India Equity Savings Fund(IDCW)",
-            "Invesco India Smallcap Fund(IDCW)",
-            "Invesco India Aggressive Hybrid Fund(IDCW)",
-            "Invesco India Credit Risk Fund(M-IDCW)",
-            "Invesco India - Invesco Global Equity Income FoF(IDCW)",
-            "Invesco India - Invesco Pan European Equity FoF(IDCW)",
-            "Invesco India Credit Risk Fund(IDCW)",
-            "Invesco India Gilt Fund(Q-IDCW)",
-            "Invesco India Gilt Fund(A-IDCW)",
-            "Invesco India Short Duration Fund(IDCW)",
-            "Invesco India Short Duration Fund(M-IDCW)",
-            "Invesco India Midcap Fund(IDCW)",
-            "Invesco India PSU Equity Fund(IDCW)",
-            "Invesco India Low Duration Fund(IDCW)",
-            "Invesco India Ultra Short Duration Fund(Q-IDCW)",
-            "Invesco India Low Duration Fund(M-IDCW)",
-            "Invesco India Low Duration Fund(W-IDCW)",
-            "Invesco India Gold ETF FoF(IDCW)",
-            "Invesco India Contra Fund(IDCW)",
-            "Invesco India Multicap Fund(IDCW)",
-            "Invesco India Financial Services Fund(IDCW)",
-            "Invesco India Liquid Fund(M-IDCW)",
-            "Invesco India Money Market Fund(IDCW)",
-            "Invesco India Corporate Bond Fund(M-IDCW)",
-            "Invesco India Large & Mid Cap Fund(IDCW)",
-            "Invesco India Corporate Bond Fund(IDCW)",
-            "Invesco India Corporate Bond Fund(A-IDCW)",
-            "Invesco India Money Market Fund(M-IDCW)",
-            "Invesco India Corporate Bond Fund(Q-IDCW)",
-            "Invesco India Infrastructure Fund(IDCW)",
-            "Invesco India Banking and PSU Fund(M-IDCW)",
-            "Invesco India Ultra Short Duration Fund(A-IDCW)",
-            "Invesco India Arbitrage Fund(IDCW)",
-            "Invesco India Ultra Short Duration Fund(M-IDCW)",
-            "Invesco India Balanced Advantage Fund(IDCW)",
-            "Invesco India Largecap Fund(IDCW)",
-            "ITI Banking & PSU Debt Fund(IDCW)",
-            "ITI Banking & PSU Debt Fund",
-            "ITI Small Cap Fund(IDCW)",
-            "ITI Small Cap Fund",
-            "ITI Balanced Advantage Fund",
-            "ITI Balanced Advantage Fund(IDCW)",
-            "ITI Overnight Fund(M-IDCW)",
-            "ITI Overnight Fund(W-IDCW)",
-            "ITI Overnight Fund",
-            "ITI Arbitrage Fund",
-            "ITI Arbitrage Fund(IDCW)",
-            "ITI ELSS Tax Saver Fund",
-            "ITI ELSS Tax Saver Fund(IDCW)",
-            "ITI Multi-Cap Fund",
-            "ITI Multi-Cap Fund(IDCW)",
-            "ITI Liquid Fund(M-IDCW)",
-            "ITI Liquid Fund(A-IDCW)",
-            "ITI Liquid Fund(W-IDCW)",
-            "ITI Liquid Fund(DD-IDCW)",
-            "ITI Liquid Fund",
-            "ITI Large Cap Fund(IDCW)",
-            "ITI Large Cap Fund",
-            "ITI Mid Cap Fund(IDCW)",
-            "ITI Mid Cap Fund",
-            "ITI Ultra Short Duration Fund(A-IDCW)",
-            "ITI Ultra Short Duration Fund",
-            "ITI Value Fund",
-            "ITI Value Fund(IDCW)",
-            "ITI Dynamic Bond Fund(A-IDCW)",
-            "ITI Dynamic Bond Fund(M-IDCW)",
-            "ITI Dynamic Bond Fund(Q-IDCW)",
-            "ITI Dynamic Bond Fund",
-            "ITI Pharma & Healthcare Fund(IDCW)",
-            "ITI Pharma & Healthcare Fund",
-            "ITI Banking & Financial Services Fund",
-            "ITI Banking & Financial Services Fund(IDCW)",
-            "ITI Flexi Cap Fund(IDCW)",
-            "ITI Flexi Cap Fund",
-            "ITI Focused Equity Fund(IDCW)",
-            "ITI Focused Equity Fund",
-            "ITI Focused Equity Fund(IDCW)",
-            "ITI Flexi Cap Fund(IDCW)",
-            "ITI Banking & Financial Services Fund(IDCW)",
-            "ITI Pharma & Healthcare Fund(IDCW)",
-            "ITI Dynamic Bond Fund(A-IDCW)",
-            "ITI Dynamic Bond Fund(M-IDCW)",
-            "ITI Dynamic Bond Fund(Q-IDCW)",
-            "ITI Value Fund(IDCW)",
-            "ITI Ultra Short Duration Fund(A-IDCW)",
-            "ITI Mid Cap Fund(IDCW)",
-            "ITI Large Cap Fund(IDCW)",
-            "ITI Banking & PSU Debt Fund(IDCW)",
-            "ITI Small Cap Fund(IDCW)",
-            "ITI Balanced Advantage Fund(IDCW)",
-            "ITI Overnight Fund(M-IDCW)",
-            "ITI Arbitrage Fund(IDCW)",
-            "ITI Multi-Cap Fund(IDCW)",
-            "ITI Liquid Fund(A-IDCW)",
-            "ITI Liquid Fund(M-IDCW)",
-            "IL&FS Infra Debt Fund - Series 3-B",
-            "ICICI Pru ESG Exclusionary Strategy Fund(IDCW Payout)",
-            "ICICI Pru ESG Exclusionary Strategy Fund(IDCW)",
-            "ICICI Pru ESG Exclusionary Strategy Fund",
-            "ICICI Pru India Equity",
-            "ICICI Pru India Equity",
-            "ICICI Pru India Equity",
-            "ICICI Pru Commodities Fund(IDCW Payout)",
-            "ICICI Pru Commodities Fund",
-            "ICICI Pru Global Advantage Fund",
-            "ICICI Pru Global Advantage Fund",
-            "ICICI Pru MNC Fund(IDCW-Payout)",
-            "ICICI Pru MNC Fund(IDCW)",
-            "ICICI Pru MNC Fund",
-            "ICICI Pru S&P BSE Sensex Index Fund(IDCW-Payout)",
-            "ICICI Pru Pharma Healthcare & Diagnostics (P.H.D) Fund-(IDCW-Payout)",
-            "ICICI Pru Ultra Short Term Fund Fund(W-IDCW Payout)",
-            "ICICI Pru Manufacturing Fund(IDCW-Payout)",
-            "ICICI Pru India Opp Fund(IDCW-Payout)",
-            "ICICI Pru Bharat Consumption Fund(IDCW-Payout)",
-            "ICICI Pru Bharat Consumption Fund",
-            "ICICI Pru Bharat Consumption Fund(IDCW)",
-            "ICICI Pru FMP-85-10Y-I",
-            "ICICI Pru Retirement Fund-Hybrid Aggressive Plan(IDCW)",
-            "ICICI Pru Retirement Fund-Pure Debt Plan",
-            "ICICI Pru Retirement Fund-Pure Debt Plan(IDCW)",
-            "ICICI Pru Retirement Fund-Hybrid Aggressive Plan",
-            "ICICI Pru Retirement Fund-Hybrid Cons Plan",
-            "ICICI Pru Retirement Fund-Hybrid Cons Plan(IDCW)",
-            "ICICI Pru Retirement Fund-Pure Equity Plan(IDCW)",
-            "ICICI Pru Retirement Fund-Pure Equity Plan",
-            "ICICI Pru India Opp Fund(IDCW)",
-            "ICICI Pru India Opp Fund",
-            "ICICI Pru Ultra Short Term Fund Fund(W-IDCW)",
-            "ICICI Pru Ultra Short Term Fund Fund(DD-IDCW)",
-            "ICICI Pru Manufacturing Fund(IDCW)",
-            "ICICI Pru Manufacturing Fund",
-            "ICICI Pru Bharat 22 FOF",
-            "ICICI Pru Pharma Healthcare & Diagnostics (P.H.D) Fund-(IDCW)",
-            "ICICI Pru Pharma Healthcare & Diagnostics (P.H.D) Fund",
-            "ICICI Pru LT Wealth Enhancement Fund",
-            "ICICI Pru LT Wealth Enhancement Fund(IDCW)",
-            "ICICI Pru S&P BSE Sensex Index Fund(IDCW)",
-            "ICICI Pru S&P BSE Sensex Index Fund",
-            "ICICI Pru Nifty 50 Index Fund(IDCW-Payout)",
-            "ICICI Pru Bond Fund(H-IDCW)",
-            "ICICI Pru Constant Maturity Gilt Fund(Q-IDCW)",
-            "ICICI Pru Equity Savings Fund(Q-IDCW)",
-            "ICICI Pru Dividend Yield Equity Fund(IDCW)",
-            "ICICI Pru Savings Fund(M-IDCW Payout)",
-            "ICICI Pru Savings Fund(FN-IDCW Payout)",
-            "ICICI Pru Exports & Services Fund(IDCW-Payout)",
-            "ICICI Pru Global Stable Equity Fund",
-            "ICICI Pru Infrastructure Fund(IDCW-Payout)",
-            "ICICI Pru Equity & Debt Fund(H-IDCW)",
-            "ICICI Pru Regular Savings Fund(H-IDCW Payout)",
-            "ICICI Pru Medium Term Bond Fund(Q-IDCW Payout)",
-            "ICICI Pru Equity & Debt Fund(A-IDCW)",
-            "ICICI Pru Regular Savings Fund(Q-IDCW Payout)",
-            "ICICI Pru Midcap Fund(IDCW-Payout)",
-            "ICICI Pru Regular Savings Fund(M-IDCW Payout)",
-            "ICICI Pru Income Optimizer Fund",
-            "ICICI Pru Debt Mgmt Fund",
-            "ICICI Pru Asset Allocator Fund",
-            "ICICI Pru All Seasons Bond Fund(Q-IDCW Payout)",
-            "ICICI Pru Balanced Advantage Fund(M-IDCW Payout)",
-            "ICICI Pru Value Discovery Fund(IDCW-Payout)",
-            "ICICI Pru All Seasons Bond Fund(IDCW-Payout)",
-            "ICICI Pru All Seasons Bond Fund(A-IDCW Payout)",
-            "ICICI Pru Savings Fund(Q-IDCW Payout)",
-            "ICICI Pru Money Market Fund(IDCW-Payout)",
-            "ICICI Pru US Bluechip Equity Fund(IDCW-Payout)",
-            "ICICI Pru Liquid Fund(IDCW-Payout)",
-            "ICICI Pru Banking & PSU Debt Fund(Q-IDCW Payout)",
-            "ICICI Pru Regular Gold Savings Fund",
-            "ICICI Pru Savings Fund(IDCW-Payout)",
-            "ICICI Pru Floating Interest Fund(IDCW-Payout)",
-            "ICICI Pru Ultra Short Term Fund Fund(Q-IDCW Payout)",
-            "ICICI Pru Ultra Short Term Fund Fund(M-IDCW Payout)",
-            "ICICI Pru Credit Risk Fund(Q-IDCW Payout)",
-            "ICICI Pru Nifty Next 50 Index Fund(IDCW-Payout)",
-            "ICICI Pru Savings Fund(W-IDCW Payout)",
-            "ICICI Pru Floating Interest Fund(W-IDCW Payout)",
-            "ICICI Pru Corp Bond Fund(Q-IDCW Payout)",
-            "ICICI Pru Corp Bond Fund(M-IDCW Payout)",
-            "ICICI Pru Focused Equity Fund(IDCW-Payout)",
-            "ICICI Pru Bond Fund(Q-IDCW Payout)",
-            "ICICI Pru Bond Fund(M-IDCW Payout)",
-            "ICICI Pru Bluechip Fund(IDCW-Payout)",
-            "ICICI Pru Banking & Fin Serv Fund(IDCW-Payout)",
-            "ICICI Pru Gilt Fund(IDCW-Payout)",
-            "ICICI Pru Smallcap Fund(IDCW-Payout)",
-            "ICICI Pru Technology Fund(IDCW-Payout)",
-            "ICICI Pru Multicap Fund(IDCW-Payout)",
-            "ICICI Pru FMCG Fund(IDCW-Payout)",
-            "ICICI Pru All Seasons Bond Fund(W-IDCW Payout)",
-            "ICICI Pru Short Term Fund(M-IDCW Payout)",
-            "ICICI Pru Large & Mid Cap Fund(IDCW-Payout)",
-            "ICICI Pru ELSS Tax Saver Fund(IDCW)",
-            "ICICI Pru Balanced Advantage Fund(IDCW-Payout)",
-            "ICICI Pru Equity-Arbitrage Fund(IDCW-Payout)",
-            "ICICI Pru Multi-Asset Fund(IDCW-Payout)",
-            "ICICI Pru Equity & Debt Fund(M-IDCW Payout)",
-            "ICICI Pru Floating Interest Fund(IDCW)",
-            "ICICI Pru Equity & Debt Fund(A-IDCW Payout)",
-            "ICICI Pru Nifty 50 Index Fund(IDCW)",
-            "ICICI Pru Equity Savings Fund(Q-IDCW Payout)",
-            "ICICI Pru Equity Savings Fund",
-            "ICICI Pru Bond Fund(H-IDCW Payout)",
-            "ICICI Pru Equity & Debt Fund(H-IDCW Payout)",
-            "ICICI Pru Constant Maturity Gilt Fund",
-            "ICICI Pru Constant Maturity Gilt Fund(Q-IDCW Payout)",
-            "ICICI Pru Dividend Yield Equity Fund",
-            "ICICI Pru Dividend Yield Equity Fund(IDCW-Payout)",
-            "ICICI Pru All Seasons Bond Fund(W-IDCW)",
-            "ICICI Pru Money Market Fund(IDCW)",
-            "ICICI Pru Liquid Fund(IDCW)",
-            "ICICI Pru All Seasons Bond Fund(IDCW)",
-            "ICICI Pru Savings Fund(IDCW)",
-            "ICICI Pru Global Stable Equity Fund",
-            "ICICI Pru Global Stable Equity Fund",
-            "ICICI Pru Banking & PSU Debt Fund(Q-IDCW)",
-            "ICICI Pru Savings Fund(Q-IDCW)",
-            "ICICI Pru Savings Fund(FN-IDCW)",
-            "ICICI Pru Savings Fund(M-IDCW)",
-            "ICICI Pru Balanced Advantage Fund(M-IDCW)",
-            "ICICI Pru Corp Bond Fund(Q-IDCW)",
-            "ICICI Pru Exports & Services Fund",
-            "ICICI Pru US Bluechip Equity Fund(IDCW)",
-            "ICICI Pru Passive Strategy Fund",
-            "ICICI Pru Ultra Short Term Fund Fund(Q-IDCW)",
-            "ICICI Pru All Seasons Bond Fund(Q-IDCW)",
-            "ICICI Pru Credit Risk Fund(Q-IDCW)",
-            "ICICI Pru Ultra Short Term Fund Fund",
-            "ICICI Pru Ultra Short Term Fund Fund(M-IDCW)",
-            "ICICI Pru Nifty Next 50 Index Fund(IDCW)",
-            "ICICI Pru All Seasons Bond Fund(A-IDCW)",
-            "ICICI Pru Regular Savings Fund(Q-IDCW)",
-            "ICICI Pru Technology Fund(IDCW)",
-            "ICICI Pru Corp Bond Fund(M-IDCW)",
-            "ICICI Pru Focused Equity Fund(IDCW)",
-            "ICICI Pru Focused Equity Fund",
-            "ICICI Pru Bond Fund(M-IDCW)",
-            "ICICI Pru Banking & Fin Serv Fund(IDCW)",
-            "ICICI Pru Banking & Fin Serv Fund",
-            "ICICI Pru Debt Mgmt Fund",
-            "ICICI Pru Thematic Advantage Fund",
-            "ICICI Pru Income Optimizer Fund",
-            "ICICI Pru Asset Allocator Fund",
-            "ICICI Pru Asset Allocator Fund",
-            "ICICI Pru Income Optimizer Fund",
-            "ICICI Pru Passive Strategy Fund",
-            "ICICI Pru Short Term Fund(M-IDCW)",
-            "ICICI Pru Long Term Bond Fund(Q-IDCW Payout)",
-            "ICICI Pru Smallcap Fund(IDCW)",
-            "ICICI Pru Midcap Fund(IDCW)",
-            "ICICI Pru Medium Term Bond Fund",
-            "ICICI Pru Equity & Debt Fund(M-IDCW)",
-            "ICICI Pru Equity-Arbitrage Fund",
-            "ICICI Pru Equity-Arbitrage Fund(IDCW)",
-            "ICICI Pru Balanced Advantage Fund(IDCW)",
-            "ICICI Pru US Bluechip Equity Fund",
-            "ICICI Pru Money Market Fund(W-IDCW)",
-            "ICICI Pru Floating Interest Fund(W-IDCW)",
-            "ICICI Pru Smallcap Fund",
-            "ICICI Pru All Seasons Bond Fund",
-            "ICICI Pru Corp Bond Fund",
-            "ICICI Pru Bond Fund",
-            "ICICI Pru Bond Fund(Q-IDCW)",
-            "ICICI Pru Regular Gold Savings Fund",
-            "ICICI Pru Debt Mgmt Fund",
-            "ICICI Pru Credit Risk Fund",
-            "ICICI Pru Long Term Bond Fund(Q-IDCW)",
-            "ICICI Pru Regular Savings Fund(H-IDCW)",
-            "ICICI Pru Regular Savings Fund",
-            "ICICI Pru Medium Term Bond Fund(Q-IDCW)",
-            "ICICI Pru Multicap Fund",
-            "ICICI Pru Multicap Fund(IDCW)",
-            "ICICI Pru Large & Mid Cap Fund(IDCW)",
-            "ICICI Pru Large & Mid Cap Fund",
-            "ICICI Pru Short Term Fund",
-            "ICICI Pru ELSS Tax Saver Fund",
-            "ICICI Pru Technology Fund",
-            "ICICI Pru Regular Gold Savings Fund",
-            "ICICI Pru Exports & Services Fund(IDCW)",
-            "ICICI Pru Midcap Fund",
-            "ICICI Pru Nifty Next 50 Index Fund",
-            "ICICI Pru Liquid Fund(W-IDCW)",
-            "ICICI Pru Infrastructure Fund(IDCW)",
-            "ICICI Pru Infrastructure Fund",
-            "ICICI Pru Long Term Bond Fund",
-            "ICICI Pru Gilt Fund",
-            "ICICI Pru Gilt Fund(IDCW)",
-            "ICICI Pru Floating Interest Fund",
-            "ICICI Pru Floating Interest Fund(DD-IDCW)",
-            "ICICI Pru Bluechip Fund(IDCW)",
-            "ICICI Pru Savings Fund(W-IDCW)",
-            "ICICI Pru Bluechip Fund",
-            "ICICI Pru FMCG Fund",
-            "ICICI Pru FMCG Fund(IDCW)",
-            "ICICI Pru Savings Fund",
-            "ICICI Pru Savings Fund(DD-IDCW)",
-            "ICICI Pru Value Discovery Fund",
-            "ICICI Pru Value Discovery Fund(IDCW)",
-            "ICICI Pru Regular Savings Fund(M-IDCW)",
-            "ICICI Pru Banking & PSU Debt Fund",
-            "ICICI Pru Nifty 50 Index Fund",
-            "ICICI Pru Passive Strategy Fund",
-            "ICICI Pru Child Care Fund-Gift Plan",
-            "ICICI Pru Multi-Asset Fund",
-            "ICICI Pru Multi-Asset Fund(IDCW)",
-            "ICICI Pru Equity & Debt Fund",
-            "ICICI Pru Balanced Advantage Fund",
-            "ICICI Pru Liquid Fund(DD-IDCW)",
-            "ICICI Pru Money Market Fund(DD-IDCW)",
-            "ICICI Pru Liquid Fund",
-            "ICICI Pru Money Market Fund",
-            "ICICI Pru Quant Fund(IDCW-Payout)",
-            "ICICI Pru Quant Fund",
-            "ICICI Pru Quant Fund(IDCW)",
-            "ICICI Pru Business Cycle Fund(IDCW-Payout)",
-            "ICICI Pru Business Cycle Fund",
-            "ICICI Pru Commodities Fund(IDCW)",
-            "ICICI Pru Business Cycle Fund(IDCW)",
-            "ICICI Pru Nifty 100 Low Volatility 30 ETF FOF",
-            "ICICI Pru Nifty 100 Low Volatility 30 ETF FOF(IDCW)",
-            "ICICI Pru Flexicap Fund(IDCW)",
-            "ICICI Pru Flexicap Fund",
-            "ICICI Pru Flexicap Fund(IDCW Payout)",
-            "ICICI Pru Nifty Alpha Low - Volatility 30 ETF FOF(IDCW Payout)",
-            "ICICI Pru Nifty Alpha Low - Volatility 30 ETF FOF",
-            "ICICI Pru Nifty PSU Bond Plus SDL Sep 2027 40:60 Index Fund(A-IDCW Payout)",
-            "ICICI Pru Nifty PSU Bond Plus SDL Sep 2027 40:60 Index Fund",
-            "ICICI Pru NASDAQ 100 Index Fund",
-            "ICICI Pru NASDAQ 100 Index Fund(IDCW Payout)",
-            "ICICI Pru Nifty Smallcap 250 Index Fund(IDCW)",
-            "ICICI Pru Nifty Smallcap 250 Index Fund",
-            "ICICI Pru Liquid Fund(W-IDCW Payout)",
-            "ICICI Pru Nifty Smallcap 250 Index Fund(IDCW Payout)",
-            "ICICI Pru S&P BSE 500 ETF FOF(IDCW)",
-            "ICICI Pru S&P BSE 500 ETF FOF",
-            "ICICI Pru Nifty Midcap 150 Index Fund",
-            "ICICI Pru Nifty Midcap 150 Index Fund(IDCW)",
-            "ICICI Pru NASDAQ 100 Index Fund(IDCW)",
-            "ICICI Pru Passive Multi-Asset FoF",
-            "ICICI Pru Passive Multi-Asset FoF(IDCW Payout)",
-            "ICICI Pru Nifty Midcap 150 Index Fund(IDCW Payout)",
-            "ICICI Pru Silver ETF FOF",
-            "ICICI Pru Silver ETF FOF(IDCW)",
-            "ICICI Pru S&P BSE 500 ETF FOF(IDCW Payout)",
-            "ICICI Pru Strategic Metal and Energy Equity FoF(IDCW Payout)",
-            "ICICI Pru Strategic Metal and Energy Equity FoF",
-            "ICICI Pru Passive Multi-Asset FoF(IDCW)",
-            "ICICI Pru Nifty Bank Index Fund(IDCW Payout)",
-            "ICICI Pru Nifty Bank Index Fund",
-            "ICICI Pru Silver ETF FOF(IDCW Payout)",
-            "ICICI Pru Nifty Alpha Low - Volatility 30 ETF FOF(IDCW)",
-            "ICICI Pru Nifty SDL Sep 2027 Index Fund(A-IDCW)",
-            "ICICI Pru Nifty SDL Sep 2027 Index Fund",
-            "ICICI Pru Housing Opp Fund(IDCW)",
-            "ICICI Pru Housing Opp Fund",
-            "ICICI Pru Strategic Metal and Energy Equity FoF(IDCW)",
-            "ICICI Pru Housing Opp Fund(IDCW Payout)",
-            "ICICI Pru Nifty Bank Index Fund(IDCW)",
-            "ICICI Pru Nifty 200 Momentum 30 Index Fund",
-            "ICICI Pru Nifty 200 Momentum 30 Index Fund(IDCW)",
-            "ICICI Pru Nifty IT Index Fund",
-            "ICICI Pru Nifty IT Index Fund(IDCW)",
-            "ICICI Pru Overnight fund-Direct Plan-Unclaimed IDCW Transitory Scheme",
-            "ICICI Pru Overnight fund-Direct Plan-Unclaimed IDCW Stable Scheme",
-            "ICICI Pru Overnight fund-Direct Plan-Unclaimed Redemption Stable Scheme",
-            "ICICI Pru Overnight fund-Direct Plan-Unclaimed Redemption IDCW Transitory Scheme",
-            "ICICI Pru Overnight Fund(W-IDCW Payout)",
-            "ICICI Pru Overnight Fund(W-IDCW)",
-            "ICICI Pru Overnight Fund(DD-IDCW)",
-            "ICICI Pru Overnight Fund",
-            "ICICI Pru PSU Equity Fund",
-            "ICICI Pru PSU Equity Fund(IDCW)",
-            "ICICI Pru Nifty50 Equal Weight Index Fund",
-            "ICICI Pru Nifty50 Equal Weight Index Fund(IDCW)",
-            "ICICI Pru Nifty Auto Index Fund",
-            "ICICI Pru Nifty Auto Index Fund(IDCW)",
-            "ICICI Pru Nifty SDL Dec 2028 Index Fund(A-IDCW)",
-            "ICICI Pru Nifty SDL Dec 2028 Index Fund",
-            "ICICI Pru Nifty G-Sec Dec 2030 Index Fund(A-IDCW)",
-            "ICICI Pru Nifty G-Sec Dec 2030 Index Fund",
-            "ICICI Pru Transportation and Logistics Fund(IDCW)",
-            "ICICI Pru Transportation and Logistics Fund",
-            "ICICI Pru Nifty PSU Bond Plus SDL Sep 2027 40:60 Index Fund(A-IDCW)",
-            "ICICI Pru PSU Equity Fund(IDCW Payout)",
-            "ICICI Pru Nifty 100 Low Volatility 30 ETF FOF(IDCW Payout)",
-            "ICICI Pru Nifty50 Equal Weight Index Fund(IDCW Payout)",
-            "ICICI Pru Nifty Auto Index Fund(IDCW Payout)",
-            "ICICI Pru Nifty IT Index Fund(IDCW Payout)",
-            "ICICI Pru Global Advantage Fund",
-            "ICICI Pru Nifty Pharma Index Fund",
-            "ICICI Pru Nifty Pharma Index Fund(IDCW Payout)",
-            "ICICI Pru FMP-88-1226D-F(H-IDCW)",
-            "ICICI Pru FMP-88-1226D-F",
-            "ICICI Pru FMP-88-1226D-F(Q-IDCW)",
-            "ICICI Pru Nifty SDL Sep 2026 Index Fund(IDCW)",
-            "ICICI Pru Nifty SDL Sep 2026 Index Fund",
-            "ICICI Pru Nifty Pharma Index Fund(IDCW)",
-            "ICICI Pru FMP-88-1303D-S(IDCW)",
-            "ICICI Pru FMP-88-1303D-S",
-            "ICICI Pru Innovation Fund",
-            "ICICI Pru Innovation Fund(IDCW Payout)",
-            "ICICI Pru Innovation Fund(IDCW)",
-            "ICICI Pru Nifty SDL Sep 2026 Index Fund(IDCW)",
-            "ICICI Pru Nifty SDL Dec 2028 Index Fund(A-IDCW)",
-            "ICICI Pru Nifty G-Sec Dec 2030 Index Fund(A-IDCW)",
-            "ICICI Pru Transportation and Logistics Fund(IDCW)",
-            "ICICI Pru Nifty 200 Momentum 30 Index Fund(IDCW)",
-            "ICICI Pru Nifty SDL Sep 2027 Index Fund(A-IDCW)",
-            "ICICI Pru Nifty50 Value 20 Index Fund(IDCW)",
-            "ICICI Pru Nifty50 Value 20 Index Fund(IDCW)",
-            "ICICI Pru Nifty50 Value 20 Index Fund",
-            "Helios Overnight Fund(DD-IDCW)",
-            "Helios Overnight Fund",
-            "Helios Flexi Cap Fund",
-            "Helios Flexi Cap Fund(IDCW)",
-            "Helios Flexi Cap Fund(IDCW)",
-            "HSBC Focused Fund(IDCW-Payout)",
-            "HSBC Focused Fund",
-            "HSBC Focused Fund(IDCW)",
-            "HSBC Nifty Next 50 Index Fund(IDCW)",
-            "HSBC Nifty Next 50 Index Fund",
-            "HSBC Nifty 50 Index Fund(IDCW-Payout)",
-            "HSBC Nifty 50 Index Fund(IDCW)",
-            "HSBC Nifty 50 Index Fund",
-            "HSBC Ultra Short Duration Fund(M-IDCW)",
-            "HSBC Ultra Short Duration Fund(W-IDCW)",
-            "HSBC Ultra Short Duration Fund(DD-IDCW)",
-            "HSBC Ultra Short Duration Fund",
-            "HSBC Overnight Fund(M-IDCW Payout)",
-            "HSBC Overnight Fund(W-IDCW Payout)",
-            "HSBC Overnight Fund(M-IDCW)",
-            "HSBC Overnight Fund(DD-IDCW)",
-            "HSBC Overnight Fund(W-IDCW)",
-            "HSBC Overnight Fund",
-            "HSBC Corporate Bond Fund(A-IDCW Payout)",
-            "HSBC Low Duration Fund(A-IDCW Payout)",
-            "HSBC Dynamic Bond Fund(A-IDCW Payout)",
-            "HSBC Managed Solutions India-Moderate(IDCW-Payout)",
-            "HSBC Managed Solutions India-Growth(IDCW-Payout)",
-            "HSBC Large & Mid Cap Fund(IDCW-Payout)",
-            "HSBC Dynamic Bond Fund(M-IDCW Payout)",
-            "HSBC Large & Mid Cap Fund",
-            "HSBC Large & Mid Cap Fund(IDCW)",
-            "HSBC Large Cap Fund(IDCW-Payout)",
-            "HSBC Flexi Cap Fund(IDCW-Payout)",
-            "HSBC Liquid Fund(M-IDCW Payout)",
-            "HSBC Asia Pacific (Ex Japan) DYF(IDCW)",
-            "HSBC Global Emerging Markets Fund(IDCW-Payout)",
-            "HSBC Brazil Fund(IDCW-Payout)",
-            "HSBC Conservative Hybrid Fund(Q-IDCW Payout)",
-            "HSBC Conservative Hybrid Fund(M-IDCW Payout)",
-            "HSBC Banking and PSU Debt Fund(M-IDCW Payout)",
-            "HSBC Small Cap Fund(IDCW-Reinv)",
-            "HSBC Business Cycles Fund(IDCW)",
-            "HSBC ELSS Tax saver Fund(IDCW)",
-            "HSBC Value Fund(IDCW-Payout)",
-            "HSBC Gilt Fund(Q-IDCW Payout)",
-            "HSBC Credit Risk Fund(A-IDCW)",
-            "HSBC Short Duration Fund(Q-IDCW Payout)",
-            "HSBC Short Duration Fund(IDCW Payout)",
-            "HSBC Short Duration Fund(A-IDCW)",
-            "HSBC Corporate Bond Fund(H-IDCW Payout)",
-            "HSBC Corporate Bond Fund(Q-IDCW Payout)",
-            "HSBC Medium Duration Fund(IDCW)",
-            "HSBC Medium Duration Fund(A-IDCW)",
-            "HSBC Arbitrage Fund(Q-IDCW)",
-            "HSBC Balanced Advantage Fund(IDCW-Payout)",
-            "HSBC Equity Savings Fund(Q-IDCW Payout)",
-            "HSBC Arbitrage Fund(M-IDCW Payout)",
-            "HSBC Aggressive Hybrid Fund(A-IDCW)",
-            "HSBC Low Duration Fund(A-IDCW)",
-            "HSBC Corporate Bond Fund(A-IDCW)",
-            "HSBC Dynamic Bond Fund(A-IDCW)",
-            "HSBC Medium Duration Fund(A-IDCW Payout)",
-            "HSBC Short Duration Fund(A-IDCW Payout)",
-            "HSBC Credit Risk Fund(A-IDCW Payout)",
-            "HSBC Aggressive Hybrid Fund(A-IDCW Payout)",
-            "HSBC Medium Duration Fund(IDCW-Payout)",
-            "HSBC Medium Duration Fund",
-            "HSBC Business Cycles Fund",
-            "HSBC Business Cycles Fund(IDCW-Payout)",
-            "HSBC Arbitrage Fund(Q-IDCW Payout)",
-            "HSBC Arbitrage Fund",
-            "HSBC Arbitrage Fund(M-IDCW)",
-            "HSBC Managed Solutions India-Growth(IDCW)",
-            "HSBC Managed Solutions India-Moderate(IDCW)",
-            "HSBC Small Cap Fund(IDCW)",
-            "HSBC Small Cap Fund",
-            "HSBC Managed Solutions India-Conservative",
-            "HSBC Managed Solutions India-Moderate",
-            "HSBC Managed Solutions India-Growth",
-            "HSBC Asia Pacific (Ex Japan) DYF",
-            "HSBC Asia Pacific (Ex Japan) DYF(IDCW-Payout)",
-            "HSBC Short Duration Fund(Q-IDCW)",
-            "HSBC Global Emerging Markets Fund(IDCW)",
-            "HSBC Medium to Long Duration Fund Fund(IDCW)",
-            "HSBC Medium to Long Duration Fund Fund",
-            "HSBC Conservative Hybrid Fund",
-            "HSBC Conservative Hybrid Fund(Q-IDCW)",
-            "HSBC Large Cap Fund(IDCW)",
-            "HSBC Liquid Fund(M-IDCW)",
-            "HSBC Liquid Fund(W-IDCW Payout)",
-            "HSBC Flexi Cap Fund(IDCW)",
-            "HSBC Brazil Fund",
-            "HSBC Brazil Fund(IDCW)",
-            "HSBC Global Emerging Markets Fund",
-            "HSBC Conservative Hybrid Fund(M-IDCW)",
-            "HSBC Corporate Bond Fund(Q-IDCW)",
-            "HSBC Corporate Bond Fund(H-IDCW)",
-            "HSBC Corporate Bond Fund",
-            "HSBC ELSS Tax saver Fund",
-            "HSBC Low Duration Fund",
-            "HSBC Short Duration Fund",
-            "HSBC Low Duration Fund(IDCW)",
-            "HSBC Short Duration Fund(IDCW)",
-            "HSBC Midcap Fund",
-            "HSBC Banking and PSU Debt Fund(M-IDCW)",
-            "HSBC Banking and PSU Debt Fund(W-IDCW)",
-            "HSBC Midcap Fund(IDCW Payout)",
-            "HSBC Banking and PSU Debt Fund",
-            "HSBC Infrastructure Fund",
-            "HSBC Banking and PSU Debt Fund(DD-IDCW)",
-            "HSBC Infrastructure Fund(IDCW Payout)",
-            "HSBC Equity Savings Fund(M-IDCW)",
-            "HSBC Equity Savings Fund",
-            "HSBC Value Fund",
-            "HSBC Value Fund(IDCW)",
-            "HSBC Equity Savings Fund(Q-IDCW)",
-            "HSBC Credit Risk Fund(M-IDCW)",
-            "HSBC Credit Risk Fund",
-            "HSBC Gilt Fund(Q-IDCW)",
-            "HSBC Gilt Fund",
-            "HSBC Money Market Fund(W-IDCW)",
-            "HSBC Money Market Fund(M-IDCW)",
-            "HSBC Money Market Fund",
-            "HSBC Money Market Fund(DD-IDCW)",
-            "HSBC Dynamic Bond Fund(M-IDCW)",
-            "HSBC Dynamic Bond Fund",
-            "HSBC Balanced Advantage Fund",
-            "HSBC Balanced Advantage Fund(IDCW)",
-            "HSBC Aggressive Hybrid Fund",
-            "HSBC Aggressive Hybrid Fund(IDCW Payout)",
-            "HSBC Tax Saver Equity Fund",
-            "HSBC Tax Saver Equity Fund(IDCW)",
-            "HSBC Flexi Cap Fund",
-            "HSBC Large Cap Fund",
-            "HSBC Liquid Fund",
-            "HSBC Liquid Fund(DD-IDCW)",
-            "HSBC Global Equity Climate Change FoF",
-            "HSBC Global Equity Climate Change FoF(IDCW)",
-            "HSBC CRISIL IBX 50:50 Gilt Plus SDL Apr 2028 Index Fund",
-            "HSBC CRISIL IBX 50:50 Gilt Plus SDL Apr 2028 Index Fund(IDCW)",
-            "HSBC Nifty Next 50 Index Fund(IDCW Payout)",
-            "HSBC Infrastructure Fund(IDCW)",
-            "HSBC Multi Cap Fund",
-            "HSBC Multi Cap Fund(IDCW)",
-            "HSBC CRISIL IBX 50:50 Gilt Plus SDL Apr 2028 Index Fund(IDCW Payout)",
-            "HSBC Midcap Fund(IDCW)",
-            "HSBC CRISIL IBX Gilt June 2027 Index Fund(IDCW)",
-            "HSBC CRISIL IBX Gilt June 2027 Index Fund",
-            "HSBC CRISIL IBX Gilt June 2027 Index Fund(IDCW)",
-            "HSBC Multi Cap Fund(IDCW)",
-            "HSBC Global Equity Climate Change FoF(IDCW)",
-            "HSBC Ultra Short Duration Fund(M-IDCW)",
-            "HSBC Medium to Long Duration Fund Fund(IDCW)",
-            "HSBC Liquid Fund(W-IDCW)",
-            "HSBC Low Duration Fund(IDCW)",
-            "HSBC Credit Risk Fund(M-IDCW)",
-            "HSBC Equity Savings Fund(M-IDCW)",
-            "HSBC Money Market Fund(M-IDCW)",
-            "HSBC Aggressive Hybrid Fund(IDCW)",
-            "HSBC Consumption Fund(IDCW)",
-            "HSBC Consumption Fund",
-            "HSBC Consumption Fund(IDCW)",
-            "HSBC Multi Asset Allocation Fund(IDCW)",
-            "HSBC Multi Asset Allocation Fund(IDCW)",
-            "HSBC Multi Asset Allocation Fund",
-            "HDFC Ultra Short Term Fund(M-IDCW Reinv)",
-            "HDFC Low Duration Fund(M-IDCW Reinv)",
-            "HDFC Ultra Short Term Fund(M-IDCW)",
-            "HDFC Ultra Short Term Fund(W-IDCW)",
-            "HDFC Ultra Short Term Fund(DD-IDCW)",
-            "HDFC Ultra Short Term Fund",
-            "HDFC Housing Opp Fund",
-            "HDFC Housing Opp Fund(IDCW)",
-            "HDFC Money Market Fund(W-IDCW Reinv)",
-            "HDFC Top 100 Fund(IDCW)",
-            "HDFC ELSS Tax saver(IDCW)",
-            "HDFC Small Cap Fund(IDCW-Reinv)",
-            "HDFC Capital Builder Value Fund(IDCW)",
-            "HDFC Dynamic Debt Fund(A-IDCW Reinv)",
-            "HDFC Dynamic Debt Fund(H-IDCW Reinv)",
-            "HDFC Infrastructure Fund(IDCW)",
-            "HDFC Dynamic Debt Fund(Q-IDCW Reinv)",
-            "HDFC Dynamic Debt Fund(IDCW-Reinv)",
-            "HDFC Income Fund(IDCW-Reinv)",
-            "HDFC Gilt Fund(IDCW-Reinv)",
-            "HDFC Income Fund(Q-IDCW Reinv)",
-            "HDFC Banking and PSU Debt Fund(IDCW-Reinv)",
-            "HDFC Flexi Cap Fund(IDCW)",
-            "HDFC Large and Mid Cap Fund(IDCW-Reinv)",
-            "HDFC Short Term Debt Fund(IDCW-Reinv)",
-            "HDFC Corp Bond Fund(Q-IDCW Reinv)",
-            "HDFC Corp Bond Fund(IDCW-Reinv)",
-            "HDFC Medium Term Debt Fund(FN-IDCW Reinv)",
-            "HDFC Multi-Asset Fund(IDCW-Reinv)",
-            "HDFC Medium Term Debt Fund(IDCW-Reinv)",
-            "HDFC Mid-Cap Opportunities Fund(IDCW)",
-            "HDFC Dynamic PE Ratio FOF(IDCW-Reinv)",
-            "HDFC Balanced Advantage Fund(IDCW)",
-            "HDFC Liquid Fund(M-IDCW Reinv)",
-            "HDFC Equity Savings Fund(IDCW-Reinv)",
-            "HDFC Focused 30 Fund(IDCW)",
-            "HDFC Hybrid Debt Fund(Q-IDCW Reinv)",
-            "HDFC Credit Risk Debt Fund-(Q-IDCW Reinv)",
-            "HDFC Hybrid Equity Fund(IDCW)",
-            "HDFC Floating Rate Debt Fund(M-IDCW Reinv)",
-            "HDFC Credit Risk Debt Fund-(IDCW-Reinv)",
-            "HDFC Hybrid Debt Fund(M-IDCW Reinv)",
-            "HDFC Short Term Debt Fund(IDCW)",
-            "HDFC Income Fund(IDCW)",
-            "HDFC Dynamic Debt Fund(IDCW)",
-            "HDFC Credit Risk Debt Fund-(IDCW)",
-            "HDFC Corp Bond Fund(IDCW)",
-            "HDFC Medium Term Debt Fund(IDCW)",
-            "HDFC Arbitrage-WP(IDCW)",
-            "HDFC Arbitrage-WP(M-IDCW)",
-            "HDFC Arbitrage-WP",
-            "HDFC Banking and PSU Debt Fund",
-            "HDFC Banking and PSU Debt Fund(IDCW)",
-            "HDFC Retirement Savings Fund-Hybrid-Debt Plan",
-            "HDFC Retirement Savings Fund-Hybrid-Equity Plan",
-            "HDFC Retirement Savings Fund-Equity Plan",
-            "HDFC Credit Risk Debt Fund-(Q-IDCW)",
-            "HDFC Credit Risk Debt Fund",
-            "HDFC Arbitrage Fund(Q-IDCW)",
-            "HDFC Infrastructure Fund",
-            "HDFC Dynamic PE Ratio FOF(IDCW)",
-            "HDFC Dynamic PE Ratio FOF",
-            "HDFC Large and Mid Cap Fund(IDCW)",
-            "HDFC Large and Mid Cap Fund",
-            "HDFC Small Cap Fund",
-            "HDFC Small Cap Fund(IDCW)",
-            "HDFC Capital Builder Value Fund(IDCW-Reinv)",
-            "HDFC Capital Builder Value Fund",
-            "HDFC Overnight Fund",
-            "HDFC Overnight Fund(DD-IDCW)",
-            "HDFC Money Market Fund(DD-IDCW Reinv)",
-            "HDFC Money Market Fund",
-            "HDFC Money Market Fund(W-IDCW)",
-            "HDFC Focused 30 Fund(IDCW-Reinv)",
-            "HDFC Low Duration Fund",
-            "HDFC Low Duration Fund(M-IDCW)",
-            "HDFC Arbitrage Fund(Q-IDCW Reinv)",
-            "HDFC Flexi Cap Fund(IDCW-Reinv)",
-            "HDFC Focused 30 Fund",
-            "HDFC Floating Rate Debt Fund(M-IDCW)",
-            "HDFC Gilt Fund(IDCW)",
-            "HDFC Flexi Cap Fund",
-            "HDFC Gilt Fund",
-            "HDFC Floating Rate Debt Fund",
-            "HDFC Arbitrage Fund",
-            "HDFC Dynamic Debt Fund(H-IDCW)",
-            "HDFC Dynamic Debt Fund",
-            "HDFC Dynamic Debt Fund(Q-IDCW)",
-            "HDFC Dynamic Debt Fund(A-IDCW)",
-            "HDFC Gold Fund",
-            "HDFC Income Fund",
-            "HDFC Income Fund(Q-IDCW)",
-            "HDFC Infrastructure Fund(IDCW-Reinv)",
-            "HDFC Index Fund-S&P BSE Sensex",
-            "HDFC Liquid Fund(M-IDCW)",
-            "HDFC Liquid Fund",
-            "HDFC Liquid Fund(DD-IDCW)",
-            "HDFC Liquid Fund(W-IDCW)",
-            "HDFC Corp Bond Fund",
-            "HDFC Corp Bond Fund(Q-IDCW)",
-            "HDFC Medium Term Debt Fund(FN-IDCW)",
-            "HDFC Index Fund-NIFTY 50 Plan",
-            "HDFC Medium Term Debt Fund",
-            "HDFC Mid-Cap Opportunities Fund",
-            "HDFC Mid-Cap Opportunities Fund(IDCW-Reinv)",
-            "HDFC Balanced Advantage Fund",
-            "HDFC Balanced Advantage Fund(IDCW-Reinv)",
-            "HDFC Multi-Asset Fund(IDCW)",
-            "HDFC Multi-Asset Fund",
-            "HDFC Hybrid Debt Fund",
-            "HDFC Hybrid Debt Fund(Q-IDCW)",
-            "HDFC Hybrid Debt Fund(M-IDCW)",
-            "HDFC Hybrid Equity Fund(IDCW-Reinv)",
-            "HDFC Equity Savings Fund",
-            "HDFC Equity Savings Fund(IDCW)",
-            "HDFC Short Term Debt Fund",
-            "HDFC ELSS Tax saver",
-            "HDFC ELSS Tax saver(IDCW-Reinv)",
-            "HDFC Top 100 Fund(IDCW-Reinv)",
-            "HDFC Hybrid Equity Fund",
-            "HDFC Top 100 Fund",
-            "HDFC Dividend Yield Fund(IDCW)",
-            "HDFC Dividend Yield Fund",
-            "HDFC Dividend Yield Fund(IDCW-Reinv)",
-            "HDFC Asset Allocator FoF",
-            "HDFC Asset Allocator FoF(IDCW Reinv)",
-            "HDFC Banking & Financial Services Fund(IDCW Reinvest)",
-            "HDFC Banking & Financial Services Fund",
-            "HDFC Asset Allocator FoF(IDCW)",
-            "HDFC NIFTY50 Equal Weight Index Fund",
-            "HDFC Banking & Financial Services Fund(IDCW)",
-            "HDFC Developed World Indexes FoF",
-            "HDFC NIFTY Next 50 Index Fund",
-            "HDFC Multi Cap Fund(IDCW Reinvst)",
-            "HDFC Multi Cap Fund",
-            "HDFC Multi Cap Fund(IDCW)",
-            "HDFC NIFTY 100 Equal Weight Index Fund",
-            "HDFC NIFTY 100 Index Fund",
-            "HDFC FMP-Sr 46-1861D-Mar 2022",
-            "HDFC FMP-Sr 46-1861D-Mar 2022(IDCW)",
-            "HDFC FMP-Sr 46-1861D-Mar 2022(Q-IDCW)",
-            "HDFC FMP-Sr 46-1162D-Mar 2022(IDCW)",
-            "HDFC FMP-Sr 46-1162D-Mar 2022(Q-IDCW)",
-            "HDFC FMP-Sr 46-1162D-Mar 2022",
-            "HDFC FMP-Sr 46-1876D-Mar 2022(IDCW)",
-            "HDFC FMP-Sr 46-1876D-Mar 2022(Q-IDCW)",
-            "HDFC FMP-Sr 46-1876D-Mar 2022",
-            "HDFC FMP-Sr 46-1158D-July 2022(IDCW)",
-            "HDFC FMP-Sr 46-1158D-July 2022(Q-IDCW)",
-            "HDFC FMP-Sr 46-1158D-July 2022",
-            "HDFC FMP-Sr 46-1406D-Aug 2022(Q-IDCW)",
-            "HDFC FMP-Sr 46-1406D-Aug 2022(IDCW)",
-            "HDFC FMP-Sr 46-1406D-Aug 2022",
-            "HDFC FMP-Sr 46-1359D-Sep 2022(Q-IDCW)",
-            "HDFC FMP-Sr 46-1359D-Sep 2022(IDCW)",
-            "HDFC FMP-Sr 46-1359D-Sep 2022",
-            "HDFC Silver ETF FoF",
-            "HDFC Nifty G-Sec Dec 2026 Index Fund",
-            "HDFC Nifty G-Sec Jul 2031 Index Fund",
-            "HDFC Business Cycle Fund(IDCW-Reinv)",
-            "HDFC Business Cycle Fund",
-            "HDFC Housing Opp Fund(IDCW Reinvest)",
-            "HDFC Business Cycle Fund(IDCW)",
-            "HDFC Nifty G-Sec Sep 2032 Index Fund",
-            "HDFC Nifty G-Sec Jun 2027 Index Fund",
-            "HDFC FMP-Sr 47-1204D-Dec 2022(Q-IDCW)",
-            "HDFC FMP-Sr 47-1204D-Dec 2022(IDCW)",
-            "HDFC FMP-Sr 47-1204D-Dec 2022",
-            "HDFC Long Duration Debt Fund(IDCW Reinvest)",
-            "HDFC Long Duration Debt Fund",
-            "HDFC Nifty SDL Oct 2026 Index Fund",
-            "HDFC MNC Fund(IDCW)",
-            "HDFC MNC Fund",
-            "HDFC Long Duration Debt Fund(IDCW)",
-            "HDFC FMP-Sr 47-2638D-Feb 2023(Q-IDCW)",
-            "HDFC FMP-Sr 47-2638D-Feb 2023",
-            "HDFC NIFTY G-Sec Jun 2036 Index Fund",
-            "HDFC NIFTY G- Sec Apr 2029 Index Fund",
-            "HDFC FMP-Sr 47-1269D-March 2023(Q-IDCW)",
-            "HDFC FMP-Sr 47-1269D-March 2023(IDCW)",
-            "HDFC FMP-Sr 47-1269D-March 2023",
-            "HDFC NIFTY SDL Plus G-Sec Jun 2027 40:60 Index Fund",
-            "HDFC MNC Fund(IDCW Reinvest)",
-            "HDFC NIFTY Smallcap 250 Index Fund",
-            "HDFC S&P BSE 500 Index Fund",
-            "HDFC NIFTY Midcap 150 Index Fund",
-            "HDFC Defence Fund(IDCW Reinvest)",
-            "HDFC Defence Fund",
-            "HDFC Non-Cyclical Consumer Fund",
-            "HDFC Non-Cyclical Consumer Fund(IDCW Reinvest)",
-            "HDFC Defence Fund(IDCW)",
-            "HDFC Transportation and Logistics Fund(IDCW Reinvest)",
-            "HDFC Transportation and Logistics Fund(IDCW)",
-            "HDFC Transportation and Logistics Fund",
-            "HDFC Non-Cyclical Consumer Fund(IDCW)",
-            "HDFC Ultra Short Term Fund(W-IDCW)",
-            "HDFC Arbitrage-WP(M-IDCW)",
-            "HDFC Arbitrage-WP(IDCW)",
-            "HDFC Liquid Fund(W-IDCW)",
-            "HDFC Charity Fund for Cancer Cure-Direct Plan-(75% IDCW Donation Option)",
-            "HDFC Charity Fund for Cancer Cure-Direct Plan-(50% IDCW Donation Option)",
-            "HDFC Technology Fund",
-            "HDFC Technology Fund(IDCW)",
-            "HDFC Technology Fund(IDCW Reinvest)",
-            "HDFC Pharma and Healthcare Fund(IDCW)",
-            "HDFC Pharma and Healthcare Fund",
-            "HDFC Pharma and Healthcare Fund(IDCW Reinvest)",
-            "HDFC NIFTY200 Momentum 30 Index Fund",
-            "Groww Overnight Fund(M-IDCW)",
-            "Groww Overnight Fund(FN-IDCW)",
-            "Groww Overnight Fund(W-IDCW)",
-            "Groww Overnight Fund(DD-IDCW)",
-            "Groww Overnight Fund",
-            "Groww Aggressive Hybrid Fund(Q-IDCW)",
-            "Groww Aggressive Hybrid Fund(H-IDCW)",
-            "Groww Aggressive Hybrid Fund(M-IDCW)",
-            "Groww Aggressive Hybrid Fund(IDCW)",
-            "Groww Aggressive Hybrid Fund",
-            "Groww Dynamic Bond Fund(M-IDCW)",
-            "Groww Dynamic Bond Fund(FN-IDCW)",
-            "Groww Dynamic Bond Fund(W-IDCW)",
-            "Groww Dynamic Bond Fund(DD-IDCW)",
-            "Groww Dynamic Bond Fund",
-            "Groww ELSS Tax Saver Fund",
-            "Groww ELSS Tax Saver Fund(IDCW)",
-            "Groww Value Fund(H-IDCW)",
-            "Groww Value Fund(Q-IDCW)",
-            "Groww Value Fund(M-IDCW)",
-            "Groww Largecap Fund(H-IDCW)",
-            "Groww Largecap Fund(Q-IDCW)",
-            "Groww Largecap Fund(M-IDCW)",
-            "Groww Liquid Fund(FN-IDCW)",
-            "Groww Value Fund",
-            "Groww Value Fund(IDCW)",
-            "Groww Short Duration Fund(FN-IDCW)",
-            "Groww Short Duration Fund(W-IDCW)",
-            "Groww Short Duration Fund",
-            "Groww Short Duration Fund(M-IDCW)",
-            "Groww Liquid Fund(M-IDCW)",
-            "Groww Liquid Fund(W-IDCW)",
-            "Groww Largecap Fund",
-            "Groww Largecap Fund(IDCW)",
-            "Groww Liquid Fund",
-            "Groww Liquid Fund(DD-IDCW)",
-            "Groww Overnight Fund(M-IDCW)",
-            "Groww Overnight Fund(W-IDCW)",
-            "Groww Overnight Fund(FN-IDCW)",
-            "Groww Dynamic Bond Fund(M-IDCW)",
-            "Groww Aggressive Hybrid Fund(M-IDCW)",
-            "Groww Aggressive Hybrid Fund(IDCW)",
-            "Groww Dynamic Bond Fund(FN-IDCW)",
-            "Groww Dynamic Bond Fund(W-IDCW)",
-            "Groww Aggressive Hybrid Fund(H-IDCW)",
-            "Groww Aggressive Hybrid Fund(Q-IDCW)",
-            "Groww Value Fund(M-IDCW)",
-            "Groww Largecap Fund(M-IDCW)",
-            "Groww Largecap Fund(Q-IDCW)",
-            "Groww Largecap Fund(H-IDCW)",
-            "Groww Value Fund(Q-IDCW)",
-            "Groww Value Fund(H-IDCW)",
-            "Groww Liquid Fund(FN-IDCW)",
-            "Groww Value Fund(IDCW)",
-            "Groww Short Duration Fund(W-IDCW)",
-            "Groww Short Duration Fund(M-IDCW)",
-            "Groww Short Duration Fund(FN-IDCW)",
-            "Groww Liquid Fund(W-IDCW)",
-            "Groww Liquid Fund(M-IDCW)",
-            "Groww Largecap Fund(IDCW)",
-            "Groww Nifty Total Market Index Fund(IDCW)",
-            "Groww Nifty Total Market Index Fund(IDCW)",
-            "Groww Nifty Total Market Index Fund",
-            "Groww Banking & Financial Services Fund",
-            "Groww Banking & Financial Services Fund(IDCW)",
-            "Groww Banking & Financial Services Fund(IDCW)",
-            "Groww Nifty Smallcap 250 Index Fund",
-            "Groww Nifty Smallcap 250 Index Fund(IDCW)",
-            "Groww Nifty Smallcap 250 Index Fund(IDCW)",
-            "Franklin India Overnight Fund(W-IDCW)",
-            "Franklin India Overnight Fund(DD-IDCW)",
-            "Franklin India Overnight Fund",
-            "Franklin India Equity Savings Fund(M-IDCW)",
-            "Franklin India Equity Savings Fund(Q-IDCW)",
-            "Franklin India Equity Savings Fund(IDCW)",
-            "Franklin India Equity Savings Fund",
-            "Franklin India Multi-Asset Solution FoF(IDCW)",
-            "Franklin India Multi-Asset Solution FoF",
-            "Franklin India Money Market Fund(M-IDCW)",
-            "Franklin India Feeder - Templeton European Opportunities Fund(IDCW)",
-            "Franklin India Feeder - Templeton European Opportunities Fund",
-            "Franklin India Banking & PSU Debt Fund(IDCW Payout)",
-            "Franklin India Banking & PSU Debt Fund",
-            "Franklin India Money Market Fund(DD-IDCW)",
-            "Franklin Asian Equity Fund",
-            "Franklin India NSE Nifty 50 Index Fund",
-            "Franklin India Feeder - Franklin U.S. Opportunities Fund",
-            "Franklin India Feeder - Franklin U.S. Opportunities Fund(IDCW)",
-            "Franklin Build India Fund(IDCW)",
-            "Franklin Build India Fund",
-            "Franklin India Bluechip Fund(IDCW)",
-            "Franklin Asian Equity Fund(IDCW)",
-            "Franklin India Equity Advantage Fund",
-            "Franklin India Bluechip Fund",
-            "Franklin India Equity Advantage Fund(IDCW)",
-            "Franklin India Focused Equity Fund(IDCW)",
-            "Franklin India Focused Equity Fund",
-            "Franklin India Opportunities Fund(IDCW)",
-            "Franklin India Prima Fund(IDCW)",
-            "Franklin India Opportunities Fund",
-            "Franklin India Flexi Cap Fund(IDCW)",
-            "Franklin India Prima Fund",
-            "Franklin India Flexi Cap Fund",
-            "Franklin India Smaller Cos Fund(IDCW)",
-            "Franklin India Smaller Cos Fund",
-            "Franklin India ELSS Tax Saver Fund(IDCW)",
-            "Franklin India Technology Fund",
-            "Franklin India ELSS Tax Saver Fund",
-            "Franklin India Technology Fund(IDCW)",
-            "Franklin India Dynamic Asset Allocation FOFs(IDCW Payout)",
-            "Franklin India Dynamic Asset Allocation FOFs",
-            "Franklin India NSE Nifty 50 Index Fund(IDCW)",
-            "Franklin India Equity Hybrid Fund(IDCW)",
-            "Franklin India Equity Hybrid Fund",
-            "Franklin India Debt Hybrid Fund(M-IDCW)",
-            "Franklin India Debt Hybrid Fund",
-            "Franklin India Debt Hybrid Fund(Q-IDCW)",
-            "Franklin India Money Market Fund(Q-IDCW)",
-            "Franklin India Money Market Fund",
-            "Franklin India Floating Rate Fund(IDCW)",
-            "Templeton India Equity Income Fund(IDCW)",
-            "Franklin India Floating Rate Fund",
-            "Templeton India Value Fund",
-            "Templeton India Value Fund(IDCW)",
-            "Templeton India Equity Income Fund",
-            "Franklin India G-Sec Fund",
-            "Franklin India G-Sec Fund(IDCW)",
-            "Franklin India Corp Debt Fund-A(A-IDCW)",
-            "Franklin India Corp Debt Fund-A(H-IDCW)",
-            "Franklin India Corp Debt Fund-A",
-            "Franklin India Corp Debt Fund-A(M-IDCW)",
-            "Franklin India Corp Debt Fund-A(Q-IDCW)",
-            "Franklin India ST Income Plan(Q-IDCW)",
-            "Franklin India ST Income Plan",
-            "Franklin India ST Income Plan(M-IDCW)",
-            "Franklin India ST Income Plan(W-IDCW)",
-            "Franklin India Liquid Fund-Super",
-            "Franklin India Liquid Fund-Super Inst(W-IDCW)",
-            "Franklin India Liquid Fund-Super Inst(DD-IDCW)",
-            "Franklin India Income Opportunities Fund",
-            "Franklin India Income Opportunities Fund(IDCW)",
-            "Franklin India Pension Plan",
-            "Franklin India Pension Plan(IDCW)",
-            "Franklin India ST Income Plan(M-IDCW Payout)",
-            "Templeton India Equity Income Fund(IDCW Payout)",
-            "Franklin India Equity Advantage Fund(IDCW Payout)",
-            "Franklin India Opportunities Fund(IDCW Payout)",
-            "Franklin India Bluechip Fund(IDCW Payout)",
-            "Franklin Build India Fund(IDCW Payout)",
-            "Franklin India Feeder - Franklin U.S. Opportunities Fund(IDCW Payout)",
-            "Franklin Asian Equity Fund(IDCW Payout)",
-            "Franklin India NSE Nifty 50 Index Fund(IDCW Payout)",
-            "Franklin India Debt Hybrid Fund(M-IDCW Payout)",
-            "Franklin India Corp Debt Fund-A(M-IDCW Payout)",
-            "Franklin India Equity Hybrid Fund(IDCW Payout)",
-            "Franklin India Prima Fund(IDCW Payout)",
-            "Franklin India G-Sec Fund(IDCW Payout)",
-            "Franklin India Technology Fund(IDCW Payout)",
-            "Franklin India Smaller Cos Fund(IDCW Payout)",
-            "Franklin India Liquid Fund-Super Inst(W-IDCW Payout)",
-            "Franklin India Balanced Advantage Fund(IDCW)",
-            "Franklin India Balanced Advantage Fund",
-            "Franklin India Balanced Advantage Fund(IDCW Payout)",
-            "Franklin India Flexi Cap Fund(IDCW Payout)",
-            "Franklin India Overnight Fund(W-IDCW)",
-            "Franklin India Equity Savings Fund(Q-IDCW)",
-            "Franklin India Equity Savings Fund(IDCW)",
-            "Franklin India Equity Savings Fund(M-IDCW)",
-            "Franklin India Multi-Asset Solution FoF(IDCW)",
-            "Franklin India Money Market Fund(M-IDCW)",
-            "Franklin India Feeder - Templeton European Opportunities Fund(IDCW)",
-            "Franklin India Banking & PSU Debt Fund(IDCW)",
-            "Franklin India Debt Hybrid Fund(Q-IDCW)",
-            "Franklin India Focused Equity Fund(IDCW)",
-            "Franklin India Dynamic Asset Allocation FOFs(IDCW)",
-            "Franklin India Money Market Fund(Q-IDCW)",
-            "Franklin India ST Income Plan(Q-IDCW)",
-            "Franklin India Corp Debt Fund-A(Q-IDCW)",
-            "Franklin India Corp Debt Fund-A(H-IDCW)",
-            "Franklin India Corp Debt Fund-A(A-IDCW)",
-            "Templeton India Value Fund(IDCW)",
-            "Franklin India Income Opportunities Fund(IDCW)",
-            "Franklin India Pension Plan(IDCW)",
-            "Franklin India Money Market Fund(W-IDCW)",
-            "Franklin India Money Market Fund(W-IDCW)",
-            "Edelweiss MSCI India Domestic & World Healthcare 45 Index Fund(IDCW)",
-            "Edelweiss MSCI India Domestic & World Healthcare 45 Index Fund",
-            "BHARAT Bond FOF - April 2025 -(IDCW)",
-            "BHARAT Bond FOF - April 2031",
-            "BHARAT Bond FOF - April 2031 -(IDCW)",
-            "BHARAT Bond FOF - April 2025",
-            "Edelweiss US Technology Equity FOF",
-            "BHARAT Bond FOF - April 2030",
-            "BHARAT Bond FOF - April 2030 -(IDCW)",
-            "Edelweiss Overnight Fund(A-IDCW)",
-            "Edelweiss Overnight Fund(M-IDCW)",
-            "Edelweiss Overnight Fund(DD-IDCW)",
-            "Edelweiss Overnight Fund",
-            "Edelweiss Small Cap Fund(IDCW)",
-            "Edelweiss Small Cap Fund",
-            "Edelweiss Recently Listed IPO Fund(IDCW)",
-            "Edelweiss Recently Listed IPO Fund",
-            "Edelweiss Equity Savings Fund(M-IDCW)",
-            "Edelweiss Balanced Advantage Fund(M-IDCW)",
-            "Edelweiss Arbitrage Fund(M-IDCW)",
-            "Edelweiss Flexi Cap Fund",
-            "Edelweiss Flexi Cap Fund(IDCW)",
-            "Edelweiss Equity Savings Fund(IDCW)",
-            "Edelweiss Equity Savings Fund",
-            "Edelweiss Equity Savings Fund",
-            "Edelweiss Arbitrage Fund(IDCW)",
-            "Edelweiss Arbitrage Fund",
-            "Edelweiss Liquid Fund(IDCW)",
-            "Edelweiss Government Securities Fund(M-IDCW)",
-            "Edelweiss Government Securities Fund(W-IDCW)",
-            "Edelweiss Government Securities Fund",
-            "Edelweiss Government Securities Fund(IDCW)",
-            "Edelweiss Europe Dynamic Equity Off-shore Fund",
-            "Edelweiss Banking and PSU Debt Fund(M-IDCW)",
-            "Edelweiss Banking and PSU Debt Fund(FN-IDCW)",
-            "Edelweiss Banking and PSU Debt Fund(W-IDCW)",
-            "Edelweiss Banking and PSU Debt Fund(IDCW)",
-            "Edelweiss Banking and PSU Debt Fund",
-            "Edelweiss US Value Equity Offshore Fund",
-            "Edelweiss Liquid Fund(FN-IDCW)",
-            "Edelweiss Emerging Markets Opp Eq. Offshore Fund",
-            "Edelweiss Liquid Fund(A-IDCW)",
-            "Edelweiss Money Market Fund(A-IDCW)",
-            "Edelweiss Liquid Fund",
-            "Edelweiss Aggressive Hybrid Fund(IDCW)",
-            "Edelweiss Balanced Advantage Fund(Q-IDCW)",
-            "Edelweiss Aggressive Hybrid Fund",
-            "Edelweiss Balanced Advantage Fund",
-            "Edelweiss Large Cap Fund(IDCW)",
-            "Edelweiss Large Cap Fund",
-            "Edelweiss ELSS Tax saver Fund(IDCW)",
-            "Edelweiss ELSS Tax saver Fund",
-            "Edelweiss Liquid Fund(W-IDCW)",
-            "Edelweiss Liquid Fund(M-IDCW)",
-            "Edelweiss Money Market Fund(IDCW)",
-            "Edelweiss Money Market Fund",
-            "Edelweiss Gr China Equity Off-Shore Fund",
-            "Edelweiss ASEAN Equity Off-Shore Fund",
-            "Edelweiss Large & Mid Cap Fund",
-            "Edelweiss Large & Mid Cap Fund(IDCW)",
-            "Edelweiss Mid Cap Fund(IDCW)",
-            "Edelweiss Mid Cap Fund",
-            "Edelweiss Liquid Fund(DD-IDCW)",
-            "Edelweiss Liquid Fund",
-            "Edelweiss Nifty PSU Bond Plus SDL Apr 2026 50:50 Index Fund",
-            "Edelweiss Nifty PSU Bond Plus SDL Apr 2026 50:50 Index Fund(IDCW)",
-            "Edelweiss Nifty PSU Bond Plus SDL Apr 2027 50:50 Index Fund(IDCW)",
-            "Edelweiss Nifty PSU Bond Plus SDL Apr 2027 50:50 Index Fund",
-            "Edelweiss Nifty 100 Quality 30 Index Fund",
-            "Edelweiss Nifty 100 Quality 30 Index Fund(IDCW)",
-            "Edelweiss Nifty 50 Index Fund(IDCW)",
-            "Edelweiss Nifty 50 Index Fund",
-            "Edelweiss NIFTY Large Mid Cap 250 Index Fund(IDCW)",
-            "Edelweiss NIFTY Large Mid Cap 250 Index Fund",
-            "BHARAT Bond ETF FOF - April 2032 -(IDCW)",
-            "BHARAT Bond ETF FOF - April 2032",
-            "Edelweiss CRISIL PSU Plus SDL 50:50 Oct 2025 Index Fund(IDCW)",
-            "Edelweiss CRISIL PSU Plus SDL 50:50 Oct 2025 Index Fund",
-            "Edelweiss Focused Fund(IDCW)",
-            "Edelweiss Focused Fund",
-            "Edelweiss Gold and Silver ETF FoF(IDCW)",
-            "Edelweiss Gold and Silver ETF FoF",
-            "Edelweiss CRISIL IBX 50:50 Gilt Plus SDL April 2037 Index Fund(IDCW)",
-            "Edelweiss CRISIL IBX 50:50 Gilt Plus SDL April 2037 Index Fund",
-            "Edelweiss CRISIL IBX 50:50 Gilt Plus SDL June 2027 Index Fund",
-            "Edelweiss CRISIL IBX 50:50 Gilt Plus SDL June 2027 Index Fund(IDCW)",
-            "Edelweiss CRISIL IBX 50:50 Gilt Plus SDL Sep 2028 Index Fund(IDCW)",
-            "Edelweiss CRISIL IBX 50:50 Gilt Plus SDL Sep 2028 Index Fund",
-            "Edelweiss Nifty Next 50 Index Fund",
-            "Edelweiss Nifty Next 50 Index Fund(IDCW)",
-            "Edelweiss Nifty Midcap150 Momentum 50 Index Fund",
-            "Edelweiss Nifty Smallcap 250 Index Fund(IDCW)",
-            "Edelweiss Nifty Midcap150 Momentum 50 Index Fund(IDCW)",
-            "Edelweiss Nifty Smallcap 250 Index Fund",
-            "BHARAT Bond ETF FOF - April 2033(IDCW)",
-            "BHARAT Bond ETF FOF - April 2033",
-            "Edelweiss CRISIL IBX 50:50 Gilt Plus SDL Short Duration Index Fund(IDCW)",
-            "Edelweiss CRISIL IBX 50:50 Gilt Plus SDL Short Duration Index Fund",
-            "Edelweiss Multi Asset Allocation Fund",
-            "Edelweiss Multi Asset Allocation Fund(IDCW)",
-            "Edelweiss Multi Asset Allocation Fund(IDCW)",
-            "Edelweiss CRISIL IBX 50:50 Gilt Plus SDL Short Duration Index Fund(IDCW)",
-            "BHARAT Bond ETF FOF - April 2033(IDCW)",
-            "Edelweiss Nifty Midcap150 Momentum 50 Index Fund(IDCW)",
-            "Edelweiss Nifty Smallcap 250 Index Fund(IDCW)",
-            "Edelweiss Nifty Next 50 Index Fund(IDCW)",
-            "Edelweiss CRISIL IBX 50:50 Gilt Plus SDL Sep 2028 Index Fund(IDCW)",
-            "Edelweiss CRISIL IBX 50:50 Gilt Plus SDL June 2027 Index Fund(IDCW)",
-            "Edelweiss CRISIL IBX 50:50 Gilt Plus SDL April 2037 Index Fund(IDCW)",
-            "Edelweiss Gold and Silver ETF FoF(IDCW)",
-            "Edelweiss Focused Fund(IDCW)",
-            "Edelweiss CRISIL PSU Plus SDL 50:50 Oct 2025 Index Fund(IDCW)",
-            "BHARAT Bond ETF FOF - April 2032 -(IDCW)",
-            "Edelweiss NIFTY Large Mid Cap 250 Index Fund(IDCW)",
-            "Edelweiss Nifty 100 Quality 30 Index Fund(IDCW)",
-            "Edelweiss Nifty 50 Index Fund(IDCW)",
-            "Edelweiss Nifty PSU Bond Plus SDL Apr 2027 50:50 Index Fund(IDCW)",
-            "Edelweiss Nifty PSU Bond Plus SDL Apr 2026 50:50 Index Fund(IDCW)",
-            "Edelweiss MSCI India Domestic & World Healthcare 45 Index Fund(IDCW)",
-            "BHARAT Bond FOF - April 2025 -(IDCW)",
-            "BHARAT Bond FOF - April 2031 -(IDCW)",
-            "BHARAT Bond FOF - April 2030 -(IDCW)",
-            "Edelweiss Overnight Fund(A-IDCW)",
-            "Edelweiss Overnight Fund(M-IDCW)",
-            "Edelweiss Small Cap Fund(IDCW)",
-            "Edelweiss Small Cap Fund(IDCW)",
-            "Edelweiss Recently Listed IPO Fund(IDCW)",
-            "Edelweiss Equity Savings Fund(M-IDCW)",
-            "Edelweiss Balanced Advantage Fund(M-IDCW)",
-            "Edelweiss Balanced Advantage Fund(M-IDCW)",
-            "Edelweiss Arbitrage Fund(M-IDCW)",
-            "Edelweiss Arbitrage Fund(M-IDCW)",
-            "Edelweiss Flexi Cap Fund(IDCW)",
-            "Edelweiss Equity Savings Fund(IDCW)",
-            "Edelweiss Arbitrage Fund(IDCW)",
-            "Edelweiss Arbitrage Fund(IDCW)",
-            "Edelweiss Liquid Fund(IDCW)",
-            "Edelweiss Government Securities Fund(IDCW)",
-            "Edelweiss Government Securities Fund(M-IDCW)",
-            "Edelweiss Banking and PSU Debt Fund(M-IDCW)",
-            "Edelweiss Banking and PSU Debt Fund(IDCW)",
-            "Edelweiss Liquid Fund(FN-IDCW)",
-            "Edelweiss Liquid Fund(A-IDCW)",
-            "Edelweiss Money Market Fund(A-IDCW)",
-            "Edelweiss Balanced Advantage Fund(Q-IDCW)",
-            "Edelweiss Balanced Advantage Fund(Q-IDCW)",
-            "Edelweiss Aggressive Hybrid Fund(IDCW)",
-            "Edelweiss Aggressive Hybrid Fund(IDCW)",
-            "Edelweiss Large Cap Fund(IDCW)",
-            "Edelweiss Liquid Fund(W-IDCW)",
-            "Edelweiss Liquid Fund(M-IDCW)",
-            "Edelweiss Large Cap Fund(IDCW)",
-            "Edelweiss Money Market Fund(IDCW)",
-            "Edelweiss Large & Mid Cap Fund(IDCW)",
-            "Edelweiss Mid Cap Fund(IDCW)",
-            "Edelweiss Multi Cap Fund(IDCW)",
-            "Edelweiss Multi Cap Fund(IDCW)",
-            "Edelweiss Multi Cap Fund",
-            "Edelweiss Technology Fund",
-            "Edelweiss Technology Fund(IDCW)",
-            "Edelweiss Technology Fund(IDCW)",
-            "DSP Quant Fund(IDCW-Reinv)",
-            "DSP Quant Fund(IDCW)",
-            "DSP Quant Fund",
-            "DSP NIFTY Next 50 Index Fund(IDCW-Reinv)",
-            "DSP Global Allocation FoF(IDCW-Reinv)",
-            "DSP NIFTY 50 Index Fund(IDCW-Reinv)",
-            "DSP Corp Bond Fund(Q-IDCW Reinv)",
-            "DSP Corp Bond Fund(M-IDCW Reinv)",
-            "DSP Equity Savings Fund(M-IDCW Reinv)",
-            "DSP Nifty 50 Equal Weight Index Fund(IDCW-Reinv)",
-            "DSP Equity Savings Fund(Q-IDCW Reinv)",
-            "DSP Corp Bond Fund(IDCW-Reinv)",
-            "DSP Banking & PSU Debt Fund(M-IDCW Reinv)",
-            "DSP Banking & PSU Debt Fund(Q-IDCW Reinv)",
-            "DSP Banking & PSU Debt Fund(IDCW-Reinv)",
-            "DSP 10Y G-Sec Fund(M-IDCW Reinv)",
-            "DSP 10Y G-Sec Fund(Q-IDCW Reinv)",
-            "DSP 10Y G-Sec Fund(IDCW-Reinv)",
-            "DSP Dynamic Asset Allocation Fund(M-IDCW Reinv)",
-            "DSP Arbitrage Fund(M-IDCW Reinv)",
-            "DSP Arbitrage Fund(IDCW-Reinv)",
-            "DSP NIFTY Next 50 Index Fund(IDCW)",
-            "DSP NIFTY Next 50 Index Fund",
-            "DSP NIFTY 50 Index Fund(IDCW)",
-            "DSP NIFTY 50 Index Fund",
-            "DSP Overnight Fund",
-            "DSP Overnight Fund(DD-IDCW)",
-            "DSP Healthcare Fund(IDCW-Reinv)",
-            "DSP Healthcare Fund",
-            "DSP Healthcare Fund(IDCW)",
-            "DSP Corp Bond Fund(Q-IDCW)",
-            "DSP Corp Bond Fund",
-            "DSP Corp Bond Fund(M-IDCW)",
-            "DSP Corp Bond Fund(IDCW)",
-            "DSP Arbitrage Fund",
-            "DSP Arbitrage Fund(M-IDCW)",
-            "DSP Arbitrage Fund(IDCW)",
-            "DSP Nifty 50 Equal Weight Index Fund(IDCW)",
-            "DSP Nifty 50 Equal Weight Index Fund",
-            "DSP Low Duration Fund(Q-IDCW Reinv)",
-            "DSP Low Duration Fund(M-IDCW Reinv)",
-            "DSP Strategic Bond Fund(IDCW-Reinv)",
-            "DSP Credit Risk Fund(M-IDCW Reinv)",
-            "DSP Credit Risk Fund(IDCW-Reinv)",
-            "DSP Ultra Short Fund(M-IDCW Reinv)",
-            "DSP Savings Fund(IDCW-Reinv)",
-            "DSP Savings Fund(M-IDCW Reinv)",
-            "DSP Short Term Fund(M-IDCW Reinv)",
-            "DSP Short Term Fund(IDCW-Reinv)",
-            "DSP Bond Fund(M-IDCW Reinv)",
-            "DSP Regular Savings Fund(M-IDCW Reinv)",
-            "DSP World Gold FoF(IDCW)",
-            "DSP Top 100 Equity Fund(IDCW)",
-            "DSP Strategic Bond Fund(M-IDCW)",
-            "DSP ELSS Tax Saver Fund(IDCW)",
-            "DSP World Mining Fund(IDCW)",
-            "DSP Midcap Fund(IDCW)",
-            "DSP Equity Opportunities Fund(IDCW)",
-            "DSP Natural Res & New Energy Fund(IDCW)",
-            "DSP Small Cap Fund(IDCW)",
-            "DSP Ultra Short Fund(IDCW)",
-            "DSP World Energy Fund(IDCW)",
-            "DSP World Agriculture Fund(IDCW)",
-            "DSP India T.I.G.E.R Fund(IDCW)",
-            "DSP Credit Risk Fund(Q-IDCW)",
-            "DSP Focus Fund(IDCW)",
-            "DSP Flexi Cap Fund(IDCW)",
-            "DSP Gilt Fund(IDCW)",
-            "DSP Gilt Fund(M-IDCW)",
-            "DSP US Flexible Equity Fund(IDCW)",
-            "DSP Equity Savings Fund(IDCW-Reinv)",
-            "DSP Regular Savings Fund(Q-IDCW)",
-            "DSP Bond Fund(IDCW)",
-            "DSP Equity & Bond Fund(IDCW)",
-            "DSP Equity Savings Fund(Q-IDCW)",
-            "DSP Equity Savings Fund",
-            "DSP Equity Savings Fund(M-IDCW)",
-            "DSP Equity Savings Fund(IDCW)",
-            "DSP Low Duration Fund(M-IDCW)",
-            "DSP Low Duration Fund(W-IDCW)",
-            "DSP Low Duration Fund(Q-IDCW)",
-            "DSP Low Duration Fund(DD-IDCW)",
-            "DSP Low Duration Fund",
-            "DSP 10Y G-Sec Fund(M-IDCW)",
-            "DSP 10Y G-Sec Fund(IDCW)",
-            "DSP 10Y G-Sec Fund(Q-IDCW)",
-            "DSP 10Y G-Sec Fund",
-            "DSP Global Allocation FoF",
-            "DSP Global Allocation FoF(IDCW)",
-            "DSP Dynamic Asset Allocation Fund(M-IDCW)",
-            "DSP Dynamic Asset Allocation Fund",
-            "DSP Banking & PSU Debt Fund(Q-IDCW)",
-            "DSP Banking & PSU Debt Fund(M-IDCW)",
-            "DSP Banking & PSU Debt Fund(DD-IDCW)",
-            "DSP Banking & PSU Debt Fund(W-IDCW)",
-            "DSP Banking & PSU Debt Fund",
-            "DSP Banking & PSU Debt Fund(IDCW)",
-            "DSP Savings Fund(DD-IDCW)",
-            "DSP World Agriculture Fund(IDCW-Reinv)",
-            "DSP World Mining Fund",
-            "DSP World Mining Fund(IDCW-Reinv)",
-            "DSP World Energy Fund",
-            "DSP World Energy Fund(IDCW-Reinv)",
-            "DSP Natural Res & New Energy Fund",
-            "DSP US Flexible Equity Fund",
-            "DSP US Flexible Equity Fund(IDCW-Reinv)",
-            "DSP Natural Res & New Energy Fund(IDCW-Reinv)",
-            "DSP Small Cap Fund(IDCW-Reinv)",
-            "DSP Equity Opportunities Fund(IDCW-Reinv)",
-            "DSP ELSS Tax Saver Fund(IDCW-Reinv)",
-            "DSP India T.I.G.E.R Fund(IDCW-Reinv)",
-            "DSP World Gold FoF",
-            "DSP World Gold FoF(IDCW-Reinv)",
-            "DSP Regular Savings Fund(M-IDCW)",
-            "DSP Regular Savings Fund",
-            "DSP Regular Savings Fund(Q-IDCW Reinv)",
-            "DSP World Agriculture Fund",
-            "DSP Equity & Bond Fund(IDCW-Reinv)",
-            "DSP Savings Fund(IDCW)",
-            "DSP Savings Fund(M-IDCW)",
-            "DSP ELSS Tax Saver Fund",
-            "DSP Savings Fund",
-            "DSP Top 100 Equity Fund",
-            "DSP Top 100 Equity Fund(IDCW-Reinv)",
-            "DSP Strategic Bond Fund(IDCW)",
-            "DSP Strategic Bond Fund(M-IDCW Reinv)",
-            "DSP Short Term Fund(IDCW)",
-            "DSP Strategic Bond Fund",
-            "DSP Short Term Fund(W-IDCW)",
-            "DSP Midcap Fund",
-            "DSP Short Term Fund(M-IDCW)",
-            "DSP Short Term Fund",
-            "DSP Equity Opportunities Fund",
-            "DSP Midcap Fund(IDCW-Reinv)",
-            "DSP Ultra Short Fund(W-IDCW)",
-            "DSP Ultra Short Fund",
-            "DSP Ultra Short Fund(M-IDCW)",
-            "DSP Ultra Short Fund(IDCW-Reinv)",
-            "DSP Ultra Short Fund(DD-IDCW)",
-            "DSP Credit Risk Fund(W-IDCW)",
-            "DSP India T.I.G.E.R Fund",
-            "DSP Small Cap Fund",
-            "DSP Gilt Fund(IDCW-Reinv)",
-            "DSP Credit Risk Fund(M-IDCW)",
-            "DSP Credit Risk Fund(Q-IDCW Reinv)",
-            "DSP Gilt Fund(M-IDCW Reinv)",
-            "DSP Credit Risk Fund(DD-IDCW)",
-            "DSP Credit Risk Fund(IDCW)",
-            "DSP Credit Risk Fund",
-            "DSP Gilt Fund",
-            "DSP Focus Fund",
-            "DSP Focus Fund(IDCW-Reinv)",
-            "DSP Flexi Cap Fund",
-            "DSP Flexi Cap Fund(IDCW-Reinv)",
-            "DSP Bond Fund(IDCW-Reinv)",
-            "DSP Bond Fund(M-IDCW)",
-            "DSP Bond Fund",
-            "DSP Equity & Bond Fund",
-            "DSP Liquidity Fund(DD-IDCW)",
-            "DSP Liquidity Fund",
-            "DSP Liquidity Fund(W-IDCW)",
-            "DSP Value Fund(IDCW-Reinv)",
-            "DSP Value Fund",
-            "DSP Value Fund(IDCW)",
-            "DSP Floater Fund",
-            "DSP Floater Fund(IDCW-Reinvest)",
-            "DSP Floater Fund(IDCW)",
-            "DSP FMP 264-60M & 17D",
-            "DSP FMP 264-60M & 17D(IDCW)",
-            "DSP Global Innovation FoF",
-            "DSP Global Innovation FoF(IDCW Reinvst)",
-            "DSP Nifty SDL Plus G-Sec Jun 2028 30:70 Index Fund(IDCW)",
-            "DSP Nifty SDL Plus G-Sec Jun 2028 30:70 Index Fund",
-            "DSP Global Innovation FoF(IDCW)",
-            "DSP Nifty Midcap 150 Quality 50 Index Fund",
-            "DSP Nifty Midcap 150 Quality 50 Index Fund(IDCW Reinvest)",
-            "DSP FMP 267-1246D(IDCW)",
-            "DSP FMP 267-1246D",
-            "DSP Nifty Midcap 150 Quality 50 Index Fund(IDCW)",
-            "DSP FMP 268-1281D(IDCW)",
-            "DSP FMP 268-1281D",
-            "DSP CRISIL SDL Plus G-Sec Apr 2033 50:50 Index Fund",
-            "DSP CRISIL SDL Plus G-Sec Apr 2033 50:50 Index Fund(IDCW)",
-            "DSP Nifty SDL Plus G-Sec Sep 2027 50:50 Index Fund(IDCW)",
-            "DSP Nifty SDL Plus G-Sec Sep 2027 50:50 Index Fund",
-            "DSP FMP 270-1144D(IDCW)",
-            "DSP FMP 270-1144D",
-            "DSP FMP 270-1144D(IDCW)",
-            "DSP Nifty SDL Plus G-Sec Sep 2027 50:50 Index Fund(IDCW)",
-            "DSP CRISIL SDL Plus G-Sec Apr 2033 50:50 Index Fund(IDCW)",
-            "DSP FMP 268-1281D(IDCW)",
-            "DSP FMP 267-1246D(IDCW)",
-            "DSP Nifty SDL Plus G-Sec Jun 2028 30:70 Index Fund(IDCW)",
-            "DSP FMP 264-60M & 17D(IDCW)",
-            "DSP Low Duration Fund(W-IDCW)",
-            "DSP Banking & PSU Debt Fund(W-IDCW)",
-            "DSP Credit Risk Fund(W-IDCW)",
-            "DSP Short Term Fund(W-IDCW)",
-            "DSP Ultra Short Fund(W-IDCW)",
-            "DSP Liquidity Fund(W-IDCW)",
-            "DSP Multi Asset Allocation Fund",
-            "DSP Multi Asset Allocation Fund(IDCW Reinvest)",
-            "DSP Multi Asset Allocation Fund(IDCW)",
-            "DSP Gold ETF FoF",
-            "DSP Gold ETF FoF(IDCW)",
-            "DSP Gold ETF FoF(IDCW)",
-            "DSP Banking & Financial Services Fund(IDCW)",
-            "DSP Banking & Financial Services Fund(IDCW)",
-            "DSP Banking & Financial Services Fund",
-            "DSP Nifty Smallcap250 Quality 50 Index Fund(IDCW)",
-            "DSP Nifty Smallcap250 Quality 50 Index Fund(IDCW)",
-            "DSP Nifty Smallcap250 Quality 50 Index Fund",
-            "DSP Multicap Fund",
-            "DSP Multicap Fund(IDCW Reinvest)",
-            "DSP Multicap Fund(IDCW)",
-            "Canara Rob Overnight Fund",
-            "Canara Rob Overnight Fund(DD-IDCW)",
-            "Canara Rob Small Cap Fund",
-            "Canara Rob Small Cap Fund(IDCW)",
-            "Canara Rob Liquid-Unclaimed Redemption and Dividend Plan",
-            "Canara Rob Corp Bond Fund",
-            "Canara Rob Corp Bond Fund(IDCW)",
-            "Canara Rob Short Duration Fund(Q-IDCW)",
-            "Canara Rob Short Duration Fund",
-            "Canara Rob Short Duration Fund(M-IDCW)",
-            "Canara Rob Ultra Short Term Fund(W-IDCW)",
-            "Canara Rob Ultra Short Term Fund(M-IDCW)",
-            "Canara Rob Ultra Short Term Fund(DD-IDCW)",
-            "Canara Rob Ultra Short Term Fund",
-            "Canara Rob Ultra Short Term Fund(IDCW)",
-            "Canara Rob Bluechip Equity Fund",
-            "Canara Rob Bluechip Equity Fund(IDCW)",
-            "Canara Rob Infrastructure Fund",
-            "Canara Rob Infrastructure Fund(IDCW)",
-            "Canara Rob Income Fund(Q-IDCW)",
-            "Canara Rob Income Fund",
-            "Canara Rob Gilt Fund(IDCW)",
-            "Canara Rob Gilt Fund",
-            "Canara Rob Savings Fund(W-IDCW)",
-            "Canara Rob Conservative Hybrid Fund(M-IDCW)",
-            "Canara Rob Conservative Hybrid Fund",
-            "Canara Rob Savings Fund(M-IDCW)",
-            "Canara Rob Savings Fund(DD-IDCW)",
-            "Canara Rob Savings Fund",
-            "Canara Rob Savings Fund(IDCW)",
-            "Canara Rob Conservative Hybrid Fund(Q-IDCW)",
-            "Canara Rob Consumer Trends Fund(IDCW)",
-            "Canara Rob ELSS Tax Saver",
-            "Canara Rob Flexi Cap Fund(IDCW)",
-            "Canara Rob Emerg Equities Fund",
-            "Canara Rob ELSS Tax Saver(IDCW)",
-            "Canara Rob Consumer Trends Fund",
-            "Canara Rob Flexi Cap Fund",
-            "Canara Rob Emerg Equities Fund(IDCW)",
-            "Canara Rob Dynamic Bond Fund",
-            "Canara Rob Dynamic Bond Fund(IDCW)",
-            "Canara Rob Equity Hybrid Fund(M-IDCW)",
-            "Canara Rob Equity Hybrid Fund",
-            "Canara Rob Liquid Fund(DD-IDCW)",
-            "Canara Rob Liquid Fund(IDCW)",
-            "Canara Rob Liquid Fund(M-IDCW)",
-            "Canara Rob Liquid Fund(W-IDCW)",
-            "Canara Rob Liquid Fund",
-            "Canara Rob Focused Equity Fund(IDCW)",
-            "Canara Rob Focused Equity Fund",
-            "Canara Rob Value Fund(IDCW)",
-            "Canara Rob Value Fund",
-            "Canara Rob Banking and PSU Debt Fund",
-            "Canara Rob Banking and PSU Debt Fund(IDCW)",
-            "Canara Rob Mid Cap Fund",
-            "Canara Rob Mid Cap Fund(IDCW)",
-            "Canara Rob Multi Cap Fund",
-            "Canara Rob Multi Cap Fund(IDCW)",
-            "Canara Rob Multi Cap Fund(IDCW)",
-            "Canara Rob Mid Cap Fund(IDCW)",
-            "Canara Rob Banking and PSU Debt Fund(IDCW)",
-            "Canara Rob Value Fund(IDCW)",
-            "Canara Rob Focused Equity Fund(IDCW)",
-            "Canara Rob Small Cap Fund(IDCW)",
-            "Canara Rob Corp Bond Fund(IDCW)",
-            "Canara Rob Short Duration Fund(Q-IDCW)",
-            "Canara Rob Ultra Short Term Fund(W-IDCW)",
-            "Canara Rob Short Duration Fund(M-IDCW)",
-            "Canara Rob Income Fund(Q-IDCW)",
-            "Canara Rob Conservative Hybrid Fund(M-IDCW)",
-            "Canara Rob Conservative Hybrid Fund(Q-IDCW)",
-            "Canara Rob Ultra Short Term Fund(M-IDCW)",
-            "Canara Rob Bluechip Equity Fund(IDCW)",
-            "Canara Rob Infrastructure Fund(IDCW)",
-            "Canara Rob Savings Fund(M-IDCW)",
-            "Canara Rob Gilt Fund(IDCW)",
-            "Canara Rob Emerg Equities Fund(IDCW)",
-            "Canara Rob Savings Fund(IDCW)",
-            "Canara Rob Savings Fund(W-IDCW)",
-            "Canara Rob Flexi Cap Fund(IDCW)",
-            "Canara Rob Equity Hybrid Fund(M-IDCW)",
-            "Canara Rob Consumer Trends Fund(IDCW)",
-            "Canara Rob Dynamic Bond Fund(IDCW)",
-            "Canara Rob Liquid Fund(W-IDCW)",
-            "Canara Rob Liquid Fund(M-IDCW)",
-            "Baroda BNP Paribas Large & Mid Cap Fund(IDCW)",
-            "Baroda BNP Paribas Large & Mid Cap Fund",
-            "Baroda BNP Paribas Equity Savings Fund",
-            "Baroda BNP Paribas Equity Savings Fund(IDCW)",
-            "Baroda BNP Paribas Money Market Fund(M-IDCW)",
-            "Baroda BNP Paribas Overnight Fund(DD-IDCW)",
-            "Baroda BNP Paribas Overnight Fund(W-IDCW)",
-            "Baroda BNP Paribas Overnight Fund",
-            "Baroda BNP Paribas Money Market Fund(W-IDCW)",
-            "Baroda BNP Paribas Money Market Fund(DD-IDCW)",
-            "Baroda BNP Paribas Money Market Fund",
-            "Baroda BNP Paribas Balanced Advantage Fund",
-            "Baroda BNP Paribas Balanced Advantage Fund(IDCW)",
-            "Baroda BNP Paribas India Consumption Fund(IDCW)",
-            "Baroda BNP Paribas India Consumption Fund",
-            "Baroda BNP Paribas Ultra Short Duration Fund(W-IDCW)",
-            "Baroda BNP Paribas Ultra Short Duration Fund(DD-IDCW)",
-            "Baroda BNP Paribas Ultra Short Duration Fund",
-            "Baroda BNP Paribas Focused Fund(IDCW)",
-            "Baroda BNP Paribas Focused Fund",
-            "Baroda BNP Paribas Arbitrage Fund(M-IDCW)",
-            "Baroda BNP Paribas Arbitrage Fund(Q-IDCW)",
-            "Baroda BNP Paribas Aggressive Hybrid Fund",
-            "Baroda BNP Paribas Aggressive Hybrid Fund(IDCW)",
-            "Baroda BNP Paribas Short Duration Fund(Q-IDCW)",
-            "Baroda BNP Paribas Arbitrage Fund",
-            "Baroda BNP Paribas Arbitrage Fund(IDCW)",
-            "Baroda BNP Paribas Credit Risk Fund(Q-IDCW)",
-            "Baroda BNP Paribas Credit Risk Fund(M-IDCW)",
-            "Baroda BNP Paribas Credit Risk Fund",
-            "Baroda BNP Paribas Medium Duration Fund(H-IDCW)",
-            "Baroda BNP Paribas Medium Duration Fund(M-IDCW)",
-            "Baroda BNP Paribas Medium Duration Fund(A-IDCW)",
-            "Baroda BNP Paribas Medium Duration Fund(Q-IDCW)",
-            "Baroda BNP Paribas Medium Duration Fund",
-            "Baroda BNP Paribas Liquid Fund(W-IDCW)",
-            "Baroda BNP Paribas Short Duration Fund",
-            "Baroda BNP Paribas Gilt Fund(IDCW)",
-            "Baroda BNP Paribas Multi Cap Fund(IDCW)",
-            "Baroda BNP Paribas ELSS Tax Saver Fund",
-            "Baroda BNP Paribas ELSS Tax Saver Fund(IDCW)",
-            "Baroda BNP Paribas Low Duration Fund(W-IDCW)",
-            "Baroda BNP Paribas Low Duration Fund(M-IDCW)",
-            "Baroda BNP Paribas Low Duration Fund(DD-IDCW)",
-            "Baroda BNP Paribas Low Duration Fund",
-            "Baroda BNP Paribas Mid Cap Fund(IDCW)",
-            "Baroda BNP Paribas Mid Cap Fund",
-            "Baroda BNP Paribas Dynamic Bond Fund(W-IDCW)",
-            "Baroda BNP Paribas Dynamic Bond Fund(Q-IDCW)",
-            "Baroda BNP Paribas Dynamic Bond Fund(M-IDCW)",
-            "Baroda BNP Paribas Dynamic Bond Fund(H-IDCW)",
-            "Baroda BNP Paribas Dynamic Bond Fund",
-            "Baroda BNP Paribas Dynamic Bond Fund(DD-IDCW)",
-            "Baroda BNP Paribas Large Cap Fund",
-            "Baroda BNP Paribas Large Cap Fund(IDCW)",
-            "Baroda BNP Paribas Corp Bond Fund",
-            "Baroda BNP Paribas Corp Bond Fund(Q-IDCW)",
-            "Baroda BNP Paribas Corp Bond Fund(M-IDCW)",
-            "Baroda BNP Paribas Corp Bond Fund(A-IDCW)",
-            "Baroda BNP Paribas Conservative Hybrid Fund(M-IDCW)",
-            "Baroda BNP Paribas Conservative Hybrid Fund",
-            "Baroda BNP Paribas Conservative Hybrid Fund(Q-IDCW)",
-            "Baroda BNP Paribas Short Duration Fund(M-IDCW)",
-            "Baroda BNP Paribas Gilt Fund",
-            "Baroda BNP Paribas Multi Cap Fund",
-            "Baroda BNP Paribas Banking and Fin Serv Fund(IDCW)",
-            "Baroda BNP Paribas Banking and Fin Serv Fund",
-            "Baroda BNP Paribas Liquid Fund",
-            "Baroda BNP Paribas Liquid Fund(DD-IDCW)",
-            "Baroda BNP Paribas Banking and PSU Bond Fund(M-IDCW)",
-            "Baroda BNP Paribas Banking and PSU Bond Fund",
-            "Baroda BNP Paribas Banking and PSU Bond Fund(Q-IDCW)",
-            "Baroda BNP Paribas Aqua FoF",
-            "Baroda BNP Paribas Aqua FoF(IDCW)",
-            "Baroda BNP Paribas Business Cycle Fund",
-            "Baroda BNP Paribas Business Cycle Fund(IDCW)",
-            "Baroda BNP Paribas Flexi Cap Fund(IDCW)",
-            "Baroda BNP Paribas Flexi Cap Fund",
-            "Baroda BNP Paribas Multi Asset Fund(IDCW)",
-            "Baroda BNP Paribas Multi Asset Fund",
-            "Baroda BNP Paribas NIFTY SDL Dec 2026 Index Fund(IDCW)",
-            "Baroda BNP Paribas NIFTY SDL Dec 2026 Index Fund",
-            "Baroda BNP Paribas NIFTY SDL Dec 2028 Index Fund",
-            "Baroda BNP Paribas NIFTY SDL Dec 2028 Index Fund(IDCW)",
-            "Baroda BNP Paribas Floater Fund",
-            "Baroda BNP Paribas Floater Fund(W-IDCW)",
-            "Baroda BNP Paribas Value Fund(IDCW)",
-            "Baroda BNP Paribas Value Fund",
-            "Baroda BNP Paribas Value Fund(IDCW)",
-            "Baroda BNP Paribas Floater Fund(W-IDCW)",
-            "Baroda BNP Paribas Multi Asset Fund(IDCW)",
-            "Baroda BNP Paribas Flexi Cap Fund(IDCW)",
-            "Baroda BNP Paribas Business Cycle Fund(IDCW)",
-            "Baroda BNP Paribas Aqua FoF(IDCW)",
-            "Baroda BNP Paribas Banking and PSU Bond Fund(M-IDCW)",
-            "Baroda BNP Paribas Banking and PSU Bond Fund(Q-IDCW)",
-            "Baroda BNP Paribas Large & Mid Cap Fund(IDCW)",
-            "Baroda BNP Paribas Equity Savings Fund(IDCW)",
-            "Baroda BNP Paribas Balanced Advantage Fund(IDCW)",
-            "Baroda BNP Paribas India Consumption Fund(IDCW)",
-            "Baroda BNP Paribas Focused Fund(IDCW)",
-            "Baroda BNP Paribas Arbitrage Fund(Q-IDCW)",
-            "Baroda BNP Paribas Arbitrage Fund(M-IDCW)",
-            "Baroda BNP Paribas Aggressive Hybrid Fund(IDCW)",
-            "Baroda BNP Paribas Short Duration Fund(Q-IDCW)",
-            "Baroda BNP Paribas Arbitrage Fund(IDCW)",
-            "Baroda BNP Paribas Credit Risk Fund(Q-IDCW)",
-            "Baroda BNP Paribas Credit Risk Fund(M-IDCW)",
-            "Baroda BNP Paribas Medium Duration Fund(A-IDCW)",
-            "Baroda BNP Paribas Medium Duration Fund(M-IDCW)",
-            "Baroda BNP Paribas Medium Duration Fund(Q-IDCW)",
-            "Baroda BNP Paribas Medium Duration Fund(H-IDCW)",
-            "Baroda BNP Paribas Liquid Fund(W-IDCW)",
-            "Baroda BNP Paribas Gilt Fund(IDCW)",
-            "Baroda BNP Paribas Multi Cap Fund(IDCW)",
-            "Baroda BNP Paribas Low Duration Fund(W-IDCW)",
-            "Baroda BNP Paribas Low Duration Fund(M-IDCW)",
-            "Baroda BNP Paribas Conservative Hybrid Fund(Q-IDCW)",
-            "Baroda BNP Paribas Dynamic Bond Fund(H-IDCW)",
-            "Baroda BNP Paribas Dynamic Bond Fund(M-IDCW)",
-            "Baroda BNP Paribas Corp Bond Fund(A-IDCW)",
-            "Baroda BNP Paribas Conservative Hybrid Fund(M-IDCW)",
-            "Baroda BNP Paribas Large Cap Fund(IDCW)",
-            "Baroda BNP Paribas Dynamic Bond Fund(Q-IDCW)",
-            "Baroda BNP Paribas Corp Bond Fund(M-IDCW)",
-            "Baroda BNP Paribas Corp Bond Fund(Q-IDCW)",
-            "Baroda BNP Paribas Mid Cap Fund(IDCW)",
-            "Baroda BNP Paribas Short Duration Fund(M-IDCW)",
-            "Baroda BNP Paribas Banking and Fin Serv Fund(IDCW)",
-            "Baroda BNP Paribas Ultra Short Duration Fund(W-IDCW)",
-            "Baroda BNP Paribas Small Cap Fund",
-            "Baroda BNP Paribas Small Cap Fund(IDCW)",
-            "Baroda BNP Paribas Small Cap Fund(IDCW)",
-            "Baroda BNP Paribas Nifty 50 Index Fund",
-            "Baroda BNP Paribas Nifty 50 Index Fund(IDCW)",
-            "Baroda BNP Paribas Nifty 50 Index Fund(IDCW)",
-            "Baroda BNP Paribas Innovation Fund",
-            "Baroda BNP Paribas Innovation Fund(IDCW)",
-            "Baroda BNP Paribas Innovation Fund(IDCW)",
-            "Bank of India Flexi Cap Fund(IDCW)",
-            "Bank of India Flexi Cap Fund",
-            "Bank of India Overnight Fund(M-IDCW)",
-            "Bank of India Overnight Fund(W-IDCW)",
-            "Bank of India Overnight Fund(DD-IDCW)",
-            "Bank of India Overnight Fund",
-            "Bank of India Small Cap Fund(IDCW)",
-            "Bank of India Small Cap Fund",
-            "Bank of India Midcap Tax Fund-Sr 2",
-            "Bank of India Midcap Tax Fund-Sr 2(IDCW)",
-            "Bank of India Arbitrage Fund",
-            "Bank of India Arbitrage Fund(A-IDCW)",
-            "Bank of India Arbitrage Fund(Q-IDCW)",
-            "Bank of India Arbitrage Fund(M-IDCW)",
-            "Bank of India Midcap Tax Fund-Sr 1(IDCW)",
-            "Bank of India Midcap Tax Fund-Sr 1",
-            "Bank of India Mid & Small Cap Equity & Debt Fund(IDCW)",
-            "Bank of India Mid & Small Cap Equity & Debt Fund",
-            "Bank of India Credit Risk Fund",
-            "Bank of India Ultra Short Duration Fund",
-            "Bank of India Balanced Advantage Fund",
-            "Bank of India Balanced Advantage Fund(IDCW)",
-            "Bank of India Mfg & Infra Fund",
-            "Bank of India Mfg & Infra Fund(Q-IDCW)",
-            "Bank of India ELSS Tax Saver(IDCW)",
-            "Bank of India Short Term Income Fund(M-IDCW)",
-            "Bank of India Short Term Income Fund(Q-IDCW)",
-            "Bank of India Conservative Hybrid Fund(A-IDCW)",
-            "Bank of India Conservative Hybrid Fund(M-IDCW)",
-            "Bank of India Conservative Hybrid Fund(Q-IDCW)",
-            "Bank of India Conservative Hybrid Fund",
-            "Bank of India Large & Mid Cap Equity Fund",
-            "Bank of India Ultra Short Duration Fund(W-IDCW)",
-            "Bank of India Liquid Fund(W-IDCW)",
-            "Bank of India Ultra Short Duration Fund",
-            "Bank of India Ultra Short Duration Fund(DD-IDCW)",
-            "Bank of India Short Term Income Fund",
-            "Bank of India Liquid Fund(DD-IDCW)",
-            "Bank of India Mfg & Infra Fund(IDCW)",
-            "Bank of India ELSS Tax Saver",
-            "Bank of India Large & Mid Cap Equity Fund(Q-IDCW)",
-            "Bank of India Large & Mid Cap Equity Fund",
-            "Bank of India Large & Mid Cap Equity Fund(IDCW)",
-            "Bank of India Liquid Fund",
-            "Bank of India Bluechip Fund(IDCW)",
-            "Bank of India Bluechip Fund",
-            "Bank of India Multi Cap Fund",
-            "Bank of India Multi Cap Fund(IDCW)",
-            "Bank of India Multi Cap Fund(IDCW)",
-            "Bank of India Bluechip Fund(IDCW)",
-            "Bank of India Flexi Cap Fund(IDCW)",
-            "Bank of India Overnight Fund(M-IDCW)",
-            "Bank of India Small Cap Fund(IDCW)",
-            "Bank of India Arbitrage Fund(Q-IDCW)",
-            "Bank of India Arbitrage Fund(A-IDCW)",
-            "Bank of India Arbitrage Fund(M-IDCW)",
-            "Bank of India Mid & Small Cap Equity & Debt Fund(IDCW)",
-            "Bank of India Balanced Advantage Fund(IDCW)",
-            "Bank of India Mfg & Infra Fund(Q-IDCW)",
-            "Bank of India Short Term Income Fund(Q-IDCW)",
-            "Bank of India Conservative Hybrid Fund(Q-IDCW)",
-            "Bank of India Conservative Hybrid Fund(A-IDCW)",
-            "Bank of India Conservative Hybrid Fund(M-IDCW)",
-            "Bank of India Short Term Income Fund(M-IDCW)",
-            "Bank of India Mfg & Infra Fund(IDCW)",
-            "Bank of India Large & Mid Cap Equity Fund(IDCW)",
-            "Bank of India Large & Mid Cap Equity Fund(Q-IDCW)",
-            "Bank of India Multi Asset Allocation Fund(IDCW)",
-            "Bank of India Multi Asset Allocation Fund(IDCW)",
-            "Bank of India Multi Asset Allocation Fund",
-            "Bandhan Small Cap Fund(IDCW)",
-            "Bandhan Small Cap Fund",
-            "Bandhan Arbitrage Fund(M-IDCW Reinv)",
-            "Bandhan Sterling Value Fund(IDCW-Reinv)",
-            "Bandhan Infrastructure Fund(IDCW-Reinv)",
-            "Bandhan Credit Risk Fund(A-IDCW Reinv)",
-            "Bandhan Credit Risk Fund(IDCW-Reinv)",
-            "Bandhan Credit Risk Fund(Q-IDCW Reinv)",
-            "Bandhan Corp Bond Fund(IDCW-Reinv)",
-            "Bandhan Hybrid Equity Fund(IDCW-Reinv)",
-            "Bandhan Nifty 50 Index Fund(IDCW-Reinv)",
-            "Bandhan Equity Savings Fund(Q-IDCW)",
-            "Bandhan FTP-179-3652D(H-IDCW)",
-            "Bandhan FTP-179-3652D",
-            "Bandhan Overnight Fund(IDCW)",
-            "Bandhan Overnight Fund(M-IDCW)",
-            "Bandhan Overnight Fund(W-IDCW)",
-            "Bandhan Overnight Fund(DD-IDCW)",
-            "Bandhan Overnight Fund",
-            "Bandhan Ultra Short Term Fund(P-IDCW Reinvest)",
-            "Bandhan Ultra Short Term Fund(Q-IDCW)",
-            "Bandhan Ultra Short Term Fund(M-IDCW Reinvest)",
-            "Bandhan Ultra Short Term Fund(W-IDCW)",
-            "Bandhan Ultra Short Term Fund(DD-IDCW)",
-            "Bandhan Ultra Short Term Fund",
-            "Bandhan Bond Fund - Short Term Plan(Q-IDCW)",
-            "Bandhan Bond Fund - Short Term Plan(A-IDCW Reinv)",
-            "Bandhan Credit Risk Fund(A-IDCW)",
-            "Bandhan Credit Risk Fund(Q-IDCW)",
-            "Bandhan Credit Risk Fund",
-            "Bandhan Credit Risk Fund(IDCW)",
-            "Bandhan Hybrid Equity Fund",
-            "Bandhan Hybrid Equity Fund(IDCW)",
-            "Bandhan Money Manager Fund(P-IDCW)Exch Reinv",
-            "Bandhan Dynamic Bond Fund(P-IDCW)Exch Reinv",
-            "Bandhan G-Sec-Invest(P-IDCW)Exch Reinv",
-            "Bandhan G-Sec-Constant Maturity Plan(P-IDCW)Exch Reinv",
-            "Bandhan Equity Savings Fund(A-IDCW)Reinvest Exch",
-            "Bandhan Bond Fund - Medium Term Plan(P-IDCW)Exch Reinve",
-            "Bandhan Balanced Advantage Fund(IDCW Reinv)",
-            "Bandhan Arbitrage Fund(A-IDCW)Reinvest Exch",
-            "Bandhan Corp Bond Fund(M-IDCW)",
-            "Bandhan Corp Bond Fund(H-IDCW)",
-            "Bandhan Corp Bond Fund(A-IDCW)",
-            "Bandhan Corp Bond Fund(Q-IDCW)",
-            "Bandhan Corp Bond Fund(IDCW)",
-            "Bandhan Corp Bond Fund",
-            "Bandhan Equity Savings Fund(A-IDCW)",
-            "Bandhan Arbitrage Fund(A-IDCW)",
-            "Bandhan Bond Fund - Short Term Plan(P-IDCW)Exch Reinv",
-            "Bandhan Bond Fund - Income Plan(P-IDCW)",
-            "Bandhan Money Manager Fund(P-IDCW)",
-            "Bandhan G-Sec-Constant Maturity Plan(P-IDCW)",
-            "Bandhan G-Sec-Invest(P-IDCW)",
-            "Bandhan All Seasons Bond Fund(P-IDCW)",
-            "Bandhan Dynamic Bond Fund(P-IDCW)",
-            "Bandhan Bond Fund - Medium Term Plan(P-IDCW)",
-            "Bandhan Balanced Advantage Fund(IDCW)",
-            "Bandhan Balanced Advantage Fund",
-            "Bandhan All Seasons Bond Fund(DD-IDCW)",
-            "Bandhan All Seasons Bond Fund(W-IDCW)",
-            "Bandhan Banking & PSU Debt Fund(DD-IDCW)",
-            "Bandhan Dynamic Bond Fund(H-IDCW)",
-            "Bandhan G-Sec-Invest(A-IDCW)",
-            "Bandhan Banking & PSU Debt Fund(A-IDCW)",
-            "Bandhan Banking & PSU Debt Fund(FN-IDCW)",
-            "Bandhan Banking & PSU Debt Fund(Q-IDCW)",
-            "Bandhan Banking & PSU Debt Fund(M-IDCW)",
-            "Bandhan G-Sec-Invest(H-IDCW)",
-            "Bandhan Banking & PSU Debt Fund(IDCW-Reinv)",
-            "Bandhan Banking & PSU Debt Fund",
-            "Bandhan Regular Savings Fund(Q-IDCW)",
-            "Bandhan Dynamic Bond Fund(A-IDCW)",
-            "Bandhan G-Sec-Constant Maturity Plan(W-IDCW)",
-            "Bandhan Low Duration Fund(Q-IDCW)",
-            "Bandhan Low Duration Fund(IDCW)",
-            "Bandhan All Seasons Bond Fund(FN-IDCW)",
-            "Bandhan Liquid Fund(IDCW)",
-            "Bandhan Infrastructure Fund(IDCW)",
-            "Bandhan Bond Fund - Medium Term Plan(Q-IDCW)",
-            "Bandhan Nifty 50 Index Fund(IDCW)",
-            "Bandhan Asset Alloc FoF-Cons(IDCW)",
-            "Bandhan Asset Alloc FoF-Mod-(IDCW)",
-            "Bandhan Asset Alloc FoF-Cons",
-            "Bandhan Asset Alloc FoF-Mod",
-            "Bandhan Regular Savings Fund(IDCW)",
-            "Bandhan Dynamic Bond Fund(IDCW)",
-            "Bandhan Dynamic Bond Fund",
-            "Bandhan Equity Savings Fund",
-            "Bandhan Equity Savings Fund(M-IDCW)",
-            "Bandhan Large Cap Fund(IDCW)",
-            "Bandhan All Seasons Bond Fund(H-IDCW)",
-            "Bandhan All Seasons Bond Fund(Q-IDCW)",
-            "Bandhan All Seasons Bond Fund",
-            "Bandhan All Seasons Bond Fund(A-IDCW)",
-            "Bandhan Arbitrage Fund",
-            "Bandhan Arbitrage Fund(M-IDCW)",
-            "Bandhan Bond Fund - Income Plan(Q-IDCW)",
-            "Bandhan Bond Fund - Income Plan(A-IDCW)",
-            "Bandhan Bond Fund - Short Term Plan(FN-IDCW)",
-            "Bandhan G-Sec-Constant Maturity Plan(M-IDCW)",
-            "Bandhan Bond Fund - Income Plan(H-IDCW)",
-            "Bandhan G-Sec-Constant Maturity Plan(Q-IDCW)",
-            "Bandhan Liquid Fund(M-IDCW)",
-            "Bandhan Bond Fund - Medium Term Plan(BM-IDCW)",
-            "Bandhan Bond Fund - Medium Term Plan(FN-IDCW)",
-            "Bandhan Bond Fund - Medium Term Plan(DD-IDCW)",
-            "Bandhan Low Duration Fund(M-IDCW)",
-            "Bandhan Low Duration Fund(W-IDCW)",
-            "Bandhan Money Manager Fund(DD-IDCW)",
-            "Bandhan Money Manager Fund(M-IDCW)",
-            "Bandhan Bond Fund - Short Term Plan(M-IDCW)",
-            "Bandhan G-Sec-Invest(IDCW)",
-            "Bandhan Bond Fund - Short Term Plan",
-            "Bandhan Dynamic Bond Fund(Q-IDCW)",
-            "Bandhan Bond Fund - Medium Term Plan(M-IDCW)",
-            "Bandhan Low Duration Fund(DD-IDCW)",
-            "Bandhan Low Duration Fund",
-            "Bandhan ELSS Tax Saver Fund(IDCW)",
-            "Bandhan ELSS Tax Saver Fund",
-            "Bandhan Sterling Value Fund(IDCW)",
-            "Bandhan Sterling Value Fund",
-            "Bandhan Flexi Cap Fund",
-            "Bandhan Bond Fund - Income Plan",
-            "Bandhan Flexi Cap Fund(IDCW)",
-            "Bandhan Money Manager Fund(W-IDCW)",
-            "Bandhan Money Manager Fund",
-            "Bandhan Infrastructure Fund",
-            "Bandhan G-Sec-Constant Maturity Plan",
-            "Bandhan Focused Equity Fund(IDCW)",
-            "Bandhan Focused Equity Fund",
-            "Bandhan G-Sec-Invest",
-            "Bandhan Core Equity Fund",
-            "Bandhan G-Sec-Invest(Q-IDCW)",
-            "Bandhan Large Cap Fund",
-            "Bandhan Bond Fund - Medium Term Plan",
-            "Bandhan Asset Alloc FoF-Aggr(IDCW)",
-            "Bandhan Core Equity Fund(IDCW)",
-            "Bandhan Asset Alloc FoF-Aggr",
-            "Bandhan Nifty 50 Index Fund",
-            "Bandhan Regular Savings Fund",
-            "Bandhan Liquid Fund(W-IDCW)",
-            "Bandhan Liquid Fund",
-            "Bandhan Liquid Fund(DD-IDCW)",
-            "Bandhan All Seasons Bond Fund(P-IDCW Reinv)",
-            "Bandhan Bond Fund - Short Term Plan(A-IDCW)",
-            "Bandhan Bond Fund - Short Term Plan(P-IDCW)",
-            "Bandhan Floating Rate Fund(A-IDCW)",
-            "Bandhan Floating Rate Fund(Q-IDCW Reinv)",
-            "Bandhan Floating Rate Fund(W-IDCW)",
-            "Bandhan Floating Rate Fund(M-IDCW Reinv)",
-            "Bandhan Floating Rate Fund(DD-IDCW)",
-            "Bandhan Floating Rate Fund",
-            "Bandhan Floating Rate Fund(A-IDCW Reinv)",
-            "Bandhan Floating Rate Fund(Q-IDCW)",
-            "Bandhan Floating Rate Fund(M-IDCW)",
-            "Bandhan Banking & PSU Debt Fund(IDCW)",
-            "Bandhan CRISIL IBX Gilt June 2027 Index Fund(IDCW)",
-            "Bandhan CRISIL IBX Gilt June 2027 Index Fund",
-            "Bandhan CRISIL IBX Gilt April 2028 Index Fund",
-            "Bandhan CRISIL IBX Gilt April 2028 Index Fund(IDCW)",
-            "Bandhan Bond Fund - Income Plan(P-IDCW Reinv)",
-            "Bandhan Bond Fund - Medium Term Plan(BM-IDCW Reinv)",
-            "Bandhan Dynamic Bond Fund(IDCW-Reinv)",
-            "Bandhan Bond Fund - Short Term Plan(M-IDCW Reinv)",
-            "Bandhan Dynamic Bond Fund(Q-IDCW Reinv)",
-            "Bandhan Focused Equity Fund(IDCW-Reinv)",
-            "Bandhan G-Sec-Invest(IDCW-Reinv)",
-            "Bandhan Bond Fund - Income Plan(A-IDCW Reinv)",
-            "Bandhan All Seasons Bond Fund(A-IDCW Reinv)",
-            "Bandhan Bond Fund - Medium Term Plan(M-IDCW Reinv)",
-            "Bandhan US Equity FoF(IDCW Reinv)",
-            "Bandhan US Equity FoF",
-            "Bandhan G-Sec-Constant Maturity Plan(Q-IDCW Reinvest)",
-            "Bandhan Multi Cap Fund",
-            "Bandhan Multi Cap Fund(IDCW)",
-            "Bandhan US Equity FoF(IDCW)",
-            "Bandhan Low Duration Fund(M-IDCW Reinvest)",
-            "Bandhan Nifty 100 Index Fund(IDCW Reinvest)",
-            "Bandhan Nifty 100 Index Fund",
-            "Bandhan Midcap Fund",
-            "Bandhan Midcap Fund(IDCW)",
-            "Bandhan Nifty200 Momentum 30 Index Fund(IDCW Reinvest)",
-            "Bandhan Nifty200 Momentum 30 Index Fund",
-            "Bandhan Nifty100 Low Volatility 30 Index Fund",
-            "Bandhan Nifty100 Low Volatility 30 Index Fund(IDCW Reinvest)",
-            "Bandhan Transportation and Logistics Fund(IDCW)",
-            "Bandhan Transportation and Logistics Fund",
-            "Bandhan CRISIL IBX Gilt April 2026 Index Fund(IDCW)",
-            "Bandhan CRISIL IBX Gilt April 2026 Index Fund",
-            "Bandhan Midcap Fund(IDCW Reinvest)",
-            "Bandhan Multi Cap Fund(IDCW Reinvest)",
-            "Bandhan G-Sec-Invest(Q-IDCW Reinvest)",
-            "Bandhan CRISIL IBX Gilt April 2028 Index Fund(IDCW Reinvest)",
-            "Bandhan Nifty100 Low Volatility 30 Index Fund(IDCW)",
-            "Bandhan Nifty200 Momentum 30 Index Fund(IDCW)",
-            "Bandhan Nifty 100 Index Fund(IDCW)",
-            "Bandhan Ultra Short Term Fund(P-IDCW)",
-            "Bandhan Ultra Short Term Fund(M-IDCW)",
-            "Bandhan CRISIL IBX 90:10 SDL Plus Gilt - April 2032 Index Fund(IDCW)",
-            "Bandhan CRISIL IBX 90:10 SDL Plus Gilt - April 2032 Index Fund",
-            "Bandhan CRISIL IBX 90:10 SDL Plus Gilt - Nov 2026 Index Fund(IDCW)",
-            "Bandhan CRISIL IBX 90:10 SDL Plus Gilt - Nov 2026 Index Fund",
-            "Bandhan CRISIL IBX 90:10 SDL Plus Gilt - Sep 2027 Index Fund",
-            "Bandhan CRISIL IBX 90:10 SDL Plus Gilt - Sep 2027 Index Fund(IDCW)",
-            "Bandhan CRISIL IBX Gilt April 2032 Index Fund(IDCW)",
-            "Bandhan CRISIL IBX Gilt April 2032 Index Fund",
-            "Bandhan US Treasury Bond 0-1 year FoF",
-            "Bandhan US Treasury Bond 0-1 year FoF(IDCW)",
-            "Bandhan Financial Services Fund(IDCW Reinvest)",
-            "Bandhan Financial Services Fund",
-            "Bandhan Financial Services Fund(IDCW)",
-            "Bandhan US Treasury Bond 0-1 year FoF(IDCW)",
-            "Bandhan CRISIL IBX Gilt April 2032 Index Fund(IDCW)",
-            "Bandhan CRISIL IBX 90:10 SDL Plus Gilt - Sep 2027 Index Fund(IDCW)",
-            "Bandhan CRISIL IBX 90:10 SDL Plus Gilt - April 2032 Index Fund(IDCW)",
-            "Bandhan CRISIL IBX 90:10 SDL Plus Gilt - Nov 2026 Index Fund(IDCW)",
-            "Bandhan CRISIL IBX Gilt April 2026 Index Fund(IDCW)",
-            "Bandhan Transportation and Logistics Fund(IDCW)",
-            "Bandhan CRISIL IBX Gilt June 2027 Index Fund(IDCW)",
-            "Bandhan Equity Savings Fund(Q-IDCW)",
-            "Bandhan Overnight Fund(M-IDCW)",
-            "Bandhan Overnight Fund(W-IDCW)",
-            "Bandhan Overnight Fund(IDCW)",
-            "Bandhan Overnight Fund(DD-IDCW)",
-            "Bandhan Ultra Short Term Fund(Q-IDCW)",
-            "Bandhan Ultra Short Term Fund(W-IDCW)",
-            "Bandhan Ultra Short Term Fund(DD-IDCW)",
-            "Bandhan Bond Fund - Short Term Plan(Q-IDCW)",
-            "Bandhan Corp Bond Fund(M-IDCW)",
-            "Bandhan Corp Bond Fund(Q-IDCW)",
-            "Bandhan Corp Bond Fund(H-IDCW)",
-            "Bandhan Corp Bond Fund(A-IDCW)",
-            "Bandhan All Seasons Bond Fund(P-IDCW)",
-            "Bandhan Bond Fund - Income Plan(P-IDCW)",
-            "Bandhan Dynamic Bond Fund(H-IDCW)",
-            "Bandhan Dynamic Bond Fund(H-IDCW)",
-            "Bandhan G-Sec-Invest(A-IDCW)",
-            "Bandhan G-Sec-Invest(A-IDCW)",
-            "Bandhan G-Sec-Invest(H-IDCW)",
-            "Bandhan G-Sec-Invest(H-IDCW)",
-            "Bandhan Regular Savings Fund(Q-IDCW)",
-            "Bandhan Regular Savings Fund(Q-IDCW)",
-            "Bandhan Low Duration Fund(Q-IDCW)",
-            "Bandhan Low Duration Fund(Q-IDCW)",
-            "Bandhan Dynamic Bond Fund(A-IDCW)",
-            "Bandhan Dynamic Bond Fund(A-IDCW)",
-            "Bandhan Low Duration Fund(IDCW)",
-            "Bandhan Low Duration Fund(IDCW)",
-            "Bandhan Bond Fund - Medium Term Plan(Q-IDCW)",
-            "Bandhan Bond Fund - Medium Term Plan(Q-IDCW)",
-            "Bandhan All Seasons Bond Fund(FN-IDCW)",
-            "Bandhan Liquid Fund(IDCW)",
-            "Bandhan Liquid Fund(IDCW)",
-            "Bandhan Asset Alloc FoF-Cons(IDCW)",
-            "Bandhan Regular Savings Fund(IDCW)",
-            "Bandhan Regular Savings Fund(IDCW)",
-            "Bandhan Asset Alloc FoF-Mod-(IDCW)",
-            "Bandhan Dynamic Bond Fund(IDCW)",
-            "Bandhan Equity Savings Fund(M-IDCW)",
-            "Bandhan Large Cap Fund(IDCW)",
-            "Bandhan Large Cap Fund(IDCW)",
-            "Bandhan All Seasons Bond Fund(Q-IDCW)",
-            "Bandhan All Seasons Bond Fund(H-IDCW)",
-            "Bandhan Arbitrage Fund(M-IDCW)",
-            "Bandhan Bond Fund - Income Plan(A-IDCW)",
-            "Bandhan Bond Fund - Medium Term Plan(BM-IDCW)",
-            "Bandhan Bond Fund - Income Plan(Q-IDCW)",
-            "Bandhan Bond Fund - Income Plan(Q-IDCW)",
-            "Bandhan Bond Fund - Medium Term Plan(FN-IDCW)",
-            "Bandhan Bond Fund - Medium Term Plan(FN-IDCW)",
-            "Bandhan Bond Fund - Income Plan(H-IDCW)",
-            "Bandhan Bond Fund - Income Plan(H-IDCW)",
-            "Bandhan G-Sec-Constant Maturity Plan(Q-IDCW)",
-            "Bandhan G-Sec-Constant Maturity Plan(M-IDCW)",
-            "Bandhan G-Sec-Constant Maturity Plan(M-IDCW)",
-            "Bandhan Bond Fund - Short Term Plan(FN-IDCW)",
-            "Bandhan Bond Fund - Short Term Plan(FN-IDCW)",
-            "Bandhan Liquid Fund(M-IDCW)",
-            "Bandhan Liquid Fund(M-IDCW)",
-            "Bandhan Money Manager Fund(M-IDCW)",
-            "Bandhan Money Manager Fund(M-IDCW)",
-            "Bandhan Low Duration Fund(M-IDCW)",
-            "Bandhan Bond Fund - Medium Term Plan(M-IDCW)",
-            "Bandhan Bond Fund - Short Term Plan(M-IDCW)",
-            "Bandhan Dynamic Bond Fund(Q-IDCW)",
-            "Bandhan G-Sec-Invest(IDCW)",
-            "Bandhan Flexi Cap Fund(IDCW)",
-            "Bandhan Flexi Cap Fund(IDCW)",
-            "Bandhan Asset Alloc FoF-Aggr(IDCW)",
-            "Bandhan G-Sec-Invest(Q-IDCW)",
-            "Bandhan Focused Equity Fund(IDCW)",
-            "Bandhan Core Equity Fund(IDCW)",
-            "Bandhan Nifty IT Index Fund(IDCW)",
-            "Bandhan Nifty IT Index Fund",
-            "Bandhan Nifty IT Index Fund(IDCW)",
-            "Bandhan Retirement Fund(IDCW)",
-            "Bandhan Retirement Fund(IDCW)",
-            "Bandhan Retirement Fund",
-            "Bandhan Nifty Alpha 50 Index Fund(IDCW)",
-            "Bandhan Nifty Alpha 50 Index Fund",
-            "Bandhan Nifty Alpha 50 Index Fund(IDCW)",
-            "Bandhan Nifty Smallcap 250 Index Fund(IDCW)",
-            "Bandhan Nifty Smallcap 250 Index Fund",
-            "Bandhan Nifty Smallcap 250 Index Fund(IDCW)",
-            "Bandhan Multi Asset Allocation Fund(IDCW)",
-            "Bandhan Multi Asset Allocation Fund(IDCW)",
-            "Bandhan Multi Asset Allocation Fund",
-            "Bajaj Finserv Liquid Fund(W-IDCW)",
-            "Bajaj Finserv Liquid Fund",
-            "Bajaj Finserv Liquid Fund(DD-IDCW)",
-            "Bajaj Finserv Liquid Fund(F-IDCW)",
-            "Bajaj Finserv Liquid Fund(M-IDCW)",
-            "Bajaj Finserv Overnight Fund(DD-IDCW)",
-            "Bajaj Finserv Overnight Fund(M-IDCW)",
-            "Bajaj Finserv Overnight Fund(W-IDCW)",
-            "Bajaj Finserv Overnight Fund",
-            "Bajaj Finserv Overnight Fund(F-IDCW)",
-            "Bajaj Finserv Money Market Fund",
-            "Bajaj Finserv Money Market Fund(IDCW)",
-            "Bajaj Finserv Money Market Fund(M-IDCW)",
-            "Bajaj Finserv Flexi Cap Fund(IDCW)",
-            "Bajaj Finserv Flexi Cap Fund",
-            "Bajaj Finserv Money Market Fund(IDCW)",
-            "Bajaj Finserv Money Market Fund(M-IDCW)",
-            "Bajaj Finserv Flexi Cap Fund(IDCW)",
-            "Bajaj Finserv Overnight Fund(W-IDCW)",
-            "Bajaj Finserv Overnight Fund(M-IDCW)",
-            "Bajaj Finserv Overnight Fund(F-IDCW)",
-            "Bajaj Finserv Liquid Fund(F-IDCW)",
-            "Bajaj Finserv Liquid Fund(W-IDCW)",
-            "Bajaj Finserv Liquid Fund(M-IDCW)",
-            "Bajaj Finserv Arbitrage Fund(IDCW)",
-            "Bajaj Finserv Arbitrage Fund(IDCW)",
-            "Bajaj Finserv Arbitrage Fund",
-            "Bajaj Finserv Banking and PSU Fund(M-IDCW)",
-            "Bajaj Finserv Banking and PSU Fund(M-IDCW)",
-            "Bajaj Finserv Banking and PSU Fund(IDCW)",
-            "Bajaj Finserv Banking and PSU Fund(IDCW)",
-            "Bajaj Finserv Banking and PSU Fund",
-            "Bajaj Finserv Balanced Advantage Fund",
-            "Bajaj Finserv Balanced Advantage Fund(IDCW)",
-            "Bajaj Finserv Balanced Advantage Fund(IDCW)",
-            "Bajaj Finserv Large and Mid Cap Fund(IDCW)",
-            "Bajaj Finserv Large and Mid Cap Fund(IDCW)",
-            "Bajaj Finserv Large and Mid Cap Fund",
-            "Axis Global Equity Alpha FoF(IDCW)",
-            "Axis Global Equity Alpha FoF",
-            "Axis ESG Integration Strategy Fund(IDCW)",
-            "Axis ESG Integration Strategy Fund",
-            "Axis All Seasons Debt FOFs(A-IDCW)",
-            "Axis All Seasons Debt FOFs(H-IDCW)",
-            "Axis All Seasons Debt FOFs(Q-IDCW)",
-            "Axis All Seasons Debt FOFs(IDCW)",
-            "Axis All Seasons Debt FOFs(M-IDCW)",
-            "Axis All Seasons Debt FOFs",
-            "Axis Retirement Savings Fund-Conservative Plan",
-            "Axis Retirement Savings Fund-Dynamic Plan(IDCW)",
-            "Axis Retirement Savings Fund-Conservative Plan(IDCW)",
-            "Axis Retirement Savings Fund-Aggressive Plan(IDCW)",
-            "Axis Retirement Savings Fund-Dynamic Plan",
-            "Axis Retirement Savings Fund-Aggressive Plan",
-            "Axis Nifty 100 Index Fund",
-            "Axis Nifty 100 Index Fund(IDCW)",
-            "Axis Money Market Fund(A-IDCW)",
-            "Axis Money Market Fund(Q-IDCW)",
-            "Axis Money Market Fund(M-IDCW)",
-            "Axis Money Market Fund",
-            "Axis Money Market Fund(DD-IDCW)",
-            "Axis Overnight Fund(M-IDCW)",
-            "Axis Overnight Fund(W-IDCW)",
-            "Axis Overnight Fund(DD-IDCW)",
-            "Axis Overnight Fund",
-            "Axis Growth Opp Fund",
-            "Axis Growth Opp Fund(IDCW)",
-            "Axis Ultra Short Term Fund(DD-IDCW)",
-            "Axis Ultra Short Term Fund(M-IDCW)",
-            "Axis Ultra Short Term Fund(W-IDCW)",
-            "Axis Ultra Short Term Fund",
-            "Axis Ultra Short Term Fund(IDCW)",
-            "Axis Equity Hybrid Fund(Q-IDCW)",
-            "Axis Equity Hybrid Fund(IDCW)",
-            "Axis Equity Hybrid Fund(M-IDCW)",
-            "Axis Equity Hybrid Fund",
-            "Axis Flexi Cap Fund(IDCW)",
-            "Axis Flexi Cap Fund",
-            "Axis Balanced Advantage Fund",
-            "Axis Balanced Advantage Fund(IDCW)",
-            "Axis Corp Debt Fund(M-IDCW)",
-            "Axis Corp Debt Fund(W-IDCW)",
-            "Axis Corp Debt Fund(DD-IDCW)",
-            "Axis Corp Debt Fund",
-            "Axis Corp Debt Fund(IDCW)",
-            "Axis Children's Gift Fund-Compulsory Lock in(IDCW)",
-            "Axis Children's Gift Fund-Compulsory Lock in",
-            "Axis Children's Gift Fund-No Lock in(IDCW)",
-            "Axis Children's Gift Fund-No Lock in",
-            "Axis Equity Saver Fund(Q-IDCW)",
-            "Axis Equity Saver Fund(M-IDCW)",
-            "Axis Equity Saver Fund(IDCW)",
-            "Axis Equity Saver Fund",
-            "Axis Short Term Fund(IDCW)",
-            "Axis Credit Risk Fund(M-IDCW)",
-            "Axis Credit Risk Fund(W-IDCW)",
-            "Axis Arbitrage Fund(IDCW)",
-            "Axis Arbitrage Fund",
-            "Axis Credit Risk Fund",
-            "Axis Small Cap Fund(IDCW)",
-            "Axis Small Cap Fund",
-            "Axis Banking & PSU Debt Fund(W-IDCW)",
-            "Axis Banking & PSU Debt Fund(M-IDCW)",
-            "Axis Gilt Fund(H-IDCW)",
-            "Axis Dynamic Bond Fund(H-IDCW)",
-            "Axis Regular Saver Fund(H-IDCW)",
-            "Axis Regular Saver Fund(Q-IDCW)",
-            "Axis Regular Saver Fund(A-IDCW)",
-            "Axis Short Term Fund(M-IDCW)",
-            "Axis Liquid Fund(W-IDCW)",
-            "Axis Liquid Fund(M-IDCW)",
-            "Axis Strategic Bond Fund(H-IDCW)",
-            "Axis Strategic Bond Fund",
-            "Axis Strategic Bond Fund(Q-IDCW)",
-            "Axis Treasury Advantage Fund(M-IDCW)",
-            "Axis Gilt Fund(IDCW)",
-            "Axis Regular Saver Fund",
-            "Axis Banking & PSU Debt Fund(DD-IDCW)",
-            "Axis Dynamic Bond Fund",
-            "Axis Treasury Advantage Fund(W-IDCW)",
-            "Axis Treasury Advantage Fund",
-            "Axis Treasury Advantage Fund(DD-IDCW)",
-            "Axis Midcap Fund(IDCW)",
-            "Axis Midcap Fund",
-            "Axis Short Term Fund(W-IDCW)",
-            "Axis Short Term Fund",
-            "Axis ELSS Tax Saver Fund(IDCW)",
-            "Axis ELSS Tax Saver Fund",
-            "Axis Gold Fund",
-            "Axis Gold Fund(IDCW)",
-            "Axis Focused 25 Fund(IDCW)",
-            "Axis Bluechip Fund(IDCW)",
-            "Axis Bluechip Fund",
-            "Axis Focused 25 Fund",
-            "Axis Dynamic Bond Fund(Q-IDCW)",
-            "Axis Gilt Fund",
-            "Axis Banking & PSU Debt Fund",
-            "Axis Liquid Fund(DD-IDCW)",
-            "Axis Liquid Fund",
-            "Axis Multi Asset Allocation Fund(IDCW)",
-            "Axis Multi Asset Allocation Fund",
-            "Axis Special Situations Fund(IDCW)",
-            "Axis Special Situations Fund",
-            "Axis Greater China Equity FoF(IDCW)",
-            "Axis Greater China Equity FoF",
-            "Axis Global Innovation FoF(IDCW)",
-            "Axis Global Innovation FoF",
-            "Axis Quant Fund(IDCW)",
-            "Axis Quant Fund",
-            "Axis Floater Fund(Q-IDCW)",
-            "Axis Floater Fund(A-IDCW)",
-            "Axis Floater Fund",
-            "Axis Floater Fund(M-IDCW)",
-            "Axis Floater Fund(DD-IDCW)",
-            "Axis Value Fund",
-            "Axis Value Fund(IDCW)",
-            "Axis Nifty AAA Bond Plus SDL Apr 2026 50:50 ETF FoF(IDCW)",
-            "Axis Nifty AAA Bond Plus SDL Apr 2026 50:50 ETF FoF",
-            "Axis Nifty 50 Index Fund(IDCW)",
-            "Axis Nifty 50 Index Fund",
-            "Axis Multicap Fund(IDCW)",
-            "Axis Multicap Fund",
-            "Axis Nifty Next 50 Index Fund(IDCW)",
-            "Axis Nifty Next 50 Index Fund",
-            "Axis CRISIL IBX 70:30 CPSE Plus SDL April 2025 Index Fund(IDCW)",
-            "Axis CRISIL IBX 70:30 CPSE Plus SDL April 2025 Index Fund",
-            "Axis Equity ETFs FoF",
-            "Axis Equity ETFs FoF(IDCW)",
-            "Axis CRISIL IBX SDL May 2027 Index Fund(IDCW)",
-            "Axis CRISIL IBX SDL May 2027 Index Fund",
-            "Axis Nifty Smallcap 50 Index Fund(IDCW)",
-            "Axis Nifty Smallcap 50 Index Fund",
-            "Axis Nifty Midcap 50 Index Fund",
-            "Axis Nifty Midcap 50 Index Fund(IDCW)",
-            "Axis Silver FoF(IDCW)",
-            "Axis Silver FoF",
-            "Axis NASDAQ 100 FoF(IDCW)",
-            "Axis NASDAQ 100 FoF",
-            "Axis Nifty SDL Sep 2026 Debt Index Fund",
-            "Axis Nifty SDL Sep 2026 Debt Index Fund(IDCW)",
-            "Axis Long Duration Fund(A-IDCW)",
-            "Axis Long Duration Fund(Q-IDCW)",
-            "Axis Long Duration Fund(DD-IDCW)",
-            "Axis Long Duration Fund(M-IDCW)",
-            "Axis Long Duration Fund",
-            "Axis CRISIL IBX 50:50 Gilt Plus SDL June 2028 Index Fund(IDCW)",
-            "Axis CRISIL IBX 50:50 Gilt Plus SDL June 2028 Index Fund",
-            "Axis Business Cycles Fund",
-            "Axis Business Cycles Fund(IDCW)",
-            "Axis CRISIL IBX 50:50 Gilt Plus SDL Sep 2027 Index Fund(IDCW)",
-            "Axis CRISIL IBX 50:50 Gilt Plus SDL Sep 2027 Index Fund",
-            "Axis FTP-112-1143D",
-            "Axis FTP-113-1228D(Q-IDCW)",
-            "Axis FTP-113-1228D",
-            "Axis NIFTY IT Index Fund",
-            "Axis NIFTY IT Index Fund(IDCW)",
-            "Axis NIFTY IT Index Fund(IDCW)",
-            "Axis CRISIL IBX 50:50 Gilt Plus SDL Sep 2027 Index Fund(IDCW)",
-            "Axis Business Cycles Fund(IDCW)",
-            "Axis CRISIL IBX 50:50 Gilt Plus SDL June 2028 Index Fund(IDCW)",
-            "Axis Long Duration Fund(A-IDCW)",
-            "Axis Long Duration Fund(Q-IDCW)",
-            "Axis Long Duration Fund(M-IDCW)",
-            "Axis Nifty SDL Sep 2026 Debt Index Fund(IDCW)",
-            "Axis NASDAQ 100 FoF(IDCW)",
-            "Axis Silver FoF(IDCW)",
-            "Axis Nifty Midcap 50 Index Fund(IDCW)",
-            "Axis Nifty Smallcap 50 Index Fund(IDCW)",
-            "Axis CRISIL IBX SDL May 2027 Index Fund(IDCW)",
-            "Axis Equity ETFs FoF(IDCW)",
-            "Axis CRISIL IBX 70:30 CPSE Plus SDL April 2025 Index Fund(IDCW)",
-            "Axis Nifty Next 50 Index Fund(IDCW)",
-            "Axis Multicap Fund(IDCW)",
-            "Axis Nifty 50 Index Fund(IDCW)",
-            "Axis Nifty AAA Bond Plus SDL Apr 2026 50:50 ETF FoF(IDCW)",
-            "Axis Value Fund(IDCW)",
-            "Axis Floater Fund(A-IDCW)",
-            "Axis Floater Fund(Q-IDCW)",
-            "Axis Floater Fund(M-IDCW)",
-            "Axis Quant Fund(IDCW)",
-            "Axis Global Innovation FoF(IDCW)",
-            "Axis Greater China Equity FoF(IDCW)",
-            "Axis Special Situations Fund(IDCW)",
-            "Axis Global Equity Alpha FoF(IDCW)",
-            "Axis All Seasons Debt FOFs(M-IDCW)",
-            "Axis All Seasons Debt FOFs(A-IDCW)",
-            "Axis All Seasons Debt FOFs(H-IDCW)",
-            "Axis ESG Integration Strategy Fund(IDCW)",
-            "Axis All Seasons Debt FOFs(Q-IDCW)",
-            "Axis All Seasons Debt FOFs(IDCW)",
-            "Axis Money Market Fund(A-IDCW)",
-            "Axis Money Market Fund(Q-IDCW)",
-            "Axis Nifty 100 Index Fund(IDCW)",
-            "Axis Money Market Fund(M-IDCW)",
-            "Axis Overnight Fund(M-IDCW)",
-            "Axis Overnight Fund(W-IDCW)",
-            "Axis Growth Opp Fund(IDCW)",
-            "Axis Ultra Short Term Fund(W-IDCW)",
-            "Axis Ultra Short Term Fund(M-IDCW)",
-            "Axis Ultra Short Term Fund(IDCW)",
-            "Axis Equity Hybrid Fund(IDCW)",
-            "Axis Equity Hybrid Fund(M-IDCW)",
-            "Axis Equity Hybrid Fund(Q-IDCW)",
-            "Axis Flexi Cap Fund(IDCW)",
-            "Axis Balanced Advantage Fund(IDCW)",
-            "Axis Corp Debt Fund(IDCW)",
-            "Axis Corp Debt Fund(W-IDCW)",
-            "Axis Corp Debt Fund(M-IDCW)",
-            "Axis Children's Gift Fund-No Lock in(IDCW)",
-            "Axis Equity Saver Fund(Q-IDCW)",
-            "Axis Equity Saver Fund(M-IDCW)",
-            "Axis Equity Saver Fund(IDCW)",
-            "Axis Short Term Fund(IDCW)",
-            "Axis Credit Risk Fund(W-IDCW)",
-            "Axis Credit Risk Fund(M-IDCW)",
-            "Axis Arbitrage Fund(IDCW)",
-            "Axis Small Cap Fund(IDCW)",
-            "Axis Banking & PSU Debt Fund(W-IDCW)",
-            "Axis Gilt Fund(H-IDCW)",
-            "Axis Banking & PSU Debt Fund(M-IDCW)",
-            "Axis Dynamic Bond Fund(H-IDCW)",
-            "Axis Regular Saver Fund(H-IDCW)",
-            "Axis Regular Saver Fund(Q-IDCW)",
-            "Axis Regular Saver Fund(A-IDCW)",
-            "Axis Short Term Fund(M-IDCW)",
-            "Axis Strategic Bond Fund(Q-IDCW)",
-            "Axis Liquid Fund(W-IDCW)",
-            "Axis Strategic Bond Fund(H-IDCW)",
-            "Axis Liquid Fund(M-IDCW)",
-            "Axis Treasury Advantage Fund(M-IDCW)",
-            "Axis Gilt Fund(IDCW)",
-            "Axis Treasury Advantage Fund(W-IDCW)",
-            "Axis Gold Fund(IDCW)",
-            "Axis Focused 25 Fund(IDCW)",
-            "Axis Short Term Fund(W-IDCW)",
-            "Axis Dynamic Bond Fund(Q-IDCW)",
-            "Axis Bluechip Fund(IDCW)",
-            "Axis Midcap Fund(IDCW)",
-            "Axis Multi Asset Allocation Fund(IDCW)",
-            "Axis India Manufacturing Fund(IDCW)",
-            "Axis India Manufacturing Fund",
-            "Axis India Manufacturing Fund(IDCW)",
-            "Axis FTP-118-100D(Q-IDCW)",
-            "Axis FTP-118-100D",
-            "Axis US Treasury Dynamic Bond ETF FoF(IDCW)",
-            "Axis US Treasury Dynamic Bond ETF FoF(IDCW)",
-            "Axis US Treasury Dynamic Bond ETF FoF",
-            "Axis FTP-120-91D(Q-IDCW)",
-            "Axis FTP-120-91D",
-            "Axis S&P BSE Sensex Index Fund",
-            "Axis S&P BSE Sensex Index Fund(IDCW)",
-            "Axis S&P BSE Sensex Index Fund(IDCW)",
-            "Aditya Birla SL Special Opp Fund(IDCW-Reinv)",
-            "Aditya Birla SL Special Opp Fund(IDCW)",
-            "Aditya Birla SL Special Opp Fund",
-            "Aditya Birla SL PSU Equity Fund",
-            "Aditya Birla SL PSU Equity Fund(IDCW)",
-            "Aditya Birla SL Pharma & Healthcare Fund(IDCW-Reinv)",
-            "Aditya Birla SL Pharma & Healthcare Fund(IDCW)",
-            "Aditya Birla SL Pharma & Healthcare Fund",
-            "Aditya Birla SL Retirement Fund-50 Plus-Debt Plan(IDCW-Reinv)",
-            "Aditya Birla SL Retirement Fund-50(IDCW-Reinv)",
-            "Aditya Birla SL Retirement Fund-40(IDCW-Reinv)",
-            "Aditya Birla SL Overnight Fund(M-IDCW Reinv)",
-            "Aditya Birla SL Banking & PSU Debt(IDCW-Reinv)",
-            "Aditya Birla SL Dynamic Bond Fund(IDCW-Reinv)",
-            "Aditya Birla SL Retirement Fund-30(IDCW-Reinv)",
-            "Aditya Birla SL Bal Bhavishya Yojna(IDCW-Reinv)",
-            "Aditya Birla SL Retirement Fund-50 Plus-Debt Plan(IDCW)",
-            "Aditya Birla SL Retirement Fund-50 Plus-Debt Plan",
-            "Aditya Birla SL Retirement Fund-50",
-            "Aditya Birla SL Retirement Fund-50(IDCW)",
-            "Aditya Birla SL Retirement Fund-30",
-            "Aditya Birla SL Retirement Fund-40",
-            "Aditya Birla SL Retirement Fund-40(IDCW)",
-            "Aditya Birla SL Retirement Fund-30(IDCW)",
-            "Aditya Birla SL Bal Bhavishya Yojna(IDCW)",
-            "Aditya Birla SL Bal Bhavishya Yojna",
-            "Aditya Birla SL Overnight Fund(W-IDCW)",
-            "Aditya Birla SL Overnight Fund(M-IDCW)",
-            "Aditya Birla SL Overnight Fund",
-            "Aditya Birla SL Overnight Fund(DD-IDCW)",
-            "Aditya Birla SL Financial Planning FOF Aggressive Plan(IDCW)",
-            "Aditya Birla SL Financial Planning FOF Moderate Plan(IDCW)",
-            "Aditya Birla SL Financial Planning FOF Conservative Plan(IDCW)",
-            "Aditya Birla SL G-Sec Fund",
-            "Aditya Birla SL Balanced Advantage Fund(IDCW-Payout)",
-            "Aditya Birla SL Short Term Fund(Q-IDCW Reinv)",
-            "Aditya Birla SL Income Fund(IDCW-Reinv)",
-            "Aditya Birla SL Asset Allocator FoF(IDCW)",
-            "Aditya Birla SL Active Debt Multi-Mgr FoF(IDCW)",
-            "Aditya Birla SL Income Fund(Q-IDCW)",
-            "Aditya Birla SL Global Emerging Opp Fund(IDCW)",
-            "Aditya Birla SL Global Excellence Equity FoF(IDCW)",
-            "Aditya Birla SL Midcap Fund(IDCW-Reinv)",
-            "Aditya Birla SL Intl. Equity Fund(IDCW)",
-            "Aditya Birla SL Mfg. Equity Fund(IDCW-Reinv)",
-            "Aditya Birla SL Pure Value Fund(IDCW)",
-            "Aditya Birla SL Flexi Cap Fund(IDCW-Reinv)",
-            "Aditya Birla SL Low Duration Fund(W-IDCW Reinv)",
-            "Aditya Birla SL Medium Term Plan(IDCW)",
-            "Aditya Birla SL Small Cap Fund(IDCW-Reinv)",
-            "Aditya Birla SL MNC Fund(IDCW-Reinv)",
-            "Aditya Birla SL India GenNext Fund(IDCW-Reinv)",
-            "Aditya Birla SL G-Sec Fund(Q-IDCW Reinv)",
-            "Aditya Birla SL Equity Savings Fund(IDCW-Reinv)",
-            "Aditya Birla SL Equity Hybrid '95 Fund(IDCW)",
-            "Aditya Birla SL Digital India Fund(IDCW)",
-            "Aditya Birla SL Credit Risk Fund(IDCW-Reinv)",
-            "Aditya Birla SL Corp Bond Fund(M-IDCW Reinv)",
-            "Aditya Birla SL Equity Advantage Fund(IDCW)",
-            "Aditya Birla SL Dynamic Bond Fund(M-IDCW Reinv)",
-            "Aditya Birla SL Dynamic Bond Fund(Q-IDCW Reinv)",
-            "Aditya Birla SL Liquid Fund(W-IDCW Reinv)",
-            "Aditya Birla SL Money Manager Fund(W-IDCW Reinv)",
-            "Aditya Birla SL Banking & Financial Services Fund(IDCW-Reinv)",
-            "Aditya Birla SL ELSS Tax Saver Fund(IDCW)",
-            "Aditya Birla SL Nifty 50 Index Fund(IDCW-Reinv)",
-            "Aditya Birla SL Arbitrage Fund(IDCW-Reinv)",
-            "Aditya Birla SL Regular Savings Fund(M-IDCW)",
-            "Aditya Birla SL Credit Risk Fund(IDCW)",
-            "Aditya Birla SL Credit Risk Fund",
-            "Aditya Birla SL Credit Risk Fund",
-            "Aditya Birla SL Income Fund(IDCW)",
-            "Aditya Birla SL Asset Allocator FoF(IDCW-Payout)",
-            "Aditya Birla SL Dynamic Bond Fund(IDCW)",
-            "Aditya Birla SL Mfg. Equity Fund(IDCW)",
-            "Aditya Birla SL Mfg. Equity Fund",
-            "Aditya Birla SL Asset Allocator FoF",
-            "Aditya Birla SL Equity Savings Fund(IDCW)",
-            "Aditya Birla SL Equity Savings Fund",
-            "Aditya Birla SL Banking & Financial Services Fund(IDCW)",
-            "Aditya Birla SL Banking & Financial Services Fund",
-            "Aditya Birla SL Corp Bond Fund(IDCW)",
-            "Aditya Birla SL Liquid Fund(IDCW)",
-            "Aditya Birla SL Inv Inc-QS I",
-            "Aditya Birla SL Frontline Equity Fund(IDCW-Reinv)",
-            "Aditya Birla SL Gold Fund(IDCW-Reinv)",
-            "Aditya Birla SL Infrastructure Fund(IDCW-Reinv)",
-            "Aditya Birla SL Short Term Fund(IDCW-Reinv)",
-            "Aditya Birla SL Focused Fund(IDCW-Reinv)",
-            "Aditya Birla SL Dividend Yield Fund(IDCW-Reinv)",
-            "Aditya Birla SL Arbitrage Fund(IDCW)",
-            "Aditya Birla SL Medium Term Plan(H-IDCW)",
-            "Aditya Birla SL Pure Value Fund(IDCW-Reinv)",
-            "Aditya Birla SL Digital India Fund(IDCW-Reinv)",
-            "Aditya Birla SL Small Cap Fund",
-            "Aditya Birla SL Regular Savings Fund(M-IDCW Reinv)",
-            "Aditya Birla SL G-Sec Fund(Q-IDCW)",
-            "Aditya Birla SL Global Emerging Opp Fund(IDCW-Payout)",
-            "Aditya Birla SL Global Emerging Opp Fund",
-            "Aditya Birla SL Global Excellence Equity FoF",
-            "Aditya Birla SL Global Excellence Equity FoF(IDCW-Payout)",
-            "Aditya Birla SL Regular Savings Fund",
-            "Aditya Birla SL Financial Planning FOF Aggressive Plan(IDCW-Payout)",
-            "Aditya Birla SL Short Term Fund(Q-IDCW)",
-            "Aditya Birla SL Financial Planning FOF Aggressive Plan",
-            "Aditya Birla SL Financial Planning FOF Moderate Plan(IDCW-Payout)",
-            "Aditya Birla SL Financial Planning FOF Conservative Plan",
-            "Aditya Birla SL Financial Planning FOF Moderate Plan",
-            "Aditya Birla SL Financial Planning FOF Conservative Plan(IDCW-Payout)",
-            "Aditya Birla SL Active Debt Multi-Mgr FoF",
-            "Aditya Birla SL Active Debt Multi-Mgr FoF(IDCW-Payout)",
-            "Aditya Birla SL Short Term Fund",
-            "Aditya Birla SL Balanced Advantage Fund",
-            "Aditya Birla SL Balanced Advantage Fund(IDCW)",
-            "Aditya Birla SL Banking & PSU Debt",
-            "Aditya Birla SL Banking & PSU Debt(Q-IDCW)",
-            "Aditya Birla SL Banking & PSU Debt(IDCW)",
-            "Aditya Birla SL Banking & PSU Debt(M-IDCW)",
-            "Aditya Birla SL Focused Fund(IDCW)",
-            "Aditya Birla SL Focused Fund",
-            "Aditya Birla SL ELSS Tax Saver Fund",
-            "Aditya Birla SL Corp Bond Fund(M-IDCW)",
-            "Aditya Birla SL ELSS Tax Saver Fund(IDCW-Reinv)",
-            "Aditya Birla SL Short Term Fund(IDCW)",
-            "Aditya Birla SL Pure Value Fund",
-            "Aditya Birla SL Savings Fund(DD-IDCW)",
-            "Aditya Birla SL Savings Fund(W-IDCW)",
-            "Aditya Birla SL Savings Fund",
-            "Aditya Birla SL Corp Bond Fund",
-            "Aditya Birla SL Small Cap Fund(IDCW)",
-            "Aditya Birla SL Digital India Fund",
-            "Aditya Birla SL MNC Fund",
-            "Aditya Birla SL MNC Fund(IDCW)",
-            "Aditya Birla SL Midcap Fund(IDCW)",
-            "Aditya Birla SL Midcap Fund",
-            "Aditya Birla SL Intl. Equity Fund",
-            "Aditya Birla SL Intl. Equity Fund(IDCW-Reinv)",
-            "Aditya Birla SL Infrastructure Fund",
-            "Aditya Birla SL Infrastructure Fund(IDCW)",
-            "Aditya Birla SL India GenNext Fund",
-            "Aditya Birla SL Regular Savings Fund(Payment)",
-            "Aditya Birla SL India GenNext Fund(IDCW)",
-            "Aditya Birla SL Medium Term Plan",
-            "Aditya Birla SL Medium Term Plan(Q-IDCW)",
-            "Aditya Birla SL Income Fund(Q-IDCW Reinv)",
-            "Aditya Birla SL Income Fund",
-            "Aditya Birla SL Gold Fund",
-            "Aditya Birla SL Gold Fund(IDCW)",
-            "Aditya Birla SL G-Sec Fund",
-            "Aditya Birla SL Frontline Equity Fund",
-            "Aditya Birla SL Flexi Cap Fund",
-            "Aditya Birla SL Frontline Equity Fund(IDCW)",
-            "Aditya Birla SL Floating Rate Fund",
-            "Aditya Birla SL Floating Rate Fund(DD-IDCW)",
-            "Aditya Birla SL Floating Rate Fund(W-IDCW)",
-            "Aditya Birla SL Flexi Cap Fund(IDCW)",
-            "Aditya Birla SL Nifty 50 Index Fund",
-            "Aditya Birla SL Nifty 50 Index Fund(IDCW)",
-            "Aditya Birla SL Dynamic Bond Fund(Q-IDCW)",
-            "Aditya Birla SL Dynamic Bond Fund",
-            "Aditya Birla SL Dynamic Bond Fund(M-IDCW)",
-            "Aditya Birla SL Dividend Yield Fund",
-            "Aditya Birla SL Dividend Yield Fund(IDCW)",
-            "Aditya Birla SL Low Duration Fund(DD-IDCW)",
-            "Aditya Birla SL Low Duration Fund(W-IDCW)",
-            "Aditya Birla SL Low Duration Fund",
-            "Aditya Birla SL Equity Advantage Fund",
-            "Aditya Birla SL Equity Advantage Fund(IDCW-Reinv)",
-            "Aditya Birla SL Arbitrage Fund",
-            "Aditya Birla SL Equity Hybrid '95 Fund",
-            "Aditya Birla SL Equity Hybrid '95 Fund(IDCW-Reinv)",
-            "Aditya Birla SL Liquid Fund",
-            "Aditya Birla SL Liquid Fund(DD-IDCW)",
-            "Aditya Birla SL Liquid Fund(W-IDCW)",
-            "Aditya Birla SL Money Manager Fund(DD-IDCW)",
-            "Aditya Birla SL Money Manager Fund(W-IDCW)",
-            "Aditya Birla SL Money Manager Fund",
-            "Aditya Birla SL ESG Integration Strategy Fund(IDCW-Reinv)",
-            "Aditya Birla SL ESG Integration Strategy Fund",
-            "Aditya Birla SL ESG Integration Strategy Fund(IDCW)",
-            "Aditya Birla SL Nifty Midcap 150 Index Fund",
-            "Aditya Birla SL Nifty Midcap 150 Index Fund(IDCW)",
-            "Aditya Birla SL Nifty Smallcap 50 Index Fund",
-            "Aditya Birla SL Nifty Smallcap 50 Index Fund(IDCW Reinv)",
-            "Aditya Birla SL Multi-Cap Fund(IDCW)",
-            "Aditya Birla SL Multi-Cap Fund",
-            "Aditya Birla SL Nifty Midcap 150 Index Fund(IDCW-Reinv)",
-            "Aditya Birla SL Nifty Smallcap 50 Index Fund(IDCW)",
-            "Aditya Birla SL Nifty 50 Equal Weight Index Fund(IDCW Reinv)",
-            "Aditya Birla SL Nifty 50 Equal Weight Index Fund",
-            "Aditya Birla SL Nifty 50 Equal Weight Index Fund(IDCW)",
-            "Aditya Birla SL FTP-TI-1837D",
-            "Aditya Birla SL FTP-TI-1837D(IDCW)",
-            "Aditya Birla SL FTP-TJ-1838D(IDCW)",
-            "Aditya Birla SL FTP-TJ-1838D",
-            "Aditya Birla SL Nifty SDL Plus PSU Bond Sep 2026 60:40 Index Fund",
-            "Aditya Birla SL Nifty SDL Plus PSU Bond Sep 2026 60:40 Index Fund(IDCW)",
-            "Aditya Birla SL NASDAQ 100 FOF(IDCW)",
-            "Aditya Birla SL NASDAQ 100 FOF",
-            "Aditya Birla SL Business Cycle Fund",
-            "Aditya Birla SL Business Cycle Fund(IDCW)",
-            "Aditya Birla SL NASDAQ 100 FOF(IDCW Reinvest)",
-            "Aditya Birla SL Nifty SDL Apr 2027 Index Fund(IDCW)",
-            "Aditya Birla SL Nifty SDL Apr 2027 Index Fund",
-            "Aditya Birla SL Silver ETF FOF",
-            "Aditya Birla SL Silver ETF FOF(IDCW)",
-            "Aditya Birla SL Nifty Next 50 Index Fund(IDCW)",
-            "Aditya Birla SL Nifty Next 50 Index Fund",
-            "Aditya Birla SL FTP-TQ-1879D",
-            "Aditya Birla SL CRISIL IBX 60:40 SDL + AAA PSU - Apr 2027 Index Fund(IDCW)",
-            "Aditya Birla SL CRISIL IBX 60:40 SDL + AAA PSU - Apr 2025 Index Fund",
-            "Aditya Birla SL CRISIL IBX 60:40 SDL + AAA PSU - Apr 2025 Index Fund(IDCW)",
-            "Aditya Birla SL CRISIL IBX 60:40 SDL + AAA PSU - Apr 2027 Index Fund",
-            "Aditya Birla SL Silver ETF FOF(IDCW Reinv)",
-            "Aditya Birla SL Long Duration Fund",
-            "Aditya Birla SL Long Duration Fund(IDCW Reinvest)",
-            "Aditya Birla SL Nifty SDL Sep 2025 Index Fund(IDCW)",
-            "Aditya Birla SL Nifty SDL Sep 2025 Index Fund",
-            "Aditya Birla SL Multi-Index FoF",
-            "Aditya Birla SL Multi-Index FoF(IDCW)",
-            "Aditya Birla SL CRISIL IBX Gilt - April 2026 Index Fund(IDCW)",
-            "Aditya Birla SL CRISIL IBX Gilt - April 2026 Index Fund",
-            "Aditya Birla SL CRISIL IBX 50:50 Gilt Plus SDL Apr 2028 Index Fund",
-            "Aditya Birla SL CRISIL IBX 50:50 Gilt Plus SDL Apr 2028 Index Fund(IDCW)",
-            "Aditya Birla SL CRISIL IBX Gilt Apr 2029 Index Fund",
-            "Aditya Birla SL CRISIL IBX Gilt Apr 2029 Index Fund(IDCW)",
-            "Aditya Birla SL Long Duration Fund(IDCW)",
-            "Aditya Birla SL Multi-Index FoF(IDCW-Reinv)",
-            "Aditya Birla SL CRISIL IBX 60:40 SDL + AAA PSU Apr 2026 Index Fund",
-            "Aditya Birla SL CRISIL IBX 60:40 SDL + AAA PSU Apr 2026 Index Fund(IDCW)",
-            "Aditya Birla SL FTP-UB-1224D",
-            "Aditya Birla SL Multi Asset Allocation Fund",
-            "Aditya Birla SL Multi Asset Allocation Fund(IDCW)",
-            "Aditya Birla SL CRISIL IBX AAA Mar 2024 Index Fund",
-            "Aditya Birla SL CRISIL IBX AAA Mar 2024 Index Fund(IDCW)",
-            "Aditya Birla SL CRISIL IBX SDL Jun 2032 Index Fund(IDCW)",
-            "Aditya Birla SL CRISIL IBX SDL Jun 2032 Index Fund",
-            "Aditya Birla SL Multi Asset Allocation Fund(IDCW Reinvest)",
-            "Aditya Birla SL Nifty SDL Sep 2027 Index Fund",
-            "Aditya Birla SL Nifty SDL Sep 2027 Index Fund(IDCW)",
-            "Aditya Birla SL CRISIL IBX Gilt Apr 2028 Index Fund(IDCW)",
-            "Aditya Birla SL CRISIL IBX Gilt Apr 2028 Index Fund",
-            "Aditya Birla SL FTP-UJ-1110D(IDCW)",
-            "Aditya Birla SL FTP-UJ-1110D",
-            "Aditya Birla SL US Treasury 3-10 year Bond ETFs FoF(IDCW)",
-            "Aditya Birla SL US Treasury 3-10 year Bond ETFs FoF(IDCW)",
-            "Aditya Birla SL US Treasury 3-10 year Bond ETFs FoF",
-            "Aditya Birla SL US Treasury 1-3 year Bond ETFs FoF(IDCW)",
-            "Aditya Birla SL US Treasury 1-3 year Bond ETFs FoF",
-            "Aditya Birla SL US Treasury 1-3 year Bond ETFs FoF(IDCW)",
-            "Aditya Birla SL Transportation and Logistics Fund(IDCW)",
-            "Aditya Birla SL Transportation and Logistics Fund",
-            "Aditya Birla SL FMP-UQ-92D(IDCW)",
-            "Aditya Birla SL FMP-UQ-92D",
-            "Aditya Birla SL FMP-UR-85D(IDCW)",
-            "Aditya Birla SL FMP-UR-85D",
-            "Aditya Birla SL CRISIL IBX Gilt April 2033 Index Fund",
-            "Aditya Birla SL CRISIL IBX Gilt April 2033 Index Fund(IDCW)",
-            "Aditya Birla SL FMP-US-100D(IDCW)",
-            "Aditya Birla SL FMP-US-100D",
-            "360 ONE Dynamic Bond Fund(Q-IDCW Payout)",
-            "360 ONE Liquid Fund(W-IDCW Reinv)",
-            "360 ONE Focused Equity Fund(IDCW-Reinv)",
-            "360 ONE Dynamic Bond Fund(M-IDCW Payout)",
-            "360 ONE Focused Equity Fund",
-            "360 ONE Focused Equity Fund(IDCW)",
-            "360 ONE Liquid Fund(W-IDCW)",
-            "360 ONE Liquid Fund(DD-IDCW)",
-            "360 ONE Liquid Fund",
-            "360 ONE Dynamic Bond Fund(Q-IDCW)",
-            "360 ONE Dynamic Bond Fund",
-            "360 ONE Dynamic Bond Fund(M-IDCW)",
-            "360 ONE Quant Fund(IDCW)",
-            "360 ONE Quant Fund",
-            "360 ONE Quant Fund(IDCW Payout)",
-            "360 ONE ELSS Tax Saver Nifty 50 Index Fund",
-            "360 ONE ELSS Tax Saver Nifty 50 Index Fund(IDCW)",
-            "360 ONE Flexicap Fund(IDCW Payout)",
-            "360 ONE Flexicap Fund",
-            "360 ONE Flexicap Fund(IDCW)",
-            "360 ONE Balanced Hybrid Fund(IDCW)",
-            "360 ONE Balanced Hybrid Fund",
-            "360 ONE Balanced Hybrid Fund(IDCW)"
-    );
 }
 
 

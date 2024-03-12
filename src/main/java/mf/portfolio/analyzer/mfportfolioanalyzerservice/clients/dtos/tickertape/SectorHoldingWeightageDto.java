@@ -1,4 +1,4 @@
-package mf.portfolio.analyzer.mfportfolioanalyzerservice.dtos;
+package mf.portfolio.analyzer.mfportfolioanalyzerservice.clients.dtos.tickertape;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

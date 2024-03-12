@@ -1,5 +1,9 @@
 package mf.portfolio.analyzer.mfportfolioanalyzerservice.service;
 
+import mf.portfolio.analyzer.mfportfolioanalyzerservice.clients.dtos.mfapi.MutualFundHistoricalDataUnitDto;
+import mf.portfolio.analyzer.mfportfolioanalyzerservice.clients.dtos.mfapi.MutualFundMetaDataDto;
+import mf.portfolio.analyzer.mfportfolioanalyzerservice.clients.dtos.mfapi.MutualFundSchemeDto;
+import mf.portfolio.analyzer.mfportfolioanalyzerservice.dtos.MutualFundHoldingsByNameResponseDto;
 import mf.portfolio.analyzer.mfportfolioanalyzerservice.dtos.*;
 
 import java.util.List;
@@ -13,15 +17,13 @@ public interface MFPortfolioAnalyzerService {
 
     MutualFundMetaDataDto getMutualFundDetailBySchemeCode(String schemeCode);
 
-    List<String> getAllMutualFundSchemeCategories();
-
-    List<String> getMutualFundListByAmc(String amc);
+    List<String> getMutualFundListByAmc(String amc, Boolean isFuzzy);
 
     Map<String,String> getAllMutualFundIds();
 
-    String getMutualFundIdByName(String mutualFundName);
+    MutualFundIdResponseDto getMutualFundIdResponseByName(String mutualFundName, Boolean isFuzzy);
 
-    MutualFundStockAllocationResponseDto getMutualFundStockAllocationByName(String mutualFundName);
+    MutualFundHoldingsByNameResponseDto getMutualFundStockAllocationByName(String mutualFundName, Boolean isFuzzy);
 
     AggregateStockAllocationResponseDto getAggregateStockAllocation(AggregateStockAllocationRequestDto aggregateStockAllocationRequestDto);
 

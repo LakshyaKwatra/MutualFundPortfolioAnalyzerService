@@ -15,13 +15,11 @@ import java.util.Optional;
 
 @Service
 public class FuzzyMatchingServiceImpl implements FuzzyMatchingService {
-    @Autowired
-    DataStore dataStore;
 
     @Override
     public String getFuzzyMutualFundAMC(String amc) {
         JaroWinklerDistance jaroWinklerDistance = new JaroWinklerDistance();
-        List<String> mutualFundAMCList = dataStore.getMutualFundAMCList();
+        List<String> mutualFundAMCList = DataStore.getMutualFundAMCList();
         double similarity = 0;
         String similarAmc = null;
         for (String mutualFundAMC: mutualFundAMCList) {
@@ -38,7 +36,7 @@ public class FuzzyMatchingServiceImpl implements FuzzyMatchingService {
     @Override
     public String getFuzzyMutualFund(String mutualFundName) {
         JaroWinklerDistance jaroWinklerDistance = new JaroWinklerDistance();
-        List<String> mutualFundList = dataStore.getMutualFundList();
+        List<String> mutualFundList = DataStore.getMutualFundAMCList();
         double similarity = 0;
         String similarMutualFund = null;
         for (String mutualFund: mutualFundList) {

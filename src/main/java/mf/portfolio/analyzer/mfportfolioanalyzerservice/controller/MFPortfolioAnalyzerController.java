@@ -1,10 +1,15 @@
 package mf.portfolio.analyzer.mfportfolioanalyzerservice.controller;
 
 import lombok.NonNull;
+import mf.portfolio.analyzer.mfportfolioanalyzerservice.clients.dtos.mfapi.MutualFundHistoricalDataUnitDto;
+import mf.portfolio.analyzer.mfportfolioanalyzerservice.clients.dtos.mfapi.MutualFundMetaDataDto;
+import mf.portfolio.analyzer.mfportfolioanalyzerservice.clients.dtos.mfapi.MutualFundSchemeDto;
+import mf.portfolio.analyzer.mfportfolioanalyzerservice.dtos.MutualFundHoldingsByNameResponseDto;
 import mf.portfolio.analyzer.mfportfolioanalyzerservice.dtos.*;
 import mf.portfolio.analyzer.mfportfolioanalyzerservice.service.MFPortfolioAnalyzerService;
 import mf.portfolio.analyzer.mfportfolioanalyzerservice.service.MFScraperService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -35,20 +40,15 @@ public class MFPortfolioAnalyzerController {
         return mfPortfolioAnalyzerService.getMutualFundDetailBySchemeCode(schemeCode);
     }
 
-    @GetMapping("/getAllMutualFundSchemeCategories")
-    @Deprecated
-    public List<String> getAllMutualFundSchemeCategories() {
-        return mfPortfolioAnalyzerService.getAllMutualFundSchemeCategories();
-    }
-
     @GetMapping("/getMutualFundAMCList")
     public List<String> getMutualFundAMCList() throws IOException {
         return mfScraperService.getMutualFundAMCList();
     }
 
     @GetMapping("/getMutualFundListByAMC")
-    public List<String> getMutualFundListByAMC(@NonNull @RequestParam("amc") String amc) {
-        return mfPortfolioAnalyzerService.getMutualFundListByAmc(amc);
+    public List<String> getMutualFundListByAMC(@NonNull @RequestParam("amc") String amc,
+                                               @Nullable @RequestParam("isFuzzy") Boolean isFuzzy) {
+        return mfPortfolioAnalyzerService.getMutualFundListByAmc(amc, isFuzzy);
     }
 
     @GetMapping("/getAllMutualFundIds")
@@ -56,14 +56,16 @@ public class MFPortfolioAnalyzerController {
         return mfPortfolioAnalyzerService.getAllMutualFundIds();
     }
 
-    @GetMapping("/getMutualFundIdByName")
-    public String getMutualFundIdByName(@NonNull @RequestParam("mutualFundName") String mutualFundName) {
-        return mfPortfolioAnalyzerService.getMutualFundIdByName(mutualFundName);
+    @GetMapping("/getMutualFundIdResponseByName")
+    public MutualFundIdResponseDto getMutualFundIdResponseByName(@NonNull @RequestParam("mutualFundName") String mutualFundName,
+                                                                 @Nullable @RequestParam("isFuzzy") Boolean isFuzzy) {
+        return mfPortfolioAnalyzerService.getMutualFundIdResponseByName(mutualFundName, isFuzzy);
     }
 
     @GetMapping("/getMutualFundStockAllocationByName")
-    public MutualFundStockAllocationResponseDto getMutualFundStockAllocationByName(@NonNull @RequestParam("mutualFundName") String mutualFundName) {
-        return mfPortfolioAnalyzerService.getMutualFundStockAllocationByName(mutualFundName);
+    public MutualFundHoldingsByNameResponseDto getMutualFundStockAllocationByName(@NonNull @RequestParam("mutualFundName") String mutualFundName,
+                                                                                  @Nullable @RequestParam("isFuzzy") Boolean isFuzzy) {
+        return mfPortfolioAnalyzerService.getMutualFundStockAllocationByName(mutualFundName, isFuzzy);
     }
 
     @GetMapping("/getAggregateStockAllocation")
